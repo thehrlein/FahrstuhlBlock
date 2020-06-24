@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--Bottom Sheets-->
+    <style name="ThemeOverlay.FahrstuhlBlock.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/Animation.FahrstuhlBlock.BottomSheet.Modal</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/Widget.FahrstuhlBlock.BottomSheet.Modal</item>
+        <item name="android:navigationBarColor">?colorSurface</item>
+        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">
+            @android:color/transparent
+        </item>
+    </style>
+
+    <!-- Alert Dialogs -->
+    <style name="ThemeOverlay.FahrstuhlBlock.AlertDialog" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog.Centered">
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.FahrstuhlBlock</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="materialAlertDialogTitlePanelStyle">?alertDialogTitlePanelStyle</item>
+        <item name="materialAlertDialogTitleIconStyle">?alertDialogTitleIconStyle</item>
+        <item name="materialAlertDialogTitleTextStyle">?alertDialogTitleTextStyle</item>
+        <item name="materialAlertDialogBodyTextStyle">?alertDialogBodyTextStyle</item>
+        <item name="buttonBarButtonStyle">?dialogButtonPrimary</item>
+        <item name="buttonBarPositiveButtonStyle">?dialogButtonPrimary</item>
+        <item name="buttonBarNegativeButtonStyle">?dialogButtonSecondary</item>
+        <item name="buttonBarNeutralButtonStyle">?dialogButtonSecondary</item>
+    </style>
+
+    <!-- Fullscreen Dialogs-->
+    <style name="Theme.FahrstuhlBlock.FullScreenDialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+</resources>

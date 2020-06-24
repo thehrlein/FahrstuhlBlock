@@ -1,0 +1,33 @@
+<resources>
+
+    <!-- Player settings -->
+    <string name="game_player_settings_toolbar_title">Player settings</string>
+    <string name="game_player_settings_player_count_hint">Choose player count</string>
+    <string name="game_player_settings_player_count_three">3</string>
+    <string name="game_player_settings_player_count_four">4</string>
+    <string name="game_player_settings_player_count_five">5</string>
+    <string name="game_player_settings_player_count_six">6</string>
+    <string name="game_player_settings_player_count_seven">7</string>
+    <string name="game_player_settings_player_count_eight">8</string>
+    <string name="game_player_settings_player_hint">Player %1$d</string>
+    <string name="game_player_settings_button_proceed">Continue</string>
+
+
+    <!-- Game rules -->
+    <string name="game_rules_toolbar_title">Game rules</string>
+    <string name="game_rules_card_count_title">How many rounds do you want to play?</string>
+    <string name="game_rules_card_count_description">Remember that the game starts with one card and increases by one up to the highest card count and afterwards decreases again by one down to one card again. So if you select e.g. 10 cards, you\'ll play 20 rounds.</string>
+    <string name="game_rules_cards_options_one_deck">One deck (up to %1$d cards based on %2$d players)</string>
+    <string name="game_rules_cards_options_two_decks">Two decks (up to %1$d cards based on %2$d players)</string>
+    <string name="game_rules_cards_options_individual">Individual count</string>
+    <string name="game_rules_cards_options_individual_input_hint">Highest card count</string>
+
+
+    <!-- Point rules -->
+    <string name="point_rules_toolbar_title">Point rules</string>
+    <string name="point_rules_title">Set up how many points you get</string>
+    <string name="point_rules_description">for the fact that your prediction is correct and how many points in that case for each stitch as well as how many points you loose for each far from your prediction</string>
+    <string name="point_rules_correct_prediction_hint">Correct prediction</string>
+    <string name="point_rules_each_stitch_hint">For each stitch</string>
+
+</resources>

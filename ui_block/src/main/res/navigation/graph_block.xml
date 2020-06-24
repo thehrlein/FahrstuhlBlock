@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/graph_block"
+    app:startDestination="@id/blockResultsFragment">
+
+    <fragment
+        android:id="@+id/blockResultsFragment"
+        android:name="com.tobiapplications.fahrstuhlblock.ui_block.BlockResultsFragment"
+        android:label="BlockResultsFragment"
+        tools:layout="@layout/fragment_block_results">
+
+    </fragment>
+
+
+</navigation>

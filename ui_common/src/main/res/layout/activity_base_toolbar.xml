@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="toolbarViewModel"
+            type="com.tobiapplications.fahrstuhlblock.presentation.general.BaseToolbarViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/base_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.tobiapplications.fahrstuhlblock.ui_common.views.BaseToolbar
+            android:id="@+id/base_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:onToolbarButtonClick="@{() -> toolbarViewModel.onToolbarButtonClicked()}"
+            app:toolbarButton="@{toolbarViewModel.toolbarButton}"
+            app:toolbarTitle="@{toolbarViewModel.toolbarTitle}" />
+
+        <FrameLayout
+            android:id="@+id/base_content_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</layout>

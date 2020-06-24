@@ -1,0 +1,87 @@
+<resources>
+
+
+    <!-- Toolbar -->
+    <style name="Widget.FahrstuhlBlock.Toolbar.PrimarySurface" parent="@style/Widget.MaterialComponents.Toolbar.PrimarySurface">
+        <item name="titleTextAppearance">?textAppearanceToolbarTitle</item>
+        <item name="android:gravity">start</item>
+        <item name="android:buttonTint">?colorOnPrimary</item>
+        <item name="android:background">?colorPrimary</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <!-- TextView -->
+    <style name="Widget.FahrstuhlBlock.TextView" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">?textAppearanceBody1</item>
+    </style>
+
+    <!-- TextInputLayout -->
+    <style name="Widget.FahrstuhlBlock.TextInputLayout.FilledBox" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <!--Your custom shape here-->
+    </style>
+
+    <style name="Widget.FahrstuhlBlock.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <!--Your custom shape here-->
+    </style>
+
+    <!-- Button -->
+    <style name="Widget.FahrstuhlBlock.Button" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:textAppearance">?textAppearanceButton</item>
+    </style>
+
+    <style name="Widget.FahrstuhlBlock.Button.Outline" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textAppearance">?textAppearanceButton</item>
+    </style>
+
+    <style name="Widget.FahrstuhlBlock.Button.Borderless" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAppearance">?textAppearanceButton</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Widget.FahrstuhlBlock.Button.TextButton.Dialog" parent="@style/Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:minHeight">@dimen/dialog_button_height</item>
+        <item name="android:textColor">?colorPrimary</item>
+        <item name="android:textAppearance">?textAppearanceButton</item>
+        <item name="cornerRadius">0dp</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:alpha">?alphaEmphasisHigh</item>
+    </style>
+
+    <style name="Widget.FahrstuhlBlock.Button.TextButton.Dialog.Secondary">
+        <item name="android:textColor">?colorOnBackground</item>
+        <item name="android:alpha">?alphaEmphasisMedium</item>
+    </style>
+
+    <!-- Bottom Sheets-->
+    <style name="Widget.FahrstuhlBlock.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="shapeAppearanceOverlay">?shapeAppearanceLargeComponent</item>
+    </style>
+
+    <!-- Bottom Navigation -->
+    <style name="Widget.FahrstuhlBlock.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+
+    </style>
+
+    <!-- Bottom App Bar -->
+    <style name="Widget.FahrstuhlBlock.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+
+    </style>
+
+    <!-- CardView -->
+    <style name="Widget.FahrstuhlBlock.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/corner_size_medium</item>
+        <item name="cardElevation">@dimen/elevation_few</item>
+    </style>
+
+    <!-- Progress Bar -->
+    <style name="Widget.FahrstuhlBlock.ProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:minWidth">@dimen/progress_bar_size_medium</item>
+        <item name="android:maxWidth">@dimen/progress_bar_size_medium</item>
+        <item name="android:minHeight">@dimen/progress_bar_size_medium</item>
+        <item name="android:maxHeight">@dimen/progress_bar_size_medium</item>
+    </style>
+
+</resources>

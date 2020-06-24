@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MaterialAlertDialog.FahrstuhlBlock" parent="@style/MaterialAlertDialog.MaterialComponents">
+        <item name="android:layout">@layout/layout_alert_dialog_centered</item>
+    </style>
+
+    <style name="AlertDialog.FahrstuhlBlock.Title.Panel" parent="@style/MaterialAlertDialog.MaterialComponents.Title.Panel.CenterStacked" />
+
+    <style name="AlertDialog.FahrstuhlBlock.Title.Icon" parent="@style/MaterialAlertDialog.MaterialComponents.Title.Icon.CenterStacked" />
+
+    <style name="AlertDialog.FahrstuhlBlock.Title.Text" parent="@style/MaterialAlertDialog.MaterialComponents.Title.Text.CenterStacked">
+        <item name="android:textAppearance">?textAppearanceHeadline5</item>
+        <item name="android:textColor">?colorOnBackground</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="AlertDialog.FahrstuhlBlock.Body.Text" parent="@style/TextAppearance.FahrstuhlBlock.Body1">
+        <item name="android:textAppearance">?textAppearanceBody1</item>
+        <item name="android:textColor">?colorOnBackground</item>
+        <item name="android:gravity">center</item>
+        <item name="android:alpha">?alphaEmphasisHigh</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+</resources>

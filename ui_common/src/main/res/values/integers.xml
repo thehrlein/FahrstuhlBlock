@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="one_card_deck">32</integer>
+    <integer name="two_card_decks">64</integer>
+</resources>

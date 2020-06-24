@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Fahrstuhl Block</string>
+
+    <string name="general_true">True</string>
+    <string name="general_false">False</string>
+
+    <string name="icon_credits">Icon made by Nhor Phai &amp; Freepik from www.flaticon.com</string>
+
+    <string name="dialog_exit_title">Attention</string>
+    <string name="dialog_exit_message">Do you want to quit this application or return to the menu?</string>
+    <string name="dialog_exit_button_positive">Quit</string>
+    <string name="dialog_exit_button_negative">Menu</string>
+
+</resources>

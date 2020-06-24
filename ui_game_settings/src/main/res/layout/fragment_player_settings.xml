@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.tobiapplications.fahrstuhlblock.presentation.settings.PlayerSettingsViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_4">
+
+            <TextView
+                android:id="@+id/player_count_choose_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?textAppearanceHeadline5"
+                android:text="@string/game_player_settings_player_count_hint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/player_count_choose_button_group"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_2"
+                app:checkedButton="@id/toggle_three"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_count_choose_title"
+                app:layout_goneMarginTop="@dimen/space_4"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <Button
+                    android:id="@+id/toggle_three"
+                    style="?materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/game_player_settings_player_count_three" />
+
+                <Button
+                    android:id="@+id/toggle_four"
+                    style="?materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/game_player_settings_player_count_four" />
+
+                <Button
+                    android:id="@+id/toggle_five"
+                    style="?materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/game_player_settings_player_count_five" />
+
+                <Button
+                    android:id="@+id/toggle_six"
+                    style="?materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/game_player_settings_player_count_six" />
+
+                <Button
+                    android:id="@+id/toggle_seven"
+                    style="?materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/game_player_settings_player_count_seven" />
+
+                <Button
+                    android:id="@+id/toggle_eight"
+                    style="?materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/game_player_settings_player_count_eight" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <include
+                android:id="@+id/player_one_layout"
+                layout="@layout/include_player"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_8"
+                android:visibility="@{viewModel.players.get(0).first}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_count_choose_button_group"
+                app:position="@{1}"
+                app:text="@={viewModel.players.get(0).second}" />
+
+            <include
+                android:id="@+id/player_two_layout"
+                layout="@layout/include_player"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.players.get(1).first}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_one_layout"
+                app:position="@{2}"
+                app:text="@={viewModel.players.get(1).second}" />
+
+            <include
+                android:id="@+id/player_three_layout"
+                layout="@layout/include_player"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.players.get(2).first}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_two_layout"
+                app:position="@{3}"
+                app:text="@={viewModel.players.get(2).second}" />
+
+            <include
+                android:id="@+id/player_four_layout"
+                layout="@layout/include_player"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.players.get(3).first}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_three_layout"
+                app:position="@{4}"
+                app:text="@={viewModel.players.get(3).second}" />
+
+            <include
+                android:id="@+id/player_five_layout"
+                layout="@layout/include_player"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.players.get(4).first}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_four_layout"
+                app:position="@{5}"
+                app:text="@={viewModel.players.get(4).second}" />
+
+            <include
+                android:id="@+id/player_six_layout"
+                layout="@layout/include_player"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.players.get(5).first}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_five_layout"
+                app:position="@{6}"
+                app:text="@={viewModel.players.get(5).second}" />
+
+            <include
+                android:id="@+id/player_seven_layout"
+                layout="@layout/include_player"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.players.get(6).first}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_six_layout"
+                app:position="@{7}"
+                app:text="@={viewModel.players.get(6).second}" />
+
+            <include
+                android:id="@+id/player_eight_layout"
+                layout="@layout/include_player"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.players.get(7).first}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_seven_layout"
+                app:position="@{8}"
+                app:text="@={viewModel.players.get(7).second}" />
+
+            <Button
+                android:id="@+id/button_proceed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_8"
+                android:onClick="@{() -> viewModel.onProceedClicked()}"
+                android:text="@string/game_player_settings_button_proceed"
+                android:enabled="@{viewModel.inputValid}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/player_eight_layout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

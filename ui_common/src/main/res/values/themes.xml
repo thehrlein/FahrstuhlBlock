@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--Top level DayNight theme to be used in AndroidManifest.xml-->
+    <style name="Theme.FahrstuhlBlock.DayNight" parent="Base.Theme.FahrstuhlBlock"/>
+
+    <!--Base custom theme which will be shared between both light and dark theme variants-->
+    <style name="Base.Theme.FahrstuhlBlock" parent="Base.FahrstuhlBlock.DayNight.NoActionBar">
+
+        <!--Material color attributes -->
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryVariant">@color/color_primary_variant</item>
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorSecondaryVariant">@color/color_secondary_variant</item>
+        <item name="android:colorBackground">@color/color_background</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="colorError">@color/color_error</item>
+        <item name="colorOnPrimary">@color/color_on_primary</item>
+        <item name="colorOnSecondary">@color/color_on_secondary</item>
+        <item name="colorOnBackground">@color/color_on_background</item>
+        <item name="colorOnSurface">@color/color_on_surface</item>
+        <item name="colorOnError">@color/color_on_error</item>
+
+        <item name="dividerVertical">@color/color_light_grey</item>
+        <item name="dividerHorizontal">@color/color_light_grey</item>
+
+        <!--Material type attributes-->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.FahrstuhlBlock.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.FahrstuhlBlock.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.FahrstuhlBlock.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.FahrstuhlBlock.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.FahrstuhlBlock.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.FahrstuhlBlock.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.FahrstuhlBlock.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.FahrstuhlBlock.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.FahrstuhlBlock.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.FahrstuhlBlock.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.FahrstuhlBlock.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.FahrstuhlBlock.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.FahrstuhlBlock.Overline</item>
+        <item name="textAppearanceToolbarTitle">@style/TextAppearance.FahrstuhlBlock.Toolbar.Title
+        </item>
+
+        <!--Material shape attributes-->
+        <item name="shapeAppearanceSmallComponent">
+            @style/ShapeAppearance.FahrstuhlBlock.SmallComponent
+        </item>
+        <item name="shapeAppearanceMediumComponent">
+            @style/ShapeAppearance.FahrstuhlBlock.MediumComponent
+        </item>
+        <item name="shapeAppearanceLargeComponent">
+            @style/ShapeAppearance.FahrstuhlBlock.LargeComponent
+        </item>
+
+        <!-- Dialog Attributes -->
+        <item name="dialogPreferredPadding">@dimen/space_4</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.FahrstuhlBlock.AlertDialog</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.FahrstuhlBlock.BottomSheetDialog
+        </item>
+        <item name="android:dialogTheme">@style/Theme.FahrstuhlBlock.FullScreenDialog</item>
+        <item name="dialogButtonPrimary">@style/Widget.FahrstuhlBlock.Button.TextButton.Dialog</item>
+        <item name="dialogButtonSecondary">
+            @style/Widget.FahrstuhlBlock.Button.TextButton.Dialog.Secondary
+        </item>
+        <item name="alertDialogTitlePanelStyle">@style/AlertDialog.FahrstuhlBlock.Title.Panel</item>
+        <item name="alertDialogTitleIconStyle">@style/AlertDialog.FahrstuhlBlock.Title.Icon</item>
+        <item name="alertDialogTitleTextStyle">@style/AlertDialog.FahrstuhlBlock.Title.Text</item>
+        <item name="alertDialogBodyTextStyle">@style/AlertDialog.FahrstuhlBlock.Body.Text</item>
+
+        <!--Component styles-->
+        <item name="android:textViewStyle">@style/Widget.FahrstuhlBlock.TextView</item>
+        <item name="android:progressBarStyle">@style/Widget.FahrstuhlBlock.ProgressBar</item>
+        <item name="toolbarStyle">@style/Widget.FahrstuhlBlock.Toolbar.PrimarySurface</item>
+        <item name="materialButtonStyle">@style/Widget.FahrstuhlBlock.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.FahrstuhlBlock.Button.Outline</item>
+        <item name="borderlessButtonStyle">@style/Widget.FahrstuhlBlock.Button.Borderless</item>
+        <item name="textInputStyle">@style/Widget.FahrstuhlBlock.TextInputLayout.FilledBox</item>
+        <item name="textInputStyleFilled">@style/Widget.FahrstuhlBlock.TextInputLayout.FilledBox</item>
+        <item name="textInputStyleOutlined">@style/Widget.FahrstuhlBlock.TextInputLayout.OutlinedBox</item>
+        <item name="cardViewStyle">@style/Widget.FahrstuhlBlock.CardView</item>
+        <item name="bottomNavigationStyle">@style/Widget.FahrstuhlBlock.BottomNavigation</item>
+        <item name="bottomAppBarStyle">@style/Widget.FahrstuhlBlock.BottomAppBar</item>
+
+        <!-- Specs -->
+        <item name="listPreferredItemHeightSmall">@dimen/list_item_height_small</item>
+        <item name="listPreferredItemHeight">@dimen/list_item_height_default</item>
+        <item name="listPreferredItemHeightLarge">@dimen/list_item_height_large</item>
+
+    </style>
+
+    <style name="Splash.Theme.FahrstuhlBlock" parent="Base.Theme.FahrstuhlBlock">
+        <item name="android:windowBackground">@drawable/layer_list_splash_background</item>
+    </style>
+
+    <style name="Base.FahrstuhlBlock.DayNight.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="alphaEmphasisHigh">@dimen/alpha_emphasis_high</item>
+        <item name="alphaEmphasisMedium">@dimen/alpha_emphasis_medium</item>
+        <item name="alphaEmphasisDisabled">@dimen/alpha_emphasis_disabled</item>
+
+        <item name="android:statusBarColor">?colorPrimaryVariant
+        </item> <!-- top system status bar background color -->
+        <item name="android:windowLightStatusBar">false
+        </item> <!-- top system status bar text / icon color, false = white, true = black -->
+        <item name="android:navigationBarColor">?android:colorBackground
+        </item> <!-- bottom system navigation background color -->
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true
+        </item> <!-- bottom system navigation icon color, true = black, false = white -->
+        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">
+            ?colorControlHighlight
+        </item> <!-- bottom system navigation divider color -->
+
+        <!--Remap legacy AppCompat attributes to MaterialComponent attributes-->
+        <item name="colorPrimaryDark">?colorPrimaryVariant</item>
+        <item name="colorAccent">?colorSecondary</item>
+    </style>
+
+</resources>

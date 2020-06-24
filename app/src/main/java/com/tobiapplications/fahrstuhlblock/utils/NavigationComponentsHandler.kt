@@ -1,0 +1,93 @@
+package com.tobiapplications.fahrstuhlblock.utils
+
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavHostController
+import com.tobiapplications.fahrstuhlblock.entities.utils.extensions.checkAllMatched
+import com.tobiapplications.fahrstuhlblock.entities.general.Screen
+import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
+import com.tobiapplications.fahrstuhlblock.ui_block.BlockActivity
+import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.SimpleAlertDialogFragment
+import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogData
+import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelper
+import com.tobiapplications.fahrstuhlblock.ui_menu.MenuActivity
+import com.tobiapplications.fahrstuhlblock.ui_game_settings.GameSettingsActivity
+import com.tobiapplications.fahrstuhlblock.ui_game_settings.GameRulesFragmentDirections
+import com.tobiapplications.fahrstuhlblock.ui_game_settings.PlayerSettingsFragmentDirections
+
+/**
+ *
+ * The implementation of the application navigation.
+ *
+ * Here you can show, add or replace all navigation components such as
+ * [Activities][androidx.appcompat.app.AppCompatActivity],
+ * [Fragments][androidx.fragment.app.Fragment] or
+ * [Dialogs][androidx.appcompat.app.AppCompatDialogFragment].
+ */
+
+class NavigationComponentsHandler(
+    private val activity: AppCompatActivity,
+    private val navHostController: NavHostController?,
+    private val resourceHelper: ResourceHelper
+) : NavigationHandler  {
+
+    override fun navigateTo(screen: Screen) {
+        when (screen) {
+            is Screen.Main -> navigateTo(screen)
+            is Screen.Menu -> navigateTo(screen)
+            is Screen.PlayerSettings -> navigateTo(screen)
+            is Screen.GameRules -> navigateTo(screen)
+            is Screen.PointRules -> navigateTo(screen)
+            is Screen.Block -> navigateTo(screen)
+        }.checkAllMatched
+    }
+
+    // navigate from main
+    private fun navigateTo(screen: Screen.Main) {
+        when (screen) {
+            is Screen.Main.Menu -> MenuActivity.start(activity)
+        }.checkAllMatched
+    }
+
+    // navigate from menu
+    private fun navigateTo(screen: Screen.Menu) {
+        when (screen) {
+            is Screen.Menu.NewGame -> GameSettingsActivity.start(activity)
+        }.checkAllMatched
+    }
+
+    // navigate from player settings
+    private fun navigateTo(screen: Screen.PlayerSettings) {
+        when (screen) {
+            is Screen.PlayerSettings.GameRules -> {
+                val action = PlayerSettingsFragmentDirections.actionPlayerSettingsFragmentToGameRulesFragment(screen.playerSettingsData)
+                navHostController?.navigate(action)
+            }
+        }.checkAllMatched
+    }
+
+    // navigate from game rules
+    private fun navigateTo(screen: Screen.GameRules) {
+        when (screen) {
+            is Screen.GameRules.PointRules -> {
+                val action = GameRulesFragmentDirections.actionGameRulesFragmentToPointRulesFragment(screen.gameRuleSettingsData)
+                navHostController?.navigate(action)
+            }
+        }.checkAllMatched
+    }
+
+    // navigate from point rules
+    private fun navigateTo(screen: Screen.PointRules) {
+        when (screen) {
+            is Screen.PointRules.Block -> BlockActivity.start(activity, screen.fahrstuhlGame)
+        }.checkAllMatched
+    }
+
+    // navigate from block
+    private fun navigateTo(screen: Screen.Block) {
+        when (screen) {
+            is Screen.Block.Exit -> SimpleAlertDialogFragment.show(activity.supportFragmentManager, DialogData.Text.Exit(resourceHelper))
+            is Screen.Block.Menu -> MenuActivity.start(activity)
+        }.checkAllMatched
+    }
+
+}
