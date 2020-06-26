@@ -22,11 +22,13 @@ class GameRulesViewModel(
 
     val inputValid = MediatorLiveData<Boolean>().also { mediator ->
         mediator.addSource(maxCardCountSelection) {
-            mediator.postValue(when {
-                it != MaxCardCountSelection.INDIVIDUAL -> true
-                individualCardCountValue.value.isNullOrEmpty().not() -> true
-                else -> false
-            })
+            mediator.postValue(
+                when {
+                    it != MaxCardCountSelection.INDIVIDUAL -> true
+                    individualCardCountValue.value.isNullOrEmpty().not() -> true
+                    else -> false
+                }
+            )
         }
         mediator.addSource(individualCardCountValue) {
             mediator.postValue(!it.isNullOrEmpty())
@@ -38,6 +40,21 @@ class GameRulesViewModel(
     }
 
     fun onProceedClicked() {
-        navigateTo(Screen.GameRules.PointRules(GameRuleSettingsData(playerSettingsData, 2)))
+        val highCardCound = getHighCardCound()
+        navigateTo(Screen.GameRules.PointRules(GameRuleSettingsData(playerSettingsData, highCardCound)))
+    }
+
+    private fun getHighCardCound(): Int {
+        val selection = maxCardCountSelection.value
+        val individualCount = individualCardCountValue.value?.toIntOrNull()
+        val cardCount = when (selection) {
+            MaxCardCountSelection.ONE_DECK -> selection.cards
+            MaxCardCountSelection.TWO_DECKS -> selection.cards
+            MaxCardCountSelection.INDIVIDUAL -> individualCount
+                ?: error("could not determine max card count - individual count is null but selected")
+            else -> error("could not determine max card count")
+        }
+
+        return cardCount / playerSettingsData.names.size
     }
 }

@@ -38,6 +38,6 @@ class PointRulesViewModel(
     fun onProceedClicked() {
         val correctPredictionPoints = correctPredictionPoints.value?.toInt() ?: error("could not determine correct prediction points")
         val pointsPerStitch = pointsPerStitch.value?.toInt() ?: error("could not determine correct points per stitch")
-        navigateTo(Screen.PointRules.Block(FahrstuhlGame(gameRuleSettingsData, PointsRuleData(correctPredictionPoints, pointsPerStitch))))
+        navigateTo(Screen.PointRules.Block(FahrstuhlGame(gameRuleSettingsData.playerSettingsData, gameRuleSettingsData.highCardCount, PointsRuleData(correctPredictionPoints, pointsPerStitch))))
     }
 }
