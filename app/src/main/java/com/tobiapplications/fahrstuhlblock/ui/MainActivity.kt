@@ -10,7 +10,7 @@ import com.tobiapplications.fahrstuhlblock.presentation.main.MainViewModel
 import com.tobiapplications.fahrstuhlblock.ui_common.base.activity.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-private const val LOADING_DELAY: Long = 2000
+private const val LOADING_DELAY: Long = 500
 
 class MainActivity : BaseActivity<MainViewModel>() {
 

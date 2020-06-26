@@ -25,6 +25,10 @@
         <!--Your custom shape here-->
     </style>
 
+    <style name="Widget.FahrstuhlBlock.TextInputLayout.OutlinedBox.ExposedDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <!--Your custom shape here-->
+    </style>
+
     <!-- Button -->
     <style name="Widget.FahrstuhlBlock.Button" parent="@style/Widget.MaterialComponents.Button">
         <item name="android:textAppearance">?textAppearanceButton</item>

@@ -13,12 +13,13 @@ import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.GetPlayerNa
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.StorePlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockResultsViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
-import com.tobiapplications.fahrstuhlblock.presentation.settings.GameRulesViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.main.MainViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.menu.MenuViewModel
-import com.tobiapplications.fahrstuhlblock.presentation.settings.GameSettingsViewModel
-import com.tobiapplications.fahrstuhlblock.presentation.settings.PlayerSettingsViewModel
-import com.tobiapplications.fahrstuhlblock.presentation.settings.PointRulesViewModel
+import com.tobiapplications.fahrstuhlblock.presentation.settings.*
+import com.tobiapplications.fahrstuhlblock.presentation.settings.gamerules.GameRulesViewModel
+import com.tobiapplications.fahrstuhlblock.presentation.settings.playerorder.PlayerOrderViewModel
+import com.tobiapplications.fahrstuhlblock.presentation.settings.playersettings.PlayerSettingsViewModel
+import com.tobiapplications.fahrstuhlblock.presentation.settings.pointrules.PointRulesViewModel
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelper
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelperImpl
 import com.tobiapplications.fahrstuhlblock.utils.NavigationComponentsHandler
@@ -56,9 +57,27 @@ object Koin {
         viewModel { MainViewModel() }
         viewModel { MenuViewModel() }
         viewModel { GameSettingsViewModel() }
-        viewModel { PlayerSettingsViewModel(get(), get()) }
-        viewModel { (playerSettingsData: PlayerSettingsData) -> GameRulesViewModel(playerSettingsData) }
-        viewModel { (gameRuleSettingsData: GameRuleSettingsData) -> PointRulesViewModel(gameRuleSettingsData) }
+        viewModel {
+            PlayerSettingsViewModel(
+                get(),
+                get()
+            )
+        }
+        viewModel { (playerSettingsData: PlayerSettingsData) ->
+            PlayerOrderViewModel(
+                playerSettingsData
+            )
+        }
+        viewModel { (playerSettingsData: PlayerSettingsData) ->
+            GameRulesViewModel(
+                playerSettingsData
+            )
+        }
+        viewModel { (gameRuleSettingsData: GameRuleSettingsData) ->
+            PointRulesViewModel(
+                gameRuleSettingsData
+            )
+        }
         viewModel { (fahrstuhlGame: FahrstuhlGame) -> BlockViewModel(fahrstuhlGame) }
         viewModel { BlockResultsViewModel() }
 

@@ -1,16 +1,22 @@
 <resources>
 
     <!-- Player settings -->
-    <string name="game_player_settings_toolbar_title">Player settings</string>
-    <string name="game_player_settings_player_count_hint">Choose player count</string>
-    <string name="game_player_settings_player_count_three">3</string>
-    <string name="game_player_settings_player_count_four">4</string>
-    <string name="game_player_settings_player_count_five">5</string>
-    <string name="game_player_settings_player_count_six">6</string>
-    <string name="game_player_settings_player_count_seven">7</string>
-    <string name="game_player_settings_player_count_eight">8</string>
-    <string name="game_player_settings_player_hint">Player %1$d</string>
-    <string name="game_player_settings_button_proceed">Continue</string>
+    <string name="player_settings_toolbar_title">Player settings</string>
+    <string name="player_settings_player_count_hint">Choose player count</string>
+    <string name="player_settings_player_count_three" translatable="false">3</string>
+    <string name="player_settings_player_count_four" translatable="false">4</string>
+    <string name="player_settings_player_count_five" translatable="false">5</string>
+    <string name="player_settings_player_count_six" translatable="false">6</string>
+    <string name="player_settings_player_count_seven" translatable="false">7</string>
+    <string name="player_settings_player_count_eight" translatable="false">8</string>
+    <string name="player_settings_player_hint">Player %1$d</string>
+    <string name="player_settings_button_proceed">Continue</string>
+
+    <!-- Player order -->
+    <string name="player_order_toolbar_title">Player order</string>
+    <string name="player_order_hint">Choose player order</string>
+    <string name="player_order_position" translatable="false">%1$d.</string>
+    <string name="player_order_description">The first player will start to shuffle and deal the cards</string>
 
 
     <!-- Game rules -->

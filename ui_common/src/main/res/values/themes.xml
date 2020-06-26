@@ -77,6 +77,7 @@
         <item name="textInputStyle">@style/Widget.FahrstuhlBlock.TextInputLayout.FilledBox</item>
         <item name="textInputStyleFilled">@style/Widget.FahrstuhlBlock.TextInputLayout.FilledBox</item>
         <item name="textInputStyleOutlined">@style/Widget.FahrstuhlBlock.TextInputLayout.OutlinedBox</item>
+        <item name="textInputStyleOutlinedExposedDropdown">@style/Widget.FahrstuhlBlock.TextInputLayout.OutlinedBox.ExposedDropdownMenu</item>
         <item name="cardViewStyle">@style/Widget.FahrstuhlBlock.CardView</item>
         <item name="bottomNavigationStyle">@style/Widget.FahrstuhlBlock.BottomNavigation</item>
         <item name="bottomAppBarStyle">@style/Widget.FahrstuhlBlock.BottomAppBar</item>
@@ -88,7 +89,7 @@
 
     </style>
 
-    <style name="Splash.Theme.FahrstuhlBlock" parent="Base.Theme.FahrstuhlBlock">
+    <style name="Splash.Theme.FahrstuhlBlock" parent="Base.FahrstuhlBlock.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/layer_list_splash_background</item>
     </style>
 
@@ -99,15 +100,8 @@
 
         <item name="android:statusBarColor">?colorPrimaryVariant
         </item> <!-- top system status bar background color -->
-        <item name="android:windowLightStatusBar">false
-        </item> <!-- top system status bar text / icon color, false = white, true = black -->
         <item name="android:navigationBarColor">?android:colorBackground
         </item> <!-- bottom system navigation background color -->
-        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true
-        </item> <!-- bottom system navigation icon color, true = black, false = white -->
-        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">
-            ?colorControlHighlight
-        </item> <!-- bottom system navigation divider color -->
 
         <!--Remap legacy AppCompat attributes to MaterialComponent attributes-->
         <item name="colorPrimaryDark">?colorPrimaryVariant</item>

@@ -21,6 +21,7 @@
     <attr name="alertDialogBodyTextStyle" format="reference" />
     <attr name="textInputStyleFilled" format="reference" />
     <attr name="textInputStyleOutlined" format="reference" />
+    <attr name="textInputStyleOutlinedExposedDropdown" format="reference" />
 
 
     <!-- Custom views attributes -->

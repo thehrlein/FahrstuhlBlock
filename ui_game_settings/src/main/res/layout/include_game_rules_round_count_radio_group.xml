@@ -5,7 +5,7 @@
         
         <variable
             name="viewModel"
-            type="com.tobiapplications.fahrstuhlblock.presentation.settings.GameRulesViewModel" />
+            type="com.tobiapplications.fahrstuhlblock.presentation.settings.gamerules.GameRulesViewModel" />
 
         <import type="com.tobiapplications.fahrstuhlblock.entities.models.settings.MaxCardCountSelection" />
         <import type="com.tobiapplications.fahrstuhlblock.ui_common.utils.MaxRoundHelper" />

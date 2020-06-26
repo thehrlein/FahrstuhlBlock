@@ -12,6 +12,7 @@
         <variable
             name="position"
             type="Integer" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,19 +22,20 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_layout_outlined"
-            style="?textInputStyleOutlined"
+            style="?textInputStyleOutlinedExposedDropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_2"
-            android:hint="@{String.format(@string/game_player_settings_player_hint, position)}"
+            android:hint="@{String.format(@string/player_settings_player_hint, position)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:maxLines="1"
+                android:inputType="text"
                 android:imeOptions="actionNext"
                 android:text="@={text}"/>
 

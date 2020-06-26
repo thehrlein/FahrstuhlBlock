@@ -24,7 +24,11 @@ sealed class Screen {
     }
 
     sealed class PlayerSettings : Screen() {
-        class GameRules(val playerSettingsData: PlayerSettingsData) : PlayerSettings()
+        class PlayerOrder(val playerSettingsData: PlayerSettingsData) : PlayerSettings()
+    }
+
+    sealed class PlayerOrder : Screen() {
+        class GameRules(val playerSettingsData: PlayerSettingsData) : PlayerOrder()
     }
 
     sealed class GameRules : Screen() {

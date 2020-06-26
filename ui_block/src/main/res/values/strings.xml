@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="block_results_toolbar_title">Block</string>
+    <string name="block_results_toolbar_title" translatable="false">Block</string>
 
 </resources>

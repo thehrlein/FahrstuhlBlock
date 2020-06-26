@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fahrstuhl Block</string>
+    <string name="general_true">Ja</string>
+    <string name="general_false">Nein</string>
+    <string name="dialog_exit_title">Achtung</string>
+    <string name="dialog_exit_message">Möchtest du diese Anwendung verlassen oder zurück ins Menü?</string>
+    <string name="dialog_exit_button_quit">Beenden</string>
+    <string name="dialog_exit_button_menu">Menü</string>
+    <string name="icon_credits">Icons von Nhor Phai &amp; Freepik (www.flaticon.com)</string>
+</resources>

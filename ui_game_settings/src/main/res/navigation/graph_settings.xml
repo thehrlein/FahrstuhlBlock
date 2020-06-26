@@ -8,18 +8,34 @@
 
     <fragment
         android:id="@+id/playerSettingsFragment"
-        android:name="com.tobiapplications.fahrstuhlblock.ui_game_settings.PlayerSettingsFragment"
+        android:name="com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerSettingsFragment"
         android:label="PlayerSettingsFragment"
         tools:layout="@layout/fragment_player_settings">
 
         <action
-            android:id="@+id/action_playerSettingsFragment_to_gameRulesFragment"
+            android:id="@+id/action_playerSettingsFragment_to_playerOrderFragment"
+            app:destination="@id/playerOrderFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/playerOrderFragment"
+        android:name="com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder.PlayerOrderFragment"
+        android:label="PlayerOrderFragment"
+        tools:layout="@layout/fragment_player_order">
+
+        <argument
+            android:name="playerSettingsData"
+            app:argType="com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData" />
+
+        <action
+            android:id="@+id/action_playerOrderFragment_to_gameRulesFragment"
             app:destination="@id/gameRulesFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/gameRulesFragment"
-        android:name="com.tobiapplications.fahrstuhlblock.ui_game_settings.GameRulesFragment"
+        android:name="com.tobiapplications.fahrstuhlblock.ui_game_settings.gamerules.GameRulesFragment"
         android:label="GameRulesFragment"
         tools:layout="@layout/fragment_game_rules">
 
@@ -34,7 +50,7 @@
 
     <fragment
         android:id="@+id/pointRulesFragment"
-        android:name="com.tobiapplications.fahrstuhlblock.ui_game_settings.PointRulesFragment"
+        android:name="com.tobiapplications.fahrstuhlblock.ui_game_settings.pointrules.PointRulesFragment"
         android:label="PointRulesFragment"
         tools:layout="@layout/fragment_point_rules">
 

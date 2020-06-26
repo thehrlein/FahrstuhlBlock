@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Base.FahrstuhlBlock.DayNight.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="alphaEmphasisHigh">@dimen/alpha_emphasis_high</item>
+        <item name="alphaEmphasisMedium">@dimen/alpha_emphasis_medium</item>
+        <item name="alphaEmphasisDisabled">@dimen/alpha_emphasis_disabled</item>
+
+        <item name="android:statusBarColor">?colorPrimaryVariant
+        </item> <!-- top system status bar background color -->
+        <item name="android:windowLightStatusBar">false
+        </item> <!-- top system status bar text / icon color, false = white, true = black -->
+        <item name="android:navigationBarColor">?android:colorBackground
+        </item> <!-- bottom system navigation background color -->
+        <item name="android:windowLightNavigationBar">true
+        </item> <!-- bottom system navigation icon color, true = black, false = white -->
+        <item name="android:navigationBarDividerColor">?colorControlHighlight
+        </item> <!-- bottom system navigation divider color -->
+
+        <!--Remap legacy AppCompat attributes to MaterialComponent attributes-->
+        <item name="colorPrimaryDark">?colorPrimaryVariant</item>
+        <item name="colorAccent">?colorSecondary</item>
+    </style>
+</resources>

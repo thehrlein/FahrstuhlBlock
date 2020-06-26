@@ -4,6 +4,5 @@ import android.content.Context
 import android.view.LayoutInflater
 
 
-fun Context.getLayoutInflater() : LayoutInflater {
-    return LayoutInflater.from(this)
-}
+val Context.layoutInflater : LayoutInflater
+    get() =  LayoutInflater.from(this)

@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.tobiapplications.fahrstuhlblock.presentation.settings.GameRulesViewModel" />
+            type="com.tobiapplications.fahrstuhlblock.presentation.settings.gamerules.GameRulesViewModel" />
     </data>
 
 
@@ -19,7 +19,6 @@
             android:id="@+id/game_rules_card_count_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:text="@string/game_rules_card_count_title"
             android:textAppearance="?textAppearanceHeadline5"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +29,6 @@
             android:id="@+id/game_rules_card_count_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="@dimen/space_2"
             android:text="@string/game_rules_card_count_description"
             android:textAppearance="?textAppearanceBody2"
@@ -55,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_8"
             android:onClick="@{() -> viewModel.onProceedClicked()}"
-            android:text="@string/game_player_settings_button_proceed"
+            android:text="@string/player_settings_button_proceed"
             android:enabled="@{viewModel.inputValid}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

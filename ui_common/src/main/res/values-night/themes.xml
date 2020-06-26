@@ -3,8 +3,7 @@
 
     <!--Top level DayNight theme to be used in AndroidManifest.xml-->
     <style name="Theme.FahrstuhlBlock.DayNight" parent="Base.Theme.FahrstuhlBlock">
-        <item name="android:windowLightStatusBar">false</item>
-        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
+
     </style>
 
 </resources>

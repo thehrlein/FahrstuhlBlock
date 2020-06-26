@@ -54,4 +54,6 @@ dependencies {
     // Images
     implementation(Dependencies.Other.coil)
 
+    debugImplementation(Dependencies.Other.debugDb)
+
 }

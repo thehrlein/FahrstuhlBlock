@@ -2,16 +2,16 @@
 object Dependencies {
 
     object AndroidX {
-        private const val appCompatVersion = "1.2.0-beta01"
-        private const val coreVersion = "1.4.0-alpha01"
-        private const val constraintLayoutVersion = "2.0.0-beta4"
+        private const val appCompatVersion = "1.3.0-alpha01"
+        private const val coreVersion = "1.5.0-alpha01"
+        private const val constraintLayoutVersion = "2.0.0-beta7"
         private const val mediaVersion = "1.1.0" // used for media notification
-        private const val pagingVersion = "2.1.2"
+        private const val pagingVersion = "3.0.0-alpha02"
         private const val paletteVersion = "1.0.0"
         private const val recyclerViewVersion = "1.2.0-alpha02"
         private const val recyclerViewSelectionVersion = "1.1.0-rc01"
         private const val securityVersion = "1.1.0-alpha01"
-        private const val swipeRefreshVersion = "1.1.0-rc01"
+        private const val swipeRefreshVersion = "1.1.0"
 
         const val appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
         const val coreKtx = "androidx.core:core-ktx:$coreVersion"
@@ -29,8 +29,8 @@ object Dependencies {
 
         object LifeCycle {
             private const val lifecycleVersion = "2.2.0"
-            private const val lifecycleLiveDataVersion = "2.3.0-alpha01"
-            private const val lifecycleViewModelVersion = "2.3.0-alpha01"
+            private const val lifecycleLiveDataVersion = "2.3.0-alpha05"
+            private const val lifecycleViewModelVersion = "2.3.0-alpha05"
 
             const val extensions = "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
             const val livedataExtensions =
@@ -40,14 +40,14 @@ object Dependencies {
         }
 
         object Navigation {
-            private const val navigationVersion = "2.3.0-alpha05"
+            private const val navigationVersion = "2.3.0"
 
             const val fragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
             const val ui = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
         }
 
         object Room {
-            private const val roomVersion = "2.2.5"
+            private const val roomVersion = "2.3.0-alpha01"
 
             const val runtime = "androidx.room:room-runtime:$roomVersion"
             const val compiler = "androidx.room:room-compiler:$roomVersion"
@@ -81,7 +81,7 @@ object Dependencies {
 
     object Google {
         private const val googleServicesVersion = "17.0.0"
-        private const val materialVersion = "1.2.0-alpha06"
+        private const val materialVersion = "1.3.0-alpha01"
 
         const val googleServices =
             "com.google.android.gms:play-services-location:$googleServicesVersion"
@@ -111,8 +111,8 @@ object Dependencies {
     }
 
     object Network {
-        private const val okHttp3Version = "4.5.0"
-        private const val retrofitVersion = "2.8.1"
+        private const val okHttp3Version = "4.7.2"
+        private const val retrofitVersion = "2.9.0"
         private const val mockWebServerVersion = "4.2.2"
 
         const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
@@ -131,7 +131,7 @@ object Dependencies {
     }
 
     object Other {
-        private const val coilVersion = "0.9.5"
+        private const val coilVersion = "0.11.0"
         private const val debugDbVersion = "1.0.6"
         private const val timberVersion = "4.7.1"
         private const val jUnitVersion = "4.13"
@@ -147,9 +147,9 @@ object Dependencies {
 object Classpaths {
 
     private const val buildToolsVersion = "3.6.1"
-    private const val detektVersion = "1.9.1"
+    private const val detektVersion = "1.10.0-RC1"
     private const val gradleUpdateVersion = "0.28.0"
-    private const val safeArgsVersion = "2.3.0-alpha05"
+    private const val safeArgsVersion = "2.3.0"
 
     const val androidGradlePlugin = "com.android.tools.build:gradle:$buildToolsVersion"
     const val detektGradlePlugin = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion"

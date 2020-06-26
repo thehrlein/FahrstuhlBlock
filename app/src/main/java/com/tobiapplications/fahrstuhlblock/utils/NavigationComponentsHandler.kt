@@ -11,8 +11,9 @@ import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogDa
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelper
 import com.tobiapplications.fahrstuhlblock.ui_menu.MenuActivity
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.GameSettingsActivity
-import com.tobiapplications.fahrstuhlblock.ui_game_settings.GameRulesFragmentDirections
-import com.tobiapplications.fahrstuhlblock.ui_game_settings.PlayerSettingsFragmentDirections
+import com.tobiapplications.fahrstuhlblock.ui_game_settings.gamerules.GameRulesFragmentDirections
+import com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder.PlayerOrderFragmentDirections
+import com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerSettingsFragmentDirections
 
 /**
  *
@@ -35,6 +36,7 @@ class NavigationComponentsHandler(
             is Screen.Main -> navigateTo(screen)
             is Screen.Menu -> navigateTo(screen)
             is Screen.PlayerSettings -> navigateTo(screen)
+            is Screen.PlayerOrder -> navigateTo(screen)
             is Screen.GameRules -> navigateTo(screen)
             is Screen.PointRules -> navigateTo(screen)
             is Screen.Block -> navigateTo(screen)
@@ -58,8 +60,18 @@ class NavigationComponentsHandler(
     // navigate from player settings
     private fun navigateTo(screen: Screen.PlayerSettings) {
         when (screen) {
-            is Screen.PlayerSettings.GameRules -> {
-                val action = PlayerSettingsFragmentDirections.actionPlayerSettingsFragmentToGameRulesFragment(screen.playerSettingsData)
+            is Screen.PlayerSettings.PlayerOrder -> {
+                val action = PlayerSettingsFragmentDirections.actionPlayerSettingsFragmentToPlayerOrderFragment(screen.playerSettingsData)
+                navHostController?.navigate(action)
+            }
+        }.checkAllMatched
+    }
+
+    // navigate from player order
+    private fun navigateTo(screen: Screen.PlayerOrder) {
+        when (screen) {
+            is Screen.PlayerOrder.GameRules -> {
+                val action = PlayerOrderFragmentDirections.actionPlayerOrderFragmentToGameRulesFragment(screen.playerSettingsData)
                 navHostController?.navigate(action)
             }
         }.checkAllMatched

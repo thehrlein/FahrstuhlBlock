@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.tobiapplications.fahrstuhlblock.presentation.settings.PlayerSettingsViewModel" />
+            type="com.tobiapplications.fahrstuhlblock.presentation.settings.playersettings.PlayerSettingsViewModel" />
     </data>
 
     <ScrollView
@@ -23,7 +23,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?textAppearanceHeadline5"
-                android:text="@string/game_player_settings_player_count_hint"
+                android:text="@string/player_settings_player_count_hint"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -47,7 +47,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/game_player_settings_player_count_three" />
+                    android:text="@string/player_settings_player_count_three" />
 
                 <Button
                     android:id="@+id/toggle_four"
@@ -55,7 +55,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/game_player_settings_player_count_four" />
+                    android:text="@string/player_settings_player_count_four" />
 
                 <Button
                     android:id="@+id/toggle_five"
@@ -63,7 +63,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/game_player_settings_player_count_five" />
+                    android:text="@string/player_settings_player_count_five" />
 
                 <Button
                     android:id="@+id/toggle_six"
@@ -71,7 +71,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/game_player_settings_player_count_six" />
+                    android:text="@string/player_settings_player_count_six" />
 
                 <Button
                     android:id="@+id/toggle_seven"
@@ -79,7 +79,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/game_player_settings_player_count_seven" />
+                    android:text="@string/player_settings_player_count_seven" />
 
                 <Button
                     android:id="@+id/toggle_eight"
@@ -87,7 +87,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/game_player_settings_player_count_eight" />
+                    android:text="@string/player_settings_player_count_eight" />
 
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
@@ -194,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_8"
                 android:onClick="@{() -> viewModel.onProceedClicked()}"
-                android:text="@string/game_player_settings_button_proceed"
+                android:text="@string/player_settings_button_proceed"
                 android:enabled="@{viewModel.inputValid}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
