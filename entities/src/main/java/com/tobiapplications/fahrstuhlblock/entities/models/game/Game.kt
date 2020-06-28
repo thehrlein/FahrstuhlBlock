@@ -5,8 +5,8 @@ import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettin
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PointsRuleData
 import java.io.Serializable
 
-data class FahrstuhlGame(
-    val playerSettingsData: PlayerSettingsData,
+data class Game(
+    val players: PlayerSettingsData,
     val highCardCount: Int,
     val pointsRuleData: PointsRuleData
 ) : Serializable

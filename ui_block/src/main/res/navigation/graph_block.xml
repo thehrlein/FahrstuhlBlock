@@ -11,7 +11,16 @@
         android:label="BlockResultsFragment"
         tools:layout="@layout/fragment_block_results">
 
+        <action
+            android:id="@+id/action_blockResultsFragment_to_blockInputFragment"
+            app:destination="@id/blockInputFragment" />
     </fragment>
 
+
+    <fragment
+        android:id="@+id/blockInputFragment"
+        android:name="com.tobiapplications.fahrstuhlblock.ui_block.BlockInputFragment"
+        android:label="BlockInputFragment"
+        tools:layout="@layout/fragment_block_input" />
 
 </navigation>

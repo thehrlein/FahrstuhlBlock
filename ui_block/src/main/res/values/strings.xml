@@ -2,5 +2,6 @@
 <resources>
 
     <string name="block_results_toolbar_title" translatable="false">Block</string>
-
+    <string name="block_fab_add_prediction">Tipps</string>
+    <string name="block_fab_add_results">Results</string>
 </resources>

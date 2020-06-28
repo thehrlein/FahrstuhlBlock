@@ -2,15 +2,18 @@ package com.tobiapplications.fahrstuhlblock.koin
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavHostController
-import com.tobiapplications.fahrstuhlblock.entities.models.game.FahrstuhlGame
+import com.tobiapplications.fahrstuhlblock.entities.models.game.Game
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
 import com.tobiapplications.fahrstuhlblock.fw_database_room.databaseModule
 import com.tobiapplications.fahrstuhlblock.fw_repositories.repository.GameRepositoryImpl
 import com.tobiapplications.fahrstuhlblock.interactor.repository.GameRepository
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreGameUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.GetPlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.StorePlayerNamesUseCase
+import com.tobiapplications.fahrstuhlblock.presentation.block.BlockInputViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockResultsViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.main.MainViewModel
@@ -50,6 +53,8 @@ object Koin {
         // usecases
         factory { StorePlayerNamesUseCase(get()) }
         factory { GetPlayerNamesUseCase(get()) }
+        factory { StoreGameUseCase(get()) }
+        factory { GetGameUseCase(get()) }
 
     }
 
@@ -75,12 +80,13 @@ object Koin {
         }
         viewModel { (gameRuleSettingsData: GameRuleSettingsData) ->
             PointRulesViewModel(
-                gameRuleSettingsData
+                gameRuleSettingsData,
+                get()
             )
         }
-        viewModel { (fahrstuhlGame: FahrstuhlGame) -> BlockViewModel(fahrstuhlGame) }
-        viewModel { BlockResultsViewModel() }
-
+        viewModel { (gameId: Long) ->  BlockViewModel(gameId) }
+        viewModel { BlockResultsViewModel(get()) }
+        viewModel { BlockInputViewModel() }
     }
 
     fun getModules(): List<Module> {

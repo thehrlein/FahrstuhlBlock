@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="block_results_toolbar_title">Block</string>
+    <string name="block_fab_add_prediction">Tipps</string>
+    <string name="block_fab_add_results">Ergebnisse</string>
+</resources>

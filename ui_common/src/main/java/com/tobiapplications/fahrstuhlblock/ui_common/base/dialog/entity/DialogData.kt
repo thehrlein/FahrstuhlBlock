@@ -26,7 +26,8 @@ sealed class DialogData : Serializable {
             title = resourceHelper.getString(R.string.dialog_exit_title),
             message = resourceHelper.getString(R.string.dialog_exit_message),
             positiveButtonText = resourceHelper.getString(R.string.dialog_exit_button_menu),
-            negativeButtonText = resourceHelper.getString(R.string.dialog_exit_button_quit)
+            negativeButtonText = resourceHelper.getString(R.string.dialog_exit_button_quit),
+            neutralButtonText = resourceHelper.getString(R.string.general_cancel)
         ) {
             override val requestCode: Int = DialogRequestCode.BLOCK_EXIT
         }

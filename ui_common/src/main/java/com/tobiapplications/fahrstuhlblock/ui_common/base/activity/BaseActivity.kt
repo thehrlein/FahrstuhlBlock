@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler

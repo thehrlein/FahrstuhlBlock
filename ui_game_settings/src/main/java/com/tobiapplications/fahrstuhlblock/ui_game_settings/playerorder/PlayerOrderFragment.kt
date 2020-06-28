@@ -40,10 +40,7 @@ class PlayerOrderFragment :
 
                 addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
 
-                val callback =
-                    SimpleItemTouchHelper(
-                        playerOrderAdapter
-                    )
+                val callback = SimpleItemTouchHelper(playerOrderAdapter)
                 val itemTouchHelper = ItemTouchHelper(callback)
                 itemTouchHelper.attachToRecyclerView(this)
                 playerOrderAdapter.setOnItemTouchListener {

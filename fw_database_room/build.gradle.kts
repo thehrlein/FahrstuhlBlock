@@ -30,6 +30,9 @@ dependencies {
     // Koin
     implementation(Dependencies.Koin.core)
 
+    // Gson
+    implementation(Dependencies.Other.gson)
+
     // Logging
     implementation(Dependencies.Other.timber)
 }

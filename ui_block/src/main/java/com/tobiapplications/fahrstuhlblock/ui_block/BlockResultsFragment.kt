@@ -1,6 +1,11 @@
 package com.tobiapplications.fahrstuhlblock.ui_block
 
 import android.os.Bundle
+import android.view.View
+import android.widget.LinearLayout
+import androidx.activity.addCallback
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockResultsViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentBlockResultsBinding
@@ -20,5 +25,31 @@ class BlockResultsFragment :
         super.onBindingCreated(savedInstanceState)
 
         activityToolbarViewModel.setTitle(getString(R.string.block_results_toolbar_title))
+
+        activityToolbarViewModel.gameId.observe(viewLifecycleOwner, Observer {
+            viewModel.setGameId(it)
+        })
+
+        initAdapter()
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            activityToolbarViewModel.showExitDialog()
+        }
     }
+
+    private fun initAdapter() {
+        BlockResultAdapter().also { blockResultAdapter ->
+            binding.gameList.apply {
+                adapter = blockResultAdapter
+                addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
+            }
+
+            viewModel.names.observe(viewLifecycleOwner, Observer {
+                blockResultAdapter.submitList(listOf(it))
+            })
+        }
+
+    }
+
+
 }

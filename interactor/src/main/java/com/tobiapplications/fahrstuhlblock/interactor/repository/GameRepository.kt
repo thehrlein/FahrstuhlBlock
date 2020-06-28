@@ -1,13 +1,13 @@
 package com.tobiapplications.fahrstuhlblock.interactor.repository
 
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
-import com.tobiapplications.fahrstuhlblock.entities.models.game.FahrstuhlGame
+import com.tobiapplications.fahrstuhlblock.entities.models.game.Game
 
 interface GameRepository {
 
-    suspend fun storeGame(fahrstuhlGame: FahrstuhlGame): AppResult<Unit>
+    suspend fun storeGame(game: Game): AppResult<Long>
 
-    suspend fun getGame() : AppResult<FahrstuhlGame>
+    suspend fun getGame(gameId: Long): AppResult<Game>
 
     suspend fun addPlayers(names: List<String>): AppResult<Unit>
 

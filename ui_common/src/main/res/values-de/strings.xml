@@ -8,4 +8,5 @@
     <string name="dialog_exit_button_quit">Beenden</string>
     <string name="dialog_exit_button_menu">Menü</string>
     <string name="icon_credits">Icons von Nhor Phai &amp; Freepik (www.flaticon.com)</string>
+    <string name="general_cancel">Abbrechen</string>
 </resources>

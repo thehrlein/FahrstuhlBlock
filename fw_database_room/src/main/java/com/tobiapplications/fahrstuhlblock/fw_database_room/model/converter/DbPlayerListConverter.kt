@@ -1,18 +1,20 @@
 package com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter
 
 import androidx.room.TypeConverter
-
-private const val PLAYER_LIST_SEPARATOR = "___"
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.lang.reflect.Type
 
 class DbPlayerListConverter {
 
     @TypeConverter
     fun fromString(value: String) : List<String> {
-        return value.split(PLAYER_LIST_SEPARATOR)
+        val listType: Type = object : TypeToken<List<String>?>() {}.type
+        return Gson().fromJson(value, listType)
     }
 
     @TypeConverter
     fun fromList(list: List<String>) : String {
-        return list.joinToString(separator = PLAYER_LIST_SEPARATOR) { it }
+        return Gson().toJson(list)
     }
 }

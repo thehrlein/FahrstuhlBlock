@@ -3,6 +3,7 @@
 
     <string name="general_true">True</string>
     <string name="general_false">False</string>
+    <string name="general_cancel">Cancel</string>
 
     <string name="dialog_exit_title">Attention</string>
     <string name="dialog_exit_message">Do you want to quit this application or return to the menu?</string>

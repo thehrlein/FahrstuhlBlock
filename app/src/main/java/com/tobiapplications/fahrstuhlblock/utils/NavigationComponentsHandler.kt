@@ -2,6 +2,7 @@ package com.tobiapplications.fahrstuhlblock.utils
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavHostController
+import com.tobiapplications.fahrstuhlblock.R
 import com.tobiapplications.fahrstuhlblock.entities.utils.extensions.checkAllMatched
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
@@ -53,7 +54,7 @@ class NavigationComponentsHandler(
     // navigate from menu
     private fun navigateTo(screen: Screen.Menu) {
         when (screen) {
-            is Screen.Menu.NewGame -> GameSettingsActivity.start(activity)
+            is Screen.Menu.NewGame -> BlockActivity.start(activity, 1) // TODO Change back to GameSettingsActivity
         }.checkAllMatched
     }
 
@@ -90,7 +91,7 @@ class NavigationComponentsHandler(
     // navigate from point rules
     private fun navigateTo(screen: Screen.PointRules) {
         when (screen) {
-            is Screen.PointRules.Block -> BlockActivity.start(activity, screen.fahrstuhlGame)
+            is Screen.PointRules.Block -> BlockActivity.start(activity, screen.gameId)
         }.checkAllMatched
     }
 
@@ -99,6 +100,7 @@ class NavigationComponentsHandler(
         when (screen) {
             is Screen.Block.Exit -> SimpleAlertDialogFragment.show(activity.supportFragmentManager, DialogData.Text.Exit(resourceHelper))
             is Screen.Block.Menu -> MenuActivity.start(activity)
+            is Screen.Block.Tipps -> navHostController?.navigate(R.id.action_blockResultsFragment_to_blockInputFragment)
         }.checkAllMatched
     }
 
