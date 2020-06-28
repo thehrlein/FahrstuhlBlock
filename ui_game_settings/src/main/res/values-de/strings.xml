@@ -18,5 +18,9 @@
     <string name="point_rules_title">Stelle die Anzahl Punkte fest</string>
     <string name="point_rules_description">für das richtige Schätzen sowie wie viele Punkte Ihr in diesem Fall für jeden richtigen Stich bzw. bei falscher Schätzung abgezogen bekommt</string>
     <string name="point_rules_correct_prediction_hint">Richtige Schätzung</string>
-    <string name="point_rules_each_stitch_hint">Für jeden Stich</string>
+    <string name="point_rules_each_stitch_hint_positive">Punkte je Stich</string>
+    <string name="point_rules_points_for_false_prediction_switch_text">Punkte auch wenn Schätzung falsch ist?</string>
+    <string name="point_rules_points_for_false_prediction_switch_hint_positive">Du bekommst für jeden gemachten Stich Punkte und zusätzlich ein Bonus wenn deine Schätzung richtig ist</string>
+    <string name="point_rules_points_for_false_prediction_switch_hint_negative">Du bekommst nur Punkte, wenn auch deine Schätzung richtig ist. Falls nicht, bekommst du Punkte abgezogen</string>
+    <string name="point_rules_each_stitch_hint_negative">Minuspunkte je Stich</string>
 </resources>

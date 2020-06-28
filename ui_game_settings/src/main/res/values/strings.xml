@@ -34,6 +34,10 @@
     <string name="point_rules_title">Set up how many points you get</string>
     <string name="point_rules_description">for the fact that your prediction is correct and how many points in that case for each stitch as well as how many points you loose for each far from your prediction</string>
     <string name="point_rules_correct_prediction_hint">Correct prediction</string>
-    <string name="point_rules_each_stitch_hint">For each stitch</string>
+    <string name="point_rules_each_stitch_hint_positive">Points for each stitch</string>
+    <string name="point_rules_each_stitch_hint_negative">Minuspoints for each stitch</string>
+    <string name="point_rules_points_for_false_prediction_switch_text">Points even if prediction is not correct?</string>
+    <string name="point_rules_points_for_false_prediction_switch_hint_positive">You get points for every stitch you made, but extra points if your prediction is correct</string>
+    <string name="point_rules_points_for_false_prediction_switch_hint_negative">You only get points if your prediction is correct. If not, you get minus points</string>
 
 </resources>

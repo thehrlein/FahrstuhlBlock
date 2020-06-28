@@ -46,8 +46,8 @@ class BlockActivity : BaseToolbarActivity<BlockViewModel, ActivityBlockBinding>(
         when (requestCode) {
             DialogRequestCode.BLOCK_EXIT -> {
                 when (resultCode) {
-                    DialogResultCode.POSITIVE -> finish()
-                    DialogResultCode.NEGATIVE -> viewModel.openMenu()
+                    DialogResultCode.POSITIVE -> viewModel.openMenu()
+                    DialogResultCode.NEGATIVE -> finish()
                 }
             }
         }
