@@ -1,9 +1,9 @@
-
 plugins {
     id(BuildPlugins.androidApplication)
     id(BuildPlugins.kotlinAndroid)
     id(BuildPlugins.kotlinAndroidExtensions)
     id(BuildPlugins.kotlinKapt)
+    id(BuildPlugins.googleServices)
 }
 
 dependencies {
@@ -22,6 +22,7 @@ dependencies {
 
     // Google
     implementation(Dependencies.Google.material)
+    implementation(Dependencies.Google.Firebase.analytics)
 
     // AndroidX
     implementation(Dependencies.AndroidX.appCompat)

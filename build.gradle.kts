@@ -5,7 +5,6 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
-    val kotlin_version by extra("1.3.72")
     repositories {
         google()
         jcenter()
@@ -17,7 +16,7 @@ buildscript {
         classpath(Classpaths.gradleUpdate)
         classpath(Classpaths.safeArgs)
         classpath(Classpaths.detektGradlePlugin)
-        "classpath"("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+        classpath(Classpaths.googleServices)
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle.kts.kts.kts files
     }
@@ -48,7 +47,6 @@ subprojects {
         reportfileName = "report"
     }
 }
-
 fun applyAppPlugin(plugin: AppPlugin) {
     println("-> App Plugin")
     apply {
