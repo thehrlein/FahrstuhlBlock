@@ -1,7 +1,7 @@
-package com.tobiapplications.fahrstuhlblock.ui_block
+package com.tobiapplications.fahrstuhlblock.ui_block.results
 
 import androidx.recyclerview.widget.RecyclerView
-import com.tobiapplications.fahrstuhlblock.entities.models.game.BlockRound
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockRound
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.ItemBlockRoundBinding
 
 class BlockRoundViewHolder(

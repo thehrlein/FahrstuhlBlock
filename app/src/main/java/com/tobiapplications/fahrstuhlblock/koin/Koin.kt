@@ -2,15 +2,16 @@ package com.tobiapplications.fahrstuhlblock.koin
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavHostController
-import com.tobiapplications.fahrstuhlblock.entities.models.game.Game
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
 import com.tobiapplications.fahrstuhlblock.fw_database_room.databaseModule
 import com.tobiapplications.fahrstuhlblock.fw_repositories.repository.GameRepositoryImpl
 import com.tobiapplications.fahrstuhlblock.interactor.repository.GameRepository
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.CalculateResultsUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreGameUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreRoundUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.GetPlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.StorePlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockInputViewModel
@@ -55,6 +56,8 @@ object Koin {
         factory { GetPlayerNamesUseCase(get()) }
         factory { StoreGameUseCase(get()) }
         factory { GetGameUseCase(get()) }
+        factory { CalculateResultsUseCase() }
+        factory { StoreRoundUseCase(get()) }
 
     }
 
@@ -86,7 +89,7 @@ object Koin {
         }
         viewModel { (gameId: Long) ->  BlockViewModel(gameId) }
         viewModel { BlockResultsViewModel(get()) }
-        viewModel { BlockInputViewModel() }
+        viewModel { (gameId: Long) -> BlockInputViewModel(gameId, get(), get(), get()) }
     }
 
     fun getModules(): List<Module> {

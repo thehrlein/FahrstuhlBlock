@@ -9,4 +9,32 @@
     <string name="dialog_exit_button_menu">Menü</string>
     <string name="icon_credits">Icons von Nhor Phai &amp; Freepik (www.flaticon.com)</string>
     <string name="general_cancel">Abbrechen</string>
+
+    <string name="block_results_toolbar_title">Block</string>
+    <string name="block_fab_add_prediction">Tipps</string>
+    <string name="block_fab_add_results">Ergebnisse</string>
+
+    <string name="player_settings_toolbar_title">Spielereinstellungen</string>
+    <string name="player_settings_player_count_hint">Wähle die Anzahl Spieler</string>
+    <string name="player_settings_player_hint">Spieler %1$d</string>
+    <string name="player_settings_button_proceed">Weiter</string>
+    <string name="player_order_toolbar_title">Spielerreihenfolge</string>
+    <string name="player_order_hint">Wähle die Reihenfolge</string>
+    <string name="player_order_description">Der erste Spieler wird anfangen zu mischen und die Karten verteilen</string>
+    <string name="game_rules_toolbar_title">Spielregeln</string>
+    <string name="game_rules_card_count_title">Wie viele Runden möchtet Ihr spielen?</string>
+    <string name="game_rules_card_count_description">Denk dran dass das Spiel mit einer Karte beginnt und jede Runde um eine Karte bis zur Maximalanzahl erhöht wird und anschließend wieder auf eine Karte runter geht. Wenn Ihr bspw. 10 Karten wählt, spielt Ihr 20 Runden</string>
+    <string name="game_rules_cards_options_one_deck">Ein Kartendeck (hoch bis zu %1$d Karten basierend auf %2$d Spieler)</string>
+    <string name="game_rules_cards_options_two_decks">Zwei Kartendecks (hoch bis zu %1$d Karten basierend auf %2$d Spieler)</string>
+    <string name="game_rules_cards_options_individual">Individuelle Anzahl</string>
+    <string name="game_rules_cards_options_individual_input_hint">Höchste Kartenanzahl</string>
+    <string name="point_rules_toolbar_title">Punkteregeln</string>
+    <string name="point_rules_title">Stelle die Anzahl Punkte fest</string>
+    <string name="point_rules_description">für das richtige Schätzen sowie wie viele Punkte Ihr in diesem Fall für jeden richtigen Stich bzw. bei falscher Schätzung abgezogen bekommt</string>
+    <string name="point_rules_correct_prediction_hint">Richtige Schätzung</string>
+    <string name="point_rules_each_stitch_hint_positive">Punkte je Stich</string>
+    <string name="point_rules_points_for_false_prediction_switch_text">Punkte auch wenn Schätzung falsch ist?</string>
+    <string name="point_rules_points_for_false_prediction_switch_hint_positive">Du bekommst für jeden gemachten Stich Punkte und zusätzlich ein Bonus wenn deine Schätzung richtig ist</string>
+    <string name="point_rules_points_for_false_prediction_switch_hint_negative">Du bekommst nur Punkte, wenn auch deine Schätzung richtig ist. Falls nicht, bekommst du Punkte abgezogen</string>
+    <string name="point_rules_each_stitch_hint_negative">Minuspunkte je Stich</string>
 </resources>

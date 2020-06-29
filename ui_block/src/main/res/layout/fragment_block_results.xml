@@ -8,6 +8,12 @@
         <variable
             name="viewModel"
             type="com.tobiapplications.fahrstuhlblock.presentation.block.BlockResultsViewModel" />
+
+        <variable
+            name="blockViewModel"
+            type="com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel" />
+
+        <import type="com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -36,11 +42,11 @@
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/block_fab_add_prediction"
-            android:onClick="@{() -> viewModel.onFabClicked()}"
             android:layout_gravity="end|bottom"
             android:layout_margin="@dimen/space_4"
-            app:icon="@drawable/ic_add"/>
+            android:onClick="@{() -> viewModel.onFabClicked()}"
+            app:icon="@drawable/ic_add"
+            app:text="@{blockViewModel.inputType}" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -1,7 +1,8 @@
 package com.tobiapplications.fahrstuhlblock.fw_repositories.repository
 
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
-import com.tobiapplications.fahrstuhlblock.entities.models.game.Game
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRoundData
 import com.tobiapplications.fahrstuhlblock.interactor.datasource.GameCache
 import com.tobiapplications.fahrstuhlblock.interactor.datasource.PlayerCache
 import com.tobiapplications.fahrstuhlblock.interactor.repository.GameRepository
@@ -25,5 +26,9 @@ class GameRepositoryImpl(
 
     override suspend fun getAllPlayerNames(): AppResult<List<String>> {
         return playerCache.getAllPlayerNames()
+    }
+
+    override suspend fun insertRound(roundData: InsertRoundData): AppResult<Boolean> {
+        return gameCache.insertRound(roundData)
     }
 }

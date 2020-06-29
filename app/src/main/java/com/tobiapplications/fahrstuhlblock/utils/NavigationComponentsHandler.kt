@@ -7,6 +7,7 @@ import com.tobiapplications.fahrstuhlblock.entities.utils.extensions.checkAllMat
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
 import com.tobiapplications.fahrstuhlblock.ui_block.BlockActivity
+import com.tobiapplications.fahrstuhlblock.ui_block.results.BlockResultsFragmentDirections
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.SimpleAlertDialogFragment
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogData
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelper
@@ -54,7 +55,8 @@ class NavigationComponentsHandler(
     // navigate from menu
     private fun navigateTo(screen: Screen.Menu) {
         when (screen) {
-            is Screen.Menu.NewGame -> BlockActivity.start(activity, 1) // TODO Change back to GameSettingsActivity
+            is Screen.Menu.NewGame -> GameSettingsActivity.start(activity)
+//            is Screen.Menu.NewGame -> BlockActivity.start(activity, 1) // TODO Change back to GameSettingsActivity
         }.checkAllMatched
     }
 
@@ -100,7 +102,10 @@ class NavigationComponentsHandler(
         when (screen) {
             is Screen.Block.Exit -> SimpleAlertDialogFragment.show(activity.supportFragmentManager, DialogData.Text.Exit(resourceHelper))
             is Screen.Block.Menu -> MenuActivity.start(activity)
-            is Screen.Block.Tipps -> navHostController?.navigate(R.id.action_blockResultsFragment_to_blockInputFragment)
+            is Screen.Block.Tipps -> {
+                val action = BlockResultsFragmentDirections.actionBlockResultsFragmentToBlockInputFragment(screen.gameId)
+                navHostController?.navigate(action)
+            }
         }.checkAllMatched
     }
 

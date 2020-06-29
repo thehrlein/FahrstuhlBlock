@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/blockResultsFragment"
-        android:name="com.tobiapplications.fahrstuhlblock.ui_block.BlockResultsFragment"
+        android:name="com.tobiapplications.fahrstuhlblock.ui_block.results.BlockResultsFragment"
         android:label="BlockResultsFragment"
         tools:layout="@layout/fragment_block_results">
 
@@ -19,8 +19,17 @@
 
     <fragment
         android:id="@+id/blockInputFragment"
-        android:name="com.tobiapplications.fahrstuhlblock.ui_block.BlockInputFragment"
+        android:name="com.tobiapplications.fahrstuhlblock.ui_block.input.BlockInputFragment"
         android:label="BlockInputFragment"
-        tools:layout="@layout/fragment_block_input" />
+        tools:layout="@layout/fragment_block_input" >
+
+<!--        <argument-->
+<!--            android:name="inputType"-->
+<!--            app:argType="com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType" />-->
+
+        <argument
+            android:name="gameId"
+            app:argType="long" />
+    </fragment>
 
 </navigation>

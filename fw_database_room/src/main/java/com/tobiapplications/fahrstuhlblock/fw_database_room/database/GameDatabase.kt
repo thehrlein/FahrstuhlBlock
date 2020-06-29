@@ -9,6 +9,7 @@ import com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity.DbGame
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter.DbPlayerListConverter
 import com.tobiapplications.fahrstuhlblock.fw_database_room.dao.GameDao
 import com.tobiapplications.fahrstuhlblock.fw_database_room.dao.PlayerDao
+import com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter.DbRoundListConverter
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity.DbPlayer
 
 @Database(
@@ -18,7 +19,8 @@ import com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity.DbPlaye
 )
 @TypeConverters(
     value = [
-        DbPlayerListConverter::class
+        DbPlayerListConverter::class,
+        DbRoundListConverter::class
     ]
 )
 abstract class GameDatabase : RoomDatabase() {

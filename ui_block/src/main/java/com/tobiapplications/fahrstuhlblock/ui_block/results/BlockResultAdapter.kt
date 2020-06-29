@@ -1,14 +1,14 @@
-package com.tobiapplications.fahrstuhlblock.ui_block
+package com.tobiapplications.fahrstuhlblock.ui_block.results
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.tobiapplications.fahrstuhlblock.entities.models.game.BlockItem
-import com.tobiapplications.fahrstuhlblock.entities.models.game.BlockNames
-import com.tobiapplications.fahrstuhlblock.entities.models.game.BlockRound
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItem
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockNames
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockRound
+import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.layoutInflater
 
 class BlockResultAdapter : ListAdapter<BlockItem, RecyclerView.ViewHolder>(

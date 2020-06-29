@@ -9,7 +9,7 @@ class DbPlayerListConverter {
 
     @TypeConverter
     fun fromString(value: String) : List<String> {
-        val listType: Type = object : TypeToken<List<String>?>() {}.type
+        val listType: Type = object : TypeToken<List<String>>() {}.type
         return Gson().fromJson(value, listType)
     }
 
