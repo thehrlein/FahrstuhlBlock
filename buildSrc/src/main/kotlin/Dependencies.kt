@@ -86,6 +86,12 @@ object Dependencies {
         const val googleServices =
             "com.google.android.gms:play-services-location:$googleServicesVersion"
         const val material = "com.google.android.material:material:$materialVersion"
+
+        object Firebase {
+            private const val analyticsVersion = "17.2.2"
+
+            const val analytics = "com.google.firebase:firebase-analytics:$analyticsVersion"
+        }
     }
 
     object Kotlin {
@@ -150,6 +156,7 @@ object Classpaths {
 
     private const val buildToolsVersion = "3.6.1"
     private const val detektVersion = "1.10.0-RC1"
+    private const val googleServicesVersion = "4.3.3"
     private const val gradleUpdateVersion = "0.28.0"
     private const val safeArgsVersion = "2.3.0"
 
@@ -159,7 +166,7 @@ object Classpaths {
         "org.jetbrains.kotlin:kotlin-gradle-plugin:${Dependencies.Kotlin.kotlinVersion}"
     const val gradleUpdate = "com.github.ben-manes:gradle-versions-plugin:$gradleUpdateVersion"
     const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:$safeArgsVersion"
-
+    const val googleServices = "com.google.gms:google-services:$googleServicesVersion"
 }
 
 object BuildPlugins {
@@ -172,6 +179,7 @@ object BuildPlugins {
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
     const val kotlinKapt = "kotlin-kapt"
     const val gradleUpdater = "com.github.ben-manes.versions"
+    const val googleServices = "com.google.gms.google-services"
     const val projectDependencyGraph =
         "https://raw.githubusercontent.com/JakeWharton/SdkSearch/master/gradle/projectDependencyGraph.gradle"
     const val detekt = "io.gitlab.arturbosch.detekt"
