@@ -16,21 +16,21 @@ class GameCacheImpl(
 
     override suspend fun storeGame(game: Game): AppResult<Long> =
         withContext(Dispatchers.IO) {
-            safeCallDevice {
+            safeCall {
                 gameDao.insertGame(game.mapToDbData())
             }
         }
 
     override suspend fun getGame(gameId: Long): AppResult<Game> =
         withContext(Dispatchers.IO) {
-            safeCallDevice {
+            safeCall {
                 gameDao.getGame(gameId).mapToData()
             }
         }
 
     override suspend fun insertRound(roundData: InsertRoundData): AppResult<Boolean> =
         withContext(Dispatchers.IO) {
-            safeCallDevice {
+            safeCall {
                 val game = gameDao.getGame(roundData.gameId)
                 val rounds = game.rounds.toMutableList()
                 if (rounds.lastOrNull()?.card == roundData.round.card) {

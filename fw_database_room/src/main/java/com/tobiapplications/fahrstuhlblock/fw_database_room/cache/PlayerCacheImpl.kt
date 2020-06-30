@@ -13,7 +13,7 @@ class PlayerCacheImpl(
 
     override suspend fun addPlayers(names: List<String>): AppResult<Unit> =
         withContext(Dispatchers.IO) {
-            safeCallDevice {
+            safeCall {
                 playerDao.insertPlayerNames(names.map {
                     DbPlayer(
                         it
@@ -24,7 +24,7 @@ class PlayerCacheImpl(
 
     override suspend fun getAllPlayerNames(): AppResult<List<String>> =
         withContext(Dispatchers.IO) {
-            safeCallDevice {
+            safeCall {
                 playerDao.queryAllPlayerNames().map {
                     it.name
                 }

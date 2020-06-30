@@ -1,8 +1,8 @@
-package com.tobiapplications.fahrstuhlblock.fw_database_room.cache
+package com.tobiapplications.fahrstuhlblock.fw_repositories.processor
 
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 
-interface BaseCache {
+interface BaseProcessor {
 
     fun <T> safeCall(call: () -> T): AppResult<T> {
         return safeCall(call) { response ->

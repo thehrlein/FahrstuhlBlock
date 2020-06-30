@@ -6,7 +6,9 @@ import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSett
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
 import com.tobiapplications.fahrstuhlblock.fw_database_room.databaseModule
+import com.tobiapplications.fahrstuhlblock.fw_repositories.processor.ResultsCalculatorProcessorImpl
 import com.tobiapplications.fahrstuhlblock.fw_repositories.repository.GameRepositoryImpl
+import com.tobiapplications.fahrstuhlblock.interactor.processor.ResultsCalculatorProcessor
 import com.tobiapplications.fahrstuhlblock.interactor.repository.GameRepository
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.CalculateResultsUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameUseCase
@@ -38,8 +40,11 @@ object Koin {
         // general
         single<ResourceHelper> { ResourceHelperImpl(get()) }
 
+        // processor
+        single<ResultsCalculatorProcessor> { ResultsCalculatorProcessorImpl() }
+
         // repository
-        single<GameRepository> { GameRepositoryImpl(get(), get()) }
+        single<GameRepository> { GameRepositoryImpl(get(), get(), get()) }
     }
 
     private val factory = module {
@@ -56,7 +61,7 @@ object Koin {
         factory { GetPlayerNamesUseCase(get()) }
         factory { StoreGameUseCase(get()) }
         factory { GetGameUseCase(get()) }
-        factory { CalculateResultsUseCase() }
+        factory { CalculateResultsUseCase(get()) }
         factory { StoreRoundUseCase(get()) }
 
     }
