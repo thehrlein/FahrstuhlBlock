@@ -59,6 +59,23 @@
         <item name="android:alpha">?alphaEmphasisMedium</item>
     </style>
 
+    <style name="Widget.FahrstuhlBlock.Button.InputAction">
+        <item name="android:paddingLeft">@dimen/space_2</item>
+        <item name="android:paddingRight">@dimen/space_2</item>
+        <item name="android:minWidth">@dimen/button_input_action_min_width</item>
+        <item name="iconPadding">0dp</item>
+    </style>
+
+    <style name="Widget.FahrstuhlBlock.Button.InputAction.LeftRounded">
+        <item name="shapeAppearance">@style/ShapeAppearance.FahrstuhlBlock.SmallComponent.LeftRounded</item>
+        <item name="iconGravity">textEnd</item>
+    </style>
+
+    <style name="Widget.FahrstuhlBlock.Button.InputAction.RightRounded">
+        <item name="shapeAppearance">@style/ShapeAppearance.FahrstuhlBlock.RightRounded</item>
+        <item name="iconGravity">textStart</item>
+    </style>
+
     <!-- Bottom Sheets-->
     <style name="Widget.FahrstuhlBlock.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet.Modal">
         <item name="shapeAppearanceOverlay">?shapeAppearanceLargeComponent</item>

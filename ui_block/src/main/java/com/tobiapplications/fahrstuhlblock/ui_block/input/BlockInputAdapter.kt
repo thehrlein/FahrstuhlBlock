@@ -1,7 +1,7 @@
 package com.tobiapplications.fahrstuhlblock.ui_block.input
 
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
+import android.widget.SeekBar
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.ItemBlockInputBinding
+import com.tobiapplications.fahrstuhlblock.ui_common.extension.executeAfter
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.layoutInflater
 
 class BlockInputAdapter : ListAdapter<InputData, BlockInputAdapter.BlockInputViewHolder>(
@@ -34,12 +35,44 @@ class BlockInputAdapter : ListAdapter<InputData, BlockInputAdapter.BlockInputVie
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(inputData: InputData) {
-            binding.input.hint = inputData.player
-
-            binding.input.addTextChangedListener {
-                it?.toString()?.toIntOrNull()?.let { userInput ->
-                    inputData.userInput = userInput
+            bindInputData(inputData)
+            binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(
+                    seekBar: SeekBar?,
+                    progress: Int,
+                    fromUser: Boolean
+                ) {
+                    inputData.userInput = progress
+                    bindInputData(inputData)
                 }
+
+                override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                    // not needed
+                }
+
+                override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                    // not needed
+                }
+            })
+
+            binding.buttonDecrease.setOnClickListener {
+                if (inputData.userInput > 0) {
+                    inputData.userInput = inputData.userInput - 1
+                    bindInputData(inputData)
+                }
+            }
+
+            binding.buttonIncrease.setOnClickListener {
+                if (inputData.userInput < inputData.cards) {
+                    inputData.userInput = inputData.userInput + 1
+                    bindInputData(inputData)
+                }
+            }
+        }
+
+        fun bindInputData(inputData: InputData) {
+            binding.executeAfter {
+                this.item = inputData
             }
         }
     }

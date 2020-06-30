@@ -44,7 +44,8 @@
 
     <!-- Shape -->
     <dimen name="corner_size_none">0dp</dimen>
-    <dimen name="corner_size_medium">10dp</dimen>
+    <dimen name="corner_size_medium">12dp</dimen>
+    <dimen name="corner_size_big">20dp</dimen>
 
     <!-- Elevation -->
     <dimen name="elevation_few">2dp</dimen>
@@ -58,6 +59,9 @@
 
     <!-- Dialog -->
     <dimen name="dialog_button_height">56dp</dimen>
+
+    <!-- Button -->
+    <dimen name="button_input_action_min_width">48dp</dimen>
 
     <!-- OnboardingTutorial -->
     <dimen name="onboarding_tutorial_dot_height">5dp</dimen>
