@@ -8,13 +8,12 @@ import com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.DbPoin
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.DbRound
 
 @Entity(tableName = "game_database")
-data class DbGame(
+data class DbGameInfo(
     @PrimaryKey(autoGenerate = true)
-    val id : Int,
+    val gameId : Long,
     @Embedded
     val players: DbPlayerSettingsData,
     val highCardCount: Int,
     @Embedded
-    val pointsRuleData: DbPointsRuleData,
-    val rounds: List<DbRound>
+    val pointsRuleData: DbPointsRuleData
 )

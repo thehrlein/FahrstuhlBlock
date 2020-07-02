@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameInfo
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PointsRuleData
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreGameUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreGameInfoUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
 
@@ -18,7 +18,7 @@ private const val DEFAULT_POINTS_IF_PREDICTION_FALSE = false
 
 class PointRulesViewModel(
     private val gameRuleSettingsData: GameRuleSettingsData,
-    private val storeGameUseCase: StoreGameUseCase
+    private val storeGameInfoUseCase: StoreGameInfoUseCase
 ) : BaseViewModel() {
 
     val correctPredictionPoints = MutableLiveData(DEFAULT_CORRECT_PREDICTION_POINTS)
@@ -81,19 +81,18 @@ class PointRulesViewModel(
         val pointsIfPredictionFalse =
             pointsIfPredictionFalse.value ?: error("could not determine pointsIfPredictionFalse")
 
-        val game = Game(
-            gameRuleSettingsData.playerSettingsData,
-            gameRuleSettingsData.highCardCount,
-            PointsRuleData(
-                correctPredictionPoints,
-                pointsPerStitch,
-                minusPointsPerStitch,
-                pointsIfPredictionFalse
-            ),
-            emptyList()
-        )
+        val gameInfo = GameInfo(
+                gameRuleSettingsData.playerSettingsData,
+                gameRuleSettingsData.highCardCount,
+                PointsRuleData(
+                    correctPredictionPoints,
+                    pointsPerStitch,
+                    minusPointsPerStitch,
+                    pointsIfPredictionFalse
+                )
+            )
         viewModelScope.launch {
-            when (val result = storeGameUseCase.invoke(game)) {
+            when (val result = storeGameInfoUseCase.invoke(gameInfo)) {
                 is AppResult.Success -> navigateTo(Screen.PointRules.Block(result.value))
                 is AppResult.Error -> Unit
             }

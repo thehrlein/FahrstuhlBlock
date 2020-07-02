@@ -2,6 +2,7 @@ package com.tobiapplications.fahrstuhlblock.fw_repositories.repository
 
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameInfo
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRoundData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
@@ -16,8 +17,8 @@ class GameRepositoryImpl(
     private val resultsCalculatorProcessor: ResultsCalculatorProcessor
 ) : GameRepository {
 
-    override suspend fun storeGame(game: Game) : AppResult<Long> {
-        return gameCache.storeGame(game)
+    override suspend fun storeGameInfo(gameInfo: GameInfo) : AppResult<Long> {
+        return gameCache.storeGameInfo(gameInfo)
     }
 
     override suspend fun getGame(gameId: Long): AppResult<Game> {

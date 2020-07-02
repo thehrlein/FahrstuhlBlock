@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
+import com.tobiapplications.fahrstuhlblock.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
@@ -14,6 +15,8 @@ import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreRoundUs
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
 
+private const val DEFAULT_PLAYER_INPUT = 0
+
 class BlockInputViewModel(
     private val gameId: Long,
     private val getGameUseCase: GetGameUseCase,
@@ -21,6 +24,8 @@ class BlockInputViewModel(
     private val storeRoundUseCase: StoreRoundUseCase
 ) : BaseViewModel() {
 
+    private val _inputType = MutableLiveData(InputType.TIPP)
+    val inputType: LiveData<InputType> = _inputType
     private val _inputModels = MutableLiveData<List<InputData>>()
     val inputModels: LiveData<List<InputData>> = _inputModels
     private val _round = MutableLiveData<Round>()
@@ -41,17 +46,17 @@ class BlockInputViewModel(
 
     private fun setInputModels(game: Game) {
         _game.postValue(game)
-        _round.postValue(game.rounds.lastOrNull() ?: Round(1, emptyList(), emptyList()))
-        val inputType = game.rounds.lastOrNull()?.currentInputType() ?: InputType.TIPP
-        val players = game.players.names
-        val currentRound = game.rounds.size
-        val cards = game.currentCardCount()
-        _inputModels.postValue(players.map {
+        val round = game.rounds.lastOrNull() ?: Round(1, emptyList(), emptyList())
+        _round.postValue(round)
+        val inputType = game.inputType
+        _inputType.postValue(inputType)
+        _inputModels.postValue(game.gameInfo.players.names.mapIndexedNotNull { index: Int, name: String ->
             InputData(
                 type = inputType,
-                player = it,
-                currentRound = currentRound,
-                cards = cards
+                player = name,
+                currentRound = game.currentRound,
+                cards = game.currentCardCount,
+                userInput = round.playerTippData.getOrNull(index)?.tipp ?: DEFAULT_PLAYER_INPUT
             )
         })
     }
@@ -59,7 +64,7 @@ class BlockInputViewModel(
     fun onSaveClicked() {
         val currentRound = _round.value ?: error("could not determine round")
         val inputs = _inputModels.value ?: error("could not determine input models")
-        if (currentRound.playerTippData.isNullOrEmpty()) {
+        if (currentRound.currentInputType == InputType.TIPP) {
             storeTipps(currentRound, inputs)
         } else {
             calculateResults(currentRound, inputs)
@@ -76,7 +81,7 @@ class BlockInputViewModel(
 
         viewModelScope.launch {
             when (val result = storeRoundUseCase.invoke(round)) {
-                is AppResult.Success -> Unit
+                is AppResult.Success -> navigateTo(Screen.Input.Block)
                 is AppResult.Error -> Unit
             }
         }
@@ -84,8 +89,8 @@ class BlockInputViewModel(
 
     private fun calculateResults(currentRound: Round, inputs: List<InputData>) {
         val game = _game.value ?:error("could not determine game")
-        val pointRulesData = game.pointsRuleData
-        val previousTotals: List<Int> = if (game.rounds.isEmpty()) inputs.map { 0 } else game.rounds[game.rounds.size - 1].playerResultData.map { it.total }
+        val pointRulesData = game.gameInfo.pointsRuleData
+        val previousTotals = game.previousTotals
         val calculateResultData = CalculateResultData(
             pointsRuleData = pointRulesData,
             tipps = currentRound.playerTippData.map { it.tipp },
@@ -107,7 +112,7 @@ class BlockInputViewModel(
 
         viewModelScope.launch {
             when (val result = storeRoundUseCase.invoke(round)) {
-                is AppResult.Success -> Unit
+                is AppResult.Success -> navigateTo(Screen.Input.Block)
                 is AppResult.Error -> Unit
             }
         }

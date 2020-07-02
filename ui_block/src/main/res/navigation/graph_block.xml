@@ -21,15 +21,17 @@
         android:id="@+id/blockInputFragment"
         android:name="com.tobiapplications.fahrstuhlblock.ui_block.input.BlockInputFragment"
         android:label="BlockInputFragment"
-        tools:layout="@layout/fragment_block_input" >
-
-<!--        <argument-->
-<!--            android:name="inputType"-->
-<!--            app:argType="com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType" />-->
+        tools:layout="@layout/fragment_block_input">
 
         <argument
             android:name="gameId"
             app:argType="long" />
+
+        <action
+            android:id="@+id/action_blockInputFragment_to_blockResultsFragment"
+            app:destination="@id/blockResultsFragment"
+            app:popUpTo="@id/blockResultsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

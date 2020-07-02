@@ -8,11 +8,11 @@ data class Round(
     val playerResultData: List<PlayerResultData>
 ) {
 
-    fun currentInputType(): InputType {
-        return if (playerResultData.isNullOrEmpty()) {
-            InputType.RESULT
-        } else {
+    val currentInputType: InputType
+        get() = if (playerTippData.isNullOrEmpty()) {
             InputType.TIPP
+        } else {
+            InputType.RESULT
         }
-    }
+
 }

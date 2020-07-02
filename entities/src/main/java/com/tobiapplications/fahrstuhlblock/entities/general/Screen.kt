@@ -41,7 +41,11 @@ sealed class Screen {
     sealed class Block : Screen() {
         object Exit : Block()
         object Menu : Block()
-        class Tipps(val gameId: Long) : Block()
+        class Input(val gameId: Long) : Block()
+    }
+
+    sealed class Input : Screen() {
+        object Block : Input()
     }
 
 }

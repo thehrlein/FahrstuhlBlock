@@ -2,20 +2,20 @@ package com.tobiapplications.fahrstuhlblock.utils
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavHostController
-import com.tobiapplications.fahrstuhlblock.R
-import com.tobiapplications.fahrstuhlblock.entities.utils.extensions.checkAllMatched
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
+import com.tobiapplications.fahrstuhlblock.entities.utils.extensions.checkAllMatched
 import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
 import com.tobiapplications.fahrstuhlblock.ui_block.BlockActivity
+import com.tobiapplications.fahrstuhlblock.ui_block.input.BlockInputFragmentDirections
 import com.tobiapplications.fahrstuhlblock.ui_block.results.BlockResultsFragmentDirections
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.SimpleAlertDialogFragment
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogData
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelper
-import com.tobiapplications.fahrstuhlblock.ui_menu.MenuActivity
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.GameSettingsActivity
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.gamerules.GameRulesFragmentDirections
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder.PlayerOrderFragmentDirections
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerSettingsFragmentDirections
+import com.tobiapplications.fahrstuhlblock.ui_menu.MenuActivity
 
 /**
  *
@@ -31,7 +31,7 @@ class NavigationComponentsHandler(
     private val activity: AppCompatActivity,
     private val navHostController: NavHostController?,
     private val resourceHelper: ResourceHelper
-) : NavigationHandler  {
+) : NavigationHandler {
 
     override fun navigateTo(screen: Screen) {
         when (screen) {
@@ -42,6 +42,7 @@ class NavigationComponentsHandler(
             is Screen.GameRules -> navigateTo(screen)
             is Screen.PointRules -> navigateTo(screen)
             is Screen.Block -> navigateTo(screen)
+            is Screen.Input -> navigateTo(screen)
         }.checkAllMatched
     }
 
@@ -64,7 +65,10 @@ class NavigationComponentsHandler(
     private fun navigateTo(screen: Screen.PlayerSettings) {
         when (screen) {
             is Screen.PlayerSettings.PlayerOrder -> {
-                val action = PlayerSettingsFragmentDirections.actionPlayerSettingsFragmentToPlayerOrderFragment(screen.playerSettingsData)
+                val action =
+                    PlayerSettingsFragmentDirections.actionPlayerSettingsFragmentToPlayerOrderFragment(
+                        screen.playerSettingsData
+                    )
                 navHostController?.navigate(action)
             }
         }.checkAllMatched
@@ -74,7 +78,10 @@ class NavigationComponentsHandler(
     private fun navigateTo(screen: Screen.PlayerOrder) {
         when (screen) {
             is Screen.PlayerOrder.GameRules -> {
-                val action = PlayerOrderFragmentDirections.actionPlayerOrderFragmentToGameRulesFragment(screen.playerSettingsData)
+                val action =
+                    PlayerOrderFragmentDirections.actionPlayerOrderFragmentToGameRulesFragment(
+                        screen.playerSettingsData
+                    )
                 navHostController?.navigate(action)
             }
         }.checkAllMatched
@@ -84,7 +91,8 @@ class NavigationComponentsHandler(
     private fun navigateTo(screen: Screen.GameRules) {
         when (screen) {
             is Screen.GameRules.PointRules -> {
-                val action = GameRulesFragmentDirections.actionGameRulesFragmentToPointRulesFragment(screen.gameRuleSettingsData)
+                val action =
+                    GameRulesFragmentDirections.actionGameRulesFragmentToPointRulesFragment(screen.gameRuleSettingsData)
                 navHostController?.navigate(action)
             }
         }.checkAllMatched
@@ -100,13 +108,25 @@ class NavigationComponentsHandler(
     // navigate from block
     private fun navigateTo(screen: Screen.Block) {
         when (screen) {
-            is Screen.Block.Exit -> SimpleAlertDialogFragment.show(activity.supportFragmentManager, DialogData.Text.Exit(resourceHelper))
+            is Screen.Block.Exit -> SimpleAlertDialogFragment.show(
+                activity.supportFragmentManager,
+                DialogData.Text.Exit(resourceHelper)
+            )
             is Screen.Block.Menu -> MenuActivity.start(activity)
-            is Screen.Block.Tipps -> {
-                val action = BlockResultsFragmentDirections.actionBlockResultsFragmentToBlockInputFragment(screen.gameId)
+            is Screen.Block.Input -> {
+                val action =
+                    BlockResultsFragmentDirections.actionBlockResultsFragmentToBlockInputFragment(
+                        screen.gameId
+                    )
                 navHostController?.navigate(action)
             }
         }.checkAllMatched
     }
 
+    // navigate from tipp / result input
+    private fun navigateTo(screen: Screen.Input) {
+        when (screen) {
+            is Screen.Input.Block -> navHostController?.navigate(BlockInputFragmentDirections.actionBlockInputFragmentToBlockResultsFragment())
+        }.checkAllMatched
+    }
 }

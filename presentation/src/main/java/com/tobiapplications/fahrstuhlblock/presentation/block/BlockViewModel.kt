@@ -12,8 +12,6 @@ class BlockViewModel(
 
     private val _gameId = MutableLiveData(gameId)
     val gameId: LiveData<Long> = _gameId
-    private val _inputType = MutableLiveData(InputType.TIPP)
-    val inputType: LiveData<InputType> = _inputType
 
     fun showExitDialog() {
         navigateTo(Screen.Block.Exit)
@@ -26,7 +24,7 @@ class BlockViewModel(
     fun openInput() {
 //        val type = inputType.value ?: error("could not determine input type")
         val gameId = gameId.value ?: error("could not determine gameId")
-        navigateTo(Screen.Block.Tipps(gameId))
+        navigateTo(Screen.Block.Input(gameId))
     }
 
 }

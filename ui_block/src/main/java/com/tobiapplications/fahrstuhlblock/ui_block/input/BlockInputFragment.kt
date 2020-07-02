@@ -30,10 +30,11 @@ class BlockInputFragment : BaseToolbarFragment<BlockInputViewModel, BlockViewMod
     override fun onBindingCreated(savedInstanceState: Bundle?) {
         super.onBindingCreated(savedInstanceState)
 
-        activityToolbarViewModel.inputType.observe(viewLifecycleOwner, Observer {
+        viewModel.inputType.observe(viewLifecycleOwner, Observer {
             activityToolbarViewModel.setTitle(getString(when (it) {
                 InputType.TIPP -> R.string.block_input_toolbar_title_tipps
                 InputType.RESULT -> R.string.block_input_toolbar_title_results
+                else -> error("could not determine input type")
             }))
         })
 

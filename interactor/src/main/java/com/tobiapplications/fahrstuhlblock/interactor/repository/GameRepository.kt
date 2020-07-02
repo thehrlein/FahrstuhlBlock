@@ -2,13 +2,14 @@ package com.tobiapplications.fahrstuhlblock.interactor.repository
 
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameInfo
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRoundData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
 
 interface GameRepository {
 
-    suspend fun storeGame(game: Game): AppResult<Long>
+    suspend fun storeGameInfo(gameInfo: GameInfo): AppResult<Long>
 
     suspend fun getGame(gameId: Long): AppResult<Game>
 

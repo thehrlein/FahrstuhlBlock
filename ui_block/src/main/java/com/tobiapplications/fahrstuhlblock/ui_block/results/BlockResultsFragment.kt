@@ -26,9 +26,6 @@ class BlockResultsFragment :
     override fun onBindingCreated(savedInstanceState: Bundle?) {
         super.onBindingCreated(savedInstanceState)
 
-        binding.executeAfter {
-            this.blockViewModel = activityToolbarViewModel
-        }
         activityToolbarViewModel.setTitle(getString(R.string.block_results_toolbar_title))
 
         activityToolbarViewModel.gameId.observe(viewLifecycleOwner, Observer {

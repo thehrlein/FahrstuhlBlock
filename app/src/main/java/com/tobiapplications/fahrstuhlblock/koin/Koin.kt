@@ -12,7 +12,7 @@ import com.tobiapplications.fahrstuhlblock.interactor.processor.ResultsCalculato
 import com.tobiapplications.fahrstuhlblock.interactor.repository.GameRepository
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.CalculateResultsUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameUseCase
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreGameUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreGameInfoUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreRoundUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.GetPlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.StorePlayerNamesUseCase
@@ -59,7 +59,7 @@ object Koin {
         // usecases
         factory { StorePlayerNamesUseCase(get()) }
         factory { GetPlayerNamesUseCase(get()) }
-        factory { StoreGameUseCase(get()) }
+        factory { StoreGameInfoUseCase(get()) }
         factory { GetGameUseCase(get()) }
         factory { CalculateResultsUseCase(get()) }
         factory { StoreRoundUseCase(get()) }

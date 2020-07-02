@@ -1,27 +1,22 @@
 package com.tobiapplications.fahrstuhlblock.fw_database_room.model.mapper
 
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerResultData
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerTippData
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Round
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PointsRuleData
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.*
-import com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity.DbGame
+import com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity.DbGameInfo
 
-fun Game.mapToDbData() = DbGame(
-    id = 0,
+fun GameInfo.mapToDbData() = DbGameInfo(
+    gameId = 0,
     players = players.mapToDbData(),
     highCardCount = highCardCount,
-    pointsRuleData = pointsRuleData.mapToDbData(),
-    rounds = rounds.map { it.mapToDbData() }
+    pointsRuleData = pointsRuleData.mapToDbData()
 )
 
-fun DbGame.mapToData() = Game(
+fun DbGameInfo.mapToData() = GameInfo(
     players = players.mapToData(),
     highCardCount = highCardCount,
-    pointsRuleData = pointsRuleData.mapToData(),
-    rounds = rounds.map { it.mapToData() }
+    pointsRuleData = pointsRuleData.mapToData()
 )
 
 fun PlayerSettingsData.mapToDbData() = DbPlayerSettingsData(
@@ -46,7 +41,8 @@ fun DbPointsRuleData.mapToData() = PointsRuleData(
     pointsIfPredictionFalse = pointsIfPredictionFalse
 )
 
-fun Round.mapToDbData() = DbRound(
+fun Round.mapToDbData(gameId: Long) = DbRound(
+    gameId = gameId,
     card = card,
     playerTippData = playerTippData.map { it.mapToDbData() },
     playerResultData = playerResultData.map { it.mapToDbData() }
@@ -76,4 +72,9 @@ fun DbPlayerResultData.mapToData() = PlayerResultData(
     difference = difference,
     total = total,
     result = result
+)
+
+fun DbGame.mapToData() = Game(
+    gameInfo = gameInfo.mapToData(),
+    rounds = rounds.map { it.mapToData() }
 )
