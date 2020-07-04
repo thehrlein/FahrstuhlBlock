@@ -8,4 +8,9 @@ class MenuViewModel : BaseToolbarViewModel() {
     fun openNewGameClicked() {
         navigateTo(Screen.Menu.NewGame)
     }
+
+
+    fun openNewGameClicked2() {
+        navigateTo(Screen.Menu.NewGame2)
+    }
 }

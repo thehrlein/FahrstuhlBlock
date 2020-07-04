@@ -6,6 +6,8 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameInfo
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRoundData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItem
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItemData
 
 interface GameRepository {
 
@@ -20,4 +22,6 @@ interface GameRepository {
     suspend fun insertRound(roundData: InsertRoundData): AppResult<Boolean>
 
     suspend fun calculateResults(parameters: CalculateResultData): AppResult<List<PlayerResultData>>
+
+    suspend fun getBlockResults(gameId: Long): AppResult<BlockItemData>
 }

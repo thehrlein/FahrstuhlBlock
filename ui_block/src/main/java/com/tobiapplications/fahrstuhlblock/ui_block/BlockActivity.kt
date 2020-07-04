@@ -32,7 +32,7 @@ class BlockActivity : BaseToolbarActivity<BlockViewModel, ActivityBlockBinding>(
         get() = intent?.getLongExtra(BLOCK_INTENT_KEY, DEFAULT_GAME_ID) ?: DEFAULT_GAME_ID
 
     companion object {
-        private val BLOCK_INTENT_KEY = "key.block_intent"
+        private const val BLOCK_INTENT_KEY = "key.block_intent"
 
         fun start(activity: AppCompatActivity, gameId: Long) {
             val intent = Intent(activity, BlockActivity::class.java)

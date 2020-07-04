@@ -13,4 +13,6 @@ fun ExtendedFloatingActionButton.setText(inputType: InputType?) {
         InputType.TIPP -> R.string.block_fab_add_prediction
         InputType.RESULT -> R.string.block_fab_add_results
     })
+
+    extend()
 }

@@ -21,14 +21,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/game_list"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:fixedColumnCount="@{viewModel.columnCount}"
                 tools:itemCount="4"
                 tools:listitem="@layout/item_auto_complete_text_row" />
 

@@ -57,7 +57,7 @@ class NavigationComponentsHandler(
     private fun navigateTo(screen: Screen.Menu) {
         when (screen) {
             is Screen.Menu.NewGame -> GameSettingsActivity.start(activity)
-//            is Screen.Menu.NewGame -> BlockActivity.start(activity, 1) // TODO Change back to GameSettingsActivity
+            is Screen.Menu.NewGame2 -> BlockActivity.start(activity, 1) // TODO Change back to GameSettingsActivity
         }.checkAllMatched
     }
 

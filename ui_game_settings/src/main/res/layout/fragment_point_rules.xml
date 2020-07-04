@@ -9,147 +9,153 @@
             type="com.tobiapplications.fahrstuhlblock.presentation.settings.pointrules.PointRulesViewModel" />
     </data>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/point_rules_card_count_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/point_rules_title"
-            android:textAppearance="?textAppearanceHeadline5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/point_rules_card_count_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_2"
-            android:text="@string/point_rules_description"
-            android:textAppearance="?textAppearanceBody2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/point_rules_card_count_title" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/point_rule_points_for_correct_prediction"
-            style="?textInputStyleOutlined"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_4"
-            android:hint="@string/point_rules_correct_prediction_hint"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/point_rules_card_count_description">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:imeOptions="actionNext"
-                android:inputType="number"
-                android:maxLines="1"
-                android:text="@={viewModel.correctPredictionPoints}" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/point_rule_points_per_stitch"
-            style="?textInputStyleOutlined"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_2"
-            android:hint="@string/point_rules_each_stitch_hint_positive"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/point_rule_points_for_correct_prediction">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:imeOptions="actionNext"
-                android:inputType="number"
-                android:maxLines="1"
-                android:text="@={viewModel.pointsPerStitchCorrect}" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <LinearLayout
-            android:id="@+id/points_for_false_prediction_switch_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/point_rule_points_per_stitch">
-
-            <Switch
-                android:id="@+id/points_for_false_prediction_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="@={viewModel.pointsIfPredictionFalse}"/>
+            android:padding="16dp">
 
             <TextView
-                android:id="@+id/points_for_false_prediction_switch_text"
-                android:layout_width="wrap_content"
+                android:id="@+id/point_rules_card_count_title"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_4"
-                android:text="@string/point_rules_points_for_false_prediction_switch_text"
+                android:text="@string/point_rules_title"
+                android:textAppearance="?textAppearanceHeadline5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/point_rules_card_count_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_2"
+                android:text="@string/point_rules_description"
                 android:textAppearance="?textAppearanceBody2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/point_rules_card_count_title" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/point_rule_points_for_correct_prediction"
+                style="?textInputStyleOutlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:hint="@string/point_rules_correct_prediction_hint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/point_rules_card_count_description">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:text="@={viewModel.correctPredictionPoints}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/point_rule_points_per_stitch"
+                style="?textInputStyleOutlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_2"
+                android:hint="@string/point_rules_each_stitch_hint_positive"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/point_rule_points_for_correct_prediction">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:text="@={viewModel.pointsPerStitchCorrect}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/points_for_false_prediction_switch_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/point_rule_points_per_stitch">
+
+                <Switch
+                    android:id="@+id/points_for_false_prediction_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="@={viewModel.pointsIfPredictionFalse}"/>
+
+                <TextView
+                    android:id="@+id/points_for_false_prediction_switch_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_4"
+                    android:text="@string/point_rules_points_for_false_prediction_switch_text"
+                    android:textAppearance="?textAppearanceBody2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/points_for_false_prediction_switch_layout" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/points_for_false_prediction_switch_hint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_2"
+                android:text="@{pointsForFalsePredictionSwitch.checked ? @string/point_rules_points_for_false_prediction_switch_hint_positive : @string/point_rules_points_for_false_prediction_switch_hint_negative}"
+                android:textAppearance="?textAppearanceCaption"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/points_for_false_prediction_switch_layout" />
 
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/points_for_false_prediction_switch_hint"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_2"
-            android:text="@{pointsForFalsePredictionSwitch.checked ? @string/point_rules_points_for_false_prediction_switch_hint_positive : @string/point_rules_points_for_false_prediction_switch_hint_negative}"
-            android:textAppearance="?textAppearanceCaption"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/points_for_false_prediction_switch_layout" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/point_rule_minus_points_per_stitch"
-            style="?textInputStyleOutlined"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_4"
-            android:visibility="@{!viewModel.pointsIfPredictionFalse}"
-            android:hint="@string/point_rules_each_stitch_hint_negative"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/points_for_false_prediction_switch_hint">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/point_rule_minus_points_per_stitch"
+                style="?textInputStyleOutlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionNext"
-                android:inputType="number"
-                android:maxLines="1"
-                android:text="@={viewModel.minusPointsPerStitch}" />
+                android:layout_marginTop="@dimen/space_4"
+                android:visibility="@{!viewModel.pointsIfPredictionFalse}"
+                android:hint="@string/point_rules_each_stitch_hint_negative"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/points_for_false_prediction_switch_hint">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:text="@={viewModel.minusPointsPerStitch}" />
 
-        <Button
-            android:id="@+id/button_proceed"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_8"
-            android:enabled="@{viewModel.inputValid}"
-            android:onClick="@{() -> viewModel.onProceedClicked()}"
-            android:text="@string/player_settings_button_proceed"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/point_rule_minus_points_per_stitch" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/button_proceed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_8"
+                android:enabled="@{viewModel.inputValid}"
+                android:onClick="@{() -> viewModel.onProceedClicked()}"
+                android:text="@string/player_settings_button_proceed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/point_rule_minus_points_per_stitch" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
 </layout>

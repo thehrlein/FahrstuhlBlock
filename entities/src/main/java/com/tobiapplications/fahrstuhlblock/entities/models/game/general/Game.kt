@@ -16,19 +16,27 @@ data class Game(
                 else -> rounds.size + 1
             }
         } else {
-            gameInfo.highCardCount - rounds.size
+            val fullPlayedRounds = rounds.count { it.roundCompleted }
+            gameInfo.highCardCount - (fullPlayedRounds - gameInfo.highCardCount)
         }
+
 
     val currentRound: Int
         get() = rounds.size + 1
 
     val inputType: InputType
-        get() = rounds.lastOrNull()?.currentInputType ?: InputType.TIPP
+        get() = rounds.lastOrNull()?.let {
+            if (it.roundCompleted) {
+                InputType.TIPP
+            } else {
+                it.currentInputType
+            }
+        } ?: InputType.TIPP
 
     val previousTotals: List<Int>
         get() = if (rounds.size == 1) {
             gameInfo.players.names.map { 0 }
         } else {
-            rounds[rounds.size - 1].playerResultData.map { it.total }
+            rounds[rounds.size - 2].playerResultData.map { it.total }
         }
 }

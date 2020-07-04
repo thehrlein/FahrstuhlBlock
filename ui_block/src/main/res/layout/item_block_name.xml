@@ -8,17 +8,17 @@
         android:layout_height="@dimen/block_cell_height">
 
         <TextView
-            android:id="@+id/round"
+            android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:textAppearance="?textAppearanceBody2"
+            android:textAppearance="?textAppearanceBody1"
             android:textColor="?colorOnBackground"
             android:gravity="center"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="1"/>
+            tools:text="Player One"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -11,6 +11,12 @@
     <string name="dialog_exit_button_menu">Menu</string>
     <string name="icon_credits">Icons made by Nhor Phai &amp; Freepik (www.flaticon.com)</string>
 
+    <!-- Menu -->
+    <string name="menu_toolbar_title">Menu</string>
+    <string name="menu_start_new_game">Start new game</string>
+    <string name="menu_upcoming_features">// Under development. New features will be added soon</string>
+
+
     <!-- Player settings -->
     <string name="player_settings_toolbar_title">Player settings</string>
     <string name="player_settings_player_count_hint">Choose player count</string>
@@ -61,5 +67,8 @@
     <!-- block input -->
     <string name="block_input_toolbar_title_tipps">Tipps</string>
     <string name="block_input_toolbar_title_results">Results</string>
+    <string name="block_input_general_title">Round %1$d - %2$d cards</string>
+    <string name="block_input_tipps_message">Your combined tipps must not be %1$d. The last user must make sure that after his tipp the amount of tipps is not equal %1$d</string>
+    <string name="block_input_result_message">Your combined results must be %1$d</string>
 
 </resources>

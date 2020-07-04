@@ -11,7 +11,6 @@ import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentBlockResultsBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFragment
-import com.tobiapplications.fahrstuhlblock.ui_common.extension.executeAfter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -44,14 +43,14 @@ class BlockResultsFragment :
     }
 
     private fun initAdapter() {
-        BlockResultAdapter().also { blockResultAdapter ->
+        BlockResultsAdapter().also { blockResultAdapter ->
             binding.gameList.apply {
                 adapter = blockResultAdapter
                 addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
+                addItemDecoration(DividerItemDecoration(context, LinearLayout.HORIZONTAL))
             }
-
-            viewModel.names.observe(viewLifecycleOwner, Observer {
-                blockResultAdapter.submitList(listOf(it))
+            viewModel.blockItems.observe(viewLifecycleOwner, Observer { blockItems ->
+                blockResultAdapter.submitList(blockItems)
             })
         }
 

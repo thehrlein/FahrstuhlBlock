@@ -6,14 +6,11 @@ import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSett
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
 import com.tobiapplications.fahrstuhlblock.fw_database_room.databaseModule
-import com.tobiapplications.fahrstuhlblock.fw_repositories.processor.ResultsCalculatorProcessorImpl
+import com.tobiapplications.fahrstuhlblock.fw_repositories.processor.BlockProcessorImpl
 import com.tobiapplications.fahrstuhlblock.fw_repositories.repository.GameRepositoryImpl
-import com.tobiapplications.fahrstuhlblock.interactor.processor.ResultsCalculatorProcessor
+import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockProcessor
 import com.tobiapplications.fahrstuhlblock.interactor.repository.GameRepository
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.CalculateResultsUseCase
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameUseCase
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreGameInfoUseCase
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreRoundUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.*
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.GetPlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.StorePlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockInputViewModel
@@ -41,7 +38,7 @@ object Koin {
         single<ResourceHelper> { ResourceHelperImpl(get()) }
 
         // processor
-        single<ResultsCalculatorProcessor> { ResultsCalculatorProcessorImpl() }
+        single<BlockProcessor> { BlockProcessorImpl() }
 
         // repository
         single<GameRepository> { GameRepositoryImpl(get(), get(), get()) }
@@ -63,7 +60,7 @@ object Koin {
         factory { GetGameUseCase(get()) }
         factory { CalculateResultsUseCase(get()) }
         factory { StoreRoundUseCase(get()) }
-
+        factory { GetBlockResultsUseCase(get()) }
     }
 
     private val viewModel = module {

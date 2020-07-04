@@ -6,15 +6,17 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameInfo
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRoundData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItem
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItemData
 import com.tobiapplications.fahrstuhlblock.interactor.datasource.GameCache
 import com.tobiapplications.fahrstuhlblock.interactor.datasource.PlayerCache
-import com.tobiapplications.fahrstuhlblock.interactor.processor.ResultsCalculatorProcessor
+import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockProcessor
 import com.tobiapplications.fahrstuhlblock.interactor.repository.GameRepository
 
 class GameRepositoryImpl(
     private val gameCache: GameCache,
     private val playerCache: PlayerCache,
-    private val resultsCalculatorProcessor: ResultsCalculatorProcessor
+    private val blockProcessor: BlockProcessor
 ) : GameRepository {
 
     override suspend fun storeGameInfo(gameInfo: GameInfo) : AppResult<Long> {
@@ -38,6 +40,13 @@ class GameRepositoryImpl(
     }
 
     override suspend fun calculateResults(calculateResultData: CalculateResultData): AppResult<List<PlayerResultData>> {
-        return resultsCalculatorProcessor.calculateResults(calculateResultData)
+        return blockProcessor.calculateResults(calculateResultData)
+    }
+
+    override suspend fun getBlockResults(gameId: Long): AppResult<BlockItemData> {
+        return when (val result = getGame(gameId)) {
+            is AppResult.Success -> blockProcessor.generateBlockResultModels(result.value)
+            is AppResult.Error -> result
+        }
     }
 }

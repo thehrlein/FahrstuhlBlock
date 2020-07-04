@@ -16,6 +16,7 @@ import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
 
 private const val DEFAULT_PLAYER_INPUT = 0
+private const val FIRST_ROUND = 1
 
 class BlockInputViewModel(
     private val gameId: Long,
@@ -29,13 +30,14 @@ class BlockInputViewModel(
     private val _inputModels = MutableLiveData<List<InputData>>()
     val inputModels: LiveData<List<InputData>> = _inputModels
     private val _round = MutableLiveData<Round>()
-    private var _game = MutableLiveData<Game>()
+    private val _game = MutableLiveData<Game>()
+    val game: LiveData<Game> = _game
 
     init {
-        getGame()
+        getCurrentGame()
     }
 
-    private fun getGame() {
+    private fun getCurrentGame() {
         viewModelScope.launch {
             when (val result = getGameUseCase.invoke(gameId)) {
                 is AppResult.Success -> setInputModels(result.value)
@@ -46,9 +48,15 @@ class BlockInputViewModel(
 
     private fun setInputModels(game: Game) {
         _game.postValue(game)
-        val round = game.rounds.lastOrNull() ?: Round(1, emptyList(), emptyList())
+        val round = game.rounds.lastOrNull()?.let {
+            if (it.roundCompleted) {
+                createNewRound(it.card + 1)
+            } else {
+                it
+            }
+        } ?: createNewRound(FIRST_ROUND)
         _round.postValue(round)
-        val inputType = game.inputType
+        val inputType = round.currentInputType
         _inputType.postValue(inputType)
         _inputModels.postValue(game.gameInfo.players.names.mapIndexedNotNull { index: Int, name: String ->
             InputData(
@@ -59,6 +67,10 @@ class BlockInputViewModel(
                 userInput = round.playerTippData.getOrNull(index)?.tipp ?: DEFAULT_PLAYER_INPUT
             )
         })
+    }
+
+    private fun createNewRound(card: Int) : Round {
+        return Round(card, emptyList(), emptyList())
     }
 
     fun onSaveClicked() {

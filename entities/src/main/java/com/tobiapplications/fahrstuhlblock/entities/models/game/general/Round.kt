@@ -15,4 +15,6 @@ data class Round(
             InputType.RESULT
         }
 
+    val roundCompleted : Boolean
+        get() = !playerResultData.isNullOrEmpty()
 }

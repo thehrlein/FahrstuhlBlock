@@ -1,12 +1,15 @@
 package com.tobiapplications.fahrstuhlblock.fw_repositories.processor
 
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerResultData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerTippData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
-import com.tobiapplications.fahrstuhlblock.interactor.processor.ResultsCalculatorProcessor
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.*
+import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockProcessor
 import kotlin.math.abs
 
-class ResultsCalculatorProcessorImpl : BaseProcessor, ResultsCalculatorProcessor {
+class BlockProcessorImpl : BaseProcessor, BlockProcessor {
 
     override suspend fun calculateResults(calculateResultData: CalculateResultData): AppResult<List<PlayerResultData>> =
         safeCall {
@@ -68,4 +71,32 @@ class ResultsCalculatorProcessorImpl : BaseProcessor, ResultsCalculatorProcessor
 
         return resultData
     }
+
+    override suspend fun generateBlockResultModels(game: Game): AppResult<BlockItemData> =
+        safeCall {
+            val blockItems = mutableListOf<BlockItem>()
+            blockItems.add(BlockPlaceholder())
+            val players = game.gameInfo.players.names
+            blockItems.addAll(players.map { BlockName(it) })
+            game.rounds.forEach { round ->
+                blockItems.add(BlockRound(round.card))
+                blockItems.addAll(round.playerTippData.mapIndexed { index: Int, playerTippData: PlayerTippData ->
+                    val resultData = round.playerResultData.getOrNull(index)
+                    BlockResult(
+                        player = players[index],
+                        round = round.card,
+                        tipp = playerTippData.tipp,
+                        result = resultData?.result,
+                        difference = resultData?.difference,
+                        total = resultData?.total
+                    )
+                })
+            }
+            BlockItemData(
+                items = blockItems,
+                inputType = game.inputType,
+                columnCount = game.gameInfo.players.names.size + 1
+            )
+
+        }
 }

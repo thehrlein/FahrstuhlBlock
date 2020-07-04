@@ -10,6 +10,11 @@
     <string name="icon_credits">Icons von Nhor Phai &amp; Freepik (www.flaticon.com)</string>
     <string name="general_cancel">Abbrechen</string>
 
+    <string name="menu_toolbar_title">Menü</string>
+    <string name="menu_start_new_game">Neues Spiel</string>
+    <string name="menu_upcoming_features">// In Bearbeitung. Neue Features werden bald verfügbar sein</string>
+
+
     <string name="block_results_toolbar_title">Block</string>
     <string name="block_fab_add_prediction">Tipps</string>
     <string name="block_fab_add_results">Ergebnisse</string>
@@ -37,4 +42,9 @@
     <string name="point_rules_points_for_false_prediction_switch_hint_positive">Du bekommst für jeden gemachten Stich Punkte und zusätzlich ein Bonus wenn deine Schätzung richtig ist</string>
     <string name="point_rules_points_for_false_prediction_switch_hint_negative">Du bekommst nur Punkte, wenn auch deine Schätzung richtig ist. Falls nicht, bekommst du Punkte abgezogen</string>
     <string name="point_rules_each_stitch_hint_negative">Minuspunkte je Stich</string>
+    <string name="block_input_toolbar_title_tipps">Tipps</string>
+    <string name="block_input_toolbar_title_results">Ergebnisse</string>
+    <string name="block_input_general_title">Runde %1$d - %2$d Karten</string>
+    <string name="block_input_tipps_message">Die Anzahl eurer Tipps darf nicht gleich %1$d sein. Der letzte Spieler muss sicherstellen dass die Anzahl an Tipps nicht gleich %1$d ist</string>
+    <string name="block_input_result_message">Die Anzahl eurer Ergebnisse müssen %1$d ergeben</string>
 </resources>

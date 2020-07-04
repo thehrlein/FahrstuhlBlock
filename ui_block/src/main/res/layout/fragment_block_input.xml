@@ -10,35 +10,77 @@
             type="com.tobiapplications.fahrstuhlblock.presentation.block.BlockInputViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/block_input_sheet"
+    <ViewSwitcher
+        android:id="@+id/block_input_switcher"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/space_4">
+        android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/input_list"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:itemCount="4"
-            tools:listitem="@layout/item_auto_complete_text_row" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button_save"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_8"
-            android:onClick="@{() -> viewModel.onSaveClicked()}"
-            android:text="@string/player_settings_button_proceed"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_list"/>
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/block_input_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/space_4">
+
+            <TextView
+                android:id="@+id/block_input_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textAppearance="?textAppearanceHeadline5"
+                app:inputTitle="@{viewModel.game}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/block_input_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_2"
+                android:text="@string/player_order_description"
+                android:textAppearance="?textAppearanceBody2"
+                app:inputMessage="@{viewModel.inputType}"
+                app:game="@{viewModel.game}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/block_input_title" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/input_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="@dimen/space_8"
+                app:layout_constraintTop_toBottomOf="@id/block_input_message"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_auto_complete_text_row" />
+
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_8"
+                android:onClick="@{() -> viewModel.onSaveClicked()}"
+                android:text="@string/player_settings_button_proceed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_list"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ViewSwitcher>
 
 </layout>

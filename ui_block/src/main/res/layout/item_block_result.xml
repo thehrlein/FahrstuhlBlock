@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockResult" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/block_cell_width"
+        android:layout_height="@dimen/block_cell_height">
+
+        <TextView
+            android:id="@+id/tipp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textAppearance="?textAppearanceBody2"
+            android:textColor="?colorOnBackground"
+            android:gravity="center"
+            app:resultText="@{item.tipp}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/difference"
+            app:layout_constraintEnd_toStartOf="@id/result"
+            tools:text="1"/>
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textAppearance="?textAppearanceBody2"
+            android:textColor="?colorOnBackground"
+            android:gravity="center"
+            app:resultText="@{item.result}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tipp"
+            app:layout_constraintBottom_toTopOf="@id/total"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="2"/>
+
+        <TextView
+            android:id="@+id/difference"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textAppearance="?textAppearanceBody2"
+            android:textColor="?colorOnBackground"
+            android:gravity="center"
+            app:resultText="@{item.difference}"
+            app:layout_constraintTop_toBottomOf="@id/tipp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/total"
+            tools:text="13"/>
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:resultText="@{item.total}"
+            android:textAppearance="?textAppearanceBody2"
+            android:textColor="?colorOnBackground"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/result"
+            app:layout_constraintStart_toEndOf="@id/difference"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="130"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

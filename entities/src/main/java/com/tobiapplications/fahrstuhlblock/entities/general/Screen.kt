@@ -20,6 +20,7 @@ sealed class Screen {
 
     sealed class Menu : Screen() {
         object NewGame : Menu()
+        object NewGame2 : Menu()
     }
 
     sealed class PlayerSettings : Screen() {

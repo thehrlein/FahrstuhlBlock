@@ -22,7 +22,6 @@ class BlockViewModel(
     }
 
     fun openInput() {
-//        val type = inputType.value ?: error("could not determine input type")
         val gameId = gameId.value ?: error("could not determine gameId")
         navigateTo(Screen.Block.Input(gameId))
     }
