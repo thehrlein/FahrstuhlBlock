@@ -6,16 +6,19 @@ import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSett
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
 import com.tobiapplications.fahrstuhlblock.fw_database_room.databaseModule
-import com.tobiapplications.fahrstuhlblock.fw_repositories.processor.BlockProcessorImpl
+import com.tobiapplications.fahrstuhlblock.fw_repositories.processor.BlockInputsProcessorImpl
+import com.tobiapplications.fahrstuhlblock.fw_repositories.processor.BlockResultsProcessorImpl
 import com.tobiapplications.fahrstuhlblock.fw_repositories.repository.GameRepositoryImpl
-import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockProcessor
+import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockInputsProcessor
+import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockResultsProcessor
 import com.tobiapplications.fahrstuhlblock.interactor.repository.GameRepository
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.*
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.GetPlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.StorePlayerNamesUseCase
-import com.tobiapplications.fahrstuhlblock.presentation.block.BlockInputViewModel
-import com.tobiapplications.fahrstuhlblock.presentation.block.BlockResultsViewModel
+import com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputViewModel
+import com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
+import com.tobiapplications.fahrstuhlblock.presentation.block.scores.BlockScoresViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.main.MainViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.menu.MenuViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.settings.*
@@ -38,10 +41,11 @@ object Koin {
         single<ResourceHelper> { ResourceHelperImpl(get()) }
 
         // processor
-        single<BlockProcessor> { BlockProcessorImpl() }
+        single<BlockInputsProcessor> { BlockInputsProcessorImpl() }
+        single<BlockResultsProcessor> { BlockResultsProcessorImpl() }
 
         // repository
-        single<GameRepository> { GameRepositoryImpl(get(), get(), get()) }
+        single<GameRepository> { GameRepositoryImpl(get(), get(), get(), get()) }
     }
 
     private val factory = module {
@@ -58,9 +62,11 @@ object Koin {
         factory { GetPlayerNamesUseCase(get()) }
         factory { StoreGameInfoUseCase(get()) }
         factory { GetGameUseCase(get()) }
+        factory { GetGameScoresUseCase(get()) }
         factory { CalculateResultsUseCase(get()) }
         factory { StoreRoundUseCase(get()) }
         factory { GetBlockResultsUseCase(get()) }
+        factory { InputsValidUseCase(get()) }
     }
 
     private val viewModel = module {
@@ -90,8 +96,24 @@ object Koin {
             )
         }
         viewModel { (gameId: Long) ->  BlockViewModel(gameId) }
-        viewModel { BlockResultsViewModel(get()) }
-        viewModel { (gameId: Long) -> BlockInputViewModel(gameId, get(), get(), get()) }
+        viewModel {
+            BlockResultsViewModel(
+                get(),
+                get(),
+                get()
+            )
+        }
+        viewModel { (gameId: Long) ->
+            BlockInputViewModel(
+                gameId,
+                get(),
+                get(),
+                get(),
+                get()
+            )
+        }
+
+        viewModel { BlockScoresViewModel() }
     }
 
     fun getModules(): List<Module> {

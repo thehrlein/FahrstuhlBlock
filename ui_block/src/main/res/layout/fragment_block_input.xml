@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.tobiapplications.fahrstuhlblock.presentation.block.BlockInputViewModel" />
+            type="com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputViewModel" />
     </data>
 
     <ViewSwitcher
@@ -73,6 +73,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_8"
+                android:enabled="@{viewModel.inputsValid}"
                 android:onClick="@{() -> viewModel.onSaveClicked()}"
                 android:text="@string/player_settings_button_proceed"
                 app:layout_constraintEnd_toEndOf="parent"

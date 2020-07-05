@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
-import com.tobiapplications.fahrstuhlblock.presentation.block.BlockInputViewModel
+import com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
 import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
@@ -50,7 +50,7 @@ class BlockInputFragment :
     }
 
     private fun initAdapter() {
-        BlockInputAdapter().also { blockInputAdapter ->
+        BlockInputAdapter(viewModel).also { blockInputAdapter ->
             binding.inputList.apply {
                 adapter = blockInputAdapter
                 addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))

@@ -7,12 +7,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
+import com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputInteractions
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.ItemBlockInputBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.executeAfter
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.layoutInflater
 
-class BlockInputAdapter : ListAdapter<InputData, BlockInputAdapter.BlockInputViewHolder>(
+class BlockInputAdapter(
+    private val interactions: BlockInputInteractions
+) : ListAdapter<InputData, BlockInputAdapter.BlockInputViewHolder>(
     BockInputDiff
 ) {
 
@@ -28,14 +31,17 @@ class BlockInputAdapter : ListAdapter<InputData, BlockInputAdapter.BlockInputVie
     }
 
     override fun onBindViewHolder(holder: BlockInputViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), interactions)
     }
 
     inner class BlockInputViewHolder(private val binding: ItemBlockInputBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(inputData: InputData) {
-            bindInputData(inputData)
+        fun bind(
+            inputData: InputData,
+            interactions: BlockInputInteractions
+        ) {
+            bindInputData(inputData, interactions)
             binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(
                     seekBar: SeekBar?,
@@ -43,7 +49,7 @@ class BlockInputAdapter : ListAdapter<InputData, BlockInputAdapter.BlockInputVie
                     fromUser: Boolean
                 ) {
                     inputData.userInput = progress
-                    bindInputData(inputData)
+                    bindInputData(inputData, interactions)
                 }
 
                 override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -58,22 +64,24 @@ class BlockInputAdapter : ListAdapter<InputData, BlockInputAdapter.BlockInputVie
             binding.buttonDecrease.setOnClickListener {
                 if (inputData.userInput > 0) {
                     inputData.userInput = inputData.userInput - 1
-                    bindInputData(inputData)
+                    bindInputData(inputData, interactions)
                 }
             }
 
             binding.buttonIncrease.setOnClickListener {
                 if (inputData.userInput < inputData.cards) {
                     inputData.userInput = inputData.userInput + 1
-                    bindInputData(inputData)
+                    bindInputData(inputData, interactions)
                 }
             }
         }
 
-        fun bindInputData(inputData: InputData) {
+        fun bindInputData(inputData: InputData, interactions: BlockInputInteractions) {
             binding.executeAfter {
                 this.item = inputData
             }
+
+            interactions.onInputChanged()
         }
     }
 }

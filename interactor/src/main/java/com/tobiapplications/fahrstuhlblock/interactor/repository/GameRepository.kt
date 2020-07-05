@@ -6,8 +6,9 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameInfo
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRoundData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
-import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItem
+import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItemData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData
 
 interface GameRepository {
 
@@ -24,4 +25,8 @@ interface GameRepository {
     suspend fun calculateResults(parameters: CalculateResultData): AppResult<List<PlayerResultData>>
 
     suspend fun getBlockResults(gameId: Long): AppResult<BlockItemData>
+
+    suspend fun checkInputsValidity(inputValidityData: CheckInputValidityData): AppResult<Boolean>
+
+    suspend fun getGameScores(game: Game): AppResult<GameScoreData>
 }

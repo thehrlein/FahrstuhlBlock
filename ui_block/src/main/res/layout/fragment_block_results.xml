@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.tobiapplications.fahrstuhlblock.presentation.block.BlockResultsViewModel" />
+            type="com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsViewModel" />
 
         <import type="com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType" />
     </data>
@@ -21,15 +21,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/game_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingBottom="80dp"
+                app:fixedColumnCount="@{viewModel.columnCount}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:fixedColumnCount="@{viewModel.columnCount}"
                 tools:itemCount="4"
                 tools:listitem="@layout/item_auto_complete_text_row" />
 
@@ -41,9 +41,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="@dimen/space_4"
-            android:onClick="@{() -> viewModel.onFabClicked()}"
             app:icon="@drawable/ic_add"
-            app:text="@{viewModel.inputType}" />
+            android:onClick="@{() -> viewModel.onFabClicked()}"
+            app:gameFinished="@{viewModel.gameScores.finished}"
+            app:inputType="@{viewModel.inputType}" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

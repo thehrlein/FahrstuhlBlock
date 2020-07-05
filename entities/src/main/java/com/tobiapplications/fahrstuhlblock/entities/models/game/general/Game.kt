@@ -39,4 +39,7 @@ data class Game(
         } else {
             rounds[rounds.size - 2].playerResultData.map { it.total }
         }
+
+    val maxRound : Int
+        get() = gameInfo.highCardCount * 2
 }

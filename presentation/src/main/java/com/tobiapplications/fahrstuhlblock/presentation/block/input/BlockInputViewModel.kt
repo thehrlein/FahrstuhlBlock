@@ -1,4 +1,4 @@
-package com.tobiapplications.fahrstuhlblock.presentation.block
+package com.tobiapplications.fahrstuhlblock.presentation.block.input
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,10 +7,12 @@ import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.CalculateResultsUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.InputsValidUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreRoundUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
@@ -22,8 +24,9 @@ class BlockInputViewModel(
     private val gameId: Long,
     private val getGameUseCase: GetGameUseCase,
     private val calculateResultsUseCase: CalculateResultsUseCase,
-    private val storeRoundUseCase: StoreRoundUseCase
-) : BaseViewModel() {
+    private val storeRoundUseCase: StoreRoundUseCase,
+    private val inputsValidUseCase: InputsValidUseCase
+) : BaseViewModel(), BlockInputInteractions {
 
     private val _inputType = MutableLiveData(InputType.TIPP)
     val inputType: LiveData<InputType> = _inputType
@@ -32,6 +35,8 @@ class BlockInputViewModel(
     private val _round = MutableLiveData<Round>()
     private val _game = MutableLiveData<Game>()
     val game: LiveData<Game> = _game
+    private val _inputsValid = MutableLiveData(false)
+    val inputsValid: LiveData<Boolean> = _inputsValid
 
     init {
         getCurrentGame()
@@ -69,19 +74,21 @@ class BlockInputViewModel(
         })
     }
 
-    private fun createNewRound(card: Int) : Round {
+    private fun createNewRound(card: Int): Round {
         return Round(card, emptyList(), emptyList())
     }
 
     fun onSaveClicked() {
         val currentRound = _round.value ?: error("could not determine round")
-        val inputs = _inputModels.value ?: error("could not determine input models")
+        val inputs = getInputs()
         if (currentRound.currentInputType == InputType.TIPP) {
             storeTipps(currentRound, inputs)
         } else {
             calculateResults(currentRound, inputs)
         }
     }
+
+    private fun getInputs() = _inputModels.value ?: error("could not determine input models")
 
     private fun storeTipps(
         currentRound: Round,
@@ -100,7 +107,7 @@ class BlockInputViewModel(
     }
 
     private fun calculateResults(currentRound: Round, inputs: List<InputData>) {
-        val game = _game.value ?:error("could not determine game")
+        val game = getGameData()
         val pointRulesData = game.gameInfo.pointsRuleData
         val previousTotals = game.previousTotals
         val calculateResultData = CalculateResultData(
@@ -117,10 +124,14 @@ class BlockInputViewModel(
         }
     }
 
+    private fun getGameData() = _game.value ?: error("could not determine game")
+
     private fun storeResults(currentRound: Round, results: List<PlayerResultData>) {
-        val round = InsertRoundData(gameId, currentRound.copy(
-            playerResultData = results
-        ))
+        val round = InsertRoundData(
+            gameId, currentRound.copy(
+                playerResultData = results
+            )
+        )
 
         viewModelScope.launch {
             when (val result = storeRoundUseCase.invoke(round)) {
@@ -130,4 +141,14 @@ class BlockInputViewModel(
         }
     }
 
+    override fun onInputChanged() {
+        val data = CheckInputValidityData(getGameData(), getInputs().sumBy { it.userInput })
+
+        viewModelScope.launch {
+            _inputsValid.postValue(when (val result = inputsValidUseCase.invoke(data)) {
+                is AppResult.Success -> result.value
+                is AppResult.Error -> false
+            })
+        }
+    }
 }

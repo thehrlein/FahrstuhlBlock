@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_blockResultsFragment_to_blockInputFragment"
             app:destination="@id/blockInputFragment" />
+        <action
+            android:id="@+id/action_blockResultsFragment_to_blockScoresFragment"
+            app:destination="@id/blockScoresFragment" />
     </fragment>
 
 
@@ -32,6 +35,15 @@
             app:destination="@id/blockResultsFragment"
             app:popUpTo="@id/blockResultsFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/blockScoresFragment"
+        android:name="com.tobiapplications.fahrstuhlblock.ui_block.scores.BlockScoresFragment"
+        android:label="BlockScoresFragment" >
+        <argument
+            android:name="gameScoreData"
+            app:argType="com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData" />
     </fragment>
 
 </navigation>

@@ -9,7 +9,7 @@
     <string name="dialog_exit_message">Do you want to quit this application or return to the menu?</string>
     <string name="dialog_exit_button_quit">Quit</string>
     <string name="dialog_exit_button_menu">Menu</string>
-    <string name="icon_credits">Icons made by Nhor Phai &amp; Freepik (www.flaticon.com)</string>
+    <string name="icon_credits">Icons made by Nhor Phai &amp; Freepik (www.flaticon.com), <div>Icon made from <a href="http://www.onlinewebfonts.com/icon">Icon Fonts</a> is licensed by CC BY 3.0</div></string>
 
     <!-- Menu -->
     <string name="menu_toolbar_title">Menu</string>
@@ -62,6 +62,7 @@
     <string name="block_results_toolbar_title" translatable="false">Block</string>
     <string name="block_fab_add_prediction">Tipps</string>
     <string name="block_fab_add_results">Results</string>
+    <string name="block_fab_exit">Exit</string>
 
 
     <!-- block input -->
@@ -71,4 +72,7 @@
     <string name="block_input_tipps_message">Your combined tipps must not be %1$d. The last user must make sure that after his tipp the amount of tipps is not equal %1$d</string>
     <string name="block_input_result_message">Your combined results must be %1$d</string>
 
+
+    <!-- block scores -->
+    <string name="block_scores_toolbar_title">Scores</string>
 </resources>

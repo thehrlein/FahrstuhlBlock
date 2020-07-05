@@ -18,6 +18,7 @@
     <string name="block_results_toolbar_title">Block</string>
     <string name="block_fab_add_prediction">Tipps</string>
     <string name="block_fab_add_results">Ergebnisse</string>
+    <string name="block_fab_exit">Beenden</string>
 
     <string name="player_settings_toolbar_title">Spielereinstellungen</string>
     <string name="player_settings_player_count_hint">Wähle die Anzahl Spieler</string>
@@ -47,4 +48,7 @@
     <string name="block_input_general_title">Runde %1$d - %2$d Karten</string>
     <string name="block_input_tipps_message">Die Anzahl eurer Tipps darf nicht gleich %1$d sein. Der letzte Spieler muss sicherstellen dass die Anzahl an Tipps nicht gleich %1$d ist</string>
     <string name="block_input_result_message">Die Anzahl eurer Ergebnisse müssen %1$d ergeben</string>
+
+    <string name="block_scores_toolbar_title">Ergebnis</string>
+
 </resources>

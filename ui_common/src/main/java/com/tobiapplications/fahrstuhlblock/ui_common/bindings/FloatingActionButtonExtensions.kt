@@ -5,14 +5,23 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
 import com.tobiapplications.fahrstuhlblock.ui_common.R
 
-@BindingAdapter("text")
-fun ExtendedFloatingActionButton.setText(inputType: InputType?) {
-    if (inputType == null) return
+@BindingAdapter("inputType", "gameFinished", requireAll = true)
+fun ExtendedFloatingActionButton.setFabIconAndText(inputType: InputType?, gameFinished: Boolean?) {
+    if (inputType == null || gameFinished == null) return
 
-    text = context.getString(when (inputType) {
-        InputType.TIPP -> R.string.block_fab_add_prediction
-        InputType.RESULT -> R.string.block_fab_add_results
-    })
+    text = when {
+        gameFinished -> context.getString(R.string.block_fab_exit)
+        inputType == InputType.TIPP -> context.getString(R.string.block_fab_add_prediction)
+        inputType == InputType.RESULT -> context.getString(R.string.block_fab_add_results)
+        else -> null
+    }
+
+    setIconResource(
+        when {
+            gameFinished -> R.drawable.ic_exit
+            else ->R.drawable.ic_add
+        }
+    )
 
     extend()
 }
