@@ -15,7 +15,7 @@ import com.tobiapplications.fahrstuhlblock.ui_common.extension.executeAfter
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.layoutInflater
 
 class BlockResultsAdapter : ListAdapter<BlockItem, RecyclerView.ViewHolder>(
-    BlockDiff2
+    BlockResultsDiff
 ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -80,18 +80,6 @@ class BlockResultsAdapter : ListAdapter<BlockItem, RecyclerView.ViewHolder>(
                     holder.bind(item)
                 }
             }
-//            is BlockNamesViewHolder -> {
-//                if (item is BlockNames) {
-//                    holder.bind(
-//                        item = item
-//                    )
-//                }
-//            }
-//            is BlockRoundViewHolder -> {
-//                if (item is BlockRound) {
-//                    holder.bind(item)
-//                }
-//            }
         }
     }
 
@@ -130,7 +118,7 @@ class BlockResultsAdapter : ListAdapter<BlockItem, RecyclerView.ViewHolder>(
     }
 }
 
-object BlockDiff2 : DiffUtil.ItemCallback<BlockItem>() {
+object BlockResultsDiff : DiffUtil.ItemCallback<BlockItem>() {
 
     override fun areItemsTheSame(oldItem: BlockItem, newItem: BlockItem) = when {
         oldItem is BlockPlaceholder && newItem is BlockPlaceholder -> true

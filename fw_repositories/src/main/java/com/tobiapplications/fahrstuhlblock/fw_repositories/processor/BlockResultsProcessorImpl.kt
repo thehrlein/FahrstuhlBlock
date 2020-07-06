@@ -106,10 +106,21 @@ class BlockResultsProcessorImpl : BaseProcessor, BlockResultsProcessor {
             val players = game.gameInfo.players.names
 
             val lastRound = game.rounds.lastOrNull { it.playerResultData.isNotEmpty() }
+            val scores = mutableListOf<GameScore>()
+            players.mapIndexed { index, name ->
+                Pair(name, lastRound?.playerResultData?.get(index)?.total ?: 0)
+            }.groupBy { it.second }
+                .entries
+                .sortedByDescending { it.key }
+                .mapIndexed { index: Int, entry: Map.Entry<Int, List<Pair<String, Int>>> ->
+                    scores.addAll(entry.value.map {
+                        GameScore(index + 1, it.first, it.second)
+                    })
+                }
+
             GameScoreData(
                 finished = gameFinished,
-                results = players.mapIndexed { index, name ->
-                    GameScore(name, lastRound?.playerResultData?.get(index)?.total ?: 0)
-                })
+                results = scores
+            )
         }
 }

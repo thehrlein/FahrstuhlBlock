@@ -1,6 +1,9 @@
 package com.tobiapplications.fahrstuhlblock.ui_block.scores
 
 import android.os.Bundle
+import android.widget.LinearLayout
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.scores.BlockScoresViewModel
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentBlockScoresBinding
@@ -17,9 +20,26 @@ class BlockScoresFragment : BaseToolbarFragment<BlockScoresViewModel, BlockViewM
     override val layoutId: Int = R.layout.fragment_block_scores
     override val viewModelResId: Int = BR.viewModel
 
+    private val gameScores: BlockScoresFragmentArgs by navArgs()
+
     override fun onBindingCreated(savedInstanceState: Bundle?) {
         super.onBindingCreated(savedInstanceState)
 
         activityToolbarViewModel.setTitle(getString(R.string.block_scores_toolbar_title))
+
+        initAdapter()
+    }
+
+
+    private fun initAdapter() {
+        BlockScoresAdapter().also { scoresAdapter ->
+            binding.blockScoreList.apply {
+                adapter = scoresAdapter
+                addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
+            }
+
+            scoresAdapter.submitList(gameScores.gameScoreData.results)
+        }
+
     }
 }

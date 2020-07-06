@@ -74,5 +74,7 @@
 
 
     <!-- block scores -->
-    <string name="block_scores_toolbar_title">Scores</string>
+    <string name="block_scores_toolbar_title">Current Scores</string>
+    <string name="block_scores_position" translatable="false">%1$d.</string>
+
 </resources>

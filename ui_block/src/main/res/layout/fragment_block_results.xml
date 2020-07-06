@@ -25,7 +25,6 @@
                 android:id="@+id/game_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="80dp"
                 app:fixedColumnCount="@{viewModel.columnCount}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

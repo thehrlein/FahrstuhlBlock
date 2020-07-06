@@ -1,14 +1,24 @@
 package com.tobiapplications.fahrstuhlblock.ui_common.bindings
 
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
 import com.tobiapplications.fahrstuhlblock.ui_common.R
+import kotlin.math.sign
 
 @BindingAdapter("resultText")
 fun TextView.setResultText(value: Int?) {
     text = value?.let {
+        it.toString()
+    }
+}
+
+@BindingAdapter("differenceText")
+fun TextView.setDifferenceText(value: Int?) {
+    text = value?.let {
+        setTextColor(ContextCompat.getColor(context, if (it > 0)  R.color.block_result_positive_difference else R.color.block_result_negative_difference))
         it.toString()
     }
 }
@@ -26,4 +36,10 @@ fun TextView.setInputMessage(inputType: InputType?, game: Game?) {
         InputType.TIPP -> context.getString(R.string.block_input_tipps_message, game.currentCardCount)
         InputType.RESULT -> context.getString(R.string.block_input_result_message, game.currentCardCount)
     }
+}
+
+@BindingAdapter("position")
+fun TextView.setPosition(pos: Int?) {
+    if (pos == null) return
+    text = context.getString(R.string.block_scores_position, pos)
 }
