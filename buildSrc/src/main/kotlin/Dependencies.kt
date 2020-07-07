@@ -140,12 +140,14 @@ object Dependencies {
         private const val coilVersion = "0.11.0"
         private const val debugDbVersion = "1.0.6"
         private const val gsonVersion = "2.8.6"
+        private const val konfettiVersion= "1.2.2"
         private const val timberVersion = "4.7.1"
         private const val jUnitVersion = "4.13"
 
         const val coil = "io.coil-kt:coil:$coilVersion"
         const val debugDb = "com.amitshekhar.android:debug-db:$debugDbVersion"
         const val gson = "com.google.code.gson:gson:$gsonVersion"
+        const val konfetti = "nl.dionsegijn:konfetti:$konfettiVersion"
         const val timber = "com.jakewharton.timber:timber:$timberVersion"
         const val junit = "junit:junit:$jUnitVersion"
 

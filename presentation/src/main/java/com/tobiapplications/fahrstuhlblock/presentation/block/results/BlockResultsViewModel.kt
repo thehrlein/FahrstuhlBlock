@@ -16,6 +16,8 @@ import com.tobiapplications.fahrstuhlblock.presentation.SingleLiveEvent
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
 
+private const val WINNER_POSITION = 1
+
 class BlockResultsViewModel(
     private val getGameUseCase: GetGameUseCase,
     private val getBlockResultsUseCase: GetBlockResultsUseCase,
@@ -80,6 +82,10 @@ class BlockResultsViewModel(
     fun onTrophyClicked() {
         val scores = gameScores.value ?: return
         navigateTo(Screen.Block.Scores(scores))
+    }
+
+    fun onGameFinished(results: List<GameScore>) {
+        navigateTo(Screen.Block.GameFinished(results.filter { it.position == WINNER_POSITION }))
     }
 
 }

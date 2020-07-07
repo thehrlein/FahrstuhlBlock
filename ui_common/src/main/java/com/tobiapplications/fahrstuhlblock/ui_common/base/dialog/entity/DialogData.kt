@@ -1,5 +1,6 @@
 package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity
 
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScore
 import com.tobiapplications.fahrstuhlblock.ui_common.R
 import java.io.Serializable
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogRequestCode
@@ -30,6 +31,14 @@ sealed class DialogData : Serializable {
             neutralButtonText = resourceHelper.getString(R.string.general_cancel)
         ) {
             override val requestCode: Int = DialogRequestCode.BLOCK_EXIT
+        }
+
+        class GameFinished(winners: List<GameScore>, resourceHelper: ResourceHelper) : Text(
+            title = resourceHelper.getString(R.string.block_winner_title),
+            message = resourceHelper.getPlural(R.plurals.game_winner_message, winners.size, winners.joinToString { it.player }, winners.first().points),
+            positiveButtonText = resourceHelper.getString(R.string.general_ok)
+        ) {
+            override val requestCode: Int = DialogRequestCode.GAME_FINISHED
         }
     }
 

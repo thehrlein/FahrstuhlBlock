@@ -4,6 +4,7 @@
     <string name="general_true">True</string>
     <string name="general_false">False</string>
     <string name="general_cancel">Cancel</string>
+    <string name="general_ok" translatable="false">Ok</string>
 
     <string name="dialog_exit_title">Attention</string>
     <string name="dialog_exit_message">Do you want to quit this application or return to the menu?</string>
@@ -58,14 +59,17 @@
     <string name="point_rules_points_for_false_prediction_switch_hint_negative">You only get points if your prediction is correct. If not, you get minus points</string>
 
 
-    <!-- block results -->
+    <!-- Block results -->
     <string name="block_results_toolbar_title" translatable="false">Block</string>
     <string name="block_fab_add_prediction">Tipps</string>
     <string name="block_fab_add_results">Results</string>
     <string name="block_fab_exit">Exit</string>
+    <string name="block_winner_title">Congratulations</string>
+    <string name="block_winner_message_singlular">%1$s has won with a total of %2$d points</string>
+    <string name="block_winner_message_plural">%1$s have won with a total of %2$d points</string>
 
 
-    <!-- block input -->
+    <!-- Block input -->
     <string name="block_input_toolbar_title_tipps">Tipps</string>
     <string name="block_input_toolbar_title_results">Results</string>
     <string name="block_input_general_title">Round %1$d - %2$d cards</string>
@@ -73,7 +77,7 @@
     <string name="block_input_result_message">Your combined results must be %1$d</string>
 
 
-    <!-- block scores -->
+    <!-- Block scores -->
     <string name="block_scores_toolbar_title">Current Scores</string>
     <string name="block_scores_position" translatable="false">%1$d.</string>
 

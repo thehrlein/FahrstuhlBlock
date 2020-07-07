@@ -34,4 +34,7 @@ dependencies {
 
     // Logging
     implementation(Dependencies.Other.timber)
+
+    // Other
+    implementation(Dependencies.Other.konfetti)
 }

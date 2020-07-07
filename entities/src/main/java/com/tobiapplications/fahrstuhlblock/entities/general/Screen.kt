@@ -1,5 +1,6 @@
 package com.tobiapplications.fahrstuhlblock.entities.general
 
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScore
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
@@ -45,6 +46,7 @@ sealed class Screen {
         object Menu : Block()
         class Input(val gameId: Long) : Block()
         class Scores(val gameScoreData: GameScoreData) : Block()
+        class GameFinished(val winners: List<GameScore>) : Block()
     }
 
     sealed class Input : Screen() {

@@ -21,6 +21,7 @@ interface ResourceHelper {
     fun getString(@StringRes stringRes: Int, vararg args: Any): String
     fun getPlural(@PluralsRes pluralRes: Int, quantity: Int): String
     fun getPlural(@PluralsRes pluralRes: Int, quantity: Int, param: Int): String
+    fun getPlural(@PluralsRes pluralRes: Int, quantity: Int, param1: String, param2: Int): String
 }
 
 class ResourceHelperImpl(val context: Context) :
@@ -67,4 +68,11 @@ class ResourceHelperImpl(val context: Context) :
             param
         )
 
+    override fun getPlural(pluralRes: Int, quantity: Int, param1: String, param2: Int): String =
+        context.resources.getQuantityString(
+            pluralRes,
+            quantity,
+            param1,
+            param2
+        )
 }

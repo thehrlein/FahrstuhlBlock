@@ -130,6 +130,10 @@ class NavigationComponentsHandler(
                     )
                 navHostController?.navigate(action)
             }
+            is Screen.Block.GameFinished -> SimpleAlertDialogFragment.show(
+                activity.supportFragmentManager,
+                DialogData.Text.GameFinished(screen.winners, resourceHelper)
+            )
         }.checkAllMatched
     }
 

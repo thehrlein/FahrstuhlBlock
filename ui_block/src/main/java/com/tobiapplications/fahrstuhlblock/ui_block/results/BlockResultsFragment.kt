@@ -1,7 +1,7 @@
 package com.tobiapplications.fahrstuhlblock.ui_block.results
 
+import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
 import android.view.*
 import android.widget.LinearLayout
 import androidx.activity.addCallback
@@ -14,6 +14,8 @@ import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentBlockResultsBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFragment
+import nl.dionsegijn.konfetti.models.Shape
+import nl.dionsegijn.konfetti.models.Size
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -53,7 +55,18 @@ class BlockResultsFragment :
 
         viewModel.gameScores.observe(viewLifecycleOwner, Observer {
             if (it.finished) {
+                binding.konfettiView.build()
+                    .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                    .setDirection(0.0, 359.0)
+                    .setSpeed(1f, 5f)
+                    .setFadeOutEnabled(true)
+                    .setTimeToLive(2000L)
+                    .addShapes(Shape.Square, Shape.Circle)
+                    .addSizes(Size(12, 5f))
+                    .setPosition(-50f, binding.konfettiView.width + 50f, -50f, -50f)
+                    .streamFor(300, 5000L)
 
+                viewModel.onGameFinished(it.results)
             }
         })
 
