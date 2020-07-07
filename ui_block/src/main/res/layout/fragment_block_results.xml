@@ -23,14 +23,15 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/game_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:fixedColumnCount="@{viewModel.columnCount}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingBottom="75dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:itemCount="4"
-                tools:listitem="@layout/item_auto_complete_text_row" />
+                tools:listitem="@layout/item_block_result" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -40,9 +41,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="@dimen/space_4"
-            app:icon="@drawable/ic_add"
             android:onClick="@{() -> viewModel.onFabClicked()}"
             app:gameFinished="@{viewModel.gameScores.finished}"
+            app:icon="@drawable/ic_add"
             app:inputType="@{viewModel.inputType}" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

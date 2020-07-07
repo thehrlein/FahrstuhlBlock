@@ -20,9 +20,12 @@ data class Game(
             gameInfo.highCardCount - (fullPlayedRounds - gameInfo.highCardCount)
         }
 
-
     val currentRound: Int
-        get() = rounds.size + 1
+        get() = when {
+            rounds.isEmpty() -> 1
+            rounds.last().roundCompleted -> rounds.size + 1
+            else -> rounds.size
+        }
 
     val inputType: InputType
         get() = rounds.lastOrNull()?.let {

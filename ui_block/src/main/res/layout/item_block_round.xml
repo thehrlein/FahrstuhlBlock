@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/block_cell_width"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/block_cell_height">
 
         <TextView

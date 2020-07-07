@@ -1,14 +1,15 @@
 package com.tobiapplications.fahrstuhlblock.ui_block.results
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.*
 import android.widget.LinearLayout
 import androidx.activity.addCallback
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsViewModel
+import androidx.recyclerview.widget.GridLayoutManager
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
+import com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsViewModel
 import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentBlockResultsBinding
@@ -51,7 +52,9 @@ class BlockResultsFragment :
         })
 
         viewModel.gameScores.observe(viewLifecycleOwner, Observer {
+            if (it.finished) {
 
+            }
         })
 
         initAdapter()
@@ -67,9 +70,27 @@ class BlockResultsFragment :
                 adapter = blockResultAdapter
                 addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
                 addItemDecoration(DividerItemDecoration(context, LinearLayout.HORIZONTAL))
+
             }
             viewModel.blockItems.observe(viewLifecycleOwner, Observer { blockItems ->
+                val columnCount = viewModel.columnCount.value ?: 0
+                binding.gameList.layoutManager =
+                    GridLayoutManager(requireContext(), columnCount).apply {
+                        spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                            override fun getSpanSize(position: Int): Int {
+                                return when (blockResultAdapter.getItemViewType(position)) {
+                                    R.layout.item_block_placeholder -> 1
+                                    R.layout.item_block_round -> 1
+                                    R.layout.item_block_name -> 2
+                                    R.layout.item_block_result -> 2
+                                    else -> 0
+                                }
+                            }
+                        }
+                    }
+
                 blockResultAdapter.submitList(blockItems)
+                binding.gameList.scrollToPosition(blockItems.size - 1)
             })
         }
 
@@ -77,12 +98,6 @@ class BlockResultsFragment :
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_block, menu)
-//        menu.findItem(R.id.trophy).icon.setTint(
-//            ContextCompat.getColor(
-//                requireContext(),
-//                R.color.mb_white
-//            )
-//        )
         super.onCreateOptionsMenu(menu, inflater)
     }
 

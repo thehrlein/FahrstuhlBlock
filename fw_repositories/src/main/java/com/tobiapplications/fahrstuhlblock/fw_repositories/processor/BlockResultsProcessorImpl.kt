@@ -92,17 +92,19 @@ class BlockResultsProcessorImpl : BaseProcessor, BlockResultsProcessor {
                     )
                 })
             }
+
+            val columnCount = game.gameInfo.players.names.size * 2 + 1
             BlockItemData(
                 items = blockItems,
                 inputType = game.inputType,
-                columnCount = game.gameInfo.players.names.size + 1
+                columnCount = columnCount
             )
 
         }
 
     override suspend fun getGameScores(game: Game): AppResult<GameScoreData> =
         safeCall {
-            val gameFinished = game.currentRound == game.maxRound
+            val gameFinished = game.currentRound > game.maxRound
             val players = game.gameInfo.players.names
 
             val lastRound = game.rounds.lastOrNull { it.playerResultData.isNotEmpty() }

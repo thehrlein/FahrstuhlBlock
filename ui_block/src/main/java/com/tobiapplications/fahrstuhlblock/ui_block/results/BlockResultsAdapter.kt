@@ -3,6 +3,7 @@ package com.tobiapplications.fahrstuhlblock.ui_block.results
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.*
