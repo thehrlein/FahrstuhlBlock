@@ -2,7 +2,7 @@
 <resources>
 
     <plurals name="game_winner_message">
-        <item quantity="one">@string/block_winner_message_singlular</item>
-        <item quantity="other">@string/block_winner_message_plural</item>
+        <item quantity="one">@string/block_results_winner_message_singlular</item>
+        <item quantity="other">@string/block_results_winner_message_plural</item>
     </plurals>
 </resources>

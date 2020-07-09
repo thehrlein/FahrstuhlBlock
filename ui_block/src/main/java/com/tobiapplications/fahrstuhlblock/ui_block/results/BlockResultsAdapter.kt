@@ -96,7 +96,9 @@ class BlockResultsAdapter : ListAdapter<BlockItem, RecyclerView.ViewHolder>(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: BlockName) {
-            binding.name.text = item.name
+            binding.executeAfter {
+                this.item = item
+            }
         }
     }
 

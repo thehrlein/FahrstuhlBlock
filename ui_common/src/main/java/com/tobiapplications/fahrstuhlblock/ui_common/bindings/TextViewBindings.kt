@@ -1,5 +1,6 @@
 package com.tobiapplications.fahrstuhlblock.ui_common.bindings
 
+import android.graphics.Typeface
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -42,4 +43,9 @@ fun TextView.setInputMessage(inputType: InputType?, game: Game?) {
 fun TextView.setPosition(pos: Int?) {
     if (pos == null) return
     text = context.getString(R.string.block_scores_position, pos)
+}
+
+@BindingAdapter("bold")
+fun TextView.setBold(bold: Boolean?) {
+    setTypeface(null, if (bold == true) Typeface.BOLD else Typeface.NORMAL)
 }

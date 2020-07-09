@@ -77,7 +77,13 @@ class BlockResultsProcessorImpl : BaseProcessor, BlockResultsProcessor {
             val blockItems = mutableListOf<BlockItem>()
             blockItems.add(BlockPlaceholder())
             val players = game.gameInfo.players.names
-            blockItems.addAll(players.map { BlockName(it) })
+            val currentRound = game.currentRound
+            blockItems.addAll(players.mapIndexed { index: Int, name: String ->
+                BlockName(
+                    name = name,
+                    isDealer = isDealer(currentRound, game.maxRound, players.size, index + 1)
+                )
+            })
             game.rounds.forEach { round ->
                 blockItems.add(BlockRound(round.card))
                 blockItems.addAll(round.playerTippData.mapIndexed { index: Int, playerTippData: PlayerTippData ->
@@ -101,6 +107,15 @@ class BlockResultsProcessorImpl : BaseProcessor, BlockResultsProcessor {
             )
 
         }
+
+    private fun isDealer(round: Int, maxRound: Int, playerCount: Int, playerPosition: Int): Boolean {
+        val remainder = round % playerCount
+        return when {
+            round > maxRound -> false
+            playerPosition == playerCount -> remainder == 0
+            else -> remainder == playerPosition
+        }
+    }
 
     override suspend fun getGameScores(game: Game): AppResult<GameScoreData> =
         safeCall {

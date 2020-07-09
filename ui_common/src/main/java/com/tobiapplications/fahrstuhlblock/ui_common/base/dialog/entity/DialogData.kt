@@ -34,7 +34,7 @@ sealed class DialogData : Serializable {
         }
 
         class GameFinished(winners: List<GameScore>, resourceHelper: ResourceHelper) : Text(
-            title = resourceHelper.getString(R.string.block_winner_title),
+            title = resourceHelper.getString(R.string.block_results_winner_title),
             message = resourceHelper.getPlural(R.plurals.game_winner_message, winners.size, winners.joinToString { it.player }, winners.first().points),
             positiveButtonText = resourceHelper.getString(R.string.general_ok)
         ) {

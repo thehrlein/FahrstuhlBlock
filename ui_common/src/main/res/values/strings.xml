@@ -61,12 +61,13 @@
 
     <!-- Block results -->
     <string name="block_results_toolbar_title" translatable="false">Block</string>
-    <string name="block_fab_add_prediction">Tipps</string>
-    <string name="block_fab_add_results">Results</string>
-    <string name="block_fab_exit">Exit</string>
-    <string name="block_winner_title">Congratulations</string>
-    <string name="block_winner_message_singlular">%1$s has won with a total of %2$d points</string>
-    <string name="block_winner_message_plural">%1$s have won with a total of %2$d points</string>
+    <string name="block_results_fab_add_prediction">Tipps</string>
+    <string name="block_results_fab_add_results">Results</string>
+    <string name="block_results_fab_exit">Exit</string>
+    <string name="block_results_winner_title">Congratulations</string>
+    <string name="block_results_winner_message_singlular">%1$s has won with a total of %2$d points</string>
+    <string name="block_results_winner_message_plural">%1$s have won with a total of %2$d points</string>
+    <string name="block_results_is_dealer_hint">(Dealer)</string>
 
 
     <!-- Block input -->
