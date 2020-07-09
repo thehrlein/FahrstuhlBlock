@@ -9,15 +9,19 @@ data class Game(
 ) : Serializable {
 
     val currentCardCount: Int
-        get() = if (rounds.size < gameInfo.highCardCount) {
-            when {
-                rounds.isEmpty() -> 1
-                rounds.last().playerResultData.isEmpty() -> rounds.size
-                else -> rounds.size + 1
+        get() = when {
+            rounds.size < gameInfo.highCardCount -> {
+                when {
+                    rounds.isEmpty() -> 1
+                    rounds.last().playerResultData.isEmpty() -> rounds.size
+                    else -> rounds.size + 1
+                }
             }
-        } else {
-            val fullPlayedRounds = rounds.count { it.roundCompleted }
-            gameInfo.highCardCount - (fullPlayedRounds - gameInfo.highCardCount)
+            rounds.size == gameInfo.highCardCount -> gameInfo.highCardCount
+            else -> {
+                val fullPlayedRounds = rounds.count { it.roundCompleted }
+                gameInfo.highCardCount - (fullPlayedRounds - gameInfo.highCardCount)
+            }
         }
 
     val currentRound: Int

@@ -33,6 +33,7 @@ fun TextView.setInputTitle(game: Game?) {
 @BindingAdapter("inputMessage", "game", requireAll = true)
 fun TextView.setInputMessage(inputType: InputType?, game: Game?) {
     if (inputType == null || game?.currentCardCount == null) return
+    setVisible(game.currentRound > 1 || inputType == InputType.RESULT)
     text = when (inputType) {
         InputType.TIPP -> context.getString(R.string.block_input_tipps_message, game.currentCardCount)
         InputType.RESULT -> context.getString(R.string.block_input_result_message, game.currentCardCount)
