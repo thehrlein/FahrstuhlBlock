@@ -13,7 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/result_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/block_cell_height">
+        android:layout_height="@dimen/block_cell_height"
+        android:background="@{item.colorized ? @color/block_odd_row_color : @android:color/transparent}">
 
         <TextView
             android:id="@+id/tipp"

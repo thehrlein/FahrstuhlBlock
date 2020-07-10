@@ -15,6 +15,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     // Modules
+    implementation(project(Module.Ui.common))
     implementation(project(Module.General.interactor))
     implementation(project(Module.General.entities))
 

@@ -116,7 +116,9 @@ class BlockResultsAdapter : ListAdapter<BlockItem, RecyclerView.ViewHolder>(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: BlockRound) {
-            binding.round.text = item.round.toString()
+            binding.executeAfter {
+                this.item = item
+            }
         }
     }
 }

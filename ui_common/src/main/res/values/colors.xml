@@ -41,9 +41,9 @@
 
     <!-- individual colors -->
     <color name="color_light_grey">#6F6F6F</color>
-    <color name="tutorial_overlay">#E6000000</color>
     <color name="block_result_positive_difference">#4CAF50</color>
     <color name="block_result_negative_difference">#C11407</color>
+    <color name="block_odd_row_color">#D5D5D5</color>
 
 
 </resources>

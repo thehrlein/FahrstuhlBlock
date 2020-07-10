@@ -7,6 +7,7 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerTi
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.*
 import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockResultsProcessor
+import com.tobiapplications.fahrstuhlblock.ui_common.extension.isOdd
 import kotlin.math.abs
 
 class BlockResultsProcessorImpl : BaseProcessor, BlockResultsProcessor {
@@ -85,7 +86,12 @@ class BlockResultsProcessorImpl : BaseProcessor, BlockResultsProcessor {
                 )
             })
             game.rounds.forEach { round ->
-                blockItems.add(BlockRound(round.card))
+                blockItems.add(
+                    BlockRound(
+                        round = round.card,
+                        colorized = round.card.isOdd()
+                    )
+                )
                 blockItems.addAll(round.playerTippData.mapIndexed { index: Int, playerTippData: PlayerTippData ->
                     val resultData = round.playerResultData.getOrNull(index)
                     BlockResult(
@@ -94,7 +100,8 @@ class BlockResultsProcessorImpl : BaseProcessor, BlockResultsProcessor {
                         tipp = playerTippData.tipp,
                         result = resultData?.result,
                         difference = resultData?.difference,
-                        total = resultData?.total
+                        total = resultData?.total,
+                        colorized = round.card.isOdd()
                     )
                 })
             }
@@ -108,7 +115,12 @@ class BlockResultsProcessorImpl : BaseProcessor, BlockResultsProcessor {
 
         }
 
-    private fun isDealer(round: Int, maxRound: Int, playerCount: Int, playerPosition: Int): Boolean {
+    private fun isDealer(
+        round: Int,
+        maxRound: Int,
+        playerCount: Int,
+        playerPosition: Int
+    ): Boolean {
         val remainder = round % playerCount
         return when {
             round > maxRound -> false

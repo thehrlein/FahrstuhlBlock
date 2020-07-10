@@ -63,7 +63,7 @@ class BlockInputViewModel(
         _round.postValue(round)
         val inputType = round.currentInputType
         _inputType.postValue(inputType)
-        _inputModels.postValue(game.gameInfo.players.names.mapIndexedNotNull { index: Int, name: String ->
+        _inputModels.postValue(game.gameInfo.players.names.mapIndexed { index: Int, name: String ->
             InputData(
                 type = inputType,
                 player = name,
