@@ -18,11 +18,11 @@ interface GameRepository {
 
     suspend fun addPlayers(names: List<String>): AppResult<Unit>
 
-    suspend fun getAllPlayerNames(): AppResult<List<String>>
+    suspend fun getAllPlayerNames(): AppResult<Set<String>>
 
     suspend fun insertRound(roundData: InsertRoundData): AppResult<Boolean>
 
-    suspend fun calculateResults(parameters: CalculateResultData): AppResult<List<PlayerResultData>>
+    suspend fun calculateResults(calculateResultData: CalculateResultData): AppResult<List<PlayerResultData>>
 
     suspend fun getBlockResults(gameId: Long): AppResult<BlockItemData>
 

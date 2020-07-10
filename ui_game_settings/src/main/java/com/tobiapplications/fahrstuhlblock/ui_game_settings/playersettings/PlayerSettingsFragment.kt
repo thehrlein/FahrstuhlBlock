@@ -40,19 +40,6 @@ class PlayerSettingsFragment : BaseToolbarFragment<PlayerSettingsViewModel, Game
                 })
             }
         }
-
-        viewModel.playerNameOptions.observe(viewLifecycleOwner, Observer {
-            val adapter = ArrayAdapter(requireContext(),
-                R.layout.item_auto_complete_text_row, it)
-            (binding.playerOneLayout.textInputLayoutOutlined.editText as AutoCompleteTextView).setAdapter(adapter)
-            (binding.playerTwoLayout.textInputLayoutOutlined.editText as AutoCompleteTextView).setAdapter(adapter)
-            (binding.playerThreeLayout.textInputLayoutOutlined.editText as AutoCompleteTextView).setAdapter(adapter)
-            (binding.playerFourLayout.textInputLayoutOutlined.editText as AutoCompleteTextView).setAdapter(adapter)
-            (binding.playerFiveLayout.textInputLayoutOutlined.editText as AutoCompleteTextView).setAdapter(adapter)
-            (binding.playerSixLayout.textInputLayoutOutlined.editText as AutoCompleteTextView).setAdapter(adapter)
-            (binding.playerSevenLayout.textInputLayoutOutlined.editText as AutoCompleteTextView).setAdapter(adapter)
-            (binding.playerEightLayout.textInputLayoutOutlined.editText as AutoCompleteTextView).setAdapter(adapter)
-        })
     }
 
 }

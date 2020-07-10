@@ -22,12 +22,12 @@ class PlayerCacheImpl(
             }
         }
 
-    override suspend fun getAllPlayerNames(): AppResult<List<String>> =
+    override suspend fun getAllPlayerNames(): AppResult<Set<String>> =
         withContext(Dispatchers.IO) {
             safeCall {
                 playerDao.queryAllPlayerNames().map {
                     it.name
-                }
+                }.toSet()
             }
         }
 }

@@ -28,6 +28,8 @@
     <string name="player_settings_player_count_seven" translatable="false">7</string>
     <string name="player_settings_player_count_eight" translatable="false">8</string>
     <string name="player_settings_player_hint">Player %1$d</string>
+    <string name="player_settings_player_name_empty">Please choose a name</string>
+    <string name="player_settings_player_name_duplicate">This name is already chosen. Please take another one</string>
     <string name="player_settings_button_proceed">Continue</string>
 
     <!-- Player order -->

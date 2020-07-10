@@ -6,5 +6,5 @@ interface PlayerCache {
 
     suspend fun addPlayers(names: List<String>) : AppResult<Unit>
 
-    suspend fun getAllPlayerNames() : AppResult<List<String>>
+    suspend fun getAllPlayerNames() : AppResult<Set<String>>
 }

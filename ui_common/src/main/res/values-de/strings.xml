@@ -19,6 +19,8 @@
     <string name="block_results_fab_add_prediction">Tipps</string>
     <string name="block_results_fab_add_results">Ergebnisse</string>
     <string name="block_results_fab_exit">Beenden</string>
+    <string name="player_settings_player_name_duplicate">Dieser Name existiert bereits. Bitte wähle einen anderen</string>
+    <string name="player_settings_player_name_empty">Bitte gibt deinen Namen ein</string>
 
     <string name="player_settings_toolbar_title">Spielereinstellungen</string>
     <string name="player_settings_player_count_hint">Wähle die Anzahl Spieler</string>

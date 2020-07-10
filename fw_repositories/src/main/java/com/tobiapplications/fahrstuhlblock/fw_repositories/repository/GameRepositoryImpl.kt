@@ -34,7 +34,7 @@ class GameRepositoryImpl(
         return playerCache.addPlayers(names)
     }
 
-    override suspend fun getAllPlayerNames(): AppResult<List<String>> {
+    override suspend fun getAllPlayerNames(): AppResult<Set<String>> {
         return playerCache.getAllPlayerNames()
     }
 

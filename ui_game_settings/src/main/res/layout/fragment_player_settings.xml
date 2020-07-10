@@ -22,8 +22,8 @@
                 android:id="@+id/player_count_choose_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="?textAppearanceHeadline5"
                 android:text="@string/player_settings_player_count_hint"
+                android:textAppearance="?textAppearanceHeadline5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -91,111 +91,119 @@
 
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
-            <include
+            <com.tobiapplications.fahrstuhlblock.ui_common.views.PlayerNameInputView
                 android:id="@+id/player_one_layout"
-                layout="@layout/include_player"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_8"
-                android:visibility="@{viewModel.players.get(0).first}"
+                android:visibility="@{viewModel.playerVisibilities.get(0)}"
+                app:adapterItems="@{viewModel.playerNameOptions}"
+                app:hint="@{String.format(@string/player_settings_player_hint, 1)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/player_count_choose_button_group"
-                app:position="@{1}"
-                app:text="@={viewModel.players.get(0).second}" />
+                app:player="@={viewModel.playerNames.get(0)}"
+                app:playerError="@{viewModel.playerErrors.get(0)}" />
 
-            <include
+            <com.tobiapplications.fahrstuhlblock.ui_common.views.PlayerNameInputView
                 android:id="@+id/player_two_layout"
-                layout="@layout/include_player"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.players.get(1).first}"
+                android:visibility="@{viewModel.playerVisibilities.get(1)}"
+                app:adapterItems="@{viewModel.playerNameOptions}"
+                app:hint="@{String.format(@string/player_settings_player_hint, 2)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/player_one_layout"
-                app:position="@{2}"
-                app:text="@={viewModel.players.get(1).second}" />
+                app:player="@={viewModel.playerNames.get(1)}"
+                app:playerError="@{viewModel.playerErrors.get(1)}" />
 
-            <include
+            <com.tobiapplications.fahrstuhlblock.ui_common.views.PlayerNameInputView
                 android:id="@+id/player_three_layout"
-                layout="@layout/include_player"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.players.get(2).first}"
+                android:visibility="@{viewModel.playerVisibilities.get(2)}"
+                app:adapterItems="@{viewModel.playerNameOptions}"
+                app:hint="@{String.format(@string/player_settings_player_hint, 3)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/player_two_layout"
-                app:position="@{3}"
-                app:text="@={viewModel.players.get(2).second}" />
+                app:player="@={viewModel.playerNames.get(2)}"
+                app:playerError="@{viewModel.playerErrors.get(2)}" />
 
-            <include
+            <com.tobiapplications.fahrstuhlblock.ui_common.views.PlayerNameInputView
                 android:id="@+id/player_four_layout"
-                layout="@layout/include_player"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.players.get(3).first}"
+                android:visibility="@{viewModel.playerVisibilities.get(3)}"
+                app:adapterItems="@{viewModel.playerNameOptions}"
+                app:hint="@{String.format(@string/player_settings_player_hint, 4)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/player_three_layout"
-                app:position="@{4}"
-                app:text="@={viewModel.players.get(3).second}" />
+                app:player="@={viewModel.playerNames.get(3)}"
+                app:playerError="@{viewModel.playerErrors.get(3)}" />
 
-            <include
+            <com.tobiapplications.fahrstuhlblock.ui_common.views.PlayerNameInputView
                 android:id="@+id/player_five_layout"
-                layout="@layout/include_player"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.players.get(4).first}"
+                android:visibility="@{viewModel.playerVisibilities.get(4)}"
+                app:adapterItems="@{viewModel.playerNameOptions}"
+                app:hint="@{String.format(@string/player_settings_player_hint, 5)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/player_four_layout"
-                app:position="@{5}"
-                app:text="@={viewModel.players.get(4).second}" />
+                app:player="@={viewModel.playerNames.get(4)}"
+                app:playerError="@{viewModel.playerErrors.get(4)}" />
 
-            <include
+            <com.tobiapplications.fahrstuhlblock.ui_common.views.PlayerNameInputView
                 android:id="@+id/player_six_layout"
-                layout="@layout/include_player"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.players.get(5).first}"
+                android:visibility="@{viewModel.playerVisibilities.get(5)}"
+                app:adapterItems="@{viewModel.playerNameOptions}"
+                app:hint="@{String.format(@string/player_settings_player_hint, 6)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/player_five_layout"
-                app:position="@{6}"
-                app:text="@={viewModel.players.get(5).second}" />
+                app:player="@={viewModel.playerNames.get(5)}"
+                app:playerError="@{viewModel.playerErrors.get(5)}" />
 
-            <include
+            <com.tobiapplications.fahrstuhlblock.ui_common.views.PlayerNameInputView
                 android:id="@+id/player_seven_layout"
-                layout="@layout/include_player"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.players.get(6).first}"
+                android:visibility="@{viewModel.playerVisibilities.get(6)}"
+                app:adapterItems="@{viewModel.playerNameOptions}"
+                app:hint="@{String.format(@string/player_settings_player_hint, 7)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/player_six_layout"
-                app:position="@{7}"
-                app:text="@={viewModel.players.get(6).second}" />
+                app:player="@={viewModel.playerNames.get(6)}"
+                app:playerError="@{viewModel.playerErrors.get(6)}" />
 
-            <include
+            <com.tobiapplications.fahrstuhlblock.ui_common.views.PlayerNameInputView
                 android:id="@+id/player_eight_layout"
-                layout="@layout/include_player"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="@{viewModel.players.get(7).first}"
+                android:visibility="@{viewModel.playerVisibilities.get(7)}"
+                app:adapterItems="@{viewModel.playerNameOptions}"
+                app:hint="@{String.format(@string/player_settings_player_hint, 8)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/player_seven_layout"
-                app:position="@{8}"
-                app:text="@={viewModel.players.get(7).second}" />
+                app:player="@={viewModel.playerNames.get(7)}"
+                app:playerError="@{viewModel.playerErrors.get(7)}" />
 
             <Button
                 android:id="@+id/button_proceed"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_8"
+                android:enabled="@{viewModel.inputValid}"
                 android:onClick="@{() -> viewModel.onProceedClicked()}"
                 android:text="@string/player_settings_button_proceed"
-                android:enabled="@{viewModel.inputValid}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/player_eight_layout" />
