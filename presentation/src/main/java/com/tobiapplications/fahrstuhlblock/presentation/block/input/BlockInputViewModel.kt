@@ -68,10 +68,6 @@ class BlockInputViewModel(
         })
     }
 
-    private fun createNewRound(card: Int): Round {
-        return Round(card, emptyList(), emptyList(), TrumpType.NONE)
-    }
-
     fun onSaveClicked() {
         val currentRound = _round.value ?: error("could not determine round")
         val inputs = getInputs()

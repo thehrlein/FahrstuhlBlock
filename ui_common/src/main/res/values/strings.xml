@@ -90,5 +90,6 @@
     <string name="block_trump_type_spades">Spades</string>
     <string name="block_trump_type_hearts">Hearts</string>
     <string name="block_trump_type_diamonds">Diamonds</string>
+    <string name="block_trump_disable_auto_show_dialog">Show this dialog automatically for each round</string>
 
 </resources>

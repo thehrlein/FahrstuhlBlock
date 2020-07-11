@@ -67,5 +67,8 @@ class BlockTrumpDialog : BaseDialogFragment<BlockTrumpViewModel, DialogBlockTrum
         super.onBindingCreated()
 
         binding.trumpSelectionGroup.setSelectedItem(dialogData.selectedTrumpType)
+        binding.autoShowTrumpDialog.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.onAutoShowTrumpDialogChanged(isChecked)
+        }
     }
 }

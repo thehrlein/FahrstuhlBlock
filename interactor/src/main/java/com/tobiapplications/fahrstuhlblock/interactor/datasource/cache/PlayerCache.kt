@@ -1,4 +1,4 @@
-package com.tobiapplications.fahrstuhlblock.interactor.datasource
+package com.tobiapplications.fahrstuhlblock.interactor.datasource.cache
 
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 

@@ -7,9 +7,6 @@ import androidx.security.crypto.MasterKeys
 import com.google.gson.Gson
 import kotlin.reflect.KProperty
 
-private val keyGenParameterSpec = MasterKeys.AES256_GCM_SPEC
-private val masterKeyAlias = MasterKeys.getOrCreate(keyGenParameterSpec)
-private const val ENCRYPTED_SHARED_PREFERENCES_FILE = "shared_preferences_cwa"
 
 abstract class BaseSharedPreferences(
     context: Context
@@ -17,22 +14,9 @@ abstract class BaseSharedPreferences(
 
     protected abstract val preferencesFileName: String
     private val prefs: SharedPreferences by lazy {
-        getEncryptedSharedPrefs(context,
-            ENCRYPTED_SHARED_PREFERENCES_FILE
-        )
+        context.getSharedPreferences(preferencesFileName, Context.MODE_PRIVATE)
     }
 
-    /**
-     * Initializes the private encrypted key store
-     */
-    private fun getEncryptedSharedPrefs(context: Context, fileName: String) = EncryptedSharedPreferences
-        .create(
-            fileName,
-            masterKeyAlias,
-            context,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
 
     protected abstract class PrefDelegate<T>(val prefKey: String) {
         abstract operator fun getValue(thisRef: Any?, property: KProperty<*>): T

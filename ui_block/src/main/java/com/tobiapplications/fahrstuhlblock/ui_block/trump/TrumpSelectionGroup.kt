@@ -66,8 +66,8 @@ class TrumpSelectionGroup @JvmOverloads constructor(
     }
 
     fun getSelectedTrumpType(): TrumpType {
-        val item = items.values.firstOrNull { it.isChecked()} //?: TrumpType.CLUB
-        return items.filterValues { it == item }.keys.first()
+        val item = items.values.firstOrNull { it.isChecked()}
+        return items.filterValues { it == item }.keys.firstOrNull() ?: TrumpType.NONE
     }
 
     fun setSelectedItem(selectedTrumpType: TrumpType) {

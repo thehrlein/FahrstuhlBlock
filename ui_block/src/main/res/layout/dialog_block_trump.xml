@@ -11,7 +11,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_4">
 
         <com.tobiapplications.fahrstuhlblock.ui_block.trump.TrumpSelectionGroup
             android:id="@+id/trump_selection_group"
@@ -23,6 +24,29 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1px"
+            android:layout_marginTop="@dimen/space_4"
+            android:background="?dividerHorizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/trump_selection_group"/>
+
+        <CheckBox
+            android:id="@+id/auto_show_trump_dialog"
+            android:layout_width="0dp"
+            android:layout_marginTop="@dimen/space_4"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:checked="@{viewModel.showTrumpDialogEnabled}"
+            android:paddingStart="@dimen/space_2"
+            android:paddingEnd="@dimen/space_none"
+            android:text="@string/block_trump_disable_auto_show_dialog"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

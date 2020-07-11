@@ -6,15 +6,21 @@ import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSett
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
 import com.tobiapplications.fahrstuhlblock.fw_database_room.databaseModule
+import com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.sharedpref.SharedPreferencesDataSource
 import com.tobiapplications.fahrstuhlblock.fw_repositories.processor.BlockInputsProcessorImpl
 import com.tobiapplications.fahrstuhlblock.fw_repositories.processor.BlockResultsProcessorImpl
 import com.tobiapplications.fahrstuhlblock.fw_repositories.repository.GameRepositoryImpl
+import com.tobiapplications.fahrstuhlblock.fw_repositories.repository.UserRepositoryImpl
+import com.tobiapplications.fahrstuhlblock.interactor.datasource.sharedpref.UserSettingsPersistence
 import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockInputsProcessor
 import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockResultsProcessor
 import com.tobiapplications.fahrstuhlblock.interactor.repository.GameRepository
+import com.tobiapplications.fahrstuhlblock.interactor.repository.UserRepository
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.*
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.GetPlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.StorePlayerNamesUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.user.IsShowTrumpDialogEnabledUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.user.SetShowTrumpDialogEnabledUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
@@ -32,6 +38,7 @@ import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelperImpl
 import com.tobiapplications.fahrstuhlblock.utils.NavigationComponentsHandler
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
+import org.koin.dsl.binds
 import org.koin.dsl.module
 
 
@@ -47,6 +54,10 @@ object Koin {
 
         // repository
         single<GameRepository> { GameRepositoryImpl(get(), get(), get(), get()) }
+        single<UserRepository> { UserRepositoryImpl(get()) }
+
+        // datasource
+        single { SharedPreferencesDataSource(get()) } binds (arrayOf(UserSettingsPersistence::class))
     }
 
     private val factory = module {
@@ -68,6 +79,8 @@ object Koin {
         factory { StoreRoundUseCase(get()) }
         factory { GetBlockResultsUseCase(get()) }
         factory { InputsValidUseCase(get()) }
+        factory { SetShowTrumpDialogEnabledUseCase(get()) }
+        factory { IsShowTrumpDialogEnabledUseCase(get()) }
     }
 
     private val viewModel = module {
@@ -96,9 +109,10 @@ object Koin {
                 get()
             )
         }
-        viewModel { (gameId: Long) ->  BlockViewModel(gameId) }
+        viewModel { (gameId: Long) -> BlockViewModel(gameId) }
         viewModel {
             BlockResultsViewModel(
+                get(),
                 get(),
                 get(),
                 get(),
@@ -116,7 +130,7 @@ object Koin {
         }
 
         viewModel { BlockScoresViewModel() }
-        viewModel { BlockTrumpViewModel() }
+        viewModel { BlockTrumpViewModel(get(), get()) }
     }
 
     fun getModules(): List<Module> {

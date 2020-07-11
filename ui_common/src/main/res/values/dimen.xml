@@ -5,6 +5,7 @@
     <!--
     space refers to the space between UI elements, measured in increments of 8dp or 4dp.
     -->
+    <dimen name="space_none">0dp</dimen>
     <dimen name="space_0">2dp</dimen>
     <dimen name="space_1">4dp</dimen>
     <dimen name="space_2">8dp</dimen>
@@ -74,6 +75,6 @@
     <dimen name="block_input_bottom_sheet_min_height">48dp</dimen>
 
     <!-- Trump -->
-    <dimen name="block_trump_item_height">100dp</dimen>
+    <dimen name="block_trump_item_height">80dp</dimen>
 
 </resources>

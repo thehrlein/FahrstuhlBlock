@@ -14,6 +14,8 @@ import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetBlockResu
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameScoresUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreRoundUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.invoke
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.user.IsShowTrumpDialogEnabledUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.SingleLiveEvent
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
@@ -24,7 +26,8 @@ class BlockResultsViewModel(
     private val getGameUseCase: GetGameUseCase,
     private val getBlockResultsUseCase: GetBlockResultsUseCase,
     private val getGameScoresUseCase: GetGameScoresUseCase,
-    private val storeRoundUseCase: StoreRoundUseCase
+    private val storeRoundUseCase: StoreRoundUseCase,
+    private val isShowTrumpDialogEnabledUseCase: IsShowTrumpDialogEnabledUseCase
 ) : BaseViewModel(), BlockResultsInteractions {
 
     private val _inputType = MutableLiveData<InputType>()
@@ -58,8 +61,25 @@ class BlockResultsViewModel(
                     _columnCount.postValue(result.value.columnCount)
                     _blockItems.postValue(result.value.items)
                     _inputType.postValue(result.value.inputType)
+                    showTrumpSelectionDialog(result.value)
                 }
                 is AppResult.Error -> Unit
+            }
+        }
+    }
+
+    private fun showTrumpSelectionDialog(data: BlockItemData) {
+        val placeHolderItem = data.items.firstOrNull { it is BlockPlaceholder } as? BlockPlaceholder ?: return
+        if (data.inputType == InputType.TIPP && placeHolderItem.trumpType == TrumpType.NONE) {
+            viewModelScope.launch {
+                when (val result = isShowTrumpDialogEnabledUseCase.invoke()) {
+                    is AppResult.Success -> {
+                        if (result.value) {
+                            navigateTo(Screen.Block.Trump(TrumpType.NONE))
+                        }
+                    }
+                    is AppResult.Error -> Unit
+                }
             }
         }
     }
@@ -96,6 +116,7 @@ class BlockResultsViewModel(
     }
 
     fun updateTrumpType(trumpType: TrumpType) {
+        if (trumpType == TrumpType.NONE) return
         val game = game.value ?: error("round not initialized - could not set trump type")
         val currentRound = game.currentRound
         val round = InsertRoundData(

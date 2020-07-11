@@ -7,13 +7,14 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRo
 import com.tobiapplications.fahrstuhlblock.fw_database_room.dao.GameDao
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.mapper.mapToData
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.mapper.mapToDbData
-import com.tobiapplications.fahrstuhlblock.interactor.datasource.GameCache
+import com.tobiapplications.fahrstuhlblock.interactor.datasource.cache.GameCache
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class GameCacheImpl(
     private val gameDao: GameDao
-) : BaseCache, GameCache {
+) : BaseCache,
+    GameCache {
 
     override suspend fun storeGameInfo(gameInfo: GameInfo): AppResult<Long> =
         withContext(Dispatchers.IO) {

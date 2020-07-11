@@ -9,8 +9,8 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateR
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItemData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData
-import com.tobiapplications.fahrstuhlblock.interactor.datasource.GameCache
-import com.tobiapplications.fahrstuhlblock.interactor.datasource.PlayerCache
+import com.tobiapplications.fahrstuhlblock.interactor.datasource.cache.GameCache
+import com.tobiapplications.fahrstuhlblock.interactor.datasource.cache.PlayerCache
 import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockInputsProcessor
 import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockResultsProcessor
 import com.tobiapplications.fahrstuhlblock.interactor.repository.GameRepository
