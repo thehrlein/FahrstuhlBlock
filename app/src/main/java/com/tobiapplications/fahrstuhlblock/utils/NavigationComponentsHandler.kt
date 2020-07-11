@@ -8,6 +8,7 @@ import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHand
 import com.tobiapplications.fahrstuhlblock.ui_block.BlockActivity
 import com.tobiapplications.fahrstuhlblock.ui_block.input.BlockInputFragmentDirections
 import com.tobiapplications.fahrstuhlblock.ui_block.results.BlockResultsFragmentDirections
+import com.tobiapplications.fahrstuhlblock.ui_block.trump.BlockTrumpDialog
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.SimpleAlertDialogFragment
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogData
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelper
@@ -133,6 +134,10 @@ class NavigationComponentsHandler(
             is Screen.Block.GameFinished -> SimpleAlertDialogFragment.show(
                 activity.supportFragmentManager,
                 DialogData.Text.GameFinished(screen.winners, resourceHelper)
+            )
+            is Screen.Block.Trump -> BlockTrumpDialog.show(
+                activity.supportFragmentManager,
+                DialogData.TypeCustom.Trump(resourceHelper, screen.selectedTrumpType)
             )
         }.checkAllMatched
     }

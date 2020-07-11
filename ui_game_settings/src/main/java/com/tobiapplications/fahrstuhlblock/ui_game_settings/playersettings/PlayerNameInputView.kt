@@ -1,4 +1,4 @@
-package com.tobiapplications.fahrstuhlblock.ui_common.views
+package com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,8 +6,8 @@ import android.widget.ArrayAdapter
 import android.widget.FrameLayout
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
-import com.tobiapplications.fahrstuhlblock.ui_common.R
-import com.tobiapplications.fahrstuhlblock.ui_common.databinding.WidgetPlayerNameInputBinding
+import com.tobiapplications.fahrstuhlblock.ui_game_settings.R
+import com.tobiapplications.fahrstuhlblock.ui_game_settings.databinding.WidgetPlayerNameInputBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.layoutInflater
 
 class PlayerNameInputView @JvmOverloads constructor(

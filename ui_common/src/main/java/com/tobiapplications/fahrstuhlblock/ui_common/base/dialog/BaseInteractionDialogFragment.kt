@@ -21,6 +21,8 @@ abstract class BaseInteractionDialogFragment : DialogFragment() {
     }
 
     protected fun sendResult(dialogData: DialogData, resultCode: Int, data: Intent? = null) {
-        interactor?.onDialogResult(dialogData.requestCode, resultCode, data)
+        val intentData = data ?: Intent()
+        intentData.putExtra(DialogData.KEY_DIALOG_DATA, dialogData)
+        interactor?.onDialogResult(dialogData.requestCode, resultCode, intentData)
     }
 }

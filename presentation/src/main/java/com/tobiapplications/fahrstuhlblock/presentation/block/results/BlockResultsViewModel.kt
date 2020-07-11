@@ -7,11 +7,13 @@ import androidx.lifecycle.viewModelScope
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRoundData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.*
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetBlockResultsUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameScoresUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreRoundUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.SingleLiveEvent
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
@@ -21,8 +23,9 @@ private const val WINNER_POSITION = 1
 class BlockResultsViewModel(
     private val getGameUseCase: GetGameUseCase,
     private val getBlockResultsUseCase: GetBlockResultsUseCase,
-    private val getGameScoresUseCase: GetGameScoresUseCase
-) : BaseViewModel() {
+    private val getGameScoresUseCase: GetGameScoresUseCase,
+    private val storeRoundUseCase: StoreRoundUseCase
+) : BaseViewModel(), BlockResultsInteractions {
 
     private val _inputType = MutableLiveData<InputType>()
     val inputType: LiveData<InputType> = _inputType
@@ -88,4 +91,24 @@ class BlockResultsViewModel(
         navigateTo(Screen.Block.GameFinished(results.filter { it.position == WINNER_POSITION }))
     }
 
+    override fun onTrumpClicked(trumpType: TrumpType) {
+        navigateTo(Screen.Block.Trump(trumpType))
+    }
+
+    fun updateTrumpType(trumpType: TrumpType) {
+        val game = game.value ?: error("round not initialized - could not set trump type")
+        val currentRound = game.currentRound
+        val round = InsertRoundData(
+            gameId = game.gameInfo.gameId,
+            round = currentRound.copy(
+                trumpType = trumpType
+            )
+        )
+        viewModelScope.launch {
+            when (val result = storeRoundUseCase.invoke(round)) {
+                is AppResult.Success -> setGameId(game.gameInfo.gameId)
+                is AppResult.Error -> Unit
+            }
+        }
+    }
 }

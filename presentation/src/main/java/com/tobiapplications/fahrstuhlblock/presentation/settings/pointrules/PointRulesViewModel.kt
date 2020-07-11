@@ -82,15 +82,16 @@ class PointRulesViewModel(
             pointsIfPredictionFalse.value ?: error("could not determine pointsIfPredictionFalse")
 
         val gameInfo = GameInfo(
-                gameRuleSettingsData.playerSettingsData,
-                gameRuleSettingsData.highCardCount,
-                PointsRuleData(
-                    correctPredictionPoints,
-                    pointsPerStitch,
-                    minusPointsPerStitch,
-                    pointsIfPredictionFalse
-                )
+            0,
+            gameRuleSettingsData.playerSettingsData,
+            gameRuleSettingsData.highCardCount,
+            PointsRuleData(
+                correctPredictionPoints,
+                pointsPerStitch,
+                minusPointsPerStitch,
+                pointsIfPredictionFalse
             )
+        )
         viewModelScope.launch {
             when (val result = storeGameInfoUseCase.invoke(gameInfo)) {
                 is AppResult.Success -> navigateTo(Screen.PointRules.Block(result.value))

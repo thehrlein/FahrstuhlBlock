@@ -73,4 +73,7 @@
     <dimen name="block_cell_height">50dp</dimen>
     <dimen name="block_input_bottom_sheet_min_height">48dp</dimen>
 
+    <!-- Trump -->
+    <dimen name="block_trump_item_height">100dp</dimen>
+
 </resources>

@@ -1,5 +1,6 @@
 package com.tobiapplications.fahrstuhlblock.entities.models.game.result
 
-data class BlockPlaceholder(
-    val trumpType: TrumpType
-) : BlockItem
+data class Trump(
+    val name: String,
+    val type: TrumpType
+)

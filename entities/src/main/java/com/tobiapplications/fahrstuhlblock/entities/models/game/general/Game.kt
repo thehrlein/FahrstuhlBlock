@@ -1,7 +1,10 @@
 package com.tobiapplications.fahrstuhlblock.entities.models.game.general
 
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
 import java.io.Serializable
+
+private const val FIRST_ROUND = 1
 
 data class Game(
     val gameInfo: GameInfo,
@@ -24,12 +27,17 @@ data class Game(
             }
         }
 
-    val currentRound: Int
+    val currentRoundNumber: Int
         get() = when {
-            rounds.isEmpty() -> 1
+            rounds.isEmpty() -> FIRST_ROUND
             rounds.last().roundCompleted -> rounds.size + 1
             else -> rounds.size
         }
+
+    val currentRound: Round
+        get() = rounds.lastOrNull()?.takeIf {
+            !it.roundCompleted
+        } ?: Round(currentRoundNumber, emptyList(), emptyList(), TrumpType.NONE)
 
     val inputType: InputType
         get() = rounds.lastOrNull()?.let {
@@ -47,6 +55,6 @@ data class Game(
             rounds[rounds.size - 2].playerResultData.map { it.total }
         }
 
-    val maxRound : Int
+    val maxRound: Int
         get() = gameInfo.highCardCount * 2
 }

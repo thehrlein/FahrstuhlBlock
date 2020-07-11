@@ -76,13 +76,13 @@ class BlockResultsProcessorImpl : BaseProcessor, BlockResultsProcessor {
     override suspend fun generateBlockResultModels(game: Game): AppResult<BlockItemData> =
         safeCall {
             val blockItems = mutableListOf<BlockItem>()
-            blockItems.add(BlockPlaceholder())
+            blockItems.add(BlockPlaceholder(game.currentRound.trumpType))
             val players = game.gameInfo.players.names
-            val currentRound = game.currentRound
+            val currentRoundNumber = game.currentRoundNumber
             blockItems.addAll(players.mapIndexed { index: Int, name: String ->
                 BlockName(
                     name = name,
-                    isDealer = isDealer(currentRound, game.maxRound, players.size, index + 1)
+                    isDealer = isDealer(currentRoundNumber, game.maxRound, players.size, index + 1)
                 )
             })
             game.rounds.forEach { round ->
@@ -131,7 +131,7 @@ class BlockResultsProcessorImpl : BaseProcessor, BlockResultsProcessor {
 
     override suspend fun getGameScores(game: Game): AppResult<GameScoreData> =
         safeCall {
-            val gameFinished = game.currentRound > game.maxRound
+            val gameFinished = game.currentRoundNumber > game.maxRound
             val players = game.gameInfo.players.names
 
             val lastRound = game.rounds.lastOrNull { it.playerResultData.isNotEmpty() }

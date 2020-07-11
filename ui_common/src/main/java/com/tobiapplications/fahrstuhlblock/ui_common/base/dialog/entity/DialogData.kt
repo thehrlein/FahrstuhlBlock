@@ -1,6 +1,8 @@
 package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity
 
+import android.content.Context
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScore
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
 import com.tobiapplications.fahrstuhlblock.ui_common.R
 import java.io.Serializable
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogRequestCode
@@ -43,12 +45,22 @@ sealed class DialogData : Serializable {
     }
 
     sealed class TypeCustom(
+        val title: String?,
         val positiveButtonText: String? = null,
         val negativeButtonText: String? = null,
         val neutralButtonText: String? = null
     ) : DialogData() {
 
+        class Trump(resourceHelper: ResourceHelper, var selectedTrumpType: TrumpType) : TypeCustom(
+            title = resourceHelper.getString(R.string.block_trump_title),
+            positiveButtonText = resourceHelper.getString(R.string.general_ok),
+            negativeButtonText = resourceHelper.getString(R.string.general_cancel)
+        ) {
+            override val requestCode: Int = DialogRequestCode.CHOOSE_TRUMP
+        }
+
     }
+
 
     class Progress(
         val dimWindow: Boolean

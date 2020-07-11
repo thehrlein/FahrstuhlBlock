@@ -1,5 +1,6 @@
 package com.tobiapplications.fahrstuhlblock.ui_block.results
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
@@ -13,6 +14,10 @@ import com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResul
 import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentBlockResultsBinding
+import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogData
+import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogInteractor
+import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogRequestCode
+import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogResultCode
 import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFragment
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
@@ -20,7 +25,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BlockResultsFragment :
-    BaseToolbarFragment<BlockResultsViewModel, BlockViewModel, FragmentBlockResultsBinding>() {
+    BaseToolbarFragment<BlockResultsViewModel, BlockViewModel, FragmentBlockResultsBinding>(), DialogInteractor {
 
     override val activityToolbarViewModel: BlockViewModel by sharedViewModel()
     override val viewModel: BlockResultsViewModel by viewModel()
@@ -78,7 +83,7 @@ class BlockResultsFragment :
     }
 
     private fun initAdapter() {
-        BlockResultsAdapter().also { blockResultAdapter ->
+        BlockResultsAdapter(viewModel).also { blockResultAdapter ->
             binding.gameList.apply {
                 adapter = blockResultAdapter
                 addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
@@ -121,6 +126,20 @@ class BlockResultsFragment :
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onDialogResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            DialogRequestCode.CHOOSE_TRUMP -> {
+                when (resultCode) {
+                    DialogResultCode.POSITIVE -> {
+                        (data?.getSerializableExtra(DialogData.KEY_DIALOG_DATA) as? DialogData.TypeCustom.Trump)?.let {
+                            viewModel.updateTrumpType(it.selectedTrumpType)
+                        }
+                    }
+                }
+            }
         }
     }
 }

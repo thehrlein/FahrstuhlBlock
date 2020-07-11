@@ -19,6 +19,7 @@ import com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputVi
 import com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.scores.BlockScoresViewModel
+import com.tobiapplications.fahrstuhlblock.presentation.block.trump.BlockTrumpViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.main.MainViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.menu.MenuViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.settings.*
@@ -100,6 +101,7 @@ object Koin {
             BlockResultsViewModel(
                 get(),
                 get(),
+                get(),
                 get()
             )
         }
@@ -114,6 +116,7 @@ object Koin {
         }
 
         viewModel { BlockScoresViewModel() }
+        viewModel { BlockTrumpViewModel() }
     }
 
     fun getModules(): List<Module> {

@@ -11,6 +11,7 @@ import com.tobiapplications.fahrstuhlblock.ui_common.base.activity.BaseToolbarAc
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogInteractor
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogRequestCode
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogResultCode
+import com.tobiapplications.fahrstuhlblock.ui_common.extension.dispatchOnDialogResult
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -55,6 +56,7 @@ class BlockActivity : BaseToolbarActivity<BlockViewModel, ActivityBlockBinding>(
                     DialogResultCode.NEUTRAL -> Unit
                 }
             }
+            else -> supportFragmentManager.dispatchOnDialogResult(requestCode, resultCode, data)
         }
     }
 }

@@ -4,6 +4,7 @@ import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettin
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PointsRuleData
 
 data class GameInfo(
+    val gameId: Long,
     val players: PlayerSettingsData,
     val highCardCount: Int,
     val pointsRuleData: PointsRuleData

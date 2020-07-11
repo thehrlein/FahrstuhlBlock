@@ -1,10 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockPlaceholder" />
+
+        <import type="com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/block_cell_height">
+        android:layout_height="@dimen/block_cell_height"
+        android:padding="@dimen/space_1">
+
+        <ImageView
+            android:id="@+id/card_selected_trump"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="@{item.trumpType != TrumpType.NONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:trump="@{item.trumpType}"
+            tools:src="@drawable/ic_card_club" />
+
+        <ImageView
+            android:id="@+id/card_club"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="@{item.trumpType == TrumpType.NONE}"
+            app:layout_constraintBottom_toTopOf="@id/card_diamond"
+            app:layout_constraintEnd_toStartOf="@id/card_heart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:trump="@{TrumpType.CLUB}"
+            tools:src="@drawable/ic_card_club" />
+
+        <ImageView
+            android:id="@+id/card_heart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="@{item.trumpType == TrumpType.NONE}"
+            app:layout_constraintBottom_toTopOf="@id/card_spade"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_club"
+            app:layout_constraintTop_toTopOf="parent"
+            app:trump="@{TrumpType.HEART}"
+            tools:src="@drawable/ic_card_heart" />
+
+        <ImageView
+            android:id="@+id/card_diamond"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="@{item.trumpType == TrumpType.NONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/card_spade"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_club"
+            app:trump="@{TrumpType.DIAMOND}"
+            tools:src="@drawable/ic_card_diamond" />
+
+        <ImageView
+            android:id="@+id/card_spade"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="@{item.trumpType == TrumpType.NONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_diamond"
+            app:layout_constraintTop_toBottomOf="@id/card_heart"
+            app:trump="@{TrumpType.SPADE}"
+            tools:src="@drawable/ic_card_spade" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

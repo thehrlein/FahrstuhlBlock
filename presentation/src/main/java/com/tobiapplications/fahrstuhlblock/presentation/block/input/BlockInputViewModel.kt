@@ -10,6 +10,7 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateR
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.CalculateResultsUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.InputsValidUseCase
@@ -18,7 +19,6 @@ import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
 
 private const val DEFAULT_PLAYER_INPUT = 0
-private const val FIRST_ROUND = 1
 
 class BlockInputViewModel(
     private val gameId: Long,
@@ -53,13 +53,7 @@ class BlockInputViewModel(
 
     private fun setInputModels(game: Game) {
         _game.postValue(game)
-        val round = game.rounds.lastOrNull()?.let {
-            if (it.roundCompleted) {
-                createNewRound(it.card + 1)
-            } else {
-                it
-            }
-        } ?: createNewRound(FIRST_ROUND)
+        val round = game.currentRound
         _round.postValue(round)
         val inputType = round.currentInputType
         _inputType.postValue(inputType)
@@ -67,7 +61,7 @@ class BlockInputViewModel(
             InputData(
                 type = inputType,
                 player = name,
-                currentRound = game.currentRound,
+                currentRound = game.currentRoundNumber,
                 cards = game.currentCardCount,
                 userInput = round.playerTippData.getOrNull(index)?.tipp ?: DEFAULT_PLAYER_INPUT
             )
@@ -75,7 +69,7 @@ class BlockInputViewModel(
     }
 
     private fun createNewRound(card: Int): Round {
-        return Round(card, emptyList(), emptyList())
+        return Round(card, emptyList(), emptyList(), TrumpType.NONE)
     }
 
     fun onSaveClicked() {

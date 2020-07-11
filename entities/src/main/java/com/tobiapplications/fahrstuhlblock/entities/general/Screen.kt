@@ -2,6 +2,7 @@ package com.tobiapplications.fahrstuhlblock.entities.general
 
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScore
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
 
@@ -47,6 +48,7 @@ sealed class Screen {
         class Input(val gameId: Long) : Block()
         class Scores(val gameScoreData: GameScoreData) : Block()
         class GameFinished(val winners: List<GameScore>) : Block()
+        class Trump(val selectedTrumpType: TrumpType) : Block()
     }
 
     sealed class Input : Screen() {

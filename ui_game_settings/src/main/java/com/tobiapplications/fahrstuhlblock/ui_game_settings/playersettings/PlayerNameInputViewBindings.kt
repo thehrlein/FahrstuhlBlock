@@ -1,13 +1,10 @@
-package com.tobiapplications.fahrstuhlblock.ui_common.bindings
+package com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings
 
-import androidx.appcompat.widget.AppCompatAutoCompleteTextView
-import androidx.core.widget.addTextChangedListener
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerError
-import com.tobiapplications.fahrstuhlblock.ui_common.R
-import com.tobiapplications.fahrstuhlblock.ui_common.views.PlayerNameInputView
+import com.tobiapplications.fahrstuhlblock.ui_game_settings.R
 
 @BindingAdapter("player")
 fun PlayerNameInputView.setPlayer(newText: String?) {

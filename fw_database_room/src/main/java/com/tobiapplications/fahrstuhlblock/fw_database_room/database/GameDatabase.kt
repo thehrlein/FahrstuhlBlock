@@ -11,6 +11,7 @@ import com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.DbRoun
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter.DbPlayerListConverter
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter.DbPlayerResultDataListConverter
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter.DbPlayerTippDataListConverter
+import com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter.DbTrumpTypeConverter
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity.DbGameInfo
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity.DbPlayer
 
@@ -23,7 +24,8 @@ import com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity.DbPlaye
     value = [
         DbPlayerListConverter::class,
         DbPlayerTippDataListConverter::class,
-        DbPlayerResultDataListConverter::class
+        DbPlayerResultDataListConverter::class,
+        DbTrumpTypeConverter::class
     ]
 )
 abstract class GameDatabase : RoomDatabase() {

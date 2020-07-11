@@ -3,10 +3,10 @@ package com.tobiapplications.fahrstuhlblock.ui_block.results
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.*
+import com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsInteractions
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.ItemBlockNameBinding
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.ItemBlockPlaceholderBinding
@@ -15,7 +15,9 @@ import com.tobiapplications.fahrstuhlblock.ui_block.databinding.ItemBlockRoundBi
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.executeAfter
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.layoutInflater
 
-class BlockResultsAdapter : ListAdapter<BlockItem, RecyclerView.ViewHolder>(
+class BlockResultsAdapter(
+    private val interactions: BlockResultsInteractions
+) : ListAdapter<BlockItem, RecyclerView.ViewHolder>(
     BlockResultsDiff
 ) {
 
@@ -63,7 +65,10 @@ class BlockResultsAdapter : ListAdapter<BlockItem, RecyclerView.ViewHolder>(
         when (holder) {
             is BlockPlaceHolderViewHolder -> {
                 if (item is BlockPlaceholder) {
-                    holder.bind(item)
+                    holder.bind(
+                        item = item,
+                        interactions = interactions
+                    )
                 }
             }
             is BlockNameViewHolder -> {
@@ -87,8 +92,17 @@ class BlockResultsAdapter : ListAdapter<BlockItem, RecyclerView.ViewHolder>(
     inner class BlockPlaceHolderViewHolder(private val binding: ItemBlockPlaceholderBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: BlockPlaceholder) {
+        fun bind(
+            item: BlockPlaceholder,
+            interactions: BlockResultsInteractions
+        ) {
+            binding.executeAfter {
+                this.item = item
+            }
 
+            itemView.setOnClickListener {
+                interactions.onTrumpClicked(item.trumpType)
+            }
         }
     }
 
@@ -134,7 +148,7 @@ object BlockResultsDiff : DiffUtil.ItemCallback<BlockItem>() {
     }
 
     override fun areContentsTheSame(oldItem: BlockItem, newItem: BlockItem) = when {
-        oldItem is BlockPlaceholder && newItem is BlockPlaceholder -> true
+        oldItem is BlockPlaceholder && newItem is BlockPlaceholder && oldItem.trumpType == newItem.trumpType -> true
         oldItem is BlockName && newItem is BlockName && oldItem.name == newItem.name -> true
         oldItem is BlockRound && newItem is BlockRound && oldItem.round == newItem.round -> true
         oldItem is BlockResult && newItem is BlockResult &&

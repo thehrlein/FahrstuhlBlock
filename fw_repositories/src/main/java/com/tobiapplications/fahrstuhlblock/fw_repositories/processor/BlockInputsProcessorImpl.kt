@@ -14,7 +14,7 @@ class BlockInputsProcessorImpl : BaseProcessor, BlockInputsProcessor {
             val game = inputValidityData.game
             when (game.inputType) {
                 InputType.TIPP -> {
-                    if (game.currentRound == FIRST_ROUND) {
+                    if (game.currentRoundNumber == FIRST_ROUND) {
                         true
                     } else {
                         inputValidityData.inputSum != game.currentCardCount
