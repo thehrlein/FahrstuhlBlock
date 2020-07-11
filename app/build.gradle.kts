@@ -5,6 +5,7 @@ plugins {
     id(BuildPlugins.kotlinKapt)
     id(BuildPlugins.googleServices)
     id(BuildPlugins.firebaseCrashlytics)
+    id(BuildPlugins.firebasePerformance)
 }
 
 dependencies {
@@ -25,6 +26,8 @@ dependencies {
     implementation(Dependencies.Google.material)
     implementation(Dependencies.Google.Firebase.analytics)
     implementation(Dependencies.Google.Firebase.crashlytics)
+    implementation(Dependencies.Google.Firebase.performance)
+    implementation(Dependencies.Google.Firebase.messaging)
 
     // AndroidX
     implementation(Dependencies.AndroidX.appCompat)

@@ -100,7 +100,6 @@ object Koin {
         viewModel {
             PlayerSettingsViewModel(
                 get(),
-                get(),
                 get()
             )
         }
@@ -111,8 +110,7 @@ object Koin {
         }
         viewModel { (playerSettingsData: PlayerSettingsData) ->
             GameRulesViewModel(
-                playerSettingsData,
-                get()
+                playerSettingsData
             )
         }
         viewModel { (gameRuleSettingsData: GameRuleSettingsData) ->

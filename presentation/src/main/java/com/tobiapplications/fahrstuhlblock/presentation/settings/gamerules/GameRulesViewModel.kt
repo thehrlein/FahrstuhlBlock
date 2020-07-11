@@ -17,8 +17,7 @@ import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
 
 class GameRulesViewModel(
-    private val playerSettingsData: PlayerSettingsData,
-    private val trackAnalyticsEventUseCase: TrackAnalyticsEventUseCase
+    private val playerSettingsData: PlayerSettingsData
 ) : BaseViewModel() {
 
     private val _maxCardCountSelection = MutableLiveData(MaxCardCountSelection.ONE_DECK)
@@ -49,16 +48,7 @@ class GameRulesViewModel(
 
     fun onProceedClicked() {
         val highCardCound = getHighCardCound()
-
-        viewModelScope.launch {
-            trackAnalyticsEventUseCase.invoke(
-                AnalyticsEvent(
-                    eventName = TrackingConstants.EVENT_GAME_RULES_HIGH_CARD,
-                    params = listOf(IntParam(TrackingConstants.PARAM_HIGH_CARD, highCardCound))
-                )
-            )
-            navigateTo(Screen.GameRules.PointRules(GameRuleSettingsData(playerSettingsData, highCardCound)))
-        }
+        navigateTo(Screen.GameRules.PointRules(GameRuleSettingsData(playerSettingsData, highCardCound)))
     }
 
     private fun getHighCardCound(): Int {

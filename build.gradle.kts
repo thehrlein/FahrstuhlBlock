@@ -18,6 +18,7 @@ buildscript {
         classpath(Classpaths.detektGradlePlugin)
         classpath(Classpaths.googleServices)
         classpath(Classpaths.firebaseCrashlytics)
+        classpath(Classpaths.firebasePerformance)
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle.kts.kts.kts files
     }

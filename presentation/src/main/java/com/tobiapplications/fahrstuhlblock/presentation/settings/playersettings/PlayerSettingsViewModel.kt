@@ -24,8 +24,7 @@ private const val DEFAULT_PLAYER_NAME_OCCURRENCE = 0
 
 class PlayerSettingsViewModel(
     private val getPlayerNamesUseCase: GetPlayerNamesUseCase,
-    private val storePlayerNamesUseCase: StorePlayerNamesUseCase,
-    private val trackAnalyticsEventUseCase: TrackAnalyticsEventUseCase
+    private val storePlayerNamesUseCase: StorePlayerNamesUseCase
 ) : BaseViewModel() {
 
     val playerVisibilities = MutableLiveData(
@@ -220,16 +219,7 @@ class PlayerSettingsViewModel(
             ?.filterIndexed { index, _ -> visibilities[index].value == true }
             ?.mapNotNull { it.value } ?: emptyList()
         storePlayerNames(names)
-
-        viewModelScope.launch {
-            trackAnalyticsEventUseCase.invoke(
-                AnalyticsEvent(
-                    eventName = TrackingConstants.EVENT_PLAYER_SETTINGS_PLAYER_COUNT,
-                    params = listOf(IntParam(TrackingConstants.PARAM_PLAYER_COUNT, names.size))
-                )
-            )
-            navigateTo(Screen.PlayerSettings.PlayerOrder(PlayerSettingsData(names)))
-        }
+        navigateTo(Screen.PlayerSettings.PlayerOrder(PlayerSettingsData(names)))
     }
 
     private fun storePlayerNames(playerNames: List<String>) {

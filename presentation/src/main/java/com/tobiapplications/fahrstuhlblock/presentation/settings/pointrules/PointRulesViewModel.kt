@@ -100,12 +100,32 @@ class PointRulesViewModel(
         )
 
         viewModelScope.launch {
+            trackPlayerCount(gameRuleSettingsData.playerSettingsData.names.size)
+            trackHighCardCount(gameRuleSettingsData.highCardCount)
             trackPointRules(correctPredictionPoints, pointsPerStitch, minusPointsPerStitch, pointsIfPredictionFalse)
             when (val result = storeGameInfoUseCase.invoke(gameInfo)) {
                 is AppResult.Success -> navigateTo(Screen.PointRules.Block(result.value))
                 is AppResult.Error -> Unit
             }
         }
+    }
+
+    private suspend fun trackPlayerCount(playerCount: Int) {
+        trackAnalyticsEventUseCase.invoke(
+            AnalyticsEvent(
+                eventName = TrackingConstants.EVENT_PLAYER_SETTINGS_PLAYER_COUNT,
+                params = listOf(IntParam(TrackingConstants.PARAM_PLAYER_COUNT, playerCount))
+            )
+        )
+    }
+
+    private suspend fun trackHighCardCount(highCardCount: Int) {
+        trackAnalyticsEventUseCase.invoke(
+            AnalyticsEvent(
+                eventName = TrackingConstants.EVENT_GAME_RULES_HIGH_CARD,
+                params = listOf(IntParam(TrackingConstants.PARAM_HIGH_CARD, highCardCount))
+            )
+        )
     }
 
     private suspend fun trackPointRules(
