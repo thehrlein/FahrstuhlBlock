@@ -3,14 +3,22 @@ package com.tobiapplications.fahrstuhlblock.presentation.settings.gamerules
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
+import com.tobiapplications.fahrstuhlblock.entities.models.firebase.AnalyticsEvent
+import com.tobiapplications.fahrstuhlblock.entities.models.firebase.IntParam
+import com.tobiapplications.fahrstuhlblock.entities.models.firebase.LongParam
+import com.tobiapplications.fahrstuhlblock.entities.models.firebase.TrackingConstants
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.MaxCardCountSelection
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.firebase.TrackAnalyticsEventUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
+import kotlinx.coroutines.launch
 
 class GameRulesViewModel(
-    private val playerSettingsData: PlayerSettingsData
+    private val playerSettingsData: PlayerSettingsData,
+    private val trackAnalyticsEventUseCase: TrackAnalyticsEventUseCase
 ) : BaseViewModel() {
 
     private val _maxCardCountSelection = MutableLiveData(MaxCardCountSelection.ONE_DECK)
@@ -41,7 +49,16 @@ class GameRulesViewModel(
 
     fun onProceedClicked() {
         val highCardCound = getHighCardCound()
-        navigateTo(Screen.GameRules.PointRules(GameRuleSettingsData(playerSettingsData, highCardCound)))
+
+        viewModelScope.launch {
+            trackAnalyticsEventUseCase.invoke(
+                AnalyticsEvent(
+                    eventName = TrackingConstants.EVENT_GAME_RULES_HIGH_CARD,
+                    params = listOf(IntParam(TrackingConstants.PARAM_HIGH_CARD, highCardCound))
+                )
+            )
+            navigateTo(Screen.GameRules.PointRules(GameRuleSettingsData(playerSettingsData, highCardCound)))
+        }
     }
 
     private fun getHighCardCound(): Int {

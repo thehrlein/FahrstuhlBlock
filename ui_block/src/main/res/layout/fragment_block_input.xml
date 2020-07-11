@@ -8,6 +8,8 @@
         <variable
             name="viewModel"
             type="com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputViewModel" />
+
+        <import type="com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -81,7 +83,7 @@
                     android:layout_marginTop="@dimen/space_8"
                     android:enabled="@{viewModel.inputsValid}"
                     android:onClick="@{() -> viewModel.onSaveClicked()}"
-                    android:text="@string/player_settings_button_proceed"
+                    android:text="@{viewModel.inputType == InputType.TIPP ? @string/block_input_enter_tipps : @string/block_input_enter_results}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/input_list" />

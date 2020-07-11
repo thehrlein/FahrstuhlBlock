@@ -2,21 +2,27 @@ package com.tobiapplications.fahrstuhlblock.koin
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavHostController
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
 import com.tobiapplications.fahrstuhlblock.fw_database_room.databaseModule
 import com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.sharedpref.SharedPreferencesDataSource
+import com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.sharedpref.firebase.AnalyticsDatasourceImpl
 import com.tobiapplications.fahrstuhlblock.fw_repositories.processor.BlockInputsProcessorImpl
 import com.tobiapplications.fahrstuhlblock.fw_repositories.processor.BlockResultsProcessorImpl
+import com.tobiapplications.fahrstuhlblock.fw_repositories.repository.FirebaseRepositoryImpl
 import com.tobiapplications.fahrstuhlblock.fw_repositories.repository.GameRepositoryImpl
 import com.tobiapplications.fahrstuhlblock.fw_repositories.repository.UserRepositoryImpl
+import com.tobiapplications.fahrstuhlblock.interactor.datasource.firebase.AnalyticsDatasource
 import com.tobiapplications.fahrstuhlblock.interactor.datasource.sharedpref.UserSettingsPersistence
 import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockInputsProcessor
 import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockResultsProcessor
+import com.tobiapplications.fahrstuhlblock.interactor.repository.FirebaseRepository
 import com.tobiapplications.fahrstuhlblock.interactor.repository.GameRepository
 import com.tobiapplications.fahrstuhlblock.interactor.repository.UserRepository
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.*
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.firebase.TrackAnalyticsEventUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.GetPlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.StorePlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.user.IsShowTrumpDialogEnabledUseCase
@@ -47,6 +53,7 @@ object Koin {
     private val single = module {
         // general
         single<ResourceHelper> { ResourceHelperImpl(get()) }
+        single { FirebaseAnalytics.getInstance(get()) }
 
         // processor
         single<BlockInputsProcessor> { BlockInputsProcessorImpl() }
@@ -55,9 +62,11 @@ object Koin {
         // repository
         single<GameRepository> { GameRepositoryImpl(get(), get(), get(), get()) }
         single<UserRepository> { UserRepositoryImpl(get()) }
+        single<FirebaseRepository> { FirebaseRepositoryImpl(get()) }
 
         // datasource
         single { SharedPreferencesDataSource(get()) } binds (arrayOf(UserSettingsPersistence::class))
+        single<AnalyticsDatasource> { AnalyticsDatasourceImpl(get()) }
     }
 
     private val factory = module {
@@ -81,14 +90,16 @@ object Koin {
         factory { InputsValidUseCase(get()) }
         factory { SetShowTrumpDialogEnabledUseCase(get()) }
         factory { IsShowTrumpDialogEnabledUseCase(get()) }
+        factory { TrackAnalyticsEventUseCase(get()) }
     }
 
     private val viewModel = module {
-        viewModel { MainViewModel() }
+        viewModel { MainViewModel(get()) }
         viewModel { MenuViewModel() }
         viewModel { GameSettingsViewModel() }
         viewModel {
             PlayerSettingsViewModel(
+                get(),
                 get(),
                 get()
             )
@@ -100,12 +111,14 @@ object Koin {
         }
         viewModel { (playerSettingsData: PlayerSettingsData) ->
             GameRulesViewModel(
-                playerSettingsData
+                playerSettingsData,
+                get()
             )
         }
         viewModel { (gameRuleSettingsData: GameRuleSettingsData) ->
             PointRulesViewModel(
                 gameRuleSettingsData,
+                get(),
                 get()
             )
         }
@@ -130,7 +143,7 @@ object Koin {
         }
 
         viewModel { BlockScoresViewModel() }
-        viewModel { BlockTrumpViewModel(get(), get()) }
+        viewModel { BlockTrumpViewModel(get(), get(), get()) }
     }
 
     fun getModules(): List<Module> {

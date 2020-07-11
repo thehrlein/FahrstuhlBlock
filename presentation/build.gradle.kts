@@ -16,6 +16,9 @@ dependencies {
     implementation(Dependencies.AndroidX.LifeCycle.livedataExtensions)
     implementation(Dependencies.AndroidX.LifeCycle.viewModelExtensions)
 
+    // Google
+    implementation(Dependencies.Google.Firebase.analytics)
+
     // Koin
     implementation(Dependencies.Koin.viewModel)
 

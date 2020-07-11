@@ -25,6 +25,9 @@ dependencies {
     implementation(Dependencies.AndroidX.security)
     implementation(Dependencies.AndroidX.LifeCycle.livedataExtensions)
 
+    // Google
+    implementation(Dependencies.Google.Firebase.analytics)
+
     // Kotlin
     implementation(Dependencies.Kotlin.Coroutine.core)
 
