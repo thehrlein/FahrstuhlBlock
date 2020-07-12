@@ -48,7 +48,7 @@
                 android:overScrollMode="never"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="4"
-                tools:listitem="@layout/item_auto_complete_text_row"
+                tools:listitem="@layout/item_player_row"
                 app:layout_constraintTop_toBottomOf="@id/player_order_description"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>

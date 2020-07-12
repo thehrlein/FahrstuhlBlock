@@ -1,6 +1,7 @@
 package com.tobiapplications.fahrstuhlblock.ui_common.extension
 
 import android.content.Context
+import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.annotation.DimenRes
 import kotlin.math.roundToInt
@@ -15,4 +16,10 @@ fun Context.getDimen(@DimenRes dimenRes: Int) : Int {
 
 fun Context.getExactDimen(@DimenRes dimenRes: Int) : Int {
     return (resources.getDimension(dimenRes) / resources.displayMetrics.density).roundToInt()
+}
+
+fun Context.getColorReference(resId: Int) : Int {
+    val typedValue = TypedValue()
+    theme.resolveAttribute(resId, typedValue, true)
+    return typedValue.data
 }

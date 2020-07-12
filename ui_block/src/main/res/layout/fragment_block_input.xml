@@ -74,7 +74,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/block_input_message"
                     tools:itemCount="4"
-                    tools:listitem="@layout/item_auto_complete_text_row" />
+                    tools:listitem="@layout/item_block_input" />
 
                 <Button
                     android:id="@+id/button_save"

@@ -65,6 +65,9 @@ fun applyAppPlugin(plugin: AppPlugin) {
             versionCode = AndroidSdkTools.version_code
             versionName = AndroidSdkTools.version_name
             testInstrumentationRunner = Others.ANDROID_JUNIT_TEST_IMPLEMENTATION_RUNNER
+
+            // possibility to colorize vector drawable in xml based on color resources (< API 24)
+            vectorDrawables.useSupportLibrary = true
         }
 
         buildTypes {
@@ -105,6 +108,9 @@ fun applyLibraryPlugin(plugin: LibraryPlugin, name: String) {
             minSdkVersion(AndroidSdkTools.minSdk)
             targetSdkVersion(AndroidSdkTools.targetSdk)
             testInstrumentationRunner = Others.ANDROID_JUNIT_TEST_IMPLEMENTATION_RUNNER
+
+            // possibility to colorize vector drawable in xml based on color resources (< API 24)
+            vectorDrawables.useSupportLibrary = true
         }
 
         compileOptions {

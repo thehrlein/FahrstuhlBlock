@@ -9,6 +9,7 @@
     <!--Common attributes-->
     <attr name="colorFillColor" format="color"/>
     <attr name="colorStrokeColor" format="color"/>
+    <attr name="colorBackground" format="color" />
 
 
     <!-- Custom attributes -->

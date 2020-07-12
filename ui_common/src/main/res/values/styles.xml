@@ -18,24 +18,25 @@
 
     <!-- TextInputLayout -->
     <style name="Widget.FahrstuhlBlock.TextInputLayout.FilledBox" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
-        <!--Your custom shape here-->
     </style>
 
     <style name="Widget.FahrstuhlBlock.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <!--Your custom shape here-->
     </style>
 
     <style name="Widget.FahrstuhlBlock.TextInputLayout.OutlinedBox.ExposedDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-        <!--Your custom shape here-->
     </style>
 
     <!-- Button -->
     <style name="Widget.FahrstuhlBlock.Button" parent="@style/Widget.MaterialComponents.Button">
         <item name="android:textAppearance">?textAppearanceButton</item>
+        <item name="backgroundTint">@color/selector_button_background</item>
     </style>
 
     <style name="Widget.FahrstuhlBlock.Button.Outline" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:textAppearance">?textAppearanceButton</item>
+        <item name="android:textColor">@color/selector_outlined_button_text</item>
+        <item name="strokeColor">@color/selector_outlined_button_stroke</item>
+        <item name="backgroundTint">@color/selector_outlined_button_background</item>
     </style>
 
     <style name="Widget.FahrstuhlBlock.Button.Borderless" parent="@style/Widget.MaterialComponents.Button.TextButton">

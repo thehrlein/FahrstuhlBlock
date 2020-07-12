@@ -7,7 +7,6 @@ import android.view.*
 import android.widget.LinearLayout
 import androidx.activity.addCallback
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsViewModel
@@ -19,6 +18,7 @@ import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogInt
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogRequestCode
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogResultCode
 import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFragment
+import com.tobiapplications.fahrstuhlblock.ui_common.utils.ItemDecoration
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -86,9 +86,8 @@ class BlockResultsFragment :
         BlockResultsAdapter(viewModel).also { blockResultAdapter ->
             binding.gameList.apply {
                 adapter = blockResultAdapter
-                addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
-                addItemDecoration(DividerItemDecoration(context, LinearLayout.HORIZONTAL))
-
+                addItemDecoration(ItemDecoration(LinearLayout.VERTICAL, context.getDrawable(R.drawable.shape_divider)))
+                addItemDecoration(ItemDecoration(LinearLayout.HORIZONTAL, context.getDrawable(R.drawable.shape_divider)))
             }
             viewModel.blockItems.observe(viewLifecycleOwner, Observer { blockItems ->
                 val columnCount = viewModel.columnCount.value ?: 0
