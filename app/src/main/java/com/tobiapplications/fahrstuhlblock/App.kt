@@ -1,6 +1,8 @@
 package com.tobiapplications.fahrstuhlblock
 
 import android.app.Application
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.initialize
 import com.tobiapplications.fahrstuhlblock.koin.Koin
 import com.tobiapplications.fahrstuhlblock.koin.KoinLogger
 import org.koin.android.ext.koin.androidContext
@@ -14,6 +16,7 @@ class App : Application() {
 
         initKoin()
         initLogger()
+        initFirebase()
     }
 
     private fun initKoin() {
@@ -28,5 +31,9 @@ class App : Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+    }
+
+    private fun initFirebase() {
+        Firebase.initialize(this)
     }
 }

@@ -55,13 +55,13 @@ class GameRulesViewModel(
         val selection = maxCardCountSelection.value
         val individualCount = individualCardCountValue.value?.toIntOrNull()
         val cardCount = when (selection) {
-            MaxCardCountSelection.ONE_DECK -> selection.cards
-            MaxCardCountSelection.TWO_DECKS -> selection.cards
+            MaxCardCountSelection.ONE_DECK -> selection.cards / playerSettingsData.names.size
+            MaxCardCountSelection.TWO_DECKS -> selection.cards / playerSettingsData.names.size
             MaxCardCountSelection.INDIVIDUAL -> individualCount
                 ?: error("could not determine max card count - individual count is null but selected")
             else -> error("could not determine max card count")
         }
 
-        return cardCount / playerSettingsData.names.size
+        return cardCount
     }
 }
