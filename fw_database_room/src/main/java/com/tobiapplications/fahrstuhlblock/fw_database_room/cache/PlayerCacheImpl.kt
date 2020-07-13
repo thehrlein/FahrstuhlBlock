@@ -3,13 +3,14 @@ package com.tobiapplications.fahrstuhlblock.fw_database_room.cache
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.fw_database_room.dao.PlayerDao
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity.DbPlayer
+import com.tobiapplications.fahrstuhlblock.interactor.SafeCaller
 import com.tobiapplications.fahrstuhlblock.interactor.datasource.cache.PlayerCache
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class PlayerCacheImpl(
     private val playerDao: PlayerDao
-) : BaseCache,
+) : SafeCaller,
     PlayerCache {
 
     override suspend fun addPlayers(names: List<String>): AppResult<Unit> =

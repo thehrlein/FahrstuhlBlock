@@ -10,7 +10,7 @@ import com.tobiapplications.fahrstuhlblock.ui_block.input.BlockInputFragmentDire
 import com.tobiapplications.fahrstuhlblock.ui_block.results.BlockResultsFragmentDirections
 import com.tobiapplications.fahrstuhlblock.ui_block.trump.BlockTrumpDialog
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.SimpleAlertDialogFragment
-import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogData
+import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogEntity
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelper
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.GameSettingsActivity
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.gamerules.GameRulesFragmentDirections
@@ -18,17 +18,8 @@ import com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder.PlayerOr
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerSettingsFragmentDirections
 import com.tobiapplications.fahrstuhlblock.ui_menu.MenuActivity
 
-/**
- *
- * The implementation of the application navigation.
- *
- * Here you can show, add or replace all navigation components such as
- * [Activities][androidx.appcompat.app.AppCompatActivity],
- * [Fragments][androidx.fragment.app.Fragment] or
- * [Dialogs][androidx.appcompat.app.AppCompatDialogFragment].
- */
 
-class NavigationComponentsHandler(
+class NavigationHandlerImpl(
     private val activity: AppCompatActivity,
     private val navHostController: NavHostController?,
     private val resourceHelper: ResourceHelper
@@ -61,7 +52,7 @@ class NavigationComponentsHandler(
             is Screen.Menu.NewGame2 -> BlockActivity.start(
                 activity,
                 1
-            ) // TODO Change back to GameSettingsActivity
+            )
         }.checkAllMatched
     }
 
@@ -114,7 +105,7 @@ class NavigationComponentsHandler(
         when (screen) {
             is Screen.Block.Exit -> SimpleAlertDialogFragment.show(
                 activity.supportFragmentManager,
-                DialogData.Text.Exit(resourceHelper)
+                DialogEntity.Text.Exit(resourceHelper)
             )
             is Screen.Block.Menu -> MenuActivity.start(activity)
             is Screen.Block.Input -> {
@@ -133,11 +124,11 @@ class NavigationComponentsHandler(
             }
             is Screen.Block.GameFinished -> SimpleAlertDialogFragment.show(
                 activity.supportFragmentManager,
-                DialogData.Text.GameFinished(screen.winners, resourceHelper)
+                DialogEntity.Text.GameFinished(screen.winners, resourceHelper)
             )
             is Screen.Block.Trump -> BlockTrumpDialog.show(
                 activity.supportFragmentManager,
-                DialogData.TypeCustom.Trump(resourceHelper, screen.selectedTrumpType)
+                DialogEntity.Custom.Trump(resourceHelper, screen.selectedTrumpType)
             )
         }.checkAllMatched
     }

@@ -6,11 +6,12 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerRe
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerTippData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.*
+import com.tobiapplications.fahrstuhlblock.interactor.SafeCaller
 import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockResultsProcessor
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.isOdd
 import kotlin.math.abs
 
-class BlockResultsProcessorImpl : BaseProcessor, BlockResultsProcessor {
+class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
 
     override suspend fun calculateResults(calculateResultData: CalculateResultData): AppResult<List<PlayerResultData>> =
         safeCall {

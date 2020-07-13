@@ -5,11 +5,7 @@ object Dependencies {
         private const val appCompatVersion = "1.3.0-alpha01"
         private const val coreVersion = "1.5.0-alpha01"
         private const val constraintLayoutVersion = "2.0.0-beta7"
-        private const val mediaVersion = "1.1.0" // used for media notification
         private const val pagingVersion = "3.0.0-alpha02"
-        private const val paletteVersion = "1.0.0"
-        private const val recyclerViewVersion = "1.2.0-alpha02"
-        private const val recyclerViewSelectionVersion = "1.1.0-rc01"
         private const val securityVersion = "1.1.0-alpha01"
         private const val swipeRefreshVersion = "1.1.0"
 
@@ -17,12 +13,7 @@ object Dependencies {
         const val coreKtx = "androidx.core:core-ktx:$coreVersion"
         const val constraintLayout =
             "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
-        const val media = "androidx.media:media:$mediaVersion"
         const val paging = "androidx.paging:paging-runtime-ktx:$pagingVersion"
-        const val palette = "androidx.palette:palette-ktx:$paletteVersion"
-        const val recyclerView = "androidx.recyclerview:recyclerview:$recyclerViewVersion"
-        const val recyclerViewSelection =
-            "androidx.recyclerview:recyclerview-selection:$recyclerViewSelectionVersion"
         const val security = "androidx.security:security-crypto:$securityVersion"
         const val swipeToRefresh =
             "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshVersion"
@@ -101,11 +92,11 @@ object Dependencies {
 
     object Kotlin {
         const val kotlinVersion = "1.3.72"
-        private const val coroutineVersion = "1.3.3"
 
         const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
         object Coroutine {
+            private const val coroutineVersion = "1.3.3"
 
             const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
             const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion"
@@ -113,7 +104,7 @@ object Dependencies {
     }
 
     object Koin {
-        private const val koinVersion = "2.1.5"
+        private const val koinVersion = "2.1.6"
 
         const val core = "org.koin:koin-core:$koinVersion"
         const val android = "org.koin:koin-android:$koinVersion"
@@ -204,7 +195,7 @@ object AndroidSdkTools {
     const val targetSdk = 29
     const val compileSdk = 29
     const val version_code = 1
-    const val version_name = "1.0"
+    const val version_name = "0.9.0"
     const val application_id = "com.tobiapplications.fahrstuhlblock"
 }
 

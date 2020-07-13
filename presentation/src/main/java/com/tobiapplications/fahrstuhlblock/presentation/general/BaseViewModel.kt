@@ -5,11 +5,9 @@ import com.tobiapplications.fahrstuhlblock.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.presentation.SingleLiveEvent
 
 
-typealias NavigationCommand = SingleLiveEvent<Screen>
-
 abstract class BaseViewModel : ViewModel() {
 
-    val navigationEvent = NavigationCommand()
+    val navigationEvent = SingleLiveEvent<Screen>()
 
     fun navigateTo(screen: Screen) {
         navigationEvent.postValue(screen)

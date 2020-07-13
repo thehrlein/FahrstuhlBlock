@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 private const val BLOCK_INPUT_INDEX = 1
-private const val BLOCK_INPUT_DELAY: Long = 500
+private const val BLOCK_INPUT_DELAY: Long = 300
 
 class BlockInputFragment :
     BaseToolbarFragment<BlockInputViewModel, BlockViewModel, FragmentBlockInputBinding>() {

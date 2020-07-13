@@ -5,19 +5,19 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogData
+import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogEntity
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogResultCode
 
-class SimpleAlertDialogFragment : BaseInteractionDialogFragment() {
+class SimpleAlertDialogFragment : DialogInteractionFragment() {
 
     companion object {
         private val TAG: String = SimpleAlertDialogFragment::class.java.simpleName
 
-        fun show(fragmentManager: FragmentManager, dialogData: DialogData.Text) {
+        fun show(fragmentManager: FragmentManager, dialogEntity: DialogEntity.Text) {
             if (fragmentManager.findFragmentByTag(TAG) != null) return
 
             val bundle = Bundle().apply {
-                putSerializable(DialogData.KEY_DIALOG_DATA, dialogData)
+                putSerializable(DialogEntity.KEY_DIALOG_ENTITY, dialogEntity)
             }
 
             SimpleAlertDialogFragment().apply {
@@ -26,36 +26,35 @@ class SimpleAlertDialogFragment : BaseInteractionDialogFragment() {
         }
     }
 
-    private val dialogData: DialogData.Text by lazy {
-        requireArguments().getSerializable(DialogData.KEY_DIALOG_DATA) as DialogData.Text
+    private val dialogEntity: DialogEntity.Text by lazy {
+        requireArguments().getSerializable(DialogEntity.KEY_DIALOG_ENTITY) as DialogEntity.Text
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return MaterialAlertDialogBuilder(requireContext())
-            .setCancelable(false)
-            .setTitle(dialogData.title)
-            .setMessage(dialogData.message)
-            .setNeutralButton(dialogData.neutralButtonText) { _, _ ->
-                sendResult(dialogData, DialogResultCode.NEUTRAL)
+            .setTitle(dialogEntity.title)
+            .setMessage(dialogEntity.message)
+            .setNeutralButton(dialogEntity.neutralButtonText) { _, _ ->
+                sendDialogResult(dialogEntity, DialogResultCode.NEUTRAL)
             }
-            .setNegativeButton(dialogData.negativeButtonText) { _, _ ->
-                sendResult(dialogData, DialogResultCode.NEGATIVE)
+            .setNegativeButton(dialogEntity.negativeButtonText) { _, _ ->
+                sendDialogResult(dialogEntity, DialogResultCode.NEGATIVE)
             }
-            .setPositiveButton(dialogData.positiveButtonText) { _, _ ->
-                sendResult(dialogData, DialogResultCode.POSITIVE)
+            .setPositiveButton(dialogEntity.positiveButtonText) { _, _ ->
+                sendDialogResult(dialogEntity, DialogResultCode.POSITIVE)
             }
             .create().also {
-                isCancelable = dialogData.isCancelable
+                isCancelable = dialogEntity.isCancelable
             }
     }
 
     override fun onCancel(dialog: DialogInterface) {
         super.onCancel(dialog)
 
-        if (dialogData.negativeButtonText != null) {
-            sendResult(dialogData, DialogResultCode.NEGATIVE)
+        if (dialogEntity.negativeButtonText != null) {
+            sendDialogResult(dialogEntity, DialogResultCode.NEGATIVE)
         } else {
-            sendResult(dialogData, DialogResultCode.POSITIVE)
+            sendDialogResult(dialogEntity, DialogResultCode.POSITIVE)
         }
     }
 }
