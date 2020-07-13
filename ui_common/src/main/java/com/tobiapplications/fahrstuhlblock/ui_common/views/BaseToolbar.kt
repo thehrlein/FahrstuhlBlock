@@ -2,6 +2,7 @@ package com.tobiapplications.fahrstuhlblock.ui_common.views
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.os.Build
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.DrawableRes
@@ -11,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import com.tobiapplications.fahrstuhlblock.entities.utils.extensions.checkAllMatched
 import com.tobiapplications.fahrstuhlblock.entities.general.toolbar.OnToolbarButtonClickListener
 import com.tobiapplications.fahrstuhlblock.entities.general.toolbar.ToolbarButtonType
+import com.tobiapplications.fahrstuhlblock.ui_common.BuildConfig
 import com.tobiapplications.fahrstuhlblock.ui_common.R
 import com.tobiapplications.fahrstuhlblock.ui_common.databinding.ViewToolbarBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.EllipsizeAttribute
@@ -51,7 +53,9 @@ class BaseToolbar @JvmOverloads constructor(
             }
 
             binding.apply {
-                toolbarTitle.setTextAppearance(mTitleTextAppearance)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    toolbarTitle.setTextAppearance(mTitleTextAppearance)
+                }
                 toolbarTitle.gravity = titleGravity
                 toolbarTitle.maxLines = maxLines
                 toolbarTitle.ellipsize = ellipsize

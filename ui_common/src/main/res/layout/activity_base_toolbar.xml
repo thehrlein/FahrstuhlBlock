@@ -19,7 +19,7 @@
             android:id="@+id/base_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            app:onToolbarButtonClick="@{() -> toolbarViewModel.onToolbarButtonClicked()}"
+            app:onToolbarButtonClick="@{() -> toolbarViewModel.toolBarButtonClicked()}"
             app:toolbarButton="@{toolbarViewModel.toolbarButton}"
             app:toolbarTitle="@{toolbarViewModel.toolbarTitle}" />
 

@@ -11,7 +11,7 @@ import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.DialogBlockTrumpBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.BaseDialogFragment
-import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogData
+import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogEntity
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogResultCode
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -24,10 +24,10 @@ class BlockTrumpDialog : BaseDialogFragment<BlockTrumpViewModel, DialogBlockTrum
     companion object {
         private val TAG: String = BlockTrumpDialog::class.java.simpleName
 
-        fun show(fragmentManager: FragmentManager, dialogData: DialogData.TypeCustom) {
+        fun show(fragmentManager: FragmentManager, dialogEntity: DialogEntity.Custom) {
             if (fragmentManager.findFragmentByTag(TAG) != null) return
             val bundle = Bundle().apply {
-                putSerializable(DialogData.KEY_DIALOG_DATA, dialogData)
+                putSerializable(DialogEntity.KEY_DIALOG_ENTITY, dialogEntity)
             }
 
             BlockTrumpDialog().apply {
@@ -42,23 +42,23 @@ class BlockTrumpDialog : BaseDialogFragment<BlockTrumpViewModel, DialogBlockTrum
         }
     }
 
-    private val dialogData: DialogData.TypeCustom.Trump by lazy {
-        requireArguments().getSerializable(DialogData.KEY_DIALOG_DATA) as DialogData.TypeCustom.Trump
+    private val dialogEntity: DialogEntity.Custom.Trump by lazy {
+        requireArguments().getSerializable(DialogEntity.KEY_DIALOG_ENTITY) as DialogEntity.Custom.Trump
     }
 
     override fun createDialog(savedInstanceState: Bundle?, view: View): AlertDialog {
         return MaterialAlertDialogBuilder(requireContext())
             .setView(view)
-            .setTitle(dialogData.title)
-            .setPositiveButton(dialogData.positiveButtonText) { _, _ ->
-                dialogData.selectedTrumpType = binding.trumpSelectionGroup.getSelectedTrumpType()
-                sendResult(dialogData, DialogResultCode.POSITIVE)
+            .setTitle(dialogEntity.title)
+            .setPositiveButton(dialogEntity.positiveButtonText) { _, _ ->
+                dialogEntity.selectedTrumpType = binding.trumpSelectionGroup.getSelectedTrumpType()
+                sendDialogResult(dialogEntity, DialogResultCode.POSITIVE)
             }
-            .setNegativeButton(dialogData.negativeButtonText) { _, _ ->
-                sendResult(dialogData, DialogResultCode.NEGATIVE)
+            .setNegativeButton(dialogEntity.negativeButtonText) { _, _ ->
+                sendDialogResult(dialogEntity, DialogResultCode.NEGATIVE)
             }
-            .setNeutralButton(dialogData.neutralButtonText) { _, _ ->
-                sendResult(dialogData, DialogResultCode.NEUTRAL)
+            .setNeutralButton(dialogEntity.neutralButtonText) { _, _ ->
+                sendDialogResult(dialogEntity, DialogResultCode.NEUTRAL)
             }
             .create()
     }
@@ -66,7 +66,7 @@ class BlockTrumpDialog : BaseDialogFragment<BlockTrumpViewModel, DialogBlockTrum
     override fun onBindingCreated() {
         super.onBindingCreated()
 
-        binding.trumpSelectionGroup.setSelectedItem(dialogData.selectedTrumpType)
+        binding.trumpSelectionGroup.setSelectedItem(dialogEntity.selectedTrumpType)
         binding.autoShowTrumpDialog.setOnCheckedChangeListener { _, isChecked ->
             viewModel.onAutoShowTrumpDialogChanged(isChecked)
         }

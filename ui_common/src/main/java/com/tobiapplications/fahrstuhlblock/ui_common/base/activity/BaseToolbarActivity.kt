@@ -29,15 +29,6 @@ abstract class BaseToolbarActivity<Model : BaseToolbarViewModel, Binding : ViewD
     protected lateinit var contentBinding: ViewDataBinding
         private set
 
-
-    private val toolbarObserver = Observer<Unit> {
-        onToolbarButtonClicked()
-    }
-
-    private val toolbarButtonModeObserver = Observer<ToolbarButtonType> {
-        toolbarButtonType = it
-    }
-
     open fun onToolbarButtonClicked() {
         when (toolbarButtonType) {
             ToolbarButtonType.Close -> finish()
@@ -85,8 +76,12 @@ abstract class BaseToolbarActivity<Model : BaseToolbarViewModel, Binding : ViewD
                 setTitle(it)
             }
 
-            toolbarEvent.observe(this@BaseToolbarActivity, toolbarObserver)
-            toolbarButton.observe(this@BaseToolbarActivity, toolbarButtonModeObserver)
+            toolbarEvent.observe(this@BaseToolbarActivity, Observer {
+                onToolbarButtonClicked()
+            })
+            toolbarButton.observe(this@BaseToolbarActivity, Observer<ToolbarButtonType> {
+                toolbarButtonType = it
+            })
         }
     }
 }

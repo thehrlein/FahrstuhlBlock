@@ -4,9 +4,9 @@ import android.content.Context
 import com.tobiapplications.fahrstuhlblock.interactor.datasource.sharedpref.UserSettingsPersistence
 
 
-class SharedPreferencesDataSource(
+class FahrstuhlBlockSharedPreferences(
     context: Context
-) : BaseSharedPreferences(context), UserSettingsPersistence {
+) : SharedPreferenceDelegates(context), UserSettingsPersistence {
 
     override val preferencesFileName: String = "FahrstuhlBlockAppPreferences"
 

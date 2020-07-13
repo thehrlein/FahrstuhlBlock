@@ -6,14 +6,6 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
 
-/**
- *
- * This class will be used to declare all application screens and
- * there optional shared arguments such as IDs.
- * It will be used as an abstract component to navigate throw the application.
- *
- * The interpretation of all [Screen] classes is part of the framework layer.
- */
 
 sealed class Screen {
 

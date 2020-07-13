@@ -45,13 +45,7 @@ abstract class BaseFragment<Model: BaseViewModel, Binding: ViewDataBinding> : Fr
         }.root
     }
 
-    /**
-     * This is an optional method that will be called to have the fragment instantiate
-     * its binding variables or other view related configurations.
-     * It will be called in [onCreateView] before the [View] will be returned.
-     *
-     * It is recommended to move logic that operates on the returned View to [onViewCreated].
-     */
+
     @CallSuper
     open fun onBindingCreated(savedInstanceState: Bundle?) {
         viewModel.navigationEvent.observe(viewLifecycleOwner, Observer {
@@ -62,7 +56,6 @@ abstract class BaseFragment<Model: BaseViewModel, Binding: ViewDataBinding> : Fr
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         childFragmentManager.dispatchOnActivityResult(requestCode, resultCode, data)
     }
 }

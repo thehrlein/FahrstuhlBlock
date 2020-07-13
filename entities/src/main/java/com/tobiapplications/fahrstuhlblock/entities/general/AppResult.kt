@@ -32,13 +32,6 @@ sealed class AppResult<out T> {
 
 }
 
-val AppResult<*>.succeeded
-    get(): Boolean = this is AppResult.Success
-
 fun <T> T.toSuccessResult(): AppResult<T> {
     return AppResult.Success(this)
-}
-
-fun <T> AppResult<T>.successOr(fallback: T): T {
-    return (this as? AppResult.Success<T>)?.value ?: fallback
 }

@@ -13,7 +13,7 @@ import com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResul
 import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentBlockResultsBinding
-import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogData
+import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogEntity
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogInteractor
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogRequestCode
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogResultCode
@@ -133,7 +133,7 @@ class BlockResultsFragment :
             DialogRequestCode.CHOOSE_TRUMP -> {
                 when (resultCode) {
                     DialogResultCode.POSITIVE -> {
-                        (data?.getSerializableExtra(DialogData.KEY_DIALOG_DATA) as? DialogData.TypeCustom.Trump)?.let {
+                        (data?.getSerializableExtra(DialogEntity.KEY_DIALOG_ENTITY) as? DialogEntity.Custom.Trump)?.let {
                             viewModel.updateTrumpType(it.selectedTrumpType)
                         }
                     }

@@ -1,4 +1,4 @@
-package com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.sharedpref.firebase
+package com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.firebase
 
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.logEvent

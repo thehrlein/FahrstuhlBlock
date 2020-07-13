@@ -11,10 +11,11 @@ abstract class BaseToolbarViewModel : BaseViewModel() {
     val toolbarTitle: LiveData<String> = _toolbarTitle
     private val _toolbarButton = MutableLiveData<ToolbarButtonType>(ToolbarButtonType.None)
     val toolbarButton: LiveData<ToolbarButtonType> = _toolbarButton
-    val toolbarEvent = SingleLiveEvent<Unit>()
+    private val _toolbarEvent = SingleLiveEvent<Unit>()
+    val toolbarEvent: LiveData<Unit> = _toolbarEvent
 
-    fun onToolbarButtonClicked(){
-        toolbarEvent.call()
+    fun toolBarButtonClicked(){
+        _toolbarEvent.call()
     }
 
     fun setTitle(title: String) {

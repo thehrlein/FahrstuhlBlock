@@ -1,8 +1,8 @@
-package com.tobiapplications.fahrstuhlblock.fw_repositories.processor
+package com.tobiapplications.fahrstuhlblock.interactor
 
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 
-interface BaseProcessor {
+interface SafeCaller {
 
     fun <T> safeCall(call: () -> T): AppResult<T> {
         return safeCall(call) { response ->

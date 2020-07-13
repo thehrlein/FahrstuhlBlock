@@ -7,8 +7,8 @@ import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSett
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
 import com.tobiapplications.fahrstuhlblock.fw_database_room.databaseModule
-import com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.sharedpref.SharedPreferencesDataSource
-import com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.sharedpref.firebase.AnalyticsDatasourceImpl
+import com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.sharedpref.FahrstuhlBlockSharedPreferences
+import com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.firebase.AnalyticsDatasourceImpl
 import com.tobiapplications.fahrstuhlblock.fw_repositories.processor.BlockInputsProcessorImpl
 import com.tobiapplications.fahrstuhlblock.fw_repositories.processor.BlockResultsProcessorImpl
 import com.tobiapplications.fahrstuhlblock.fw_repositories.repository.FirebaseRepositoryImpl
@@ -41,7 +41,7 @@ import com.tobiapplications.fahrstuhlblock.presentation.settings.playersettings.
 import com.tobiapplications.fahrstuhlblock.presentation.settings.pointrules.PointRulesViewModel
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelper
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelperImpl
-import com.tobiapplications.fahrstuhlblock.utils.NavigationComponentsHandler
+import com.tobiapplications.fahrstuhlblock.utils.NavigationHandlerImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.binds
@@ -65,14 +65,14 @@ object Koin {
         single<FirebaseRepository> { FirebaseRepositoryImpl(get()) }
 
         // datasource
-        single { SharedPreferencesDataSource(get()) } binds (arrayOf(UserSettingsPersistence::class))
+        single { FahrstuhlBlockSharedPreferences(get()) } binds (arrayOf(UserSettingsPersistence::class))
         single<AnalyticsDatasource> { AnalyticsDatasourceImpl(get()) }
     }
 
     private val factory = module {
         // navigation handler
         factory<NavigationHandler> { (activity: AppCompatActivity, navHostController: NavHostController?) ->
-            NavigationComponentsHandler(
+            NavigationHandlerImpl(
                 activity,
                 navHostController,
                 get()

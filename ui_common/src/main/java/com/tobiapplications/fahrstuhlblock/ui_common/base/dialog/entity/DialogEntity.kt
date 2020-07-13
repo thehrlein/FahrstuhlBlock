@@ -1,6 +1,5 @@
 package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity
 
-import android.content.Context
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScore
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
 import com.tobiapplications.fahrstuhlblock.ui_common.R
@@ -8,10 +7,10 @@ import java.io.Serializable
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogRequestCode
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelper
 
-sealed class DialogData : Serializable {
+sealed class DialogEntity : Serializable {
 
     companion object {
-        const val KEY_DIALOG_DATA = "key.dialog_data"
+        const val KEY_DIALOG_ENTITY = "key.dialog_entity"
     }
 
     abstract val requestCode: Int
@@ -23,7 +22,7 @@ sealed class DialogData : Serializable {
         val positiveButtonText: String? = null,
         val negativeButtonText: String? = null,
         val neutralButtonText: String? = null
-    ) : DialogData() {
+    ) : DialogEntity() {
 
         class Exit(resourceHelper: ResourceHelper) : Text(
             title = resourceHelper.getString(R.string.dialog_exit_title),
@@ -44,28 +43,30 @@ sealed class DialogData : Serializable {
         }
     }
 
-    sealed class TypeCustom(
+    sealed class Custom(
         val title: String?,
         val positiveButtonText: String? = null,
         val negativeButtonText: String? = null,
         val neutralButtonText: String? = null
-    ) : DialogData() {
+    ) : DialogEntity() {
 
-        class Trump(resourceHelper: ResourceHelper, var selectedTrumpType: TrumpType) : TypeCustom(
+        class Trump(resourceHelper: ResourceHelper, var selectedTrumpType: TrumpType) : Custom(
             title = resourceHelper.getString(R.string.block_trump_title),
             positiveButtonText = resourceHelper.getString(R.string.general_ok),
             negativeButtonText = resourceHelper.getString(R.string.general_cancel)
         ) {
             override val requestCode: Int = DialogRequestCode.CHOOSE_TRUMP
+            override val isCancelable: Boolean
+                get() = true
         }
 
     }
 
-
     class Progress(
         val dimWindow: Boolean
-    ) : DialogData() {
+    ) : DialogEntity() {
         override val requestCode: Int = DialogRequestCode.DIALOG_PROGRESS
+        override val isCancelable: Boolean = false
     }
 
 }
