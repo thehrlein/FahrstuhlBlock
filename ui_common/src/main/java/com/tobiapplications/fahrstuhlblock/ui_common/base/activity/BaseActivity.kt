@@ -58,7 +58,6 @@ abstract class BaseActivity<Model: BaseViewModel> : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         supportFragmentManager.dispatchOnActivityResult(requestCode, resultCode, data)
     }
 
