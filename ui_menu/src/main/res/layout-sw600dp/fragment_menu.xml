@@ -27,7 +27,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
-
         <TextView
             android:id="@+id/menu_opcoming_features"
             android:layout_width="0dp"
@@ -40,7 +39,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

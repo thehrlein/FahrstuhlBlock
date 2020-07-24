@@ -11,6 +11,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_layout_outlined"
             style="?textInputStyleOutlinedExposedDropdown"
+            app:hintTextAppearance="?textAppearanceSubtitle2"
+            app:errorTextAppearance="?textAppearanceCaption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_2"
@@ -21,9 +23,10 @@
             <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/auto_complete_text"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/auto_complete_text_view_height"
                 android:maxLines="1"
                 android:inputType="text"
+                android:textAppearance="?textAppearanceBody1"
                 android:imeOptions="actionNext"/>
 
         </com.google.android.material.textfield.TextInputLayout>

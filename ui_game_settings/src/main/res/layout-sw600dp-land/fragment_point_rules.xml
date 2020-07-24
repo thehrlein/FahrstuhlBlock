@@ -19,6 +19,13 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/space_4">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintGuide_percent="0.5"
+                android:orientation="vertical"/>
+
             <TextView
                 android:id="@+id/point_rules_card_count_title"
                 android:layout_width="0dp"
@@ -43,13 +50,15 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/point_rule_points_for_correct_prediction"
                 style="?textInputStyleOutlined"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_4"
+                android:layout_marginStart="@dimen/space_none"
+                android:layout_marginEnd="@dimen/space_2"
                 android:hint="@string/point_rules_correct_prediction_hint"
                 app:errorTextAppearance="?textAppearanceCaption"
                 app:hintTextAppearance="?textAppearanceSubtitle2"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/guideline_center"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/point_rules_card_count_description">
 
@@ -67,15 +76,16 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/point_rule_points_per_stitch"
                 style="?textInputStyleOutlined"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_2"
+                android:layout_marginStart="@dimen/space_2"
+                android:layout_marginEnd="@dimen/space_none"
                 android:hint="@string/point_rules_each_stitch_hint_positive"
                 app:errorTextAppearance="?textAppearanceCaption"
                 app:hintTextAppearance="?textAppearanceSubtitle2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/point_rule_points_for_correct_prediction">
+                app:layout_constraintStart_toEndOf="@id/guideline_center"
+                app:layout_constraintTop_toTopOf="@id/point_rule_points_for_correct_prediction">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -93,7 +103,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_4"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/space_none"
+                android:layout_marginEnd="@dimen/space_2"
+                app:layout_constraintEnd_toStartOf="@id/guideline_center"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/point_rule_points_per_stitch">
 
@@ -123,23 +135,24 @@
                 android:layout_marginTop="@dimen/space_2"
                 android:text="@{pointsForFalsePredictionSwitch.checked ? @string/point_rules_points_for_false_prediction_switch_hint_positive : @string/point_rules_points_for_false_prediction_switch_hint_negative}"
                 android:textAppearance="?textAppearanceCaption"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/points_for_false_prediction_switch_layout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/points_for_false_prediction_switch_layout" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/point_rule_minus_points_per_stitch"
                 style="?textInputStyleOutlined"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_4"
+                android:layout_marginStart="@dimen/space_2"
+                android:layout_marginEnd="@dimen/space_none"
                 android:hint="@string/point_rules_each_stitch_hint_negative"
                 android:visibility="@{!viewModel.pointsIfPredictionFalse}"
                 app:errorTextAppearance="?textAppearanceCaption"
                 app:hintTextAppearance="?textAppearanceSubtitle2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/points_for_false_prediction_switch_hint">
+                app:layout_constraintStart_toEndOf="@id/guideline_center"
+                app:layout_constraintTop_toTopOf="@id/points_for_false_prediction_switch_layout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -162,7 +175,7 @@
                 android:text="@string/player_settings_button_proceed"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/point_rule_minus_points_per_stitch" />
+                app:layout_constraintTop_toBottomOf="@id/points_for_false_prediction_switch_hint" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

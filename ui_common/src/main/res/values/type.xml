@@ -39,36 +39,43 @@
     <style name="TextAppearance.FahrstuhlBlock.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="fontFamily">@font/roboto_slab</item>
         <item name="android:fontFamily">@font/roboto_slab</item>
+        <item name="android:textSize">@dimen/font_size_headline_4</item>
     </style>
 
     <style name="TextAppearance.FahrstuhlBlock.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="fontFamily">@font/roboto_slab</item>
         <item name="android:fontFamily">@font/roboto_slab</item>
+        <item name="android:textSize">@dimen/font_size_headline_5</item>
     </style>
 
     <style name="TextAppearance.FahrstuhlBlock.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="fontFamily">@font/roboto_slab</item>
         <item name="android:fontFamily">@font/roboto_slab</item>
+        <item name="android:textSize">@dimen/font_size_headline_5</item>
     </style>
 
     <style name="TextAppearance.FahrstuhlBlock.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="fontFamily">@font/lato_bold</item>
-        <item name="android:fontFamily">@font/lato_bold</item>
+        <item name="fontFamily">@font/lato_italic</item>
+        <item name="android:fontFamily">@font/lato_italic</item>
+        <item name="android:textSize">@dimen/font_size_subtitle_1</item>
     </style>
 
     <style name="TextAppearance.FahrstuhlBlock.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
-        <item name="fontFamily">@font/lato_bold</item>
-        <item name="android:fontFamily">@font/lato_bold</item>
+        <item name="fontFamily">@font/lato_italic</item>
+        <item name="android:fontFamily">@font/lato_italic</item>
+        <item name="android:textSize">@dimen/font_size_subtitle_2</item>
     </style>
 
     <style name="TextAppearance.FahrstuhlBlock.Body1" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="fontFamily">@font/lato_italic</item>
-        <item name="android:fontFamily">@font/lato_italic</item>
+        <item name="fontFamily">@font/roboto_slab</item>
+        <item name="android:fontFamily">@font/roboto_slab</item>
+        <item name="android:textSize">@dimen/font_size_body_1</item>
     </style>
 
     <style name="TextAppearance.FahrstuhlBlock.Body2" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="fontFamily">@font/lato_italic</item>
-        <item name="android:fontFamily">@font/lato_italic</item>
+        <item name="fontFamily">@font/roboto_slab</item>
+        <item name="android:fontFamily">@font/roboto_slab</item>
+        <item name="android:textSize">@dimen/font_size_body_2</item>
     </style>
 
     <style name="TextAppearance.FahrstuhlBlock.Button" parent="TextAppearance.MaterialComponents.Button">
@@ -77,20 +84,23 @@
         <item name="textAllCaps">false</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/font_size_button_2</item>
+        <item name="android:minHeight">@dimen/button_height</item>
     </style>
 
     <style name="TextAppearance.FahrstuhlBlock.Caption" parent="TextAppearance.MaterialComponents.Caption">
         <item name="fontFamily">@font/roboto_slab</item>
         <item name="android:fontFamily">@font/roboto_slab</item>
+        <item name="android:textSize">@dimen/font_size_caption</item>
     </style>
 
     <style name="TextAppearance.FahrstuhlBlock.Overline" parent="TextAppearance.MaterialComponents.Overline">
         <item name="fontFamily">@font/roboto_slab</item>
         <item name="android:fontFamily">@font/roboto_slab</item>
         <item name="textAllCaps">true</item>
+        <item name="android:textSize">@dimen/font_size_overline</item>
     </style>
 
-    <style name="TextAppearance.FahrstuhlBlock.Toolbar.Title" parent="TextAppearance.FahrstuhlBlock.Headline6">
+    <style name="TextAppearance.FahrstuhlBlock.Toolbar.Title" parent="TextAppearance.FahrstuhlBlock.Subtitle1">
         <item name="android:textColor">?colorOnPrimary</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>

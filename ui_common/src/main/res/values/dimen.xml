@@ -64,6 +64,15 @@
 
     <!-- Button -->
     <dimen name="button_input_action_min_width">48dp</dimen>
+    <dimen name="button_height">48dp</dimen>
+
+    <!-- Icon -->
+    <dimen name="icon_size_small">24dp</dimen>
+    <dimen name="icon_size_medium">32dp</dimen>
+    <dimen name="icon_size_big">48dp</dimen>
+
+    <!-- Autocomplete TextView -->
+    <dimen name="auto_complete_text_view_height">56dp</dimen>
 
     <!-- OnboardingTutorial -->
     <dimen name="onboarding_tutorial_dot_height">5dp</dimen>

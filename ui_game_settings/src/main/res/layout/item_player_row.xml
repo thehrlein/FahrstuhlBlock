@@ -13,6 +13,7 @@
             android:id="@+id/player_position"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?textAppearanceBody1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -24,15 +25,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_4"
             android:layout_marginEnd="@dimen/space_4"
+            android:textAppearance="?textAppearanceBody1"
             app:layout_constraintEnd_toStartOf="@id/icon_drag"
             app:layout_constraintStart_toEndOf="@id/player_position"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:text="player name" />
 
         <ImageView
             android:id="@+id/icon_drag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/icon_size_medium"
+            android:layout_height="@dimen/icon_size_medium"
             android:src="@drawable/ic_drag"
             android:tint="?colorOnBackground"
             app:layout_constraintBottom_toBottomOf="parent"

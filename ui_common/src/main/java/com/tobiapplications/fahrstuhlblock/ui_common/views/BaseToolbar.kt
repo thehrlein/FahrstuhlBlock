@@ -44,7 +44,6 @@ class BaseToolbar @JvmOverloads constructor(
             )
 
         typedArray.apply {
-            val mTitleTextAppearance = getResourceId(R.styleable.BaseToolbar_titleTextAppearance, 0)
             val titleGravity = getInt(R.styleable.BaseToolbar_android_gravity, 0)
             val iconTint = getColor(R.styleable.BaseToolbar_android_buttonTint, 0)
             val maxLines = getInt(R.styleable.BaseToolbar_android_maxLines, 1)
@@ -53,9 +52,6 @@ class BaseToolbar @JvmOverloads constructor(
             }
 
             binding.apply {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    toolbarTitle.setTextAppearance(mTitleTextAppearance)
-                }
                 toolbarTitle.gravity = titleGravity
                 toolbarTitle.maxLines = maxLines
                 toolbarTitle.ellipsize = ellipsize

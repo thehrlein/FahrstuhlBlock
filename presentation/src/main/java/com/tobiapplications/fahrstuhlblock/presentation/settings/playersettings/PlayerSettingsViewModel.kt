@@ -45,7 +45,7 @@ class PlayerSettingsViewModel(
             MutableLiveData("a"),
             MutableLiveData("b"),
             MutableLiveData("c"),
-            MutableLiveData("d"),
+            MutableLiveData(""),
             MutableLiveData("e"),
             MutableLiveData("f"),
             MutableLiveData("g"),
@@ -88,79 +88,41 @@ class PlayerSettingsViewModel(
             mediator.checkRest(3)
         }
         mediator.addSource(players[4]) {
-            val occurrences = getAllPlayerNames()[it] ?: DEFAULT_PLAYER_NAME_OCCURRENCE
-            val error = when {
-                it.isNullOrEmpty() -> PlayerError.EMPTY
-                occurrences > 1 -> PlayerError.DUPLICATE
-                else -> null
-            }
-
-            playerErrors.value?.get(4)?.postValue(error)
-            mediator.postValue(
-                checkInputValid(
-                    error = error,
-                    excludeIndex = 4
-                )
-            )
+            mediator.checkIndividual(it, 4)
+            mediator.checkRest(4)
         }
         mediator.addSource(players[5]) {
-            val occurrences = getAllPlayerNames()[it] ?: DEFAULT_PLAYER_NAME_OCCURRENCE
-            val error = when {
-                it.isNullOrEmpty() -> PlayerError.EMPTY
-                occurrences > 1 -> PlayerError.DUPLICATE
-                else -> null
-            }
-
-            playerErrors.value?.get(5)?.postValue(error)
-            mediator.postValue(
-                checkInputValid(
-                    error = error,
-                    excludeIndex = 5
-                )
-            )
+            mediator.checkIndividual(it, 5)
+            mediator.checkRest(5)
         }
         mediator.addSource(players[6]) {
-            val occurrences = getAllPlayerNames()[it] ?: DEFAULT_PLAYER_NAME_OCCURRENCE
-            val error = when {
-                it.isNullOrEmpty() -> PlayerError.EMPTY
-                occurrences > 1 -> PlayerError.DUPLICATE
-                else -> null
-            }
-
-            playerErrors.value?.get(6)?.postValue(error)
-            mediator.postValue(
-                checkInputValid(
-                    error = error,
-                    excludeIndex = 6
-                )
-            )
+            mediator.checkIndividual(it, 6)
+            mediator.checkRest(6)
         }
         mediator.addSource(players[7]) {
-            val occurrences = getAllPlayerNames()[it] ?: DEFAULT_PLAYER_NAME_OCCURRENCE
-            val error = when {
-                it.isNullOrEmpty() -> PlayerError.EMPTY
-                occurrences > 1 -> PlayerError.DUPLICATE
-                else -> null
+            mediator.checkIndividual(it, 7)
+            mediator.checkRest(7)
+        }
+        mediator.addSource(playerVisibilities) {
+            val allFine = mediator.checkRest(-1)
+            if (allFine) {
+                mediator.postValue(true)
             }
-
-            playerErrors.value?.get(7)?.postValue(error)
-            mediator.postValue(
-                checkInputValid(
-                    error = error,
-                    excludeIndex = 7
-                )
-            )
         }
     }
 
-    private fun MediatorLiveData<Boolean>.checkRest(individualIndex: Int) {
+    private fun MediatorLiveData<Boolean>.checkRest(individualIndex: Int) : Boolean {
         val visibilities = playerVisibilities.value?.map { it.value } ?: emptyList()
         val errors = playerErrors.value?.map { it.value } ?: emptyList()
+        var allFine = true
         visibilities.forEachIndexed { index, data ->
             if (data == true && individualIndex != index && errors[index] != null) {
+                allFine = false
                 checkIndividual(playerNames.value?.get(index)?.value, index)
             }
         }
+
+        return allFine
     }
 
     private fun MediatorLiveData<Boolean>.checkIndividual(it: String?, index: Int) {
@@ -184,7 +146,9 @@ class PlayerSettingsViewModel(
 
     private fun checkInputValid(error: PlayerError?, excludeIndex: Int): Boolean {
         val errors =
-            playerErrors.value?.filterIndexed { index, mutableLiveData -> index != excludeIndex }
+            playerErrors.value
+                ?.filterIndexed { index, _ -> index != excludeIndex }
+                ?.filterIndexed { index, _   ->  playerVisibilities.value?.get(index)?.value == true }
                 ?.map { it.value }
                 ?.toMutableList() ?: mutableListOf()
         errors.add(error)
@@ -214,6 +178,8 @@ class PlayerSettingsViewModel(
     }
 
     fun onProceedClicked() {
+        if (!checkInputValid(null, -1)) return
+
         val visibilities = playerVisibilities.value ?: emptyList()
         val names = playerNames.value
             ?.filterIndexed { index, _ -> visibilities[index].value == true }

@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_4"
             android:layout_marginEnd="@dimen/space_4"
+            android:textAppearance="?textAppearanceToolbarTitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/toolbar_icon"

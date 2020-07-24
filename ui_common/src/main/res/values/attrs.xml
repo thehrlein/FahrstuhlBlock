@@ -27,7 +27,6 @@
 
     <!-- Custom views attributes -->
     <declare-styleable name="BaseToolbar">
-        <attr name="titleTextAppearance" format="reference"/>
         <attr name="android:gravity" />
         <attr name="android:buttonTint" />
         <attr name="android:maxLines"/>
