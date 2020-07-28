@@ -46,6 +46,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/dialog_content_min_height"
                 android:orientation="vertical">
 
                 <android.widget.Space
@@ -83,7 +85,7 @@
         android:id="@+id/customPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp">
+        android:minHeight="@dimen/dialog_content_min_height">
 
         <FrameLayout
             android:id="@+id/custom"

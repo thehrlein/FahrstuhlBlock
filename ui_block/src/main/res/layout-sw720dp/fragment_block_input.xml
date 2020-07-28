@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputViewModel" />
+
+        <import type="com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+        <ViewSwitcher
+            android:id="@+id/block_input_switcher"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--            <RelativeLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent">-->
+
+            <!--                <ProgressBar-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_centerInParent="true" />-->
+
+            <!--            </RelativeLayout>-->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/block_input_sheet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/space_4">
+
+                <TextView
+                    android:id="@+id/block_input_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_2"
+                    android:textAppearance="?textAppearanceHeadline5"
+                    app:inputTitle="@{viewModel.game}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/block_input_message"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_2"
+                    android:text="@string/player_order_description"
+                    android:textAppearance="?textAppearanceBody2"
+                    app:game="@{viewModel.game}"
+                    app:inputMessage="@{viewModel.inputType}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/block_input_title" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/input_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_2"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/block_input_message"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/item_block_input" />
+
+                <Button
+                    android:id="@+id/button_save"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_2"
+                    android:enabled="@{viewModel.inputsValid}"
+                    android:onClick="@{() -> viewModel.onSaveClicked()}"
+                    android:text="@{viewModel.inputType == InputType.TIPP ? @string/block_input_enter_tipps : @string/block_input_enter_results}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/input_list" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ViewSwitcher>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

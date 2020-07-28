@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.tobiapplications.fahrstuhlblock.presentation.settings.playerorder.PlayerOrderViewModel" />
+            type="com.tobiapplications.fahrstuhlblock.presentation.settings.gamerules.GameRulesViewModel" />
     </data>
 
     <ScrollView
@@ -20,51 +20,48 @@
             android:padding="@dimen/space_4">
 
             <TextView
-                android:id="@+id/player_order_title"
+                android:id="@+id/game_rules_card_count_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:text="@string/game_rules_card_count_title"
                 android:textAppearance="?textAppearanceHeadline5"
-                android:text="@string/player_order_hint"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/player_order_description"
+                android:id="@+id/game_rules_card_count_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_2"
-                android:text="@string/player_order_description"
+                android:text="@string/game_rules_card_count_description"
                 android:textAppearance="?textAppearanceSubtitle2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/player_order_title" />
+                app:layout_constraintTop_toBottomOf="@id/game_rules_card_count_title" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/player_list"
+            <include
+                android:id="@+id/game_rules_card_count_radio_group_include"
+                layout="@layout/include_game_rules_round_count_radio_group"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_2"
-                android:layout_marginStart="@dimen/space_4"
-                android:layout_marginEnd="@dimen/space_4"
-                android:overScrollMode="never"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:itemCount="4"
-                tools:listitem="@layout/item_player_row"
-                app:layout_constraintTop_toBottomOf="@id/player_order_description"
+                android:layout_margin="@dimen/space_8"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/game_rules_card_count_description"
+                app:viewModel="@{viewModel}" />
 
             <Button
                 android:id="@+id/button_proceed"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_8"
+                android:enabled="@{viewModel.inputValid}"
                 android:onClick="@{() -> viewModel.onProceedClicked()}"
                 android:text="@string/player_settings_button_proceed"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/player_list"/>
+                app:layout_constraintTop_toBottomOf="@id/game_rules_card_count_radio_group_include" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -3,4 +3,6 @@
 
     <integer name="one_card_deck">32</integer>
     <integer name="two_card_decks">64</integer>
+
+    <integer name="block_input_landscape_span_count">2</integer>
 </resources>

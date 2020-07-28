@@ -23,6 +23,7 @@
             android:paddingStart="@dimen/space_2"
             android:paddingEnd="@dimen/space_2"
             android:text="@{item.name}"
+            android:textAppearance="?textAppearanceBody2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/image"
             app:layout_constraintStart_toStartOf="parent"

@@ -47,6 +47,7 @@
                 app:layout_constraintTop_toBottomOf="@id/divider"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:textAppearance="?textAppearanceCaption"
                 android:checked="@{viewModel.showTrumpDialogEnabled}"
                 android:paddingStart="@dimen/space_2"
                 android:paddingEnd="@dimen/space_none"

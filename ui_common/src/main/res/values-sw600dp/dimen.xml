@@ -12,17 +12,19 @@
     <dimen name="space_7">56dp</dimen>
     <dimen name="space_8">64dp</dimen>
 
-    <dimen name="font_size_headline_4">36sp</dimen>
-    <dimen name="font_size_headline_5">32sp</dimen>
-    <dimen name="font_size_subtitle_1">24sp</dimen>
-    <dimen name="font_size_subtitle_2">22sp</dimen>
-    <dimen name="font_size_body_1">22sp</dimen>
-    <dimen name="font_size_body_2">20sp</dimen>
-    <dimen name="font_size_caption">18sp</dimen>
-    <dimen name="font_size_overline">19sp</dimen>
-    <dimen name="font_size_button">22sp</dimen>
-    <dimen name="font_size_button_2">20sp</dimen>
+    <dimen name="font_size_headline_4">34sp</dimen>
+    <dimen name="font_size_headline_5">30sp</dimen>
+    <dimen name="font_size_subtitle_1">22sp</dimen>
+    <dimen name="font_size_subtitle_2">20sp</dimen>
+    <dimen name="font_size_body_1">20sp</dimen>
+    <dimen name="font_size_body_2">18sp</dimen>
+    <dimen name="font_size_caption">16sp</dimen>
+    <dimen name="font_size_overline">17sp</dimen>
+    <dimen name="font_size_button">20sp</dimen>
+    <dimen name="font_size_button_2">18sp</dimen>
 
+    <!-- Dialog -->
+    <dimen name="dialog_content_min_height">96dp</dimen>
 
     <!-- Button -->
     <dimen name="button_height">72dp</dimen>
@@ -34,6 +36,9 @@
     <dimen name="icon_size_small">32dp</dimen>
     <dimen name="icon_size_medium">40dp</dimen>
     <dimen name="icon_size_big">56dp</dimen>
+
+    <!-- Block -->
+    <dimen name="block_cell_height">60dp</dimen>
 
     <!-- Trump -->
     <dimen name="block_trump_item_height">100dp</dimen>
