@@ -224,7 +224,7 @@
                 android:id="@+id/button_proceed"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_8"
+                android:layout_marginTop="@dimen/space_4"
                 android:enabled="@{viewModel.inputValid}"
                 android:onClick="@{() -> viewModel.onProceedClicked()}"
                 android:text="@string/player_settings_button_proceed"

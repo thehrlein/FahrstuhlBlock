@@ -35,4 +35,7 @@
     <dimen name="icon_size_medium">40dp</dimen>
     <dimen name="icon_size_big">56dp</dimen>
 
+    <!-- Trump -->
+    <dimen name="block_trump_item_height">100dp</dimen>
+
 </resources>

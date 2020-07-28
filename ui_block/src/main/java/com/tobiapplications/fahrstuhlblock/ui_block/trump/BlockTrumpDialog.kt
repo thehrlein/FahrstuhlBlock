@@ -1,6 +1,7 @@
 package com.tobiapplications.fahrstuhlblock.ui_block.trump
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
@@ -14,6 +15,8 @@ import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.BaseDialogFragm
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogEntity
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogResultCode
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
+private const val SET_SELECTED_ITEM_DELAY = 100L
 
 class BlockTrumpDialog : BaseDialogFragment<BlockTrumpViewModel, DialogBlockTrumpBinding>() {
 
@@ -66,7 +69,13 @@ class BlockTrumpDialog : BaseDialogFragment<BlockTrumpViewModel, DialogBlockTrum
     override fun onBindingCreated() {
         super.onBindingCreated()
 
-        binding.trumpSelectionGroup.setSelectedItem(dialogEntity.selectedTrumpType)
+        binding.trumpSelectionGroup.setOnCheckedChangeListener {
+            dialogEntity.selectedTrumpType = it
+        }
+
+        Handler().postDelayed({
+            binding.trumpSelectionGroup.setSelectedItem(dialogEntity.selectedTrumpType)
+        }, SET_SELECTED_ITEM_DELAY)
         binding.autoShowTrumpDialog.setOnCheckedChangeListener { _, isChecked ->
             viewModel.onAutoShowTrumpDialogChanged(isChecked)
         }

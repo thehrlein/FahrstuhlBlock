@@ -16,7 +16,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/space_4">
+            android:padding="@dimen/space_2">
 
             <com.tobiapplications.fahrstuhlblock.ui_block.trump.TrumpSelectionGroup
                 android:id="@+id/trump_selection_group"
@@ -33,7 +33,7 @@
                 android:id="@+id/divider"
                 android:layout_width="0dp"
                 android:layout_height="1px"
-                android:layout_marginTop="@dimen/space_4"
+                android:layout_marginTop="@dimen/space_2"
                 android:background="?dividerHorizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
             <CheckBox
                 android:id="@+id/auto_show_trump_dialog"
                 android:layout_width="0dp"
-                android:layout_marginTop="@dimen/space_4"
+                android:layout_marginTop="@dimen/space_2"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/divider"
                 app:layout_constraintStart_toStartOf="parent"
