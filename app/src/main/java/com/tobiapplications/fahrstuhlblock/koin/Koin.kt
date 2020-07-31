@@ -94,6 +94,7 @@ object Koin {
         factory { IsShowTrumpDialogEnabledUseCase(get()) }
         factory { TrackAnalyticsEventUseCase(get()) }
         factory { GetAllSavedGamesUseCase(get()) }
+        factory { StoreGameFinishedUseCase(get()) }
     }
 
     private val viewModel = module {
@@ -113,7 +114,10 @@ object Koin {
         }
         viewModel { (playerSettingsData: PlayerSettingsData) ->
             GameRulesViewModel(
-                playerSettingsData
+                playerSettingsData,
+                get(),
+                get(),
+                get()
             )
         }
         viewModel { (gameRuleSettingsData: GameRuleSettingsData) ->
@@ -126,6 +130,7 @@ object Koin {
         viewModel { (gameId: Long) -> BlockViewModel(gameId) }
         viewModel {
             BlockResultsViewModel(
+                get(),
                 get(),
                 get(),
                 get(),

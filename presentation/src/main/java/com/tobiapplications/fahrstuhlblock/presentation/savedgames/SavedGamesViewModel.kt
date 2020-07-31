@@ -36,7 +36,9 @@ class SavedGamesViewModel(
 
     private fun convertGames(games: List<Game>) {
         _noSavedGamesEvent.postValue(games.isEmpty())
-        _savedGames.postValue(games.map {
+        _savedGames.postValue(games
+            .filter { !it.gameInfo.gameFinished }
+            .map {
             SavedGameEntity(
                 gameId = it.gameInfo.gameId,
                 gameStartDate = it.gameInfo.gameStartDate,

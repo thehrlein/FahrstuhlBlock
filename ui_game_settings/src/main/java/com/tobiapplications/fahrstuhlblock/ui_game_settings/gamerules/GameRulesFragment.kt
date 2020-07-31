@@ -34,6 +34,13 @@ class GameRulesFragment :
         activityToolbarViewModel.setTitle(getString(R.string.game_rules_toolbar_title))
 
         initMaxCardSelection()
+        initAutoShowTrumpDialog()
+    }
+
+    private fun initAutoShowTrumpDialog() {
+        binding.autoShowTrumpDialog.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.onAutoShowTrumpDialogChanged(isChecked)
+        }
     }
 
     private fun initMaxCardSelection() {

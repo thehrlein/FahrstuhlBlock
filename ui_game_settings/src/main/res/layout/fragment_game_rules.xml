@@ -51,6 +51,30 @@
                 app:layout_constraintTop_toBottomOf="@id/game_rules_card_count_description"
                 app:viewModel="@{viewModel}" />
 
+            <View
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                android:layout_marginTop="@dimen/space_4"
+                android:background="?dividerHorizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/game_rules_card_count_radio_group_include"/>
+
+            <CheckBox
+                android:id="@+id/auto_show_trump_dialog"
+                android:layout_width="0dp"
+                android:layout_marginTop="@dimen/space_2"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textAppearance="?textAppearanceCaption"
+                android:checked="@{viewModel.showTrumpDialogEnabled}"
+                android:paddingStart="@dimen/space_2"
+                android:paddingEnd="@dimen/space_none"
+                android:text="@string/game_rules_disable_auto_show_dialog"/>
+
             <Button
                 android:id="@+id/button_proceed"
                 android:layout_width="0dp"
@@ -61,7 +85,7 @@
                 android:text="@string/player_settings_button_proceed"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/game_rules_card_count_radio_group_include" />
+                app:layout_constraintTop_toBottomOf="@id/auto_show_trump_dialog" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

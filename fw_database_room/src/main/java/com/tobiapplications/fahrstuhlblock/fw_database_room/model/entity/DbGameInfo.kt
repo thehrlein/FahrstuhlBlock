@@ -16,5 +16,6 @@ data class DbGameInfo(
     val players: DbPlayerSettingsData,
     val highCardCount: Int,
     @Embedded
-    val pointsRuleData: DbPointsRuleData
+    val pointsRuleData: DbPointsRuleData,
+    val gameFinished: Boolean
 )

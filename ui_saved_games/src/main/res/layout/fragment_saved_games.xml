@@ -17,7 +17,8 @@
 
         <include
             android:id="@+id/saved_game_header"
-            layout="@layout/layout_saved_games_header" />
+            layout="@layout/layout_saved_games_header"
+            android:visibility="@{!viewModel.noSavedGames}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/game_list"

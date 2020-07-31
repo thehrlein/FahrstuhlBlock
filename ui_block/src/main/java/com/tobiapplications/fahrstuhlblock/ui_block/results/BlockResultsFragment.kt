@@ -59,7 +59,7 @@ class BlockResultsFragment :
         })
 
         viewModel.gameScores.observe(viewLifecycleOwner, Observer {
-            if (it.finished) {
+            if (it.finished && !it.winnerAlreadyShown) {
                 binding.konfettiView.build()
                     .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
                     .setDirection(0.0, 359.0)

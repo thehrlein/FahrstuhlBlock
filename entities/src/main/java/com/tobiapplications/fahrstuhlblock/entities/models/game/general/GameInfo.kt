@@ -8,5 +8,6 @@ data class GameInfo(
     val gameStartDate: Long,
     val players: PlayerSettingsData,
     val highCardCount: Int,
-    val pointsRuleData: PointsRuleData
+    val pointsRuleData: PointsRuleData,
+    val gameFinished: Boolean = false
 )

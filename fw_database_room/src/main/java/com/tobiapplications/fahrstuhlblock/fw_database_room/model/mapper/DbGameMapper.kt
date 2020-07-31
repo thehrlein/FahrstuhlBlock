@@ -12,7 +12,8 @@ fun GameInfo.mapToDbData() = DbGameInfo(
     gameStartDate = gameStartDate,
     players = players.mapToDbData(),
     highCardCount = highCardCount,
-    pointsRuleData = pointsRuleData.mapToDbData()
+    pointsRuleData = pointsRuleData.mapToDbData(),
+    gameFinished = gameFinished
 )
 
 fun DbGameInfo.mapToData() = GameInfo(
@@ -20,7 +21,8 @@ fun DbGameInfo.mapToData() = GameInfo(
     gameStartDate = gameStartDate,
     players = players.mapToData(),
     highCardCount = highCardCount,
-    pointsRuleData = pointsRuleData.mapToData()
+    pointsRuleData = pointsRuleData.mapToData(),
+    gameFinished = gameFinished
 )
 
 fun PlayerSettingsData.mapToDbData() = DbPlayerSettingsData(

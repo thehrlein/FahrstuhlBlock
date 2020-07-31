@@ -23,7 +23,7 @@ class GameRepositoryImpl(
 ) : GameRepository {
 
     override suspend fun storeGameInfo(gameInfo: GameInfo) : AppResult<Long> {
-        return gameCache.storeGameInfo(gameInfo)
+        return gameCache.insertGameInfo(gameInfo)
     }
 
     override suspend fun getGame(gameId: Long): AppResult<Game> {
@@ -63,5 +63,16 @@ class GameRepositoryImpl(
 
     override suspend fun getAllSavedGames(): AppResult<List<Game>> {
         return gameCache.getAllSavedGames()
+    }
+
+    override suspend fun setGameFinished(gameId: Long) : AppResult<Unit> {
+        return when (val result = gameCache.getGameInfo(gameId)) {
+            is AppResult.Success -> {
+                gameCache.insertGameInfo(result.value.copy(
+                    gameFinished = true)
+                ).map { Unit }
+            }
+            is AppResult.Error -> result
+        }
     }
 }

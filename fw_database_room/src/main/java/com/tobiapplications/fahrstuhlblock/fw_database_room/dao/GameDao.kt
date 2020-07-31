@@ -11,6 +11,9 @@ interface GameDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertGameInfo(dbGameInfo: DbGameInfo): Long
 
+    @Query("SELECT * FROM GAME_DATABASE WHERE gameId = :gameId")
+    fun getGameInfo(gameId: Long): DbGameInfo
+
     @Transaction
     @Query("SELECT * FROM GAME_DATABASE WHERE gameId = :gameId")
     fun getGame(gameId: Long) : DbGame

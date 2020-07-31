@@ -150,6 +150,7 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
 
             GameScoreData(
                 finished = gameFinished,
+                winnerAlreadyShown = game.gameInfo.gameFinished,
                 results = scores
             )
         }

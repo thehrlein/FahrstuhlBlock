@@ -31,4 +31,6 @@ interface GameRepository {
     suspend fun getGameScores(game: Game): AppResult<GameScoreData>
 
     suspend fun getAllSavedGames(): AppResult<List<Game>>
+
+    suspend fun setGameFinished(gameId: Long) : AppResult<Unit>
 }

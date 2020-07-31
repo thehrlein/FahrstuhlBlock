@@ -7,7 +7,9 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRo
 
 interface GameCache {
 
-    suspend fun storeGameInfo(gameInfo: GameInfo) : AppResult<Long>
+    suspend fun insertGameInfo(gameInfo: GameInfo) : AppResult<Long>
+
+    suspend fun getGameInfo(gameId: Long) : AppResult<GameInfo>
 
     suspend fun getGame(gameId: Long): AppResult<Game>
 

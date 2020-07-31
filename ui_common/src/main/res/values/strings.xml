@@ -48,6 +48,7 @@
     <string name="game_rules_cards_options_two_decks">Two decks (up to %1$d cards based on %2$d players)</string>
     <string name="game_rules_cards_options_individual">Individual count</string>
     <string name="game_rules_cards_options_individual_input_hint">Highest card count</string>
+    <string name="game_rules_disable_auto_show_dialog">Show a dialog to choose your trump automatically for each round</string>
 
 
     <!-- Point rules -->

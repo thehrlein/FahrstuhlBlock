@@ -10,10 +10,7 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRoundData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.*
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetBlockResultsUseCase
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameUseCase
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameScoresUseCase
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreRoundUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.*
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.invoke
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.user.IsShowTrumpDialogEnabledUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.SingleLiveEvent
@@ -27,7 +24,8 @@ class BlockResultsViewModel(
     private val getBlockResultsUseCase: GetBlockResultsUseCase,
     private val getGameScoresUseCase: GetGameScoresUseCase,
     private val storeRoundUseCase: StoreRoundUseCase,
-    private val isShowTrumpDialogEnabledUseCase: IsShowTrumpDialogEnabledUseCase
+    private val isShowTrumpDialogEnabledUseCase: IsShowTrumpDialogEnabledUseCase,
+    private val storeGameFinishedUseCase: StoreGameFinishedUseCase
 ) : BaseViewModel(), BlockResultsInteractions {
 
     private val _inputType = MutableLiveData<InputType>()
@@ -109,6 +107,14 @@ class BlockResultsViewModel(
 
     fun onGameFinished(results: List<GameScore>) {
         navigateTo(Screen.Block.GameFinished(results.filter { it.position == WINNER_POSITION }))
+
+        viewModelScope.launch {
+            val gameId = game.value?.gameInfo?.gameId ?: return@launch
+            when (val result = storeGameFinishedUseCase.invoke(gameId)) {
+                is AppResult.Success -> Unit
+                is AppResult.Error -> Unit
+            }
+        }
     }
 
     override fun onTrumpClicked(trumpType: TrumpType) {

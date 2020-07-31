@@ -17,10 +17,17 @@ class GameCacheImpl(
 ) : SafeCaller,
     GameCache {
 
-    override suspend fun storeGameInfo(gameInfo: GameInfo): AppResult<Long> =
+    override suspend fun insertGameInfo(gameInfo: GameInfo): AppResult<Long> =
         withContext(Dispatchers.IO) {
             safeCall {
                 gameDao.insertGameInfo(gameInfo.mapToDbData())
+            }
+        }
+
+    override suspend fun getGameInfo(gameId: Long): AppResult<GameInfo> =
+        withContext(Dispatchers.IO) {
+            safeCall {
+                gameDao.getGameInfo(gameId).mapToData()
             }
         }
 
