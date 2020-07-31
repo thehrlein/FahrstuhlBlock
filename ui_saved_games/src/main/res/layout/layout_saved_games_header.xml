@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/space_4"
+        android:paddingBottom="@dimen/space_4">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_date"
+            app:layout_constraintGuide_percent="0.25"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_round"
+            app:layout_constraintGuide_percent="0.85"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/date_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/saved_game_start_date"
+            android:textAppearance="?textAppearanceSubtitle2"
+            android:gravity="start"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline_date"/>
+
+        <TextView
+            android:id="@+id/players_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_2"
+            android:layout_marginEnd="@dimen/space_2"
+            android:text="@string/saved_game_player_names"
+            android:textAppearance="?textAppearanceSubtitle2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_date"
+            app:layout_constraintEnd_toStartOf="@id/guideline_round"/>
+
+        <TextView
+            android:id="@+id/current_round"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/saved_game_rounds"
+            android:textAppearance="?textAppearanceSubtitle2"
+            android:gravity="end"
+            app:layout_constraintStart_toEndOf="@id/guideline_round"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

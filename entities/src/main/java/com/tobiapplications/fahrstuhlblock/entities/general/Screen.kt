@@ -15,6 +15,7 @@ sealed class Screen {
 
     sealed class Menu : Screen() {
         object NewGame : Menu()
+        object SavedGames: Menu()
         object NewGame2 : Menu()
     }
 
@@ -47,4 +48,7 @@ sealed class Screen {
         object Block : Input()
     }
 
+    sealed class SavedGames : Screen() {
+        class ContinueGame(val gameId: Long) : SavedGames()
+    }
 }

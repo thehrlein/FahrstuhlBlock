@@ -25,6 +25,7 @@ import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.*
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.firebase.TrackAnalyticsEventUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.GetPlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.StorePlayerNamesUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.savedgames.GetAllSavedGamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.user.IsShowTrumpDialogEnabledUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.user.SetShowTrumpDialogEnabledUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputViewModel
@@ -34,6 +35,7 @@ import com.tobiapplications.fahrstuhlblock.presentation.block.scores.BlockScores
 import com.tobiapplications.fahrstuhlblock.presentation.block.trump.BlockTrumpViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.main.MainViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.menu.MenuViewModel
+import com.tobiapplications.fahrstuhlblock.presentation.savedgames.SavedGamesViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.settings.*
 import com.tobiapplications.fahrstuhlblock.presentation.settings.gamerules.GameRulesViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.settings.playerorder.PlayerOrderViewModel
@@ -91,6 +93,7 @@ object Koin {
         factory { SetShowTrumpDialogEnabledUseCase(get()) }
         factory { IsShowTrumpDialogEnabledUseCase(get()) }
         factory { TrackAnalyticsEventUseCase(get()) }
+        factory { GetAllSavedGamesUseCase(get()) }
     }
 
     private val viewModel = module {
@@ -142,6 +145,8 @@ object Koin {
 
         viewModel { BlockScoresViewModel() }
         viewModel { BlockTrumpViewModel(get(), get(), get()) }
+        viewModel { SavedGamesViewModel(get()) }
+
     }
 
     fun getModules(): List<Module> {

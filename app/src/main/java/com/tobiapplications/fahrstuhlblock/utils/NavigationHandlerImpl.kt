@@ -17,6 +17,7 @@ import com.tobiapplications.fahrstuhlblock.ui_game_settings.gamerules.GameRulesF
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder.PlayerOrderFragmentDirections
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerSettingsFragmentDirections
 import com.tobiapplications.fahrstuhlblock.ui_menu.MenuActivity
+import com.tobiapplications.fahrstuhlblock.ui_saved_games.SavedGamesActivity
 
 
 class NavigationHandlerImpl(
@@ -35,6 +36,7 @@ class NavigationHandlerImpl(
             is Screen.PointRules -> navigateTo(screen)
             is Screen.Block -> navigateTo(screen)
             is Screen.Input -> navigateTo(screen)
+            is Screen.SavedGames -> navigateTo(screen)
         }.checkAllMatched
     }
 
@@ -49,6 +51,7 @@ class NavigationHandlerImpl(
     private fun navigateTo(screen: Screen.Menu) {
         when (screen) {
             is Screen.Menu.NewGame -> GameSettingsActivity.start(activity)
+            is Screen.Menu.SavedGames -> SavedGamesActivity.start(activity)
             is Screen.Menu.NewGame2 -> BlockActivity.start(
                 activity,
                 1
@@ -137,6 +140,16 @@ class NavigationHandlerImpl(
     private fun navigateTo(screen: Screen.Input) {
         when (screen) {
             is Screen.Input.Block -> navHostController?.navigate(BlockInputFragmentDirections.actionBlockInputFragmentToBlockResultsFragment())
+        }.checkAllMatched
+    }
+
+    // navigate from saved games
+    private fun navigateTo(screen: Screen.SavedGames) {
+        when (screen) {
+            is Screen.SavedGames.ContinueGame -> BlockActivity.start(
+                activity,
+                screen.gameId
+            )
         }.checkAllMatched
     }
 }

@@ -38,4 +38,13 @@ class GameCacheImpl(
                 true
             }
         }
+
+    override suspend fun getAllSavedGames(): AppResult<List<Game>> =
+        withContext(Dispatchers.IO) {
+            safeCall {
+                gameDao.getAllSavedGames().map {
+                    it.mapToData()
+                }
+            }
+        }
 }

@@ -12,4 +12,6 @@ interface GameCache {
     suspend fun getGame(gameId: Long): AppResult<Game>
 
     suspend fun insertRound(roundData: InsertRoundData): AppResult<Boolean>
+
+    suspend fun getAllSavedGames(): AppResult<List<Game>>
 }

@@ -29,4 +29,6 @@ interface GameRepository {
     suspend fun checkInputsValidity(inputValidityData: CheckInputValidityData): AppResult<Boolean>
 
     suspend fun getGameScores(game: Game): AppResult<GameScoreData>
+
+    suspend fun getAllSavedGames(): AppResult<List<Game>>
 }

@@ -39,7 +39,6 @@
             app:layout_constraintTop_toBottomOf="@id/open_new_game"
             app:layout_constraintVertical_chainStyle="packed" />
 
-
         <TextView
             android:id="@+id/menu_opcoming_features"
             android:layout_width="0dp"

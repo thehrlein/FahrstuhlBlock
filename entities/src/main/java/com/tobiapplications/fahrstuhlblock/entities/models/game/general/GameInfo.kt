@@ -5,6 +5,7 @@ import com.tobiapplications.fahrstuhlblock.entities.models.settings.PointsRuleDa
 
 data class GameInfo(
     val gameId: Long,
+    val gameStartDate: Long,
     val players: PlayerSettingsData,
     val highCardCount: Int,
     val pointsRuleData: PointsRuleData

@@ -94,4 +94,12 @@
     <string name="block_trump_type_diamonds">Diamonds</string>
     <string name="block_trump_disable_auto_show_dialog">Show this dialog automatically for each round</string>
 
+    <!-- Saved Games -->
+    <string name="saved_game_toolbar_title">Saved Games</string>
+    <string name="saved_game_current_max_round" translatable="false">%1$d / %2$d</string>
+    <string name="saved_game_no_games">No saved games available</string>
+    <string name="saved_game_start_date">Startdate</string>
+    <string name="saved_game_player_names">Player names</string>
+    <string name="saved_game_rounds">Round</string>
+
 </resources>

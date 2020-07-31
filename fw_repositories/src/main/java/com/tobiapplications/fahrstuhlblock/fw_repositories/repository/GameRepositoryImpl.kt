@@ -60,4 +60,8 @@ class GameRepositoryImpl(
     override suspend fun getGameScores(game: Game): AppResult<GameScoreData> {
         return blockResultsProcessor.getGameScores(game)
     }
+
+    override suspend fun getAllSavedGames(): AppResult<List<Game>> {
+        return gameCache.getAllSavedGames()
+    }
 }

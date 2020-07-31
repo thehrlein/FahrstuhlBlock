@@ -220,6 +220,7 @@ object Module {
         const val menu = ":ui_menu"
         const val gameSettings = ":ui_game_settings"
         const val block = ":ui_block"
+        const val savedGames = ":ui_saved_games"
     }
 
     object General {

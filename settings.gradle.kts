@@ -5,6 +5,7 @@ include(":ui_common")
 include(":ui_menu")
 include(":ui_game_settings")
 include(":ui_block")
+include(":ui_saved_games")
 
 // framework modules
 include(":fw_repositories")

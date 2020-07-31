@@ -23,6 +23,7 @@
         <activity android:name=".ui_menu.MenuActivity" />
         <activity android:name=".ui_game_settings.GameSettingsActivity" />
         <activity android:name=".ui_block.BlockActivity" />
+        <activity android:name=".ui_saved_games.SavedGamesActivity" />
 
         <!-- Enable firebase performance logging -->
         <meta-data

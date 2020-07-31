@@ -1,5 +1,6 @@
 package com.tobiapplications.fahrstuhlblock.presentation.settings.pointrules
 
+import android.os.SystemClock
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -89,6 +90,7 @@ class PointRulesViewModel(
 
         val gameInfo = GameInfo(
             0,
+            System.currentTimeMillis(),
             gameRuleSettingsData.playerSettingsData,
             gameRuleSettingsData.highCardCount,
             PointsRuleData(

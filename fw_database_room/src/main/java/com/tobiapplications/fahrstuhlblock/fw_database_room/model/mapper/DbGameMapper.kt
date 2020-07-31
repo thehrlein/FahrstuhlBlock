@@ -9,6 +9,7 @@ import com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity.DbGameI
 
 fun GameInfo.mapToDbData() = DbGameInfo(
     gameId = 0,
+    gameStartDate = gameStartDate,
     players = players.mapToDbData(),
     highCardCount = highCardCount,
     pointsRuleData = pointsRuleData.mapToDbData()
@@ -16,6 +17,7 @@ fun GameInfo.mapToDbData() = DbGameInfo(
 
 fun DbGameInfo.mapToData() = GameInfo(
     gameId = gameId,
+    gameStartDate = gameStartDate,
     players = players.mapToData(),
     highCardCount = highCardCount,
     pointsRuleData = pointsRuleData.mapToData()

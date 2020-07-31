@@ -65,4 +65,11 @@
     <string name="block_trump_type_spades">Pik</string>
     <string name="block_trump_type_hearts">Herz</string>
     <string name="block_trump_type_diamonds">Karo</string>
+
+    <string name="saved_game_toolbar_title">Gespeicherte Spiele</string>
+    <string name="saved_game_no_games">Keine vorherigen Spiele verfügbar</string>
+    <string name="saved_game_start_date">Startzeit</string>
+    <string name="saved_game_player_names">Spieler</string>
+    <string name="saved_game_rounds">Runde</string>
+
 </resources>

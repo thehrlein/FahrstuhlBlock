@@ -16,6 +16,7 @@ dependencies {
     implementation(project(Module.Ui.menu))
     implementation(project(Module.Ui.gameSettings))
     implementation(project(Module.Ui.block))
+    implementation(project(Module.Ui.savedGames))
     implementation(project(Module.Framework.repositories))
     implementation(project(Module.Framework.Database.room))
     implementation(project(Module.General.presentation))

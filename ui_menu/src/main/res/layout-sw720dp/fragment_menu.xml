@@ -27,6 +27,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
+        <Button
+            android:id="@+id/continue_game"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.continueOldGameClicked()}"
+            android:text="@string/menu_continue_old_games"
+            android:layout_marginTop="@dimen/space_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/open_new_game"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/menu_opcoming_features"
@@ -36,7 +47,7 @@
             android:alpha="?alphaEmphasisMedium"
             android:onClick="@{() -> viewModel.openNewGameClicked2()}"
             android:text="@string/menu_upcoming_features"
-            app:layout_constraintTop_toBottomOf="@id/open_new_game"
+            app:layout_constraintTop_toBottomOf="@id/continue_game"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

@@ -20,4 +20,7 @@ interface GameDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertRound(dbRound: DbRound) : Long
+
+    @Query("SELECT * FROM GAME_DATABASE")
+    fun getAllSavedGames(): List<DbGame>
 }

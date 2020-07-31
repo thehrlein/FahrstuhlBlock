@@ -11,6 +11,7 @@ import com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.DbRoun
 data class DbGameInfo(
     @PrimaryKey(autoGenerate = true)
     val gameId : Long,
+    val gameStartDate: Long,
     @Embedded
     val players: DbPlayerSettingsData,
     val highCardCount: Int,

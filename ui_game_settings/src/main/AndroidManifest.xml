@@ -1,2 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tobiapplications.fahrstuhlblock.ui_game_settings" />
+    package="com.tobiapplications.fahrstuhlblock.ui_game_settings">
+
+    <application
+        android:theme="@style/Theme.FahrstuhlBlock.DayNight" />
+</manifest>

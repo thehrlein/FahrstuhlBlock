@@ -10,7 +10,7 @@ class MenuViewModel : BaseToolbarViewModel() {
     }
 
     fun continueOldGameClicked() {
-
+        navigateTo(Screen.Menu.SavedGames)
     }
 
     fun openNewGameClicked2() {
