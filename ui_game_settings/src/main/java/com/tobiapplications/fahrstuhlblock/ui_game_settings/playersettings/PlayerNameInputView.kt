@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter
 import android.widget.FrameLayout
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
+import com.tobiapplications.fahrstuhlblock.ui_common.bindings.setVisible
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.R
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.databinding.WidgetPlayerNameInputBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.layoutInflater
@@ -22,6 +23,10 @@ class PlayerNameInputView @JvmOverloads constructor(
         this,
         true
     )
+
+    fun setVisible(visible: Boolean) {
+        binding.rootLayout.setVisible(visible)
+    }
 
     fun setPlayerName(text: String?) {
         binding.autoCompleteText.setText(text)

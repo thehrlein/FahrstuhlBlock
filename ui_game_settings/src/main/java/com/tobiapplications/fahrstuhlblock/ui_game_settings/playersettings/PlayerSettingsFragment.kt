@@ -18,10 +18,8 @@ class PlayerSettingsFragment : BaseToolbarFragment<PlayerSettingsViewModel, Game
 
     override val viewModel: PlayerSettingsViewModel by viewModel()
     override val activityToolbarViewModel: GameSettingsViewModel by sharedViewModel()
-    override val layoutId: Int =
-        R.layout.fragment_player_settings
-    override val viewModelResId: Int =
-        BR.viewModel
+    override val layoutId: Int = R.layout.fragment_player_settings
+    override val viewModelResId: Int = BR.viewModel
 
     override fun onBindingCreated(savedInstanceState: Bundle?) {
         super.onBindingCreated(savedInstanceState)

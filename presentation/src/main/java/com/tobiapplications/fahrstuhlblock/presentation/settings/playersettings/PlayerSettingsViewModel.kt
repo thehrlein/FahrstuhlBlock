@@ -1,18 +1,12 @@
 package com.tobiapplications.fahrstuhlblock.presentation.settings.playersettings
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
-import com.tobiapplications.fahrstuhlblock.entities.models.firebase.AnalyticsEvent
-import com.tobiapplications.fahrstuhlblock.entities.models.firebase.IntParam
-import com.tobiapplications.fahrstuhlblock.entities.models.firebase.LongParam
-import com.tobiapplications.fahrstuhlblock.entities.models.firebase.TrackingConstants
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerError
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.firebase.TrackAnalyticsEventUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.invoke
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.GetPlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.StorePlayerNamesUseCase
@@ -27,133 +21,14 @@ class PlayerSettingsViewModel(
     private val storePlayerNamesUseCase: StorePlayerNamesUseCase
 ) : BaseViewModel() {
 
-    val playerVisibilities = MutableLiveData(
-        listOf(
-            MutableLiveData(true),
-            MutableLiveData(true),
-            MutableLiveData(true),
-            MutableLiveData(false),
-            MutableLiveData(false),
-            MutableLiveData(false),
-            MutableLiveData(false),
-            MutableLiveData(false)
-        )
-    )
-
-    val playerNames = MutableLiveData(
-        listOf(
-            MutableLiveData("a"),
-            MutableLiveData("b"),
-            MutableLiveData("c"),
-            MutableLiveData(""),
-            MutableLiveData("e"),
-            MutableLiveData("f"),
-            MutableLiveData("g"),
-            MutableLiveData("h")
-        )
-    )
-
-    val playerErrors = MutableLiveData(
-        listOf(
-            MutableLiveData<PlayerError>(null),
-            MutableLiveData<PlayerError>(null),
-            MutableLiveData<PlayerError>(null),
-            MutableLiveData<PlayerError>(null),
-            MutableLiveData<PlayerError>(null),
-            MutableLiveData<PlayerError>(null),
-            MutableLiveData<PlayerError>(null),
-            MutableLiveData<PlayerError>(null)
-        )
-    )
-
     private val _playerNameOptions = MutableLiveData<Set<String>>()
     val playerNameOptions: LiveData<Set<String>> = _playerNameOptions
-
-    val inputValid = MediatorLiveData<Boolean>().also { mediator ->
-        val players = playerNames.value ?: return@also
-        mediator.addSource(players[0]) {
-            mediator.checkIndividual(it, 0)
-            mediator.checkRest(0)
-        }
-        mediator.addSource(players[1]) {
-            mediator.checkIndividual(it, 1)
-            mediator.checkRest(1)
-        }
-        mediator.addSource(players[2]) {
-            mediator.checkIndividual(it, 2)
-            mediator.checkRest(2)
-        }
-        mediator.addSource(players[3]) {
-            mediator.checkIndividual(it, 3)
-            mediator.checkRest(3)
-        }
-        mediator.addSource(players[4]) {
-            mediator.checkIndividual(it, 4)
-            mediator.checkRest(4)
-        }
-        mediator.addSource(players[5]) {
-            mediator.checkIndividual(it, 5)
-            mediator.checkRest(5)
-        }
-        mediator.addSource(players[6]) {
-            mediator.checkIndividual(it, 6)
-            mediator.checkRest(6)
-        }
-        mediator.addSource(players[7]) {
-            mediator.checkIndividual(it, 7)
-            mediator.checkRest(7)
-        }
-        mediator.addSource(playerVisibilities) {
-            val allFine = mediator.checkRest(-1)
-            if (allFine) {
-                mediator.postValue(true)
-            }
-        }
-    }
-
-    private fun MediatorLiveData<Boolean>.checkRest(individualIndex: Int) : Boolean {
-        val visibilities = playerVisibilities.value?.map { it.value } ?: emptyList()
-        val errors = playerErrors.value?.map { it.value } ?: emptyList()
-        var allFine = true
-        visibilities.forEachIndexed { index, data ->
-            if (data == true && individualIndex != index && errors[index] != null) {
-                allFine = false
-                checkIndividual(playerNames.value?.get(index)?.value, index)
-            }
-        }
-
-        return allFine
-    }
-
-    private fun MediatorLiveData<Boolean>.checkIndividual(it: String?, index: Int) {
-        val occurrences = getAllPlayerNames()[it] ?: DEFAULT_PLAYER_NAME_OCCURRENCE
-        val error = when {
-            it.isNullOrEmpty() -> PlayerError.EMPTY
-            occurrences > 1 -> PlayerError.DUPLICATE
-            else -> null
-        }
-
-        playerErrors.value?.get(index)?.postValue(error)
-        postValue(checkInputValid(error = error, excludeIndex = index))
-    }
-
-    private fun getAllPlayerNames(): Map<String?, Int> {
-        return playerNames.value
-            ?.filterIndexed { index, _ -> playerVisibilities.value?.get(index)?.value == true }
-            ?.groupBy { it.value }
-            ?.mapValues { it.value.size } ?: emptyMap()
-    }
-
-    private fun checkInputValid(error: PlayerError?, excludeIndex: Int): Boolean {
-        val errors =
-            playerErrors.value
-                ?.filterIndexed { index, _ -> index != excludeIndex }
-                ?.filterIndexed { index, _   ->  playerVisibilities.value?.get(index)?.value == true }
-                ?.map { it.value }
-                ?.toMutableList() ?: mutableListOf()
-        errors.add(error)
-        return errors.firstOrNull { it != null } == null
-    }
+    private val _playerCount = MutableLiveData<Int>()
+    val playerCount: LiveData<Int> = _playerCount
+    private val _inputValid = MutableLiveData<Boolean>(true)
+    val inputValid: LiveData<Boolean> = _inputValid
+    private val _playerNames = MutableLiveData<List<String>>()
+    val playerNames: LiveData<List<String>> = _playerNames
 
     init {
         setPlayerCount(DEFAULT_PLAYER_COUNT)
@@ -170,22 +45,16 @@ class PlayerSettingsViewModel(
     }
 
     fun setPlayerCount(playerCount: Int) {
-        val visibilities = playerVisibilities.value ?: emptyList()
-        for (index in visibilities.indices) {
-            visibilities[index].postValue(index < playerCount)
-        }
-        playerVisibilities.postValue(visibilities)
+        _playerCount.postValue(playerCount)
     }
 
-    fun onProceedClicked() {
-        if (!checkInputValid(null, -1)) return
-
-        val visibilities = playerVisibilities.value ?: emptyList()
-        val names = playerNames.value
-            ?.filterIndexed { index, _ -> visibilities[index].value == true }
-            ?.mapNotNull { it.value } ?: emptyList()
-        storePlayerNames(names)
-        navigateTo(Screen.PlayerSettings.PlayerOrder(PlayerSettingsData(names)))
+    fun onProceedClicked(inputs: List<Pair<Int, String?>>?) {
+        if (inputs != null) {
+            val names = inputs.mapNotNull { it.second }
+            storePlayerNames(names)
+            navigateTo(Screen.PlayerSettings.PlayerOrder(PlayerSettingsData(names)))
+            _playerNames.postValue(names)
+        }
     }
 
     private fun storePlayerNames(playerNames: List<String>) {
