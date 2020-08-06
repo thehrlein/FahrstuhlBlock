@@ -29,24 +29,25 @@ class SavedGamesViewModel(
         viewModelScope.launch {
             when (val result = getAllSavedGamesUseCase.invoke()) {
                 is AppResult.Success -> convertGames(result.value)
-                is AppResult.Error -> Unit
+                is AppResult.Error -> _noSavedGamesEvent.postValue(true)
             }
         }
     }
 
     private fun convertGames(games: List<Game>) {
-        _noSavedGamesEvent.postValue(games.isEmpty())
-        _savedGames.postValue(games
+        val continuableGames = games
             .filter { !it.gameInfo.gameFinished }
             .map {
-            SavedGameEntity(
-                gameId = it.gameInfo.gameId,
-                gameStartDate = it.gameInfo.gameStartDate,
-                players = it.gameInfo.players.names,
-                currentRound = it.currentRoundNumber,
-                maxRound = it.maxRound
-            )
-        })
+                SavedGameEntity(
+                    gameId = it.gameInfo.gameId,
+                    gameStartDate = it.gameInfo.gameStartDate,
+                    players = it.gameInfo.players.names,
+                    currentRound = it.currentRoundNumber,
+                    maxRound = it.maxRound
+                )
+            }
+        _savedGames.postValue(continuableGames)
+        _noSavedGamesEvent.postValue(continuableGames.isEmpty())
     }
 
     override fun onSavedGameClicked(gameId: Long) {

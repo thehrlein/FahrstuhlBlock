@@ -10,7 +10,6 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateR
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
-import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.CalculateResultsUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.InputsValidUseCase
@@ -55,7 +54,7 @@ class BlockInputViewModel(
         _game.postValue(game)
         val round = game.currentRound
         _round.postValue(round)
-        val inputType = round.currentInputType
+        val inputType = round?.inputTypeForThisRound ?: InputType.TIPP
         _inputType.postValue(inputType)
         _inputModels.postValue(game.gameInfo.players.names.mapIndexed { index: Int, name: String ->
             InputData(
@@ -63,7 +62,7 @@ class BlockInputViewModel(
                 player = name,
                 currentRound = game.currentRoundNumber,
                 cards = game.currentCardCount,
-                userInput = round.playerTippData.getOrNull(index)?.tipp ?: DEFAULT_PLAYER_INPUT
+                userInput = round?.playerTippData?.getOrNull(index)?.tipp ?: DEFAULT_PLAYER_INPUT
             )
         })
     }
@@ -71,7 +70,7 @@ class BlockInputViewModel(
     fun onSaveClicked() {
         val currentRound = _round.value ?: error("could not determine round")
         val inputs = getInputs()
-        if (currentRound.currentInputType == InputType.TIPP) {
+        if (currentRound.inputTypeForThisRound == InputType.TIPP) {
             storeTipps(currentRound, inputs)
         } else {
             calculateResults(currentRound, inputs)

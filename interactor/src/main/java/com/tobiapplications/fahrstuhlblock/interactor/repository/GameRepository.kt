@@ -24,7 +24,7 @@ interface GameRepository {
 
     suspend fun calculateResults(calculateResultData: CalculateResultData): AppResult<List<PlayerResultData>>
 
-    suspend fun getBlockResults(gameId: Long): AppResult<BlockItemData>
+    suspend fun getBlockResults(game: Game): AppResult<BlockItemData>
 
     suspend fun checkInputsValidity(inputValidityData: CheckInputValidityData): AppResult<Boolean>
 

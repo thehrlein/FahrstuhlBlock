@@ -4,19 +4,20 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
 
 data class Round(
-    val card: Int,
+    val round: Int,
+    val cardCount: Int,
     val playerTippData: List<PlayerTippData>,
     val playerResultData: List<PlayerResultData>,
     val trumpType: TrumpType
 ) {
 
-    val currentInputType: InputType
-        get() = if (playerTippData.isNullOrEmpty()) {
-            InputType.TIPP
-        } else {
-            InputType.RESULT
+    val inputTypeForThisRound: InputType?
+        get() = when {
+            roundCompleted -> null
+            playerTippData.isEmpty() -> InputType.TIPP
+            else -> InputType.RESULT
         }
 
-    val roundCompleted : Boolean
+    val roundCompleted: Boolean
         get() = !playerResultData.isNullOrEmpty()
 }

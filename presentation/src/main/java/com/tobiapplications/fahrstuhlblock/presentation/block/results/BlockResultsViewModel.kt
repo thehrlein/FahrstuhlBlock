@@ -59,14 +59,11 @@ class BlockResultsViewModel(
         }
     }
 
-    init {
-        val a = 1
-    }
-
     fun setGameId(gameId: Long) {
-        getCurrentGame(gameId)
         viewModelScope.launch {
-            when (val result = getBlockResultsUseCase.invoke(gameId)) {
+            val currentGame = getCurrentGame(gameId) ?: error("no game found for this gameId")
+            game.postValue(currentGame)
+            when (val result = getBlockResultsUseCase.invoke(currentGame)) {
                 is AppResult.Success -> {
                     _columnCount.postValue(result.value.columnCount)
                     _blockItems.postValue(result.value.items)
@@ -78,8 +75,16 @@ class BlockResultsViewModel(
         }
     }
 
+    private suspend fun getCurrentGame(gameId: Long): Game? {
+        return when (val result = getGameUseCase.invoke(gameId)) {
+            is AppResult.Success -> result.value
+            is AppResult.Error -> null
+        }
+    }
+
     private fun showTrumpSelectionDialog(data: BlockItemData) {
-        val placeHolderItem = data.items.firstOrNull { it is BlockPlaceholder } as? BlockPlaceholder ?: return
+        val placeHolderItem =
+            data.items.firstOrNull { it is BlockPlaceholder } as? BlockPlaceholder ?: return
         if (data.inputType == InputType.TIPP && placeHolderItem.trumpType == TrumpType.NONE) {
             viewModelScope.launch {
                 when (val result = isShowTrumpDialogEnabledUseCase.invoke()) {
@@ -90,15 +95,6 @@ class BlockResultsViewModel(
                     }
                     is AppResult.Error -> Unit
                 }
-            }
-        }
-    }
-
-    private fun getCurrentGame(gameId: Long) {
-        viewModelScope.launch {
-            when (val result = getGameUseCase.invoke(gameId)) {
-                is AppResult.Success -> game.postValue(result.value)
-                is AppResult.Error -> Unit
             }
         }
     }
@@ -136,7 +132,7 @@ class BlockResultsViewModel(
     fun updateTrumpType(trumpType: TrumpType) {
         if (trumpType == TrumpType.NONE) return
         val game = game.value ?: error("round not initialized - could not set trump type")
-        val currentRound = game.currentRound
+        val currentRound = game.currentRound ?: error("")
         val round = InsertRoundData(
             gameId = game.gameInfo.gameId,
             round = currentRound.copy(

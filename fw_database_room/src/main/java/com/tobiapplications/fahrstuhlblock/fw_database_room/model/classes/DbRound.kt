@@ -4,10 +4,11 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
 
-@Entity(tableName = "game_rounds", primaryKeys = ["gameId", "card"])
+@Entity(tableName = "game_rounds", primaryKeys = ["gameId", "round"])
 data class DbRound(
     val gameId: Long,
-    val card: Int,
+    val round: Int,
+    val cardCount: Int,
     val playerTippData: List<DbPlayerTippData>,
     val playerResultData: List<DbPlayerResultData>,
     val trumpType: DbTrumpType

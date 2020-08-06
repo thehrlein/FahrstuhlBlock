@@ -11,6 +11,50 @@ data class Game(
     val rounds: List<Round>
 ) : Serializable {
 
+    val maxRound: Int
+        get() = gameInfo.highCardCount * 2
+
+    val previousTotals: List<Int>
+        get() = when (rounds.size) {
+            0, 1 -> gameInfo.players.names.map { 0 }
+            else -> rounds[rounds.size - 2].playerResultData.map { it.total }
+        }
+
+    /**
+     * Last round which was played, can be the current if not completed
+     * Can be null if no round played yet
+     */
+    val lastPlayedRound: Round?
+        get() = rounds.lastOrNull()
+
+    val lastRoundNumber: Int?
+        get() = lastPlayedRound?.round
+
+    val inputType: InputType
+        get() = lastPlayedRound?.let {
+            if (it.roundCompleted) {
+                InputType.TIPP
+            } else {
+                it.inputTypeForThisRound
+            }
+        } ?: InputType.TIPP
+
+    val currentRoundNumber: Int
+        get() = currentRound?.round ?: FIRST_ROUND
+
+    /**
+     * Returns current round or null if game is finished
+     * Creates the next round if needed
+     */
+    val currentRound: Round?
+        get() = when {
+            lastRoundNumber == maxRound && lastPlayedRound?.roundCompleted == true -> null
+            lastPlayedRound?.roundCompleted?.not() == true -> lastPlayedRound
+            else -> createNewRound(rounds.size + 1, currentCardCount)
+        }
+
+    private fun createNewRound(round: Int, card: Int) = Round(round, card, emptyList(), emptyList(), TrumpType.NONE)
+
     val currentCardCount: Int
         get() = when {
             rounds.size < gameInfo.highCardCount -> {
@@ -27,34 +71,6 @@ data class Game(
             }
         }
 
-    val currentRoundNumber: Int
-        get() = when {
-            rounds.isEmpty() -> FIRST_ROUND
-            rounds.last().roundCompleted -> rounds.size + 1
-            else -> rounds.size
-        }
-
-    val currentRound: Round
-        get() = rounds.lastOrNull()?.takeIf {
-            !it.roundCompleted
-        } ?: Round(currentRoundNumber, emptyList(), emptyList(), TrumpType.NONE)
-
-    val inputType: InputType
-        get() = rounds.lastOrNull()?.let {
-            if (it.roundCompleted) {
-                InputType.TIPP
-            } else {
-                it.currentInputType
-            }
-        } ?: InputType.TIPP
-
-    val previousTotals: List<Int>
-        get() = if (rounds.size == 1) {
-            gameInfo.players.names.map { 0 }
-        } else {
-            rounds[rounds.size - 2].playerResultData.map { it.total }
-        }
-
-    val maxRound: Int
-        get() = gameInfo.highCardCount * 2
+    val gameFinished: Boolean
+        get() = currentRound == null
 }

@@ -46,9 +46,9 @@ class GameRepositoryImpl(
         return blockResultsProcessor.calculateResults(calculateResultData)
     }
 
-    override suspend fun getBlockResults(gameId: Long): AppResult<BlockItemData> {
-        return when (val result = getGame(gameId)) {
-            is AppResult.Success -> blockResultsProcessor.generateBlockResultModels(result.value)
+    override suspend fun getBlockResults(game: Game): AppResult<BlockItemData> {
+        return when (val result = blockResultsProcessor.generateBlockResultModels(game)) {
+            is AppResult.Success -> result
             is AppResult.Error -> result
         }
     }

@@ -49,14 +49,16 @@ fun DbPointsRuleData.mapToData() = PointsRuleData(
 
 fun Round.mapToDbData(gameId: Long) = DbRound(
     gameId = gameId,
-    card = card,
+    round = round,
+    cardCount = cardCount,
     playerTippData = playerTippData.map { it.mapToDbData() },
     playerResultData = playerResultData.map { it.mapToDbData() },
     trumpType = trumpType.mapToDbTyp()
 )
 
 fun DbRound.mapToData() = Round(
-    card = card,
+    round = round,
+    cardCount = cardCount,
     playerTippData = playerTippData.map { it.mapToData() },
     playerResultData = playerResultData.map { it.mapToData() },
     trumpType = trumpType.mapTbTyp()

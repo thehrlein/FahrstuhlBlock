@@ -77,7 +77,7 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
     override suspend fun generateBlockResultModels(game: Game): AppResult<BlockItemData> =
         safeCall {
             val blockItems = mutableListOf<BlockItem>()
-            blockItems.add(BlockPlaceholder(game.currentRound.trumpType))
+            blockItems.add(BlockPlaceholder(game.currentRound?.trumpType ?: TrumpType.NONE))
             val players = game.gameInfo.players.names
             val currentRoundNumber = game.currentRoundNumber
             blockItems.addAll(players.mapIndexed { index: Int, name: String ->
@@ -90,20 +90,20 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
                 if (round.playerTippData.isEmpty()) return@forEach // do not show round number after trump selected and without any tipps made
                 blockItems.add(
                     BlockRound(
-                        round = round.card,
-                        colorized = round.card.isOdd()
+                        round = round.cardCount,
+                        colorized = round.round.isOdd()
                     )
                 )
                 blockItems.addAll(round.playerTippData.mapIndexed { index: Int, playerTippData: PlayerTippData ->
                     val resultData = round.playerResultData.getOrNull(index)
                     BlockResult(
                         player = players[index],
-                        round = round.card,
+                        round = round.round,
                         tipp = playerTippData.tipp,
                         result = resultData?.result,
                         difference = resultData?.difference,
                         total = resultData?.total,
-                        colorized = round.card.isOdd()
+                        colorized = round.round.isOdd()
                     )
                 })
             }
@@ -133,7 +133,7 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
 
     override suspend fun getGameScores(game: Game): AppResult<GameScoreData> =
         safeCall {
-            val gameFinished = game.currentRoundNumber > game.maxRound
+            val gameFinished = game.gameFinished
             val players = game.gameInfo.players.names
 
             val lastRound = game.rounds.lastOrNull { it.playerResultData.isNotEmpty() }

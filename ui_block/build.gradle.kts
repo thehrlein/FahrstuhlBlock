@@ -37,4 +37,6 @@ dependencies {
 
     // Other
     implementation(Dependencies.Other.konfetti)
+
+    testImplementation(Dependencies.Other.junit)
 }
