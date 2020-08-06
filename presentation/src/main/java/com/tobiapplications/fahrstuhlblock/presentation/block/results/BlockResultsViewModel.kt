@@ -39,16 +39,28 @@ class BlockResultsViewModel(
     private val _columnCount = MutableLiveData<Int>()
     val columnCount: LiveData<Int> = _columnCount
     private val game = MutableLiveData<Game>()
+    private val _showGameFinishedEvent = SingleLiveEvent<Unit>()
+    val showGameFinishedEvent: LiveData<Unit> = _showGameFinishedEvent
 
     val gameScores = MediatorLiveData<GameScoreData>().also { mediator ->
         mediator.addSource(game) {
             viewModelScope.launch {
                 when (val result = getGameScoresUseCase.invoke(it)) {
-                    is AppResult.Success -> mediator.postValue(result.value)
+                    is AppResult.Success -> {
+                        mediator.postValue(result.value)
+                        if (result.value.finished && result.value.winnerAlreadyShown.not()) {
+                            _showGameFinishedEvent.postValue(Unit)
+                            onGameFinished(result.value.results)
+                        }
+                    }
                     is AppResult.Error -> Unit
                 }
             }
         }
+    }
+
+    init {
+        val a = 1
     }
 
     fun setGameId(gameId: Long) {

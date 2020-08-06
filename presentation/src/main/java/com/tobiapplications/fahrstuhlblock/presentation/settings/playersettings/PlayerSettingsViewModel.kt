@@ -14,7 +14,6 @@ import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
 
 private const val DEFAULT_PLAYER_COUNT = 3
-private const val DEFAULT_PLAYER_NAME_OCCURRENCE = 0
 
 class PlayerSettingsViewModel(
     private val getPlayerNamesUseCase: GetPlayerNamesUseCase,
