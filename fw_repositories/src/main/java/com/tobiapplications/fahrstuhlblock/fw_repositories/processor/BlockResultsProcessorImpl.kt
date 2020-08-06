@@ -87,6 +87,7 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
                 )
             })
             game.rounds.forEach { round ->
+                if (round.playerTippData.isEmpty()) return@forEach // do not show round number after trump selected and without any tipps made
                 blockItems.add(
                     BlockRound(
                         round = round.card,
