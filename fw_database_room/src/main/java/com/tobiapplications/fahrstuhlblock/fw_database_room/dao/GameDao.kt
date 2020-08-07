@@ -26,4 +26,7 @@ interface GameDao {
 
     @Query("SELECT * FROM GAME_DATABASE")
     fun getAllSavedGames(): List<DbGame>
+
+    @Query("SELECT * FROM GAME_DATABASE ORDER BY gameId DESC LIMIT 1")
+    fun getLastGameInfo(): DbGameInfo
 }

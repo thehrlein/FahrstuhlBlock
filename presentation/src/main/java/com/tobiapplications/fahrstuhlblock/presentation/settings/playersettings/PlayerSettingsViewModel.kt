@@ -7,9 +7,12 @@ import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerError
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
+import com.tobiapplications.fahrstuhlblock.entities.models.settings.SettingsData
+import com.tobiapplications.fahrstuhlblock.entities.models.settings.SettingsScreen
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.invoke
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.GetPlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.StorePlayerNamesUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.settings.GetLastSettingsUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
 
@@ -17,7 +20,8 @@ private const val DEFAULT_PLAYER_COUNT = 3
 
 class PlayerSettingsViewModel(
     private val getPlayerNamesUseCase: GetPlayerNamesUseCase,
-    private val storePlayerNamesUseCase: StorePlayerNamesUseCase
+    private val storePlayerNamesUseCase: StorePlayerNamesUseCase,
+    private val getLastSettingsUseCase: GetLastSettingsUseCase
 ) : BaseViewModel() {
 
     private val _playerNameOptions = MutableLiveData<Set<String>>()
@@ -30,8 +34,24 @@ class PlayerSettingsViewModel(
     val playerNames: LiveData<List<String>> = _playerNames
 
     init {
-        setPlayerCount(DEFAULT_PLAYER_COUNT)
         getPlayerNameOptionsSet()
+        getLastSettings()
+    }
+
+    private fun getLastSettings() {
+        viewModelScope.launch {
+            when (val result = getLastSettingsUseCase.invoke(SettingsScreen.PLAYER)) {
+                is AppResult.Success -> setLastSettings(result.value)
+                is AppResult.Error -> setPlayerCount(DEFAULT_PLAYER_COUNT)
+            }
+        }
+    }
+
+    private fun setLastSettings(settingsData: SettingsData) {
+        if (settingsData is SettingsData.Player) {
+            setPlayerCount(settingsData.names.size)
+            _playerNames.postValue(settingsData.names)
+        }
     }
 
     private fun getPlayerNameOptionsSet() {

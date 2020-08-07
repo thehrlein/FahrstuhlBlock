@@ -54,4 +54,11 @@ class GameCacheImpl(
                 }
             }
         }
+
+    override suspend fun getLastGameInfo(): AppResult<GameInfo> =
+        withContext(Dispatchers.IO) {
+            safeCall {
+                gameDao.getLastGameInfo().mapToData()
+            }
+        }
 }

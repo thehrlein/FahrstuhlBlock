@@ -13,8 +13,11 @@ import com.tobiapplications.fahrstuhlblock.entities.models.firebase.TrackingCons
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameInfo
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PointsRuleData
+import com.tobiapplications.fahrstuhlblock.entities.models.settings.SettingsData
+import com.tobiapplications.fahrstuhlblock.entities.models.settings.SettingsScreen
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreGameInfoUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.firebase.TrackAnalyticsEventUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.settings.GetLastSettingsUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
 
@@ -25,14 +28,14 @@ private const val DEFAULT_POINTS_IF_PREDICTION_FALSE = false
 class PointRulesViewModel(
     private val gameRuleSettingsData: GameRuleSettingsData,
     private val storeGameInfoUseCase: StoreGameInfoUseCase,
-    private val trackAnalyticsEventUseCase: TrackAnalyticsEventUseCase
+    private val trackAnalyticsEventUseCase: TrackAnalyticsEventUseCase,
+    private val getLastSettingsUseCase: GetLastSettingsUseCase
 ) : BaseViewModel() {
 
     val correctPredictionPoints = MutableLiveData(DEFAULT_CORRECT_PREDICTION_POINTS)
     val pointsPerStitchCorrect = MutableLiveData(DEFAULT_POINTS_PER_STITCH)
     val minusPointsPerStitch = MutableLiveData(DEFAULT_POINTS_PER_STITCH)
     val pointsIfPredictionFalse = MutableLiveData(DEFAULT_POINTS_IF_PREDICTION_FALSE)
-
     val inputValid = MediatorLiveData<Boolean>().also { mediator ->
         mediator.addSource(correctPredictionPoints) {
             mediator.postValue(
@@ -78,6 +81,34 @@ class PointRulesViewModel(
         }
     }
 
+    init {
+        getLastSettings()
+    }
+
+    private fun getLastSettings() {
+        viewModelScope.launch {
+            when (val result = getLastSettingsUseCase.invoke(SettingsScreen.POINTS)) {
+                is AppResult.Success -> setLastSettings(result.value)
+                is AppResult.Error -> {
+                    correctPredictionPoints.postValue(DEFAULT_CORRECT_PREDICTION_POINTS)
+                    pointsPerStitchCorrect.postValue(DEFAULT_POINTS_PER_STITCH)
+                    minusPointsPerStitch.postValue(DEFAULT_POINTS_PER_STITCH)
+                    pointsIfPredictionFalse.postValue(DEFAULT_POINTS_IF_PREDICTION_FALSE)
+                }
+            }
+        }
+    }
+
+    private fun setLastSettings(settingsData: SettingsData) {
+        if (settingsData is SettingsData.Points) {
+            val rules = settingsData.pointsRuleData
+            correctPredictionPoints.postValue(rules.correctPoints.toString())
+            pointsPerStitchCorrect.postValue(rules.pointsPerStitch.toString())
+            minusPointsPerStitch.postValue(rules.minusPointsPerStitch.toString())
+            pointsIfPredictionFalse.postValue(rules.pointsIfPredictionFalse)
+        }
+    }
+
     fun onProceedClicked() {
         val correctPredictionPoints = correctPredictionPoints.value?.toInt()
             ?: error("could not determine correct prediction points")
@@ -93,6 +124,7 @@ class PointRulesViewModel(
             System.currentTimeMillis(),
             gameRuleSettingsData.playerSettingsData,
             gameRuleSettingsData.highCardCount,
+            gameRuleSettingsData.maxCardCountSelection,
             PointsRuleData(
                 correctPredictionPoints,
                 pointsPerStitch,

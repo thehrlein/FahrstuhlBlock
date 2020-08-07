@@ -9,6 +9,9 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateR
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItemData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData
+import com.tobiapplications.fahrstuhlblock.entities.models.settings.MaxCardCountSelection
+import com.tobiapplications.fahrstuhlblock.entities.models.settings.SettingsData
+import com.tobiapplications.fahrstuhlblock.entities.models.settings.SettingsScreen
 import com.tobiapplications.fahrstuhlblock.interactor.datasource.cache.GameCache
 import com.tobiapplications.fahrstuhlblock.interactor.datasource.cache.PlayerCache
 import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockInputsProcessor
@@ -22,7 +25,7 @@ class GameRepositoryImpl(
     private val blockResultsProcessor: BlockResultsProcessor
 ) : GameRepository {
 
-    override suspend fun storeGameInfo(gameInfo: GameInfo) : AppResult<Long> {
+    override suspend fun storeGameInfo(gameInfo: GameInfo): AppResult<Long> {
         return gameCache.insertGameInfo(gameInfo)
     }
 
@@ -65,14 +68,30 @@ class GameRepositoryImpl(
         return gameCache.getAllSavedGames()
     }
 
-    override suspend fun setGameFinished(gameId: Long) : AppResult<Unit> {
+    override suspend fun setGameFinished(gameId: Long): AppResult<Unit> {
         return when (val result = gameCache.getGameInfo(gameId)) {
             is AppResult.Success -> {
-                gameCache.insertGameInfo(result.value.copy(
-                    gameFinished = true)
+                gameCache.insertGameInfo(
+                    result.value.copy(
+                        gameFinished = true
+                    )
                 ).map { Unit }
             }
             is AppResult.Error -> result
+        }
+    }
+
+    override suspend fun getLastSettingsData(settingsScreen: SettingsScreen): AppResult<SettingsData> {
+        return gameCache.getLastGameInfo().map { gameInfo ->
+            when (settingsScreen) {
+                SettingsScreen.PLAYER -> SettingsData.Player(gameInfo.players.names)
+                SettingsScreen.CARDS -> when (gameInfo.maxCardCountSelection) {
+                    MaxCardCountSelection.ONE_DECK -> SettingsData.Cards.OneDeck
+                    MaxCardCountSelection.TWO_DECKS -> SettingsData.Cards.TwoDecks
+                    else -> SettingsData.Cards.Individual(gameInfo.highCardCount)
+                }
+                SettingsScreen.POINTS -> SettingsData.Points(gameInfo.pointsRuleData)
+            }
         }
     }
 }

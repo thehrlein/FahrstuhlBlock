@@ -9,6 +9,8 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateR
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItemData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData
+import com.tobiapplications.fahrstuhlblock.entities.models.settings.SettingsData
+import com.tobiapplications.fahrstuhlblock.entities.models.settings.SettingsScreen
 
 interface GameRepository {
 
@@ -33,4 +35,6 @@ interface GameRepository {
     suspend fun getAllSavedGames(): AppResult<List<Game>>
 
     suspend fun setGameFinished(gameId: Long) : AppResult<Unit>
+
+    suspend fun getLastSettingsData(settingsScreen: SettingsScreen): AppResult<SettingsData>
 }

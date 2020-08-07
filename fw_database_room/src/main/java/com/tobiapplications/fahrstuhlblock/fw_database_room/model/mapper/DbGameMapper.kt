@@ -2,6 +2,7 @@ package com.tobiapplications.fahrstuhlblock.fw_database_room.model.mapper
 
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
+import com.tobiapplications.fahrstuhlblock.entities.models.settings.MaxCardCountSelection
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PointsRuleData
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.*
@@ -12,6 +13,7 @@ fun GameInfo.mapToDbData() = DbGameInfo(
     gameStartDate = gameStartDate,
     players = players.mapToDbData(),
     highCardCount = highCardCount,
+    maxCardCountSelection = maxCardCountSelection.mapToDbData(),
     pointsRuleData = pointsRuleData.mapToDbData(),
     gameFinished = gameFinished
 )
@@ -21,6 +23,7 @@ fun DbGameInfo.mapToData() = GameInfo(
     gameStartDate = gameStartDate,
     players = players.mapToData(),
     highCardCount = highCardCount,
+    maxCardCountSelection = maxCardCountSelection.mapToData(),
     pointsRuleData = pointsRuleData.mapToData(),
     gameFinished = gameFinished
 )
@@ -103,4 +106,16 @@ fun DbTrumpType.mapTbTyp() = when (this) {
     DbTrumpType.SPADE -> TrumpType.SPADE
     DbTrumpType.HEART -> TrumpType.HEART
     DbTrumpType.DIAMOND -> TrumpType.DIAMOND
+}
+
+fun MaxCardCountSelection.mapToDbData() = when (this) {
+    MaxCardCountSelection.ONE_DECK -> DbMaxCardCountSelection.ONE_DECK
+    MaxCardCountSelection.TWO_DECKS -> DbMaxCardCountSelection.TWO_DECKS
+    MaxCardCountSelection.INDIVIDUAL -> DbMaxCardCountSelection.INDIVIDUAL
+}
+
+fun DbMaxCardCountSelection.mapToData() = when (this) {
+    DbMaxCardCountSelection.ONE_DECK -> MaxCardCountSelection.ONE_DECK
+    DbMaxCardCountSelection.TWO_DECKS -> MaxCardCountSelection.TWO_DECKS
+    DbMaxCardCountSelection.INDIVIDUAL -> MaxCardCountSelection.INDIVIDUAL
 }

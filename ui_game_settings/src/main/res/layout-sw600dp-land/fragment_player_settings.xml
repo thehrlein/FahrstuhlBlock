@@ -34,11 +34,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_2"
-                app:checkedButton="@id/toggle_three"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/player_count_choose_title"
                 app:layout_goneMarginTop="@dimen/space_4"
+                app:playerCount="@{viewModel.playerCount}"
                 app:selectionRequired="true"
                 app:singleSelection="true">
 

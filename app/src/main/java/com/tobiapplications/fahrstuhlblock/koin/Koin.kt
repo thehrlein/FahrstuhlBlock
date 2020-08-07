@@ -26,6 +26,7 @@ import com.tobiapplications.fahrstuhlblock.interactor.usecase.firebase.TrackAnal
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.GetPlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.StorePlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.savedgames.GetAllSavedGamesUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.settings.GetLastSettingsUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.user.IsShowTrumpDialogEnabledUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.user.SetShowTrumpDialogEnabledUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputViewModel
@@ -83,6 +84,7 @@ object Koin {
         // usecases
         factory { StorePlayerNamesUseCase(get()) }
         factory { GetPlayerNamesUseCase(get()) }
+        factory { GetLastSettingsUseCase(get()) }
         factory { StoreGameInfoUseCase(get()) }
         factory { GetGameUseCase(get()) }
         factory { GetGameScoresUseCase(get()) }
@@ -104,6 +106,7 @@ object Koin {
         viewModel {
             PlayerSettingsViewModel(
                 get(),
+                get(),
                 get()
             )
         }
@@ -117,12 +120,14 @@ object Koin {
                 playerSettingsData,
                 get(),
                 get(),
+                get(),
                 get()
             )
         }
         viewModel { (gameRuleSettingsData: GameRuleSettingsData) ->
             PointRulesViewModel(
                 gameRuleSettingsData,
+                get(),
                 get(),
                 get()
             )

@@ -6,12 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
-import com.tobiapplications.fahrstuhlblock.entities.models.firebase.*
-import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSettingsData
-import com.tobiapplications.fahrstuhlblock.entities.models.settings.MaxCardCountSelection
-import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
+import com.tobiapplications.fahrstuhlblock.entities.models.firebase.AnalyticsEvent
+import com.tobiapplications.fahrstuhlblock.entities.models.firebase.BooleanParam
+import com.tobiapplications.fahrstuhlblock.entities.models.firebase.TrackingConstants
+import com.tobiapplications.fahrstuhlblock.entities.models.settings.*
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.firebase.TrackAnalyticsEventUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.invoke
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.settings.GetLastSettingsUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.user.IsShowTrumpDialogEnabledUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.user.SetShowTrumpDialogEnabledUseCase
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
@@ -21,7 +22,8 @@ class GameRulesViewModel(
     private val playerSettingsData: PlayerSettingsData,
     private val isShowTrumpDialogEnabledUseCase: IsShowTrumpDialogEnabledUseCase,
     private val setShowTrumpDialogEnabledUseCase: SetShowTrumpDialogEnabledUseCase,
-    private val trackAnalyticsEventUseCase: TrackAnalyticsEventUseCase
+    private val trackAnalyticsEventUseCase: TrackAnalyticsEventUseCase,
+    private val getLastSettingsUseCase: GetLastSettingsUseCase
 ) : BaseViewModel() {
 
     private val _maxCardCountSelection = MutableLiveData(MaxCardCountSelection.ONE_DECK)
@@ -49,6 +51,7 @@ class GameRulesViewModel(
 
     init {
         checkShowTrumpDialogEnabled()
+        getLastSettings()
     }
 
     private fun checkShowTrumpDialogEnabled() {
@@ -60,27 +63,57 @@ class GameRulesViewModel(
         }
     }
 
+    private fun getLastSettings() {
+        viewModelScope.launch {
+            when (val result = getLastSettingsUseCase.invoke(SettingsScreen.CARDS)) {
+                is AppResult.Success -> setLastSettings(result.value)
+                is AppResult.Error -> Unit
+            }
+        }
+    }
+
+    private fun setLastSettings(settingsData: SettingsData) {
+        if (settingsData is SettingsData.Cards) {
+            val maxCardCountSelection = when (settingsData) {
+                is SettingsData.Cards.OneDeck -> MaxCardCountSelection.ONE_DECK
+                is SettingsData.Cards.TwoDecks -> MaxCardCountSelection.TWO_DECKS
+                is SettingsData.Cards.Individual -> {
+                    individualCardCountValue.postValue(settingsData.count.toString())
+                    MaxCardCountSelection.INDIVIDUAL
+                }
+            }
+            setSelectedCardOption(maxCardCountSelection)
+        }
+    }
+
     fun setSelectedCardOption(maxCardCountSelection: MaxCardCountSelection) {
         _maxCardCountSelection.postValue(maxCardCountSelection)
     }
 
     fun onProceedClicked() {
-        val highCardCound = getHighCardCound()
-        navigateTo(Screen.GameRules.PointRules(GameRuleSettingsData(playerSettingsData, highCardCound)))
+        val selection =
+            maxCardCountSelection.value ?: error("could not determine maxCardCountSelection")
+        val highCardCount = getHighCardCount(selection)
+        navigateTo(
+            Screen.GameRules.PointRules(
+                GameRuleSettingsData(
+                    playerSettingsData,
+                    highCardCount,
+                    selection
+                )
+            )
+        )
     }
 
-    private fun getHighCardCound(): Int {
-        val selection = maxCardCountSelection.value
+    private fun getHighCardCount(selection: MaxCardCountSelection): Int {
         val individualCount = individualCardCountValue.value?.toIntOrNull()
-        val cardCount = when (selection) {
+        return when (selection) {
             MaxCardCountSelection.ONE_DECK -> selection.cards / playerSettingsData.names.size
             MaxCardCountSelection.TWO_DECKS -> selection.cards / playerSettingsData.names.size
             MaxCardCountSelection.INDIVIDUAL -> individualCount
                 ?: error("could not determine max card count - individual count is null but selected")
             else -> error("could not determine max card count")
         }
-
-        return cardCount
     }
 
     fun onAutoShowTrumpDialogChanged(checked: Boolean) {

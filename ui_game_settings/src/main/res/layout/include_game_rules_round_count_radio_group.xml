@@ -30,6 +30,7 @@
                 android:id="@+id/options_one_deck"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checked="@{viewModel.maxCardCountSelection == MaxCardCountSelection.ONE_DECK}"
                 android:text="@{String.format(@string/game_rules_cards_options_one_deck, MaxRoundHelper.getHighCardCount(@integer/one_card_deck, viewModel.playerCount), viewModel.playerCount)}"
                 android:textAppearance="?textAppearanceBody1" />
 
@@ -37,6 +38,7 @@
                 android:id="@+id/options_two_decks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checked="@{viewModel.maxCardCountSelection == MaxCardCountSelection.TWO_DECKS}"
                 android:text="@{String.format(@string/game_rules_cards_options_two_decks, MaxRoundHelper.getHighCardCount(@integer/two_card_decks, viewModel.playerCount), viewModel.playerCount)}"
                 android:textAppearance="?textAppearanceBody1" />
 
@@ -44,6 +46,7 @@
                 android:id="@+id/options_individual"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checked="@{viewModel.maxCardCountSelection == MaxCardCountSelection.INDIVIDUAL}"
                 android:text="@string/game_rules_cards_options_individual"
                 android:textAppearance="?textAppearanceBody1" />
 
