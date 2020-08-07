@@ -14,8 +14,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/space_4"
-        android:paddingBottom="@dimen/space_4">
+        android:paddingTop="@dimen/space_2"
+        android:paddingBottom="@dimen/space_2">
 
         <LinearLayout
             android:id="@+id/player_name_layout"
