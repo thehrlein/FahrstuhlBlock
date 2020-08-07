@@ -32,6 +32,7 @@ import com.tobiapplications.fahrstuhlblock.interactor.usecase.user.SetShowTrumpD
 import com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
+import com.tobiapplications.fahrstuhlblock.presentation.block.info.AboutViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.scores.BlockScoresViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.trump.BlockTrumpViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.main.MainViewModel
@@ -158,6 +159,7 @@ object Koin {
         viewModel { BlockScoresViewModel() }
         viewModel { BlockTrumpViewModel(get(), get(), get()) }
         viewModel { SavedGamesViewModel(get()) }
+        viewModel { AboutViewModel() }
 
     }
 

@@ -113,7 +113,7 @@ class BlockResultsViewModel(
         navigateTo(Screen.Block.Scores(scores))
     }
 
-    fun onGameFinished(results: List<GameScore>) {
+    private fun onGameFinished(results: List<GameScore>) {
         navigateTo(Screen.Block.GameFinished(results.filter { it.position == WINNER_POSITION }))
 
         viewModelScope.launch {
@@ -145,5 +145,9 @@ class BlockResultsViewModel(
                 is AppResult.Error -> Unit
             }
         }
+    }
+
+    fun onInfoClicked() {
+        navigateTo(Screen.Block.About)
     }
 }

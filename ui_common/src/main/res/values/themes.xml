@@ -83,6 +83,7 @@
         <item name="cardViewStyle">@style/Widget.FahrstuhlBlock.CardView</item>
         <item name="bottomNavigationStyle">@style/Widget.FahrstuhlBlock.BottomNavigation</item>
         <item name="bottomAppBarStyle">@style/Widget.FahrstuhlBlock.BottomAppBar</item>
+        <item name="actionOverflowButtonStyle">@style/Widget.FahrstuhlBlock.ActionButton.Overflow</item>
 
         <!-- Specs -->
         <item name="listPreferredItemHeightSmall">@dimen/list_item_height_small</item>

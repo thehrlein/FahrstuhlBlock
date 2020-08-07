@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_blockResultsFragment_to_blockScoresFragment"
             app:destination="@id/blockScoresFragment" />
+        <action
+            android:id="@+id/action_blockResultsFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
 
 
@@ -45,5 +48,10 @@
             android:name="gameScoreData"
             app:argType="com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData" />
     </fragment>
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.tobiapplications.fahrstuhlblock.ui_block.info.AboutFragment"
+        android:label="AboutFragment" />
 
 </navigation>

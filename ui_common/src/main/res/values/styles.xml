@@ -89,7 +89,11 @@
 
     <!-- Bottom App Bar -->
     <style name="Widget.FahrstuhlBlock.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+    </style>
 
+    <!-- Menu -->
+    <style name="Widget.FahrstuhlBlock.ActionButton.Overflow" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_menu_dots</item>
     </style>
 
     <!-- CardView -->

@@ -129,6 +129,7 @@ class NavigationHandlerImpl(
                 activity.supportFragmentManager,
                 DialogEntity.Custom.Trump(screen.selectedTrumpType, resourceHelper)
             )
+            is Screen.Block.About -> navHostController?.navigate(BlockResultsFragmentDirections.actionBlockResultsFragmentToAboutFragment())
         }.checkAllMatched
     }
 

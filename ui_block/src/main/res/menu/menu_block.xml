@@ -5,7 +5,13 @@
     <item
         android:id="@+id/action_trophy"
         android:icon="@drawable/ic_trophy"
-        android:title=""
-        app:showAsAction="always" />
+        android:title="@string/block_results_menu_trophy_title"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_info"
+        android:icon="@null"
+        android:title="@string/block_results_menu_about_title"
+        app:showAsAction="never" />
 
 </menu>

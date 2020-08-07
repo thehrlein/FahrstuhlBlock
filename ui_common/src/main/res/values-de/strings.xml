@@ -75,4 +75,12 @@
     <string name="saved_game_player_names">Spieler</string>
     <string name="saved_game_rounds">Runde</string>
 
+    <string name="about_toolbar_title">Info</string>
+    <string name="about_feedback">Für Informationen, Fragen oder Feedback, nutze bitte den unten stehenden Button, um mir eine E-Mail zu senden.</string>
+    <string name="about_other_apps">Willst du mehr? Schau dir doch mal meine anderen Apps an:</string>
+    <string name="about_like_fahrstuhl_block">Gefällt dir der Fahrstuhl Block? Ich würde mich sehr über eine positive Bewertung im PlayStore freuen:</string>
+    <string name="about_email_text">Hallo Tobias, \n\n</string>
+    <string name="about_no_email_clients">Es wurde kein E-Mail Programm gefunden</string>
+    <string name="about_email_chooser_title">Wähle deine E-Mail Programm</string>
+
 </resources>
