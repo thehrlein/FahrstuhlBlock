@@ -134,4 +134,13 @@ class BlockInputViewModel(
             })
         }
     }
+
+    fun onInfoIconClicked() {
+        val game = _game.value ?: error("could not determine game")
+        navigateTo(Screen.Input.Info(
+            inputType = game.inputType,
+            cardCount = game.currentCardCount,
+            round = game.currentRoundNumber
+        ))
+    }
 }

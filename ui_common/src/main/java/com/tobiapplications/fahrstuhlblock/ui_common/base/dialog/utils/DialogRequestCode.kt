@@ -6,5 +6,6 @@ object DialogRequestCode {
     const val BLOCK_EXIT: Int = 200
     const val GAME_FINISHED: Int = 300
     const val CHOOSE_TRUMP: Int = 400
+    const val INPUT_INFO: Int = 500
 
 }

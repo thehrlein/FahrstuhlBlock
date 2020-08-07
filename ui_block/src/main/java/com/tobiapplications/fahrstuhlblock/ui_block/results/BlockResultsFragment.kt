@@ -127,7 +127,7 @@ class BlockResultsFragment :
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.trophy -> {
+            R.id.action_trophy -> {
                 viewModel.onTrophyClicked()
                 true
             }

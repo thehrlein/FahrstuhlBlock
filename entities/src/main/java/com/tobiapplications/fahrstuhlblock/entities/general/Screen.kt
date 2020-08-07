@@ -1,5 +1,6 @@
 package com.tobiapplications.fahrstuhlblock.entities.general
 
+import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScore
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
@@ -16,7 +17,6 @@ sealed class Screen {
     sealed class Menu : Screen() {
         object NewGame : Menu()
         object SavedGames: Menu()
-        object NewGame2 : Menu()
     }
 
     sealed class PlayerSettings : Screen() {
@@ -46,6 +46,7 @@ sealed class Screen {
 
     sealed class Input : Screen() {
         object Block : Input()
+        class Info(val inputType: InputType, val cardCount: Int, val round: Int) : Input()
     }
 
     sealed class SavedGames : Screen() {

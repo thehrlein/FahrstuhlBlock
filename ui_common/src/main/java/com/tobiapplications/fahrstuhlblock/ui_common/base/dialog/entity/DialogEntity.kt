@@ -1,5 +1,6 @@
 package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity
 
+import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScore
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
 import com.tobiapplications.fahrstuhlblock.ui_common.R
@@ -41,6 +42,21 @@ sealed class DialogEntity : Serializable {
         ) {
             override val requestCode: Int = DialogRequestCode.GAME_FINISHED
         }
+
+        class InputInfo(inputType: InputType, cardCount: Int, round: Int, resourceHelper: ResourceHelper) : Text(
+            title = resourceHelper.getString(R.string.block_input_info_title),
+            message = when (inputType) {
+                InputType.TIPP -> if (round == 1) {
+                    resourceHelper.getString(R.string.block_input_tipps_message_first_round)
+                } else {
+                    resourceHelper.getString(R.string.block_input_tipps_message, cardCount)
+                }
+                InputType.RESULT -> resourceHelper.getString(R.string.block_input_result_message, cardCount)
+            },
+            neutralButtonText = resourceHelper.getString(R.string.general_ok)
+        ) {
+            override val requestCode: Int = DialogRequestCode.INPUT_INFO
+        }
     }
 
     sealed class Custom(
@@ -50,7 +66,7 @@ sealed class DialogEntity : Serializable {
         val neutralButtonText: String? = null
     ) : DialogEntity() {
 
-        class Trump(resourceHelper: ResourceHelper, var selectedTrumpType: TrumpType) : Custom(
+        class Trump(var selectedTrumpType: TrumpType, resourceHelper: ResourceHelper) : Custom(
             title = resourceHelper.getString(R.string.block_trump_title),
             positiveButtonText = resourceHelper.getString(R.string.general_ok),
             negativeButtonText = resourceHelper.getString(R.string.general_cancel)

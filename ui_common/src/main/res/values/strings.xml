@@ -79,9 +79,11 @@
     <string name="block_input_toolbar_title_results">Results</string>
     <string name="block_input_general_title">Round %1$d - %2$d cards</string>
     <string name="block_input_tipps_message">Your combined tipps must not be %1$d. The last user must make sure that after his tipp the amount of tipps is not equal %1$d</string>
+    <string name="block_input_tipps_message_first_round">Your combined tipps can be 1 in the first round</string>
     <string name="block_input_result_message">Your combined results must be %1$d</string>
     <string name="block_input_enter_tipps">Enter tipps</string>
     <string name="block_input_enter_results">Enter results</string>
+    <string name="block_input_info_title">Info</string>
 
     <!-- Block scores -->
     <string name="block_scores_toolbar_title">Current Scores</string>

@@ -50,6 +50,7 @@
     <string name="block_input_toolbar_title_results">Ergebnisse</string>
     <string name="block_input_general_title">Runde %1$d - %2$d Karten</string>
     <string name="block_input_tipps_message">Die Anzahl eurer Tipps darf nicht gleich %1$d sein. Der letzte Spieler muss sicherstellen dass die Anzahl an Tipps nicht gleich %1$d ist</string>
+    <string name="block_input_tipps_message_first_round">Die Anzahl eurer Tipps darf in der ersten Runde 1 ergeben</string>
     <string name="block_input_result_message">Die Anzahl eurer Ergebnisse müssen %1$d ergeben</string>
     <string name="block_results_is_dealer_hint">(Geber)</string>
     <string name="block_trump_title">Trumpffarbe</string>
@@ -59,6 +60,7 @@
     <string name="block_results_winner_message_plural">%1$s haben mit insgesamt %2$d Punkten gewonnen</string>
     <string name="block_trump_disable_auto_show_dialog">Diesen Dialog automatisch für jede Runde anzeigen</string>
     <string name="game_rules_disable_auto_show_dialog">Zeige einen Dialog zur Auswahl der Trumpffarbe automatisch für jede Runde</string>
+    <string name="block_input_info_title">Info</string>
 
     <string name="block_input_enter_tipps">Tripps eintragen</string>
     <string name="block_input_enter_results">Ergebnisse eintragen</string>

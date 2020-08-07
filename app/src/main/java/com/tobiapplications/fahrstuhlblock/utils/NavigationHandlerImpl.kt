@@ -52,10 +52,6 @@ class NavigationHandlerImpl(
         when (screen) {
             is Screen.Menu.NewGame -> GameSettingsActivity.start(activity)
             is Screen.Menu.SavedGames -> SavedGamesActivity.start(activity)
-            is Screen.Menu.NewGame2 -> BlockActivity.start(
-                activity,
-                1
-            )
         }.checkAllMatched
     }
 
@@ -131,7 +127,7 @@ class NavigationHandlerImpl(
             )
             is Screen.Block.Trump -> BlockTrumpDialog.show(
                 activity.supportFragmentManager,
-                DialogEntity.Custom.Trump(resourceHelper, screen.selectedTrumpType)
+                DialogEntity.Custom.Trump(screen.selectedTrumpType, resourceHelper)
             )
         }.checkAllMatched
     }
@@ -140,6 +136,10 @@ class NavigationHandlerImpl(
     private fun navigateTo(screen: Screen.Input) {
         when (screen) {
             is Screen.Input.Block -> navHostController?.navigate(BlockInputFragmentDirections.actionBlockInputFragmentToBlockResultsFragment())
+            is Screen.Input.Info -> SimpleAlertDialogFragment.show(
+                activity.supportFragmentManager,
+                DialogEntity.Text.InputInfo(screen.inputType, screen.cardCount, screen.round, resourceHelper)
+            )
         }.checkAllMatched
     }
 

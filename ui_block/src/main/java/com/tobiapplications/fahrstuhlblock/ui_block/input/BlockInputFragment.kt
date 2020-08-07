@@ -2,7 +2,9 @@ package com.tobiapplications.fahrstuhlblock.ui_block.input
 
 import android.os.Bundle
 import android.os.Handler
+import android.view.*
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -30,6 +32,15 @@ class BlockInputFragment :
     override val viewModelResId: Int = BR.viewModel
     override val layoutId: Int = R.layout.fragment_block_input
     private val navArgs: BlockInputFragmentArgs by navArgs()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        setHasOptionsMenu(true)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
     override fun onBindingCreated(savedInstanceState: Bundle?) {
         super.onBindingCreated(savedInstanceState)
@@ -64,6 +75,26 @@ class BlockInputFragment :
                 }, BLOCK_INPUT_DELAY)
             })
         }
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_input, menu)
+        menu.findItem(R.id.action_info).icon.setTint(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.color_on_primary
+            )
+        )
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_info -> {
+                viewModel.onInfoIconClicked()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
