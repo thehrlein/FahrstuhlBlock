@@ -7,6 +7,8 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRo
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputDataItem
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItemData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.SettingsData
@@ -37,4 +39,6 @@ interface GameRepository {
     suspend fun setGameFinished(gameId: Long) : AppResult<Unit>
 
     suspend fun getLastSettingsData(settingsScreen: SettingsScreen): AppResult<SettingsData>
+
+    suspend fun getBlockInputData(game: Game): AppResult<InputData>
 }

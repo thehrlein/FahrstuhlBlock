@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData" />
+            type="com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputDataItem" />
 
     </data>
 
@@ -17,26 +17,43 @@
         android:paddingTop="@dimen/space_4"
         android:paddingBottom="@dimen/space_4">
 
-        <TextView
-            android:id="@+id/player_name"
+        <LinearLayout
+            android:id="@+id/player_name_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/space_4"
-            android:text="@{item.player}"
-            android:textAppearance="?textAppearanceBody1"
             app:layout_constraintEnd_toStartOf="@id/player_input_value"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Tobias" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/player_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.player}"
+                android:textAppearance="?textAppearanceBody1"
+                tools:text="Tobias" />
+
+            <TextView
+                android:id="@+id/dealer_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_2"
+                android:text="@string/block_results_is_dealer_hint"
+                android:textAppearance="?textAppearanceCaption"
+                android:visibility="@{item.isDealer}"
+                tools:visibility="visible" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/player_input_value"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{String.valueOf(item.userInput)}"
-            app:layout_constraintBottom_toBottomOf="@id/player_name"
+            app:layout_constraintBottom_toBottomOf="@id/player_name_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/player_name"
+            app:layout_constraintTop_toTopOf="@id/player_name_layout"
             tools:text="12" />
 
         <Button
@@ -47,7 +64,7 @@
             app:icon="@drawable/ic_remove"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/player_name" />
+            app:layout_constraintTop_toBottomOf="@id/player_name_layout" />
 
         <SeekBar
             android:id="@+id/seek_bar"
@@ -69,7 +86,7 @@
             app:icon="@drawable/ic_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/player_name" />
+            app:layout_constraintTop_toBottomOf="@id/player_name_layout" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

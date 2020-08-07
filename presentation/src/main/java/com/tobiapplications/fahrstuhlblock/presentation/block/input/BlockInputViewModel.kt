@@ -8,29 +8,26 @@ import com.tobiapplications.fahrstuhlblock.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
-import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputDataItem
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.CalculateResultsUseCase
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameUseCase
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.InputsValidUseCase
-import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreRoundUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.*
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
 
-private const val DEFAULT_PLAYER_INPUT = 0
 
 class BlockInputViewModel(
     private val gameId: Long,
     private val getGameUseCase: GetGameUseCase,
     private val calculateResultsUseCase: CalculateResultsUseCase,
     private val storeRoundUseCase: StoreRoundUseCase,
-    private val inputsValidUseCase: InputsValidUseCase
+    private val inputsValidUseCase: InputsValidUseCase,
+    private val getBlockInputModelsUseCase: GetBlockInputModelsUseCase
 ) : BaseViewModel(), BlockInputInteractions {
 
     private val _inputType = MutableLiveData(InputType.TIPP)
     val inputType: LiveData<InputType> = _inputType
-    private val _inputModels = MutableLiveData<List<InputData>>()
-    val inputModels: LiveData<List<InputData>> = _inputModels
+    private val _inputModels = MutableLiveData<List<InputDataItem>>()
+    val inputModelsItem: LiveData<List<InputDataItem>> = _inputModels
     private val _round = MutableLiveData<Round>()
     private val _game = MutableLiveData<Game>()
     val game: LiveData<Game> = _game
@@ -52,19 +49,16 @@ class BlockInputViewModel(
 
     private fun setInputModels(game: Game) {
         _game.postValue(game)
-        val round = game.currentRound
-        _round.postValue(round)
-        val inputType = round?.inputTypeForThisRound ?: InputType.TIPP
-        _inputType.postValue(inputType)
-        _inputModels.postValue(game.gameInfo.players.names.mapIndexed { index: Int, name: String ->
-            InputData(
-                type = inputType,
-                player = name,
-                currentRound = game.currentRoundNumber,
-                cards = game.currentCardCount,
-                userInput = round?.playerTippData?.getOrNull(index)?.tipp ?: DEFAULT_PLAYER_INPUT
-            )
-        })
+        viewModelScope.launch {
+            when (val result = getBlockInputModelsUseCase.invoke(game)) {
+                is AppResult.Success -> {
+                    _round.postValue(result.value.currentRound)
+                    _inputType.postValue(result.value.inputType)
+                    _inputModels.postValue(result.value.inputModels)
+                }
+                is AppResult.Error -> Unit
+            }
+        }
     }
 
     fun onSaveClicked() {
@@ -81,10 +75,10 @@ class BlockInputViewModel(
 
     private fun storeTipps(
         currentRound: Round,
-        inputs: List<InputData>
+        inputItems: List<InputDataItem>
     ) {
         val round = InsertRoundData(gameId, currentRound.copy(
-            playerTippData = inputs.map { PlayerTippData(it.userInput) }
+            playerTippData = inputItems.map { PlayerTippData(it.userInput) }
         ))
 
         viewModelScope.launch {
@@ -95,14 +89,14 @@ class BlockInputViewModel(
         }
     }
 
-    private fun calculateResults(currentRound: Round, inputs: List<InputData>) {
+    private fun calculateResults(currentRound: Round, inputItems: List<InputDataItem>) {
         val game = getGameData()
         val pointRulesData = game.gameInfo.pointsRuleData
         val previousTotals = game.previousTotals
         val calculateResultData = CalculateResultData(
             pointsRuleData = pointRulesData,
             tipps = currentRound.playerTippData.map { it.tipp },
-            results = inputs.map { it.userInput },
+            results = inputItems.map { it.userInput },
             previousTotals = previousTotals
         )
         viewModelScope.launch {

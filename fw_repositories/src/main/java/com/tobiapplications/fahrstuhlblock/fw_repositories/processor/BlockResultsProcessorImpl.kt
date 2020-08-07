@@ -9,6 +9,7 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.result.*
 import com.tobiapplications.fahrstuhlblock.interactor.SafeCaller
 import com.tobiapplications.fahrstuhlblock.interactor.processor.BlockResultsProcessor
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.isOdd
+import com.tobiapplications.fahrstuhlblock.ui_common.utils.BlockHelper
 import kotlin.math.abs
 
 class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
@@ -83,7 +84,7 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
             blockItems.addAll(players.mapIndexed { index: Int, name: String ->
                 BlockName(
                     name = name,
-                    isDealer = isDealer(currentRoundNumber, game.maxRound, players.size, index + 1)
+                    isDealer = BlockHelper.isDealer(currentRoundNumber, game.maxRound, players.size, index + 1)
                 )
             })
             game.rounds.forEach { round ->
@@ -116,20 +117,6 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
             )
 
         }
-
-    private fun isDealer(
-        round: Int,
-        maxRound: Int,
-        playerCount: Int,
-        playerPosition: Int
-    ): Boolean {
-        val remainder = round % playerCount
-        return when {
-            round > maxRound -> false
-            playerPosition == playerCount -> remainder == 0
-            else -> remainder == playerPosition
-        }
-    }
 
     override suspend fun getGameScores(game: Game): AppResult<GameScoreData> =
         safeCall {

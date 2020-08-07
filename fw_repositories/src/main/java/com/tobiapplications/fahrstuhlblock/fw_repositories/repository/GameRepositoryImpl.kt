@@ -7,6 +7,8 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRo
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputDataItem
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItemData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.MaxCardCountSelection
@@ -93,5 +95,9 @@ class GameRepositoryImpl(
                 SettingsScreen.POINTS -> SettingsData.Points(gameInfo.pointsRuleData)
             }
         }
+    }
+
+    override suspend fun getBlockInputData(game: Game): AppResult<InputData> {
+        return blockInputsProcessor.getBlockInputModels(game)
     }
 }

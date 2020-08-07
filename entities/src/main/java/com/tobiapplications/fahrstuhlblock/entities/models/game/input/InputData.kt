@@ -1,9 +1,9 @@
 package com.tobiapplications.fahrstuhlblock.entities.models.game.input
 
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Round
+
 data class InputData(
-    val type: InputType,
-    val player: String,
-    val currentRound: Int,
-    val cards: Int,
-    var userInput: Int = 0
+    val inputModels: List<InputDataItem>,
+    val inputType: InputType,
+    val currentRound: Round
 )

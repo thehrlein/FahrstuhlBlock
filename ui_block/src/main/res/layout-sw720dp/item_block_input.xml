@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData" />
+            type="com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputDataItem" />
 
     </data>
 

@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputDataItem
 import com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputInteractions
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.ItemBlockInputBinding
@@ -15,7 +15,7 @@ import com.tobiapplications.fahrstuhlblock.ui_common.extension.layoutInflater
 
 class BlockInputAdapter(
     private val interactions: BlockInputInteractions
-) : ListAdapter<InputData, BlockInputAdapter.BlockInputViewHolder>(
+) : ListAdapter<InputDataItem, BlockInputAdapter.BlockInputViewHolder>(
     BockInputDiff
 ) {
 
@@ -38,18 +38,18 @@ class BlockInputAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(
-            inputData: InputData,
+            inputDataItem: InputDataItem,
             interactions: BlockInputInteractions
         ) {
-            bindInputData(inputData, interactions)
+            bindInputData(inputDataItem, interactions)
             binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(
                     seekBar: SeekBar?,
                     progress: Int,
                     fromUser: Boolean
                 ) {
-                    inputData.userInput = progress
-                    bindInputData(inputData, interactions)
+                    inputDataItem.userInput = progress
+                    bindInputData(inputDataItem, interactions)
                 }
 
                 override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -62,23 +62,23 @@ class BlockInputAdapter(
             })
 
             binding.buttonDecrease.setOnClickListener {
-                if (inputData.userInput > 0) {
-                    inputData.userInput = inputData.userInput - 1
-                    bindInputData(inputData, interactions)
+                if (inputDataItem.userInput > 0) {
+                    inputDataItem.userInput = inputDataItem.userInput - 1
+                    bindInputData(inputDataItem, interactions)
                 }
             }
 
             binding.buttonIncrease.setOnClickListener {
-                if (inputData.userInput < inputData.cards) {
-                    inputData.userInput = inputData.userInput + 1
-                    bindInputData(inputData, interactions)
+                if (inputDataItem.userInput < inputDataItem.cards) {
+                    inputDataItem.userInput = inputDataItem.userInput + 1
+                    bindInputData(inputDataItem, interactions)
                 }
             }
         }
 
-        fun bindInputData(inputData: InputData, interactions: BlockInputInteractions) {
+        fun bindInputData(inputDataItem: InputDataItem, interactions: BlockInputInteractions) {
             binding.executeAfter {
-                this.item = inputData
+                this.item = inputDataItem
             }
 
             interactions.onInputChanged()
@@ -86,13 +86,13 @@ class BlockInputAdapter(
     }
 }
 
-object BockInputDiff : DiffUtil.ItemCallback<InputData>() {
+object BockInputDiff : DiffUtil.ItemCallback<InputDataItem>() {
 
-    override fun areItemsTheSame(oldItem: InputData, newItem: InputData): Boolean {
+    override fun areItemsTheSame(oldItem: InputDataItem, newItem: InputDataItem): Boolean {
         return oldItem.player == newItem.player
     }
 
-    override fun areContentsTheSame(oldItem: InputData, newItem: InputData): Boolean {
+    override fun areContentsTheSame(oldItem: InputDataItem, newItem: InputDataItem): Boolean {
         return oldItem.player == newItem.player &&
                 oldItem.cards == newItem.cards &&
                 oldItem.currentRound == newItem.currentRound &&

@@ -56,7 +56,7 @@ class BlockInputFragment :
                 addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
             }
 
-            viewModel.inputModels.observe(viewLifecycleOwner, Observer {
+            viewModel.inputModelsItem.observe(viewLifecycleOwner, Observer {
                 blockInputAdapter.submitList(it)
 
                 Handler().postDelayed({

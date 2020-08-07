@@ -92,6 +92,7 @@ object Koin {
         factory { StoreRoundUseCase(get()) }
         factory { GetBlockResultsUseCase(get()) }
         factory { InputsValidUseCase(get()) }
+        factory { GetBlockInputModelsUseCase(get()) }
         factory { SetShowTrumpDialogEnabledUseCase(get()) }
         factory { IsShowTrumpDialogEnabledUseCase(get()) }
         factory { TrackAnalyticsEventUseCase(get()) }
@@ -146,6 +147,7 @@ object Koin {
         viewModel { (gameId: Long) ->
             BlockInputViewModel(
                 gameId,
+                get(),
                 get(),
                 get(),
                 get(),
