@@ -68,20 +68,24 @@ fun DbRound.mapToData() = Round(
 )
 
 fun PlayerTippData.mapToDbData() = DbPlayerTippData(
+    playerName = playerName,
     tipp = tipp
 )
 
 fun DbPlayerTippData.mapToData() = PlayerTippData(
+    playerName = playerName,
     tipp = tipp
 )
 
 fun PlayerResultData.mapToDbData() = DbPlayerResultData(
+    playerName = playerName,
     difference = difference,
     total = total,
     result = result
 )
 
 fun DbPlayerResultData.mapToData() = PlayerResultData(
+    playerName = playerName,
     difference = difference,
     total = total,
     result = result

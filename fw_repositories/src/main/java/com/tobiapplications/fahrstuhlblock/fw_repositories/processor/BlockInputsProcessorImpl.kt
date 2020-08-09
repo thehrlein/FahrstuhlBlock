@@ -67,7 +67,7 @@ class BlockInputsProcessorImpl : SafeCaller, BlockInputsProcessor {
                 ),
                 currentRound = game.currentRoundNumber,
                 cards = game.currentCardCount,
-                userInput = round.playerTippData.getOrNull(index)?.tipp
+                userInput = round.playerTippData.firstOrNull { it.playerName == name }?.tipp
                     ?: DEFAULT_PLAYER_INPUT
             )
         }

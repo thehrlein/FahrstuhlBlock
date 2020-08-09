@@ -25,54 +25,56 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
 
     private fun calculateWithPointsIfPredictionIsFalse(data: CalculateResultData): List<PlayerResultData> {
         val pointRules = data.pointsRuleData
-        val resultData = mutableListOf<PlayerResultData>()
-        data.tipps.forEachIndexed { index, tipp ->
+        val playerResultData = mutableListOf<PlayerResultData>()
+        data.resultData.forEach { resultData ->
             var points = 0
-            val result = data.results[index]
+            val result = resultData.result
             points += result * pointRules.pointsPerStitch
-            if (tipp == result) {
+            if (resultData.tipp == result) {
                 points += pointRules.correctPoints
             }
 
-            resultData.add(
+            playerResultData.add(
                 PlayerResultData(
+                    playerName = resultData.playerName,
                     result = result,
                     difference = points,
-                    total = data.previousTotals[index] + points
+                    total = resultData.previousTotal + points
                 )
             )
         }
 
-        return resultData
+        return playerResultData
     }
 
 
     private fun calculateWithoutPointsIfPredictionIsFalse(data: CalculateResultData): List<PlayerResultData> {
         val pointRules = data.pointsRuleData
-        val resultData = mutableListOf<PlayerResultData>()
-        data.tipps.forEachIndexed { index, tipp ->
+        val playerResultData = mutableListOf<PlayerResultData>()
+        data.resultData.forEach { resultData ->
             var points = 0
-            val result = data.results[index]
+            val result = resultData.result
 
-            points += if (tipp == result) {
+            points += if (resultData.tipp == result) {
                 result * pointRules.pointsPerStitch
             } else {
-                -abs(tipp - result) * pointRules.minusPointsPerStitch
+                -abs(resultData.tipp - result) * pointRules.minusPointsPerStitch
             }
-            if (tipp == result) {
+            if (resultData.tipp == result) {
                 points += pointRules.correctPoints
             }
 
-            resultData.add(
+            playerResultData.add(
                 PlayerResultData(
+                    playerName = resultData.playerName,
                     result = result,
                     difference = points,
-                    total = data.previousTotals[index] + points
+                    total = resultData.previousTotal + points
                 )
             )
         }
 
-        return resultData
+        return playerResultData
     }
 
     override suspend fun generateBlockResultModels(game: Game): AppResult<BlockItemData> =
@@ -95,12 +97,12 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
                         colorized = round.round.isOdd()
                     )
                 )
-                blockItems.addAll(round.playerTippData.mapIndexed { index: Int, playerTippData: PlayerTippData ->
-                    val resultData = round.playerResultData.getOrNull(index)
+                blockItems.addAll(players.map { player ->
+                    val resultData = round.playerResultData.firstOrNull { it.playerName == player }
                     BlockResult(
-                        player = players[index],
+                        player = player,
                         round = round.round,
-                        tipp = playerTippData.tipp,
+                        tipp = round.playerTippData.first { it.playerName == player }.tipp,
                         result = resultData?.result,
                         difference = resultData?.difference,
                         total = resultData?.total,
@@ -126,7 +128,7 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
             val lastRound = game.rounds.lastOrNull { it.playerResultData.isNotEmpty() }
             val scores = mutableListOf<GameScore>()
             players.mapIndexed { index, name ->
-                Pair(name, lastRound?.playerResultData?.get(index)?.total ?: 0)
+                Pair(name, lastRound?.playerResultData?.firstOrNull { it.playerName == name }?.total ?: 0)
             }.groupBy { it.second }
                 .entries
                 .sortedByDescending { it.key }

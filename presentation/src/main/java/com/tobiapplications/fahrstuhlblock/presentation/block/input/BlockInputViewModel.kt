@@ -6,10 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*
-import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
-import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
-import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputDataItem
-import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
+import com.tobiapplications.fahrstuhlblock.entities.models.game.input.*
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.*
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
@@ -78,7 +75,12 @@ class BlockInputViewModel(
         inputItems: List<InputDataItem>
     ) {
         val round = InsertRoundData(gameId, currentRound.copy(
-            playerTippData = inputItems.map { PlayerTippData(it.userInput) }
+            playerTippData = inputItems.map {
+                PlayerTippData(
+                    playerName = it.player,
+                    tipp = it.userInput
+                )
+            }
         ))
 
         viewModelScope.launch {
@@ -95,9 +97,14 @@ class BlockInputViewModel(
         val previousTotals = game.previousTotals
         val calculateResultData = CalculateResultData(
             pointsRuleData = pointRulesData,
-            tipps = currentRound.playerTippData.map { it.tipp },
-            results = inputItems.map { it.userInput },
-            previousTotals = previousTotals
+            resultData = inputItems.map { inputDataItem ->
+                ResultData(
+                    playerName = inputDataItem.player,
+                    tipp = currentRound.playerTippData.first { it.playerName == inputDataItem.player }.tipp,
+                    result = inputDataItem.userInput,
+                    previousTotal = previousTotals.first { it.playerName == inputDataItem.player }.input
+                )
+            }
         )
         viewModelScope.launch {
             when (val result = calculateResultsUseCase.invoke(calculateResultData)) {

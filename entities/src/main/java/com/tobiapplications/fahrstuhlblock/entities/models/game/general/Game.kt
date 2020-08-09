@@ -1,5 +1,6 @@
 package com.tobiapplications.fahrstuhlblock.entities.models.game.general
 
+import com.tobiapplications.fahrstuhlblock.entities.models.game.input.Input
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
 import java.io.Serializable
@@ -14,10 +15,19 @@ data class Game(
     val maxRound: Int
         get() = gameInfo.highCardCount * 2
 
-    val previousTotals: List<Int>
+    val previousTotals: List<Input>
         get() = when (rounds.size) {
-            0, 1 -> gameInfo.players.names.map { 0 }
-            else -> rounds[rounds.size - 2].playerResultData.map { it.total }
+            0, 1 -> gameInfo.players.names.map {
+                Input(
+                    playerName = it,
+                    input = 0
+                )
+            }
+            else -> rounds[rounds.size - 2].playerResultData.map {
+                Input(
+                    playerName = it.playerName,
+                    input = it.total)
+            }
         }
 
     /**
