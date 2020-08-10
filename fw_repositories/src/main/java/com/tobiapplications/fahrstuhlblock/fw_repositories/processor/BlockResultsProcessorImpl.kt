@@ -3,7 +3,6 @@ package com.tobiapplications.fahrstuhlblock.fw_repositories.processor
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerResultData
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerTippData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.*
 import com.tobiapplications.fahrstuhlblock.interactor.SafeCaller
@@ -86,7 +85,12 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
             blockItems.addAll(players.mapIndexed { index: Int, name: String ->
                 BlockName(
                     name = name,
-                    isDealer = BlockHelper.isDealer(currentRoundNumber, game.maxRound, players.size, index + 1)
+                    isDealer = BlockHelper.isDealer(
+                        currentRoundNumber,
+                        game.maxRound,
+                        players.size,
+                        index + 1
+                    )
                 )
             })
             game.rounds.forEach { round ->
@@ -111,6 +115,18 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
                 })
             }
 
+            val lastRound = game.lastPlayedRound
+            if (lastRound == null || lastRound.roundCompleted) {
+                game.currentRound?.let { round ->
+                    blockItems.add(
+                        BlockRound(
+                            round = round.cardCount,
+                            colorized = round.round.isOdd()
+                        )
+                    )
+                }
+            }
+
             val columnCount = game.gameInfo.players.names.size * 2 + 1
             BlockItemData(
                 items = blockItems,
@@ -128,7 +144,10 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
             val lastRound = game.rounds.lastOrNull { it.playerResultData.isNotEmpty() }
             val scores = mutableListOf<GameScore>()
             players.mapIndexed { index, name ->
-                Pair(name, lastRound?.playerResultData?.firstOrNull { it.playerName == name }?.total ?: 0)
+                Pair(
+                    name,
+                    lastRound?.playerResultData?.firstOrNull { it.playerName == name }?.total ?: 0
+                )
             }.groupBy { it.second }
                 .entries
                 .sortedByDescending { it.key }
