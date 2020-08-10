@@ -25,4 +25,5 @@
     <color name="color_card_red">#FF0000</color>
     <color name="block_result_positive_difference">#0DF316</color>
     <color name="block_result_negative_difference">#FF0000</color>
+    <color name="block_result_leader_gold">#C5BE80</color>
 </resources>

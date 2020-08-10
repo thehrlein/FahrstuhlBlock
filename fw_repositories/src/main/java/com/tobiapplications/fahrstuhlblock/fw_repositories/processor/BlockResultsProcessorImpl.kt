@@ -82,6 +82,15 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
             blockItems.add(BlockPlaceholder(game.currentRound?.trumpType ?: TrumpType.NONE))
             val players = game.gameInfo.players.names
             val currentRoundNumber = game.currentRoundNumber
+            val lastRoundWithTotal = game.lastPlayedRound?.let {
+                when {
+                    it.playerResultData.isNullOrEmpty().not() -> it
+                    it.round >= 2 -> game.rounds[game.rounds.size - 2]
+                    else -> null
+                }
+            }
+            val currentTotals = lastRoundWithTotal?.playerResultData?.sortedByDescending { it.total }
+
             blockItems.addAll(players.mapIndexed { index: Int, name: String ->
                 BlockName(
                     name = name,
@@ -90,8 +99,8 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
                         game.maxRound,
                         players.size,
                         index + 1
-                    )
-                )
+                    ),
+                    isCurrentLeader = currentTotals?.firstOrNull()?.total != null && currentTotals?.firstOrNull { it.playerName == name }?.total == currentTotals?.firstOrNull()?.total)
             })
             game.rounds.forEach { round ->
                 if (round.playerTippData.isEmpty()) return@forEach // do not show round number after trump selected and without any tipps made

@@ -14,6 +14,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/name_layout"
+        android:background="@{item.currentLeader ? @color/block_result_leader_gold : @color/color_surface}"
         android:layout_width="match_parent"
         android:layout_height="@dimen/block_cell_height">
 
