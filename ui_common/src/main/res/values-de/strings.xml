@@ -62,8 +62,8 @@
     <string name="game_rules_disable_auto_show_dialog">Zeige einen Dialog zur Auswahl der Trumpffarbe automatisch für jede Runde</string>
     <string name="block_input_info_title">Info</string>
 
-    <string name="block_input_enter_tipps">Tripps eintragen</string>
-    <string name="block_input_enter_results">Ergebnisse eintragen</string>
+    <string name="block_input_enter_tipps">Tripps eintragen%1$s</string>
+    <string name="block_input_enter_results">Ergebnisse eintragen%1$s</string>
     <string name="block_trump_type_clubs">Kreuz</string>
     <string name="block_trump_type_spades">Pik</string>
     <string name="block_trump_type_hearts">Herz</string>

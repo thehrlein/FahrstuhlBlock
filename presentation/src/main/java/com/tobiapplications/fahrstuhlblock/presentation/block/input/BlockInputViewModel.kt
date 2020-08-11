@@ -30,6 +30,8 @@ class BlockInputViewModel(
     val game: LiveData<Game> = _game
     private val _inputsValid = MutableLiveData(false)
     val inputsValid: LiveData<Boolean> = _inputsValid
+    private val _summedInputs = MutableLiveData<Int>()
+    val summedInputs: LiveData<Int> = _summedInputs
 
     init {
         getCurrentGame()
@@ -133,6 +135,8 @@ class BlockInputViewModel(
 
     override fun onInputChanged() {
         val data = CheckInputValidityData(getGameData(), getInputs().sumBy { it.userInput })
+
+        _summedInputs.postValue(data.inputSum)
 
         viewModelScope.launch {
             _inputsValid.postValue(when (val result = inputsValidUseCase.invoke(data)) {

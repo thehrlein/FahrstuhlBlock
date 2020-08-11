@@ -5,6 +5,7 @@
     <string name="general_false">False</string>
     <string name="general_cancel">Cancel</string>
     <string name="general_ok" translatable="false">Ok</string>
+    <string name="general_empty_string" translatable="false" />
 
     <string name="dialog_exit_title">Attention</string>
     <string name="dialog_exit_message">Do you want to quit this application or return to the menu?</string>
@@ -82,9 +83,10 @@
     <string name="block_input_tipps_message">Your combined tipps must not be %1$d. The last user must make sure that after his tipp the amount of tipps is not equal %1$d</string>
     <string name="block_input_tipps_message_first_round">Your combined tipps can be 1 in the first round</string>
     <string name="block_input_result_message">Your combined results must be %1$d</string>
-    <string name="block_input_enter_tipps">Enter tipps</string>
-    <string name="block_input_enter_results">Enter results</string>
+    <string name="block_input_enter_tipps">Enter tipps%1$s</string>
+    <string name="block_input_enter_results">Enter results%1$s</string>
     <string name="block_input_info_title">Info</string>
+    <string name="block_input_summed_inputs" translatable="false">&#160;- %1$d / %2$d</string>
 
     <!-- Block scores -->
     <string name="block_scores_toolbar_title">Current Scores</string>

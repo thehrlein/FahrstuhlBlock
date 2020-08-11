@@ -70,7 +70,9 @@
                     android:layout_marginTop="@dimen/space_4"
                     android:enabled="@{viewModel.inputsValid}"
                     android:onClick="@{() -> viewModel.onSaveClicked()}"
-                    android:text="@{viewModel.inputType == InputType.TIPP ? @string/block_input_enter_tipps : @string/block_input_enter_results}"
+                    app:inputType="@{viewModel.inputType}"
+                    app:summedInputs="@{viewModel.summedInputs}"
+                    app:cardCount="@{viewModel.game.currentCardCount}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/input_list" />
