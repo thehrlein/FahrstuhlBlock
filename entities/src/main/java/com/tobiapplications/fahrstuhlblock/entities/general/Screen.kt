@@ -33,14 +33,17 @@ sealed class Screen {
 
     sealed class PlayerOrder : Screen() {
         class GameRules(val playerSettingsData: PlayerSettingsData) : PlayerOrder()
+        object Info : PlayerOrder()
     }
 
     sealed class GameRules : Screen() {
         class PointRules(val gameRuleSettingsData: GameRuleSettingsData) : GameRules()
+        object Info : GameRules()
     }
 
     sealed class PointRules : Screen() {
         class Block(val gameId: Long) : PointRules()
+        object Info : PointRules()
     }
 
     sealed class Block : Screen() {

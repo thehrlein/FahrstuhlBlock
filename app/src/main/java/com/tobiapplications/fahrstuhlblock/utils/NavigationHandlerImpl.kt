@@ -93,6 +93,10 @@ class NavigationHandlerImpl(
                     )
                 navHostController?.navigate(action)
             }
+            is Screen.PlayerOrder.Info -> SimpleAlertDialogFragment.show(
+                activity.supportFragmentManager,
+                DialogEntity.Text.PlayerOrderInfo(resourceHelper)
+            )
         }.checkAllMatched
     }
 
@@ -104,6 +108,10 @@ class NavigationHandlerImpl(
                     GameRulesFragmentDirections.actionGameRulesFragmentToPointRulesFragment(screen.gameRuleSettingsData)
                 navHostController?.navigate(action)
             }
+            is Screen.GameRules.Info -> SimpleAlertDialogFragment.show(
+                activity.supportFragmentManager,
+                DialogEntity.Text.GameRulesInfo(resourceHelper)
+            )
         }.checkAllMatched
     }
 
@@ -111,6 +119,10 @@ class NavigationHandlerImpl(
     private fun navigateTo(screen: Screen.PointRules) {
         when (screen) {
             is Screen.PointRules.Block -> BlockActivity.start(activity, screen.gameId)
+            is Screen.PointRules.Info -> SimpleAlertDialogFragment.show(
+                activity.supportFragmentManager,
+                DialogEntity.Text.PointRuleInfo(resourceHelper)
+            )
         }.checkAllMatched
     }
 
@@ -158,7 +170,12 @@ class NavigationHandlerImpl(
             is Screen.Input.Block -> navHostController?.navigate(BlockInputFragmentDirections.actionBlockInputFragmentToBlockResultsFragment())
             is Screen.Input.Info -> SimpleAlertDialogFragment.show(
                 activity.supportFragmentManager,
-                DialogEntity.Text.InputInfo(screen.inputType, screen.cardCount, screen.round, resourceHelper)
+                DialogEntity.Text.InputInfo(
+                    screen.inputType,
+                    screen.cardCount,
+                    screen.round,
+                    resourceHelper
+                )
             )
         }.checkAllMatched
     }

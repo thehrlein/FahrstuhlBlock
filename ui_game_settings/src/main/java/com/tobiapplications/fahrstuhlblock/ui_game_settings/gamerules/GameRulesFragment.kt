@@ -1,6 +1,8 @@
 package com.tobiapplications.fahrstuhlblock.ui_game_settings.gamerules
 
 import android.os.Bundle
+import android.view.*
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.MaxCardCountSelection
 import com.tobiapplications.fahrstuhlblock.presentation.settings.gamerules.GameRulesViewModel
@@ -27,6 +29,14 @@ class GameRulesFragment :
         BR.viewModel
     private val args: GameRulesFragmentArgs by navArgs()
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        setHasOptionsMenu(true)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
     override fun onBindingCreated(savedInstanceState: Bundle?) {
         super.onBindingCreated(savedInstanceState)
@@ -53,6 +63,28 @@ class GameRulesFragment :
                     else -> error("selection of radio group not possible")
                 }
             )
+        }
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_game_rules, menu)
+        menu.findItem(R.id.action_info).icon.setTint(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.color_on_primary
+            )
+        )
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_info -> {
+                viewModel.onInfoIconClicked()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

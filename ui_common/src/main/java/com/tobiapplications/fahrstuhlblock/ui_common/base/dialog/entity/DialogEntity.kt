@@ -26,7 +26,7 @@ sealed class DialogEntity : Serializable {
     ) : DialogEntity() {
 
         class Exit(resourceHelper: ResourceHelper) : Text(
-            title = resourceHelper.getString(R.string.dialog_exit_title),
+            title = resourceHelper.getString(R.string.dialog_title_attention),
             message = resourceHelper.getString(R.string.dialog_exit_message),
             positiveButtonText = resourceHelper.getString(R.string.dialog_exit_button_menu),
             negativeButtonText = resourceHelper.getString(R.string.dialog_exit_button_quit),
@@ -43,8 +43,32 @@ sealed class DialogEntity : Serializable {
             override val requestCode: Int = DialogRequestCode.GAME_FINISHED
         }
 
+        class PlayerOrderInfo(resourceHelper: ResourceHelper) : Text(
+            title = resourceHelper.getString(R.string.dialog_title_info),
+            message = resourceHelper.getString(R.string.player_order_description),
+            neutralButtonText = resourceHelper.getString(R.string.general_ok)
+        ) {
+            override val requestCode: Int = DialogRequestCode.INPUT_INFO
+        }
+
+        class GameRulesInfo(resourceHelper: ResourceHelper) : Text(
+            title = resourceHelper.getString(R.string.dialog_title_info),
+            message = resourceHelper.getString(R.string.game_rules_card_count_description),
+            neutralButtonText = resourceHelper.getString(R.string.general_ok)
+        ) {
+            override val requestCode: Int = DialogRequestCode.INPUT_INFO
+        }
+
+        class PointRuleInfo(resourceHelper: ResourceHelper) : Text(
+            title = resourceHelper.getString(R.string.dialog_title_info),
+            message = resourceHelper.getString(R.string.point_rules_description),
+            neutralButtonText = resourceHelper.getString(R.string.general_ok)
+        ) {
+            override val requestCode: Int = DialogRequestCode.INPUT_INFO
+        }
+
         class InputInfo(inputType: InputType, cardCount: Int, round: Int, resourceHelper: ResourceHelper) : Text(
-            title = resourceHelper.getString(R.string.block_input_info_title),
+            title = resourceHelper.getString(R.string.dialog_title_info),
             message = when (inputType) {
                 InputType.TIPP -> if (round == 1) {
                     resourceHelper.getString(R.string.block_input_tipps_message_first_round)
@@ -59,7 +83,7 @@ sealed class DialogEntity : Serializable {
         }
 
         class FinishEarly(resourceHelper: ResourceHelper) : Text(
-            title = resourceHelper.getString(R.string.dialog_exit_title),
+            title = resourceHelper.getString(R.string.dialog_title_attention),
             message = resourceHelper.getString(R.string.block_results_finish_early_message),
             positiveButtonText = resourceHelper.getString(R.string.dialog_finish_game_button),
             negativeButtonText = resourceHelper.getString(R.string.general_cancel)

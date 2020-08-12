@@ -7,7 +7,8 @@
     <string name="general_ok" translatable="false">Ok</string>
     <string name="general_empty_string" translatable="false" />
 
-    <string name="dialog_exit_title">Attention</string>
+    <string name="dialog_title_info">Info</string>
+    <string name="dialog_title_attention">Attention</string>
     <string name="dialog_exit_message">Do you want to quit this application or return to the menu?</string>
     <string name="dialog_exit_button_quit">Quit</string>
     <string name="dialog_exit_button_menu">Menu</string>
@@ -56,7 +57,7 @@
     <!-- Point rules -->
     <string name="point_rules_toolbar_title">Point rules</string>
     <string name="point_rules_title">Set up how many points you get</string>
-    <string name="point_rules_description">for the fact that your prediction is correct and how many points in that case for each stitch as well as how many points you loose for each far from your prediction</string>
+    <string name="point_rules_description">Choose amount points for the fact that your prediction is correct and how many points in that case for each stitch as well as how many points you loose for each far from your prediction</string>
     <string name="point_rules_correct_prediction_hint">Correct prediction</string>
     <string name="point_rules_each_stitch_hint_positive">Points for each stitch</string>
     <string name="point_rules_each_stitch_hint_negative">Minuspoints for each stitch</string>
@@ -88,7 +89,6 @@
     <string name="block_input_result_message">Your combined results must be %1$d</string>
     <string name="block_input_enter_tipps">Enter tipps%1$s</string>
     <string name="block_input_enter_results">Enter results%1$s</string>
-    <string name="block_input_info_title">Info</string>
     <string name="block_input_summed_inputs" translatable="false">&#160;- %1$d / %2$d</string>
 
     <!-- Block scores -->

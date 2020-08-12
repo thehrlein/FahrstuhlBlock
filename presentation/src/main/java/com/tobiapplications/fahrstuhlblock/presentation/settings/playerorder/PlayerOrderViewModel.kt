@@ -21,4 +21,8 @@ class PlayerOrderViewModel(
         val orderedNames = playerNames.value ?: return
         navigateTo(Screen.PlayerOrder.GameRules(PlayerSettingsData(orderedNames)))
     }
+
+    fun onInfoIconClicked() {
+        navigateTo(Screen.PlayerOrder.Info)
+    }
 }

@@ -129,4 +129,8 @@ class GameRulesViewModel(
             }
         }
     }
+
+    fun onInfoIconClicked() {
+        navigateTo(Screen.GameRules.Info)
+    }
 }

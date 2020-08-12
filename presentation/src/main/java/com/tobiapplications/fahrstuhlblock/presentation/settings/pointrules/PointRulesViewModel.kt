@@ -187,4 +187,8 @@ class PointRulesViewModel(
             )
         )
     }
+
+    fun onInfoIconClicked() {
+        navigateTo(Screen.PointRules.Info)
+    }
 }

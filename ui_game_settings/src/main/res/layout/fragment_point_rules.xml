@@ -29,17 +29,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/point_rules_card_count_description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_2"
-                android:text="@string/point_rules_description"
-                android:textAppearance="?textAppearanceSubtitle2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/point_rules_card_count_title" />
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/point_rule_points_for_correct_prediction"
                 style="?textInputStyleOutlined"
@@ -51,7 +40,7 @@
                 app:hintTextAppearance="?textAppearanceSubtitle2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/point_rules_card_count_description">
+                app:layout_constraintTop_toBottomOf="@id/point_rules_card_count_title">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"

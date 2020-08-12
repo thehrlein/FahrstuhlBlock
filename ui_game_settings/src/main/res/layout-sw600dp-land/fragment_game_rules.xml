@@ -29,17 +29,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/game_rules_card_count_description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_2"
-                android:text="@string/game_rules_card_count_description"
-                android:textAppearance="?textAppearanceSubtitle2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/game_rules_card_count_title" />
-
             <include
                 android:id="@+id/game_rules_card_count_radio_group_include"
                 layout="@layout/include_game_rules_round_count_radio_group"
@@ -50,7 +39,7 @@
                 android:layout_marginEnd="@dimen/space_8"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/game_rules_card_count_description"
+                app:layout_constraintTop_toBottomOf="@id/game_rules_card_count_title"
                 app:viewModel="@{viewModel}" />
 
             <View

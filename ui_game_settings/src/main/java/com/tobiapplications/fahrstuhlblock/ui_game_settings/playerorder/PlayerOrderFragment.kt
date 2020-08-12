@@ -1,7 +1,9 @@
 package com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder
 
 import android.os.Bundle
+import android.view.*
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -26,6 +28,15 @@ class PlayerOrderFragment :
     override val layoutId: Int = R.layout.fragment_player_order
     override val viewModelResId: Int = BR.viewModel
     private val args: PlayerOrderFragmentArgs by navArgs()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        setHasOptionsMenu(true)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
     override fun onBindingCreated(savedInstanceState: Bundle?) {
         super.onBindingCreated(savedInstanceState)
@@ -52,7 +63,27 @@ class PlayerOrderFragment :
                 playerOrderAdapter.setItems(it)
             })
         }
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_player_order, menu)
+        menu.findItem(R.id.action_info).icon.setTint(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.color_on_primary
+            )
+        )
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_info -> {
+                viewModel.onInfoIconClicked()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 }

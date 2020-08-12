@@ -29,17 +29,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/player_order_description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_2"
-                android:text="@string/player_order_description"
-                android:textAppearance="?textAppearanceSubtitle2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/player_order_title" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/player_list"
                 android:layout_width="0dp"
@@ -51,7 +40,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="4"
                 tools:listitem="@layout/item_player_row"
-                app:layout_constraintTop_toBottomOf="@id/player_order_description"
+                app:layout_constraintTop_toBottomOf="@id/player_order_title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
