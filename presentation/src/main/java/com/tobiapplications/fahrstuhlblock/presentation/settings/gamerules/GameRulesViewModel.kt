@@ -32,6 +32,8 @@ class GameRulesViewModel(
     val individualCardCountValue = MutableLiveData<String>()
     private val _showTrumpDialogEnabled = MutableLiveData<Boolean>()
     val showTrumpDialogEnabled: LiveData<Boolean> = _showTrumpDialogEnabled
+    private val _stopAtMaxCardCount = MutableLiveData<Boolean>()
+    val stopAtMaxCardCount: LiveData<Boolean> = _stopAtMaxCardCount
 
     val inputValid = MediatorLiveData<Boolean>().also { mediator ->
         mediator.addSource(maxCardCountSelection) {
@@ -128,6 +130,10 @@ class GameRulesViewModel(
                 is AppResult.Error -> Unit
             }
         }
+    }
+
+    fun onStopAtMaxCardCountClicked(checked: Boolean) {
+
     }
 
     fun onInfoIconClicked() {

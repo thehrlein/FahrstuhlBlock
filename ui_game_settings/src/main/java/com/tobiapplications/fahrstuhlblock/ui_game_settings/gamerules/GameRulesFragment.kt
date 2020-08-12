@@ -45,11 +45,18 @@ class GameRulesFragment :
 
         initMaxCardSelection()
         initAutoShowTrumpDialog()
+        initStopAtMaxCardCountCheckbox()
     }
 
     private fun initAutoShowTrumpDialog() {
         binding.autoShowTrumpDialog.setOnCheckedChangeListener { _, isChecked ->
             viewModel.onAutoShowTrumpDialogChanged(isChecked)
+        }
+    }
+
+    private fun initStopAtMaxCardCountCheckbox() {
+        binding.gameRulesCardCountRadioGroupInclude.stopAtMaxCardCount.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.onStopAtMaxCardCountClicked(isChecked)
         }
     }
 
