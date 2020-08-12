@@ -9,6 +9,7 @@ import com.tobiapplications.fahrstuhlblock.ui_block.BlockActivity
 import com.tobiapplications.fahrstuhlblock.ui_block.input.BlockInputFragmentDirections
 import com.tobiapplications.fahrstuhlblock.ui_block.results.BlockResultsFragmentDirections
 import com.tobiapplications.fahrstuhlblock.ui_block.trump.BlockTrumpDialog
+import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.FullscreenProgressDialogFragment
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.SimpleAlertDialogFragment
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogEntity
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelper
@@ -28,6 +29,7 @@ class NavigationHandlerImpl(
 
     override fun navigateTo(screen: Screen) {
         when (screen) {
+            is Screen.Progress -> navigateTo(screen)
             is Screen.Main -> navigateTo(screen)
             is Screen.Menu -> navigateTo(screen)
             is Screen.PlayerSettings -> navigateTo(screen)
@@ -37,6 +39,19 @@ class NavigationHandlerImpl(
             is Screen.Block -> navigateTo(screen)
             is Screen.Input -> navigateTo(screen)
             is Screen.SavedGames -> navigateTo(screen)
+        }.checkAllMatched
+    }
+
+    // navigate from progress
+    private fun navigateTo(screen: Screen.Progress) {
+        when (screen) {
+            is Screen.Progress.Show -> FullscreenProgressDialogFragment.show(
+                activity.supportFragmentManager,
+                DialogEntity.Progress(screen.dim)
+            )
+            is Screen.Progress.Hide -> FullscreenProgressDialogFragment.hide(
+                activity.supportFragmentManager
+            )
         }.checkAllMatched
     }
 

@@ -24,6 +24,9 @@ interface GameDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertRound(dbRound: DbRound) : Long
 
+    @Query("DELETE FROM GAME_ROUNDS WHERE gameId = :gameId AND round = :round")
+    fun removeRound(gameId: Long, round: Int)
+
     @Query("SELECT * FROM GAME_DATABASE")
     fun getAllSavedGames(): List<DbGame>
 

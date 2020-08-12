@@ -50,7 +50,7 @@ fun DbPointsRuleData.mapToData() = PointsRuleData(
     pointsIfPredictionFalse = pointsIfPredictionFalse
 )
 
-fun Round.mapToDbData(gameId: Long) = DbRound(
+fun GameRound.mapToDbData(gameId: Long) = DbRound(
     gameId = gameId,
     round = round,
     cardCount = cardCount,
@@ -59,7 +59,7 @@ fun Round.mapToDbData(gameId: Long) = DbRound(
     trumpType = trumpType.mapToDbTyp()
 )
 
-fun DbRound.mapToData() = Round(
+fun DbRound.mapToData() = GameRound(
     round = round,
     cardCount = cardCount,
     playerTippData = playerTippData.map { it.mapToData() },
@@ -93,7 +93,7 @@ fun DbPlayerResultData.mapToData() = PlayerResultData(
 
 fun DbGame.mapToData() = Game(
     gameInfo = gameInfo.mapToData(),
-    rounds = rounds.map { it.mapToData() }
+    gameRounds = rounds.map { it.mapToData() }
 )
 
 fun TrumpType.mapToDbTyp() = when (this) {

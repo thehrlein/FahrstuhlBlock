@@ -10,6 +10,14 @@ import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettin
 
 sealed class Screen {
 
+
+    // General //
+    sealed class Progress : Screen() {
+        class Show(val dim: Boolean) : Progress()
+        object Hide : Progress()
+    }
+
+    // Individual Screens //
     sealed class Main : Screen() {
         object Menu : Main()
     }

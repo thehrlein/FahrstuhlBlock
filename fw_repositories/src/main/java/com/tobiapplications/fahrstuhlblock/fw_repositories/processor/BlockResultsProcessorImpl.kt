@@ -79,13 +79,13 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
     override suspend fun generateBlockResultModels(game: Game): AppResult<BlockItemData> =
         safeCall {
             val blockItems = mutableListOf<BlockItem>()
-            blockItems.add(BlockPlaceholder(game.currentRound?.trumpType ?: TrumpType.NONE))
+            blockItems.add(BlockPlaceholder(game.currentGameRound?.trumpType ?: TrumpType.NONE))
             val players = game.gameInfo.players.names
             val currentRoundNumber = game.currentRoundNumber
-            val lastRoundWithTotal = game.lastPlayedRound?.let {
+            val lastRoundWithTotal = game.lastPlayedGameRound?.let {
                 when {
                     it.playerResultData.isNullOrEmpty().not() -> it
-                    it.round >= 2 -> game.rounds[game.rounds.size - 2]
+                    it.round >= 2 -> game.gameRounds[game.gameRounds.size - 2]
                     else -> null
                 }
             }
@@ -102,7 +102,7 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
                     ),
                     isCurrentLeader = currentTotals?.firstOrNull()?.total != null && currentTotals?.firstOrNull { it.playerName == name }?.total == currentTotals?.firstOrNull()?.total)
             })
-            game.rounds.forEach { round ->
+            game.gameRounds.forEach { round ->
                 if (round.playerTippData.isEmpty()) return@forEach // do not show round number after trump selected and without any tipps made
                 blockItems.add(
                     BlockRound(
@@ -124,9 +124,9 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
                 })
             }
 
-            val lastRound = game.lastPlayedRound
+            val lastRound = game.lastPlayedGameRound
             if (lastRound == null || lastRound.roundCompleted) {
-                game.currentRound?.let { round ->
+                game.currentGameRound?.let { round ->
                     blockItems.add(
                         BlockRound(
                             round = round.cardCount,
@@ -150,7 +150,7 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
             val gameFinished = game.gameFinished
             val players = game.gameInfo.players.names
 
-            val lastRound = game.rounds.lastOrNull { it.playerResultData.isNotEmpty() }
+            val lastRound = game.gameRounds.lastOrNull { it.playerResultData.isNotEmpty() }
             val scores = mutableListOf<GameScore>()
             players.mapIndexed { index, name ->
                 Pair(

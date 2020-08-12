@@ -1,9 +1,7 @@
 package com.tobiapplications.fahrstuhlblock.fw_database_room.cache
 
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameInfo
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRoundData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*
 import com.tobiapplications.fahrstuhlblock.fw_database_room.dao.GameDao
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.mapper.mapToData
 import com.tobiapplications.fahrstuhlblock.fw_database_room.model.mapper.mapToDbData
@@ -14,8 +12,7 @@ import kotlinx.coroutines.withContext
 
 class GameCacheImpl(
     private val gameDao: GameDao
-) : SafeCaller,
-    GameCache {
+) : SafeCaller, GameCache {
 
     override suspend fun insertGameInfo(gameInfo: GameInfo): AppResult<Long> =
         withContext(Dispatchers.IO) {
@@ -38,11 +35,21 @@ class GameCacheImpl(
             }
         }
 
-    override suspend fun insertRound(roundData: InsertRoundData): AppResult<Boolean> =
+    override suspend fun insertRound(roundData: InsertRoundData): AppResult<Unit> =
         withContext(Dispatchers.IO) {
             safeCall {
-                gameDao.insertRound(roundData.round.mapToDbData(roundData.gameId))
-                true
+                gameDao.insertRound(roundData.gameRound.mapToDbData(roundData.gameId))
+                Unit
+            }
+        }
+
+    override suspend fun removeRound(deleteRoundData: DeleteRoundData): AppResult<Unit> =
+        withContext(Dispatchers.IO) {
+            safeCall {
+                gameDao.removeRound(
+                    gameId = deleteRoundData.gameId,
+                    round = deleteRoundData.gameRound.round
+                )
             }
         }
 

@@ -99,6 +99,7 @@ object Koin {
         factory { TrackAnalyticsEventUseCase(get()) }
         factory { GetAllSavedGamesUseCase(get()) }
         factory { StoreGameFinishedUseCase(get()) }
+        factory { RemoveRoundUseCase(get()) }
     }
 
     private val viewModel = module {
@@ -137,12 +138,13 @@ object Koin {
         viewModel { (gameId: Long) -> BlockViewModel(gameId) }
         viewModel {
             BlockResultsViewModel(
-                get(),
-                get(),
-                get(),
-                get(),
-                get(),
-                get()
+                getGameUseCase =  get(),
+                getBlockResultsUseCase = get(),
+                getGameScoresUseCase = get(),
+                storeRoundUseCase = get(),
+                isShowTrumpDialogEnabledUseCase = get(),
+                storeGameFinishedUseCase = get(),
+                removeRoundUseCase = get()
             )
         }
         viewModel { (gameId: Long) ->

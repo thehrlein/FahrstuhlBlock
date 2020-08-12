@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.DeleteRoundData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRoundData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
@@ -25,7 +26,8 @@ class BlockResultsViewModel(
     private val getGameScoresUseCase: GetGameScoresUseCase,
     private val storeRoundUseCase: StoreRoundUseCase,
     private val isShowTrumpDialogEnabledUseCase: IsShowTrumpDialogEnabledUseCase,
-    private val storeGameFinishedUseCase: StoreGameFinishedUseCase
+    private val storeGameFinishedUseCase: StoreGameFinishedUseCase,
+    private val removeRoundUseCase: RemoveRoundUseCase
 ) : BaseViewModel(), BlockResultsInteractions {
 
     private val _inputType = MutableLiveData<InputType>()
@@ -41,6 +43,8 @@ class BlockResultsViewModel(
     private val game = MutableLiveData<Game>()
     private val _showGameFinishedEvent = SingleLiveEvent<Unit>()
     val showGameFinishedEvent: LiveData<Unit> = _showGameFinishedEvent
+    private val _editInputEnabled = MutableLiveData<Boolean>()
+    val editInputEnabled: LiveData<Boolean> = _editInputEnabled
 
     val gameScores = MediatorLiveData<GameScoreData>().also { mediator ->
         mediator.addSource(game) {
@@ -63,16 +67,29 @@ class BlockResultsViewModel(
         viewModelScope.launch {
             val currentGame = getCurrentGame(gameId) ?: error("no game found for this gameId")
             game.postValue(currentGame)
-            when (val result = getBlockResultsUseCase.invoke(currentGame)) {
-                is AppResult.Success -> {
-                    _columnCount.postValue(result.value.columnCount)
-                    _blockItems.postValue(result.value.items)
-                    _inputType.postValue(result.value.inputType)
-                    showTrumpSelectionDialog(result.value)
-                }
-                is AppResult.Error -> Unit
-            }
+            getBlockItems(currentGame)
         }
+    }
+
+    private suspend fun getBlockItems(currentGame: Game) {
+        when (val result = getBlockResultsUseCase.invoke(currentGame)) {
+            is AppResult.Success -> {
+                _columnCount.postValue(result.value.columnCount)
+                _blockItems.postValue(result.value.items)
+                _inputType.postValue(result.value.inputType)
+                showTrumpSelectionDialog(result.value)
+                _editInputEnabled.postValue(isEditInputEnabled(currentGame, result.value))
+            }
+            is AppResult.Error -> Unit
+        }
+    }
+
+    private fun isEditInputEnabled(
+        currentGame: Game,
+        blockItemData: BlockItemData
+    ): Boolean {
+        return currentGame.gameFinished.not() &&
+                blockItemData.items.filterIsInstance<BlockResult>().isNotEmpty()
     }
 
     private suspend fun getCurrentGame(gameId: Long): Game? {
@@ -132,10 +149,10 @@ class BlockResultsViewModel(
     fun updateTrumpType(trumpType: TrumpType) {
         if (trumpType == TrumpType.NONE) return
         val game = game.value ?: error("round not initialized - could not set trump type")
-        val currentRound = game.currentRound ?: error("")
+        val currentRound = game.currentGameRound ?: error("could not get current round")
         val round = InsertRoundData(
             gameId = game.gameInfo.gameId,
-            round = currentRound.copy(
+            gameRound = currentRound.copy(
                 trumpType = trumpType
             )
         )
@@ -149,5 +166,31 @@ class BlockResultsViewModel(
 
     fun onInfoClicked() {
         navigateTo(Screen.Block.About)
+    }
+
+    fun onDeleteInputClicked() {
+        val game = game.value ?: error("round not initialized - could not set trump type")
+        val currentRound = game.currentGameRound ?: return
+
+        viewModelScope.launch {
+            navigateTo(Screen.Progress.Show(dim = true))
+
+            val result = if (currentRound.playerTippData.isEmpty()) {
+                val round = game.lastPlayedGameRound?.copy(
+                    playerResultData = emptyList()
+                ) ?: return@launch
+
+                storeRoundUseCase.invoke(InsertRoundData(game.gameInfo.gameId, round))
+            } else {
+                removeRoundUseCase.invoke(DeleteRoundData(game.gameInfo.gameId, currentRound))
+            }
+
+            when (result) {
+                is AppResult.Success -> setGameId(game.gameInfo.gameId)
+                is AppResult.Error -> Unit
+            }
+
+            navigateTo(Screen.Progress.Hide)
+        }
     }
 }

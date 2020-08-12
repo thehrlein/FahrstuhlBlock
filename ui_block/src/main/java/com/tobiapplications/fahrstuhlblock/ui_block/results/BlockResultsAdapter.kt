@@ -149,7 +149,9 @@ object BlockResultsDiff : DiffUtil.ItemCallback<BlockItem>() {
 
     override fun areContentsTheSame(oldItem: BlockItem, newItem: BlockItem) = when {
         oldItem is BlockPlaceholder && newItem is BlockPlaceholder && oldItem.trumpType == newItem.trumpType -> true
-        oldItem is BlockName && newItem is BlockName && oldItem.name == newItem.name -> true
+        oldItem is BlockName && newItem is BlockName && oldItem.name == newItem.name &&
+                oldItem.isDealer == newItem.isDealer &&
+                oldItem.isCurrentLeader == newItem.isCurrentLeader -> true
         oldItem is BlockRound && newItem is BlockRound && oldItem.round == newItem.round -> true
         oldItem is BlockResult && newItem is BlockResult &&
                 oldItem.round == newItem.round &&

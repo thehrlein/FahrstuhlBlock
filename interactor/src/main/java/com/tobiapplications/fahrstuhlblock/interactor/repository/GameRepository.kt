@@ -1,10 +1,7 @@
 package com.tobiapplications.fahrstuhlblock.interactor.repository
 
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameInfo
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRoundData
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerResultData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
@@ -24,7 +21,7 @@ interface GameRepository {
 
     suspend fun getAllPlayerNames(): AppResult<Set<String>>
 
-    suspend fun insertRound(roundData: InsertRoundData): AppResult<Boolean>
+    suspend fun insertRound(roundData: InsertRoundData): AppResult<Unit>
 
     suspend fun calculateResults(calculateResultData: CalculateResultData): AppResult<List<PlayerResultData>>
 
@@ -41,4 +38,6 @@ interface GameRepository {
     suspend fun getLastSettingsData(settingsScreen: SettingsScreen): AppResult<SettingsData>
 
     suspend fun getBlockInputData(game: Game): AppResult<InputData>
+
+    suspend fun removeRound(deleteRoundData: DeleteRoundData): AppResult<Unit>
 }

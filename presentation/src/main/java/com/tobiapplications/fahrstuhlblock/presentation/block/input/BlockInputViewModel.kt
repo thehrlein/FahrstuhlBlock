@@ -25,7 +25,7 @@ class BlockInputViewModel(
     val inputType: LiveData<InputType> = _inputType
     private val _inputModels = MutableLiveData<List<InputDataItem>>()
     val inputModelsItem: LiveData<List<InputDataItem>> = _inputModels
-    private val _round = MutableLiveData<Round>()
+    private val _round = MutableLiveData<GameRound>()
     private val _game = MutableLiveData<Game>()
     val game: LiveData<Game> = _game
     private val _inputsValid = MutableLiveData(false)
@@ -51,7 +51,7 @@ class BlockInputViewModel(
         viewModelScope.launch {
             when (val result = getBlockInputModelsUseCase.invoke(game)) {
                 is AppResult.Success -> {
-                    _round.postValue(result.value.currentRound)
+                    _round.postValue(result.value.currentGameRound)
                     _inputType.postValue(result.value.inputType)
                     _inputModels.postValue(result.value.inputModels)
                 }
@@ -73,10 +73,10 @@ class BlockInputViewModel(
     private fun getInputs() = _inputModels.value ?: error("could not determine input models")
 
     private fun storeTipps(
-        currentRound: Round,
+        currentGameRound: GameRound,
         inputItems: List<InputDataItem>
     ) {
-        val round = InsertRoundData(gameId, currentRound.copy(
+        val round = InsertRoundData(gameId, currentGameRound.copy(
             playerTippData = inputItems.map {
                 PlayerTippData(
                     playerName = it.player,
@@ -93,7 +93,7 @@ class BlockInputViewModel(
         }
     }
 
-    private fun calculateResults(currentRound: Round, inputItems: List<InputDataItem>) {
+    private fun calculateResults(currentGameRound: GameRound, inputItems: List<InputDataItem>) {
         val game = getGameData()
         val pointRulesData = game.gameInfo.pointsRuleData
         val previousTotals = game.previousTotals
@@ -102,7 +102,7 @@ class BlockInputViewModel(
             resultData = inputItems.map { inputDataItem ->
                 ResultData(
                     playerName = inputDataItem.player,
-                    tipp = currentRound.playerTippData.first { it.playerName == inputDataItem.player }.tipp,
+                    tipp = currentGameRound.playerTippData.first { it.playerName == inputDataItem.player }.tipp,
                     result = inputDataItem.userInput,
                     previousTotal = previousTotals.first { it.playerName == inputDataItem.player }.input
                 )
@@ -110,7 +110,7 @@ class BlockInputViewModel(
         )
         viewModelScope.launch {
             when (val result = calculateResultsUseCase.invoke(calculateResultData)) {
-                is AppResult.Success -> storeResults(currentRound, result.value)
+                is AppResult.Success -> storeResults(currentGameRound, result.value)
                 is AppResult.Error -> Unit
             }
         }
@@ -118,9 +118,9 @@ class BlockInputViewModel(
 
     private fun getGameData() = _game.value ?: error("could not determine game")
 
-    private fun storeResults(currentRound: Round, results: List<PlayerResultData>) {
+    private fun storeResults(currentGameRound: GameRound, results: List<PlayerResultData>) {
         val round = InsertRoundData(
-            gameId, currentRound.copy(
+            gameId, currentGameRound.copy(
                 playerResultData = results
             )
         )

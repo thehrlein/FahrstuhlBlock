@@ -2,7 +2,7 @@ package com.tobiapplications.fahrstuhlblock.fw_repositories.processor
 
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Round
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameRound
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputDataItem
@@ -39,12 +39,12 @@ class BlockInputsProcessorImpl : SafeCaller, BlockInputsProcessor {
     override suspend fun getBlockInputModels(game: Game): AppResult<InputData> =
         withContext(Dispatchers.IO) {
             safeCall {
-                val round = game.currentRound ?: error("current round could not be determined")
+                val round = game.currentGameRound ?: error("current round could not be determined")
                 val inputType = round.inputTypeForThisRound ?: InputType.TIPP
                 InputData(
                     inputModels = getCorrectOrderInputList(game, inputType, round),
                     inputType = inputType,
-                    currentRound = round
+                    currentGameRound = round
                 )
             }
         }
@@ -53,21 +53,21 @@ class BlockInputsProcessorImpl : SafeCaller, BlockInputsProcessor {
     private fun getCorrectOrderInputList(
         game: Game,
         inputType: InputType,
-        round: Round
+        gameRound: GameRound
     ): List<InputDataItem> {
         val inputModels = game.gameInfo.players.names.mapIndexed { index: Int, name: String ->
             InputDataItem(
                 type = inputType,
                 player = name,
                 isDealer = BlockHelper.isDealer(
-                    round.round,
+                    gameRound.round,
                     game.maxRound,
                     game.gameInfo.players.names.size,
                     index + 1
                 ),
                 currentRound = game.currentRoundNumber,
                 cards = game.currentCardCount,
-                userInput = round.playerTippData.firstOrNull { it.playerName == name }?.tipp
+                userInput = gameRound.playerTippData.firstOrNull { it.playerName == name }?.tipp
                     ?: DEFAULT_PLAYER_INPUT
             )
         }

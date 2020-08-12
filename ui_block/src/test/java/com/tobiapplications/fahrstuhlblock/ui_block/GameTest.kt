@@ -28,17 +28,17 @@ class GameTest {
                 ),
                 gameFinished = false
             ),
-            rounds = emptyList()
+            gameRounds = emptyList()
         )
 
         assertThat(game.maxRound, `is`(10))
         assertThat(game.previousTotals, `is`(listOf(0,0,0)))
-        assertThat(game.lastPlayedRound, `is`(nullValue()))
+        assertThat(game.lastPlayedGameRound, `is`(nullValue()))
         assertThat(game.lastRoundNumber, `is`(nullValue()))
         assertThat(game.inputType, `is`(InputType.TIPP))
         assertThat(game.currentCardCount, `is`(1))
         assertThat(game.currentRoundNumber, `is`(1))
-        assertThat(game.currentRound?.round, `is`(1))
-        assertThat(game.currentRound?.cardCount, `is`(1))
+        assertThat(game.currentGameRound?.round, `is`(1))
+        assertThat(game.currentGameRound?.cardCount, `is`(1))
     }
 }

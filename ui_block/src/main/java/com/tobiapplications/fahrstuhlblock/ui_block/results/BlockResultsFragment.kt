@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.*
 import android.widget.LinearLayout
 import androidx.activity.addCallback
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
@@ -58,6 +57,10 @@ class BlockResultsFragment :
 
         viewModel.openExitDialogEvent.observe(viewLifecycleOwner, Observer {
             activityToolbarViewModel.showExitDialog()
+        })
+
+        viewModel.editInputEnabled.observe(viewLifecycleOwner, Observer {
+            requireActivity().invalidateOptionsMenu()
         })
 
         viewModel.showGameFinishedEvent.observe(viewLifecycleOwner, Observer {
@@ -126,10 +129,19 @@ class BlockResultsFragment :
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        menu.findItem(R.id.action_delete_input).isEnabled = viewModel.editInputEnabled.value == true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_trophy -> {
                 viewModel.onTrophyClicked()
+                true
+            }
+            R.id.action_delete_input -> {
+                viewModel.onDeleteInputClicked()
                 true
             }
             R.id.action_info -> {

@@ -1,10 +1,7 @@
 package com.tobiapplications.fahrstuhlblock.fw_repositories.repository
 
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameInfo
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRoundData
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerResultData
+import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
@@ -43,7 +40,7 @@ class GameRepositoryImpl(
         return playerCache.getAllPlayerNames()
     }
 
-    override suspend fun insertRound(roundData: InsertRoundData): AppResult<Boolean> {
+    override suspend fun insertRound(roundData: InsertRoundData): AppResult<Unit> {
         return gameCache.insertRound(roundData)
     }
 
@@ -99,5 +96,9 @@ class GameRepositoryImpl(
 
     override suspend fun getBlockInputData(game: Game): AppResult<InputData> {
         return blockInputsProcessor.getBlockInputModels(game)
+    }
+
+    override suspend fun removeRound(deleteRoundData: DeleteRoundData): AppResult<Unit> {
+        return gameCache.removeRound(deleteRoundData)
     }
 }
