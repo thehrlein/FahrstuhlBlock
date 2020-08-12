@@ -14,7 +14,8 @@ class SimpleAlertDialogFragment : DialogInteractionFragment() {
         private val TAG: String = SimpleAlertDialogFragment::class.java.simpleName
 
         fun show(fragmentManager: FragmentManager, dialogEntity: DialogEntity.Text) {
-            if (fragmentManager.findFragmentByTag(TAG) != null) return
+            val fragmentTag = TAG.plus(dialogEntity::class.java)
+            if (fragmentManager.findFragmentByTag(fragmentTag) != null) return
 
             val bundle = Bundle().apply {
                 putSerializable(DialogEntity.KEY_DIALOG_ENTITY, dialogEntity)
@@ -22,7 +23,7 @@ class SimpleAlertDialogFragment : DialogInteractionFragment() {
 
             SimpleAlertDialogFragment().apply {
                 arguments = bundle
-            }.showNow(fragmentManager, TAG)
+            }.showNow(fragmentManager, fragmentTag)
         }
     }
 

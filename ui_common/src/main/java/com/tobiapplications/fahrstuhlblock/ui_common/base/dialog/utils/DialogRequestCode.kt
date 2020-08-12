@@ -7,5 +7,6 @@ object DialogRequestCode {
     const val GAME_FINISHED: Int = 300
     const val CHOOSE_TRUMP: Int = 400
     const val INPUT_INFO: Int = 500
+    const val FINISH_EARLY: Int = 600
 
 }

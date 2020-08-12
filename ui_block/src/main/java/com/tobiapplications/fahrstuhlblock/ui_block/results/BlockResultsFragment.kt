@@ -51,15 +51,11 @@ class BlockResultsFragment :
             viewModel.setGameId(it)
         })
 
-        viewModel.openInputEvent.observe(viewLifecycleOwner, Observer {
-            activityToolbarViewModel.openInput()
-        })
-
-        viewModel.openExitDialogEvent.observe(viewLifecycleOwner, Observer {
-            activityToolbarViewModel.showExitDialog()
-        })
-
         viewModel.editInputEnabled.observe(viewLifecycleOwner, Observer {
+            requireActivity().invalidateOptionsMenu()
+        })
+
+        viewModel.finishEarlyEnabled.observe(viewLifecycleOwner, Observer {
             requireActivity().invalidateOptionsMenu()
         })
 
@@ -74,12 +70,14 @@ class BlockResultsFragment :
                 .addSizes(Size(12, 5f))
                 .setPosition(-50f, binding.konfettiView.width + 50f, -50f, -50f)
                 .streamFor(300, 5000L)
+
+            requireActivity().invalidateOptionsMenu()
         })
 
         initAdapter()
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            activityToolbarViewModel.showExitDialog()
+            viewModel.showExitDialog()
         }
     }
 
@@ -132,6 +130,7 @@ class BlockResultsFragment :
     override fun onPrepareOptionsMenu(menu: Menu) {
         super.onPrepareOptionsMenu(menu)
         menu.findItem(R.id.action_delete_input).isEnabled = viewModel.editInputEnabled.value == true
+        menu.findItem(R.id.action_finish_early).isEnabled = viewModel.finishEarlyEnabled.value == true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -142,6 +141,10 @@ class BlockResultsFragment :
             }
             R.id.action_delete_input -> {
                 viewModel.onDeleteInputClicked()
+                true
+            }
+            R.id.action_finish_early -> {
+                viewModel.onFinishEarlyClicked()
                 true
             }
             R.id.action_info -> {
@@ -161,6 +164,11 @@ class BlockResultsFragment :
                             viewModel.updateTrumpType(it.selectedTrumpType)
                         }
                     }
+                }
+            }
+            DialogRequestCode.FINISH_EARLY -> {
+                when (resultCode) {
+                    DialogResultCode.POSITIVE -> viewModel.onFinishEarlyConfirmed()
                 }
             }
         }

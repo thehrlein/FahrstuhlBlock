@@ -16,6 +16,12 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/action_finish_early"
+        android:icon="@null"
+        android:title="@string/block_results_menu_finish_now"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_info"
         android:icon="@null"
         android:title="@string/block_results_menu_about_title"

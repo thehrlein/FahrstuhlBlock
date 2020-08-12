@@ -48,7 +48,7 @@
             android:layout_gravity="end|bottom"
             android:layout_margin="@dimen/space_4"
             android:onClick="@{() -> viewModel.onFabClicked()}"
-            app:gameFinished="@{viewModel.gameScores.finished}"
+            app:gameFinished="@{viewModel.gameFinished}"
             app:icon="@drawable/ic_add"
             app:inputType="@{viewModel.inputType}" />
 

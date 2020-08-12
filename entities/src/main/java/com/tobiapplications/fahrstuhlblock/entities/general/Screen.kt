@@ -51,6 +51,7 @@ sealed class Screen {
         class GameFinished(val winners: List<GameScore>) : Block()
         class Trump(val selectedTrumpType: TrumpType) : Block()
         object About : Block()
+        object FinishEarly: Block()
     }
 
     sealed class Input : Screen() {

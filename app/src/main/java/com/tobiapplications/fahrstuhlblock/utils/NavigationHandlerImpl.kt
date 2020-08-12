@@ -145,6 +145,10 @@ class NavigationHandlerImpl(
                 DialogEntity.Custom.Trump(screen.selectedTrumpType, resourceHelper)
             )
             is Screen.Block.About -> navHostController?.navigate(BlockResultsFragmentDirections.actionBlockResultsFragmentToAboutFragment())
+            is Screen.Block.FinishEarly -> SimpleAlertDialogFragment.show(
+                activity.supportFragmentManager,
+                DialogEntity.Text.FinishEarly(resourceHelper)
+            )
         }.checkAllMatched
     }
 

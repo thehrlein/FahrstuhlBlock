@@ -11,6 +11,7 @@
     <string name="dialog_exit_message">Do you want to quit this application or return to the menu?</string>
     <string name="dialog_exit_button_quit">Quit</string>
     <string name="dialog_exit_button_menu">Menu</string>
+    <string name="dialog_finish_game_button">Finish</string>
     <string name="icon_credits">Icons made by Nhor Phai &amp; Freepik (www.flaticon.com), <div>Icon made from <a href="http://www.onlinewebfonts.com/icon">Icon Fonts</a> is licensed by CC BY 3.0</div></string>
 
     <!-- Menu -->
@@ -63,7 +64,6 @@
     <string name="point_rules_points_for_false_prediction_switch_hint_positive">You get points for every stitch you made, but extra points if your prediction is correct</string>
     <string name="point_rules_points_for_false_prediction_switch_hint_negative">You only get points if your prediction is correct. If not, you get minus points</string>
 
-
     <!-- Block results -->
     <string name="block_results_toolbar_title" translatable="false">Block</string>
     <string name="block_results_fab_add_prediction">Tipps</string>
@@ -76,6 +76,8 @@
     <string name="block_results_menu_trophy_title" translatable="false">Scores</string>
     <string name="block_results_menu_about_title" translatable="false">Info</string>
     <string name="block_results_menu_delete_last_input">Delete last input</string>
+    <string name="block_results_menu_finish_now">Finish game early</string>
+    <string name="block_results_finish_early_message">Do you really want to finish this game now?</string>
 
     <!-- Block input -->
     <string name="block_input_toolbar_title_tipps">Tipps</string>

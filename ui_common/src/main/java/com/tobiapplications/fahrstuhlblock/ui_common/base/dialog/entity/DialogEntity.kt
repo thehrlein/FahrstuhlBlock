@@ -57,6 +57,15 @@ sealed class DialogEntity : Serializable {
         ) {
             override val requestCode: Int = DialogRequestCode.INPUT_INFO
         }
+
+        class FinishEarly(resourceHelper: ResourceHelper) : Text(
+            title = resourceHelper.getString(R.string.dialog_exit_title),
+            message = resourceHelper.getString(R.string.block_results_finish_early_message),
+            positiveButtonText = resourceHelper.getString(R.string.dialog_finish_game_button),
+            negativeButtonText = resourceHelper.getString(R.string.general_cancel)
+        ) {
+            override val requestCode: Int = DialogRequestCode.FINISH_EARLY
+        }
     }
 
     sealed class Custom(

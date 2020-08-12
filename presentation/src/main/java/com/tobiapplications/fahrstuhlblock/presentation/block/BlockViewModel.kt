@@ -13,17 +13,7 @@ class BlockViewModel(
     private val _gameId = MutableLiveData(gameId)
     val gameId: LiveData<Long> = _gameId
 
-    fun showExitDialog() {
-        navigateTo(Screen.Block.Exit)
-    }
-
     fun openMenu() {
         navigateTo(Screen.Block.Menu)
     }
-
-    fun openInput() {
-        val gameId = gameId.value ?: error("could not determine gameId")
-        navigateTo(Screen.Block.Input(gameId))
-    }
-
 }

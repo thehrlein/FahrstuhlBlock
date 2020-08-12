@@ -34,26 +34,18 @@ class BlockResultsViewModel(
     val inputType: LiveData<InputType> = _inputType
     private val _blockItems = MutableLiveData<List<BlockItem>>()
     val blockItems: LiveData<List<BlockItem>> = _blockItems
-    private val _openInputEvent = SingleLiveEvent<Unit>()
-    val openInputEvent: LiveData<Unit> = _openInputEvent
-    private val _openExitDialogEvent = SingleLiveEvent<Unit>()
-    val openExitDialogEvent: LiveData<Unit> = _openExitDialogEvent
     private val _columnCount = MutableLiveData<Int>()
     val columnCount: LiveData<Int> = _columnCount
     private val game = MutableLiveData<Game>()
     private val _showGameFinishedEvent = SingleLiveEvent<Unit>()
     val showGameFinishedEvent: LiveData<Unit> = _showGameFinishedEvent
-    private val _editInputEnabled = MutableLiveData<Boolean>()
-    val editInputEnabled: LiveData<Boolean> = _editInputEnabled
-
-    val gameScores = MediatorLiveData<GameScoreData>().also { mediator ->
+    private val gameScores = MediatorLiveData<GameScoreData>().also { mediator ->
         mediator.addSource(game) {
             viewModelScope.launch {
                 when (val result = getGameScoresUseCase.invoke(it)) {
                     is AppResult.Success -> {
                         mediator.postValue(result.value)
                         if (result.value.finished && result.value.winnerAlreadyShown.not()) {
-                            _showGameFinishedEvent.postValue(Unit)
                             onGameFinished(result.value.results)
                         }
                     }
@@ -62,6 +54,33 @@ class BlockResultsViewModel(
             }
         }
     }
+
+    private val _gameFinished = MediatorLiveData<Boolean>().also { mediator ->
+        mediator.addSource(gameScores) {
+            mediator.postValue(it.finished)
+        }
+    }
+
+    val gameFinished: LiveData<Boolean> = _gameFinished
+    private val _editInputEnabled = MediatorLiveData<Boolean>().also { mediator ->
+        mediator.addSource(blockItems) {
+            mediator.postValue(it.filterIsInstance<BlockResult>().isNotEmpty() && _gameFinished.value != false)
+        }
+        mediator.addSource(gameFinished) {
+            mediator.postValue(it != true &&_blockItems.value?.filterIsInstance<BlockResult>()?.isNotEmpty() == true)
+        }
+    }
+    val editInputEnabled: LiveData<Boolean> = _editInputEnabled
+    private val _finishEarlyEnabled = MediatorLiveData<Boolean>().also { mediator ->
+        mediator.addSource(blockItems) {
+            mediator.postValue(it.filterIsInstance<BlockResult>().any { it.total != null } && _gameFinished.value != true)
+        }
+        mediator.addSource(gameFinished) {
+            mediator.postValue(it != true &&_blockItems.value?.filterIsInstance<BlockResult>()?.any { it.total != null } == true)
+        }
+    }
+    val finishEarlyEnabled: LiveData<Boolean> = _finishEarlyEnabled
+
 
     fun setGameId(gameId: Long) {
         viewModelScope.launch {
@@ -78,18 +97,19 @@ class BlockResultsViewModel(
                 _blockItems.postValue(result.value.items)
                 _inputType.postValue(result.value.inputType)
                 showTrumpSelectionDialog(result.value)
-                _editInputEnabled.postValue(isEditInputEnabled(currentGame, result.value))
             }
             is AppResult.Error -> Unit
         }
     }
 
-    private fun isEditInputEnabled(
-        currentGame: Game,
-        blockItemData: BlockItemData
-    ): Boolean {
+    private fun isEditInputEnabled(currentGame: Game, blockItemData: BlockItemData): Boolean {
         return currentGame.gameFinished.not() &&
                 blockItemData.items.filterIsInstance<BlockResult>().isNotEmpty()
+    }
+
+    private fun isFinishEarlyEnabled(currentGame: Game, blockItemData: BlockItemData): Boolean {
+        return currentGame.gameFinished.not() &&
+                blockItemData.items.filterIsInstance<BlockResult>().any { it.total != null }
     }
 
     private suspend fun getCurrentGame(gameId: Long): Game? {
@@ -117,11 +137,12 @@ class BlockResultsViewModel(
     }
 
     fun onFabClicked() {
-        val gameFinished = gameScores.value?.finished ?: false
+        val gameFinished = _gameFinished.value ?: false
         if (gameFinished) {
-            _openExitDialogEvent.call()
+            navigateTo(Screen.Block.Exit)
         } else {
-            _openInputEvent.call()
+            val gameId = game.value?.gameInfo?.gameId ?: error("could not determine gameId")
+            navigateTo(Screen.Block.Input(gameId))
         }
     }
 
@@ -130,13 +151,15 @@ class BlockResultsViewModel(
         navigateTo(Screen.Block.Scores(scores))
     }
 
-    private fun onGameFinished(results: List<GameScore>) {
-        navigateTo(Screen.Block.GameFinished(results.filter { it.position == WINNER_POSITION }))
-
+    private fun onGameFinished(results: List<GameScore>, onFinishedSuccess: (() -> Unit)? = null) {
+        _showGameFinishedEvent.postValue(Unit)
         viewModelScope.launch {
             val gameId = game.value?.gameInfo?.gameId ?: return@launch
             when (val result = storeGameFinishedUseCase.invoke(gameId)) {
-                is AppResult.Success -> Unit
+                is AppResult.Success -> {
+                    navigateTo(Screen.Block.GameFinished(results.filter { it.position == WINNER_POSITION }))
+                    onFinishedSuccess?.invoke()
+                }
                 is AppResult.Error -> Unit
             }
         }
@@ -192,5 +215,27 @@ class BlockResultsViewModel(
 
             navigateTo(Screen.Progress.Hide)
         }
+    }
+
+    fun onFinishEarlyClicked() {
+        navigateTo(Screen.Block.FinishEarly)
+    }
+
+    fun onFinishEarlyConfirmed() {
+        val gameScoreData = gameScores.value ?: return
+        _gameFinished.removeSource(gameScores)
+        _finishEarlyEnabled.removeSource(blockItems)
+        _finishEarlyEnabled.removeSource(gameFinished)
+        _editInputEnabled.removeSource(blockItems)
+        _editInputEnabled.removeSource(gameFinished)
+        _gameFinished.postValue(true)
+        onGameFinished(gameScoreData.results) {
+            _editInputEnabled.postValue(false)
+            _finishEarlyEnabled.postValue(false)
+        }
+    }
+
+    fun showExitDialog() {
+        navigateTo(Screen.Block.Exit)
     }
 }
