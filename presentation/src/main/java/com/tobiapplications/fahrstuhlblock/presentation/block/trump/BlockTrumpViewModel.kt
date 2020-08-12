@@ -41,8 +41,7 @@ class BlockTrumpViewModel(
         viewModelScope.launch {
             trackAnalyticsEventUseCase.invoke(
                 AnalyticsEvent(
-                    eventName = TrackingConstants.EVENT_TRUMP_SELECTION_AUTO_SHOW_DIALOG,
-                    params = listOf(BooleanParam(TrackingConstants.PARAM_AUTO_SHOW_DIALOG, checked))
+                    eventName = TrackingConstants.getTrumpSelectionAutoShowDialogEvent(checked)
                 )
             )
             when (val result = setShowTrumpDialogEnabledUseCase.invoke(checked)) {

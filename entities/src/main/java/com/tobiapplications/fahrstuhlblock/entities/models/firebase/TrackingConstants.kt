@@ -3,24 +3,45 @@ package com.tobiapplications.fahrstuhlblock.entities.models.firebase
 object TrackingConstants {
 
     // Player Settings
-    const val EVENT_PLAYER_SETTINGS_PLAYER_COUNT = "player_settings_player_count"
-    const val PARAM_PLAYER_COUNT = "player_count"
+    private const val EVENT_PLAYER_SETTINGS_PLAYER_COUNT = "player_count_%d"
+
+    fun getPlayerSettingsEvent(count: Int) =
+        String.format(EVENT_PLAYER_SETTINGS_PLAYER_COUNT, count)
 
     // Game Rules
-    const val EVENT_GAME_RULES_HIGH_CARD = "game_rules_high_card"
-    const val PARAM_HIGH_CARD = "high_card_count"
+    private const val EVENT_GAME_RULES_HIGH_CARD = "high_card_%d"
+
+    fun getGameRulesHighCardEvent(highCard: Int) =
+        String.format(EVENT_GAME_RULES_HIGH_CARD, highCard)
 
     // Point Rules
-    const val EVENT_POINT_RULES_CORRECT_PREDICTION = "point_rules_correct_prediction"
-    const val EVENT_POINT_RULES_PLUS_POINTS_PER_STITCH = "point_rules_plus_points_per_stitch"
-    const val EVENT_POINT_RULES_MINUS_POINTS_PER_STITCH = "point_rules_minus_points_per_stitch"
-    const val EVENT_POINT_RULES_POINTS_FOR_WRONG_PREDICTON = "point_rules_points_for_wrong_prediction"
-    const val PARAM_CORRECT_PREDICTION = "correct_prediction_points"
-    const val PARAM_PLUS_POINTS = "plus_points"
-    const val PARAM_MINUS_POINTS= "minus_points"
-    const val PARAM_POINTS_FOR_WRONG_PREDICTION = "points_for_wrong_prediction"
+    private const val EVENT_POINT_RULES_CORRECT_PREDICTION = "points_correct_prediction_%d"
+    private const val EVENT_POINT_RULES_PLUS_POINTS_PER_STITCH = "points_plus_per_stitch_%d"
+    private const val EVENT_POINT_RULES_MINUS_POINTS_PER_STITCH = "points_minus_per_stitch_%d"
+    private const val EVENT_POINT_RULES_POINTS_FOR_WRONG_PREDICTON_TRUE = "points_for_wrong_prediction_true"
+    private const val EVENT_POINT_RULES_POINTS_FOR_WRONG_PREDICTON_FALSE =
+        "points_for_wrong_prediction_false"
+
+    fun getPointRulesCorrectPredictionEvent(points: Int) =
+        String.format(EVENT_POINT_RULES_CORRECT_PREDICTION, points)
+
+    fun getPointRulesPlusPointsEvent(points: Int) =
+        String.format(EVENT_POINT_RULES_PLUS_POINTS_PER_STITCH, points)
+
+    fun getPointRulesMinusPointsEvent(points: Int) =
+        String.format(EVENT_POINT_RULES_MINUS_POINTS_PER_STITCH, points)
+
+    fun getPointRulesPointsForWrongPredictionEvent(value: Boolean) = if (value) EVENT_POINT_RULES_POINTS_FOR_WRONG_PREDICTON_TRUE else EVENT_POINT_RULES_POINTS_FOR_WRONG_PREDICTON_FALSE
 
     // Trump Selection
-    const val EVENT_TRUMP_SELECTION_AUTO_SHOW_DIALOG = "trump_selection_auto_show_dialog"
-    const val PARAM_AUTO_SHOW_DIALOG = "auto_show_dialog"
+    private const val EVENT_TRUMP_SELECTION_AUTO_SHOW_DIALOG_TRUE = "trump_selection_auto_show_dialog_true"
+    private const val EVENT_TRUMP_SELECTION_AUTO_SHOW_DIALOG_FALSE =
+        "trump_selection_auto_show_dialog_false"
+
+    fun getTrumpSelectionAutoShowDialogEvent(value: Boolean) = if (value) EVENT_TRUMP_SELECTION_AUTO_SHOW_DIALOG_TRUE else EVENT_TRUMP_SELECTION_AUTO_SHOW_DIALOG_FALSE
+
+    // About
+    const val EVENT_OPEN_PLAYSTORE_FAHRSTUHL_BLOCK = "play_store_open_fahrstuhl_block"
+    const val EVENT_OPEN_PLAYSTORE_WIZARD_BLOCK = "play_store_open_wizard_block"
+    const val EVENT_OPEN_PLAYSTORE_MOVIEBASE = "play_store_open_moviebase"
 }

@@ -161,7 +161,7 @@ object Koin {
         viewModel { BlockScoresViewModel() }
         viewModel { BlockTrumpViewModel(get(), get(), get()) }
         viewModel { SavedGamesViewModel(get()) }
-        viewModel { AboutViewModel() }
+        viewModel { AboutViewModel(get()) }
 
     }
 

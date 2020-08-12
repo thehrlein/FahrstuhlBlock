@@ -147,8 +147,7 @@ class PointRulesViewModel(
     private suspend fun trackPlayerCount(playerCount: Int) {
         trackAnalyticsEventUseCase.invoke(
             AnalyticsEvent(
-                eventName = TrackingConstants.EVENT_PLAYER_SETTINGS_PLAYER_COUNT,
-                params = listOf(IntParam(TrackingConstants.PARAM_PLAYER_COUNT, playerCount))
+                eventName = TrackingConstants.getPlayerSettingsEvent(playerCount)
             )
         )
     }
@@ -156,8 +155,7 @@ class PointRulesViewModel(
     private suspend fun trackHighCardCount(highCardCount: Int) {
         trackAnalyticsEventUseCase.invoke(
             AnalyticsEvent(
-                eventName = TrackingConstants.EVENT_GAME_RULES_HIGH_CARD,
-                params = listOf(IntParam(TrackingConstants.PARAM_HIGH_CARD, highCardCount))
+                eventName = TrackingConstants.getGameRulesHighCardEvent(highCardCount)
             )
         )
     }
@@ -170,46 +168,22 @@ class PointRulesViewModel(
     ) {
         trackAnalyticsEventUseCase.invoke(
             AnalyticsEvent(
-                eventName = TrackingConstants.EVENT_POINT_RULES_CORRECT_PREDICTION,
-                params = listOf(
-                    IntParam(
-                        TrackingConstants.PARAM_CORRECT_PREDICTION,
-                        correctPredictionPoints
-                    )
-                )
+                eventName = TrackingConstants.getPointRulesCorrectPredictionEvent(correctPredictionPoints)
             )
         )
         trackAnalyticsEventUseCase.invoke(
             AnalyticsEvent(
-                eventName = TrackingConstants.EVENT_POINT_RULES_PLUS_POINTS_PER_STITCH,
-                params = listOf(
-                    IntParam(
-                        TrackingConstants.PARAM_PLUS_POINTS,
-                        pointsPerStitch
-                    )
-                )
+                eventName = TrackingConstants.getPointRulesPlusPointsEvent(pointsPerStitch)
             )
         )
         trackAnalyticsEventUseCase.invoke(
             AnalyticsEvent(
-                eventName = TrackingConstants.EVENT_POINT_RULES_MINUS_POINTS_PER_STITCH,
-                params = listOf(
-                    IntParam(
-                        TrackingConstants.PARAM_MINUS_POINTS,
-                        minusPointsPerStitch
-                    )
-                )
+                eventName = TrackingConstants.getPointRulesMinusPointsEvent(minusPointsPerStitch)
             )
         )
         trackAnalyticsEventUseCase.invoke(
             AnalyticsEvent(
-                eventName = TrackingConstants.EVENT_POINT_RULES_POINTS_FOR_WRONG_PREDICTON,
-                params = listOf(
-                    BooleanParam(
-                        TrackingConstants.PARAM_POINTS_FOR_WRONG_PREDICTION,
-                        pointsIfPredictionFalse
-                    )
-                )
+                eventName = TrackingConstants.getPointRulesPointsForWrongPredictionEvent(pointsIfPredictionFalse)
             )
         )
     }

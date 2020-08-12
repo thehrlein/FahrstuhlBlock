@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.entities.models.firebase.AnalyticsEvent
-import com.tobiapplications.fahrstuhlblock.entities.models.firebase.BooleanParam
 import com.tobiapplications.fahrstuhlblock.entities.models.firebase.TrackingConstants
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.*
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.firebase.TrackAnalyticsEventUseCase
@@ -121,8 +120,7 @@ class GameRulesViewModel(
         viewModelScope.launch {
             trackAnalyticsEventUseCase.invoke(
                 AnalyticsEvent(
-                    eventName = TrackingConstants.EVENT_TRUMP_SELECTION_AUTO_SHOW_DIALOG,
-                    params = listOf(BooleanParam(TrackingConstants.PARAM_AUTO_SHOW_DIALOG, checked))
+                    eventName = TrackingConstants.getTrumpSelectionAutoShowDialogEvent(checked)
                 )
             )
             when (val result = setShowTrumpDialogEnabledUseCase.invoke(checked)) {
