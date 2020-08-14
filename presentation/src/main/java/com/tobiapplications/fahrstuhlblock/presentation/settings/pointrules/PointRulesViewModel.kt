@@ -124,6 +124,8 @@ class PointRulesViewModel(
             System.currentTimeMillis(),
             gameRuleSettingsData.playerSettingsData,
             gameRuleSettingsData.highCardCount,
+            gameRuleSettingsData.totalRounds,
+            gameRuleSettingsData.stopElevatorAtHighCard,
             gameRuleSettingsData.maxCardCountSelection,
             PointsRuleData(
                 correctPredictionPoints,

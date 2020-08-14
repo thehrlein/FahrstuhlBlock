@@ -5,9 +5,9 @@ sealed class SettingsData {
     class Player(val names: List<String>) : SettingsData()
 
     sealed class Cards : SettingsData() {
-        object OneDeck : Cards()
-        object TwoDecks: Cards()
-        class Individual(val count: Int): Cards()
+        class OneDeck(val stopAtHighCard: Boolean) : Cards()
+        class TwoDecks(val stopAtHighCard: Boolean): Cards()
+        class Individual(val count: Int, val stopAtHighCard: Boolean): Cards()
     }
 
     class Points(val pointsRuleData: PointsRuleData): SettingsData()

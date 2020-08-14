@@ -38,7 +38,7 @@ sealed class Screen {
 
     sealed class GameRules : Screen() {
         class PointRules(val gameRuleSettingsData: GameRuleSettingsData) : GameRules()
-        object Info : GameRules()
+        class Info(val stopAtMaxCard: Boolean) : GameRules()
     }
 
     sealed class PointRules : Screen() {

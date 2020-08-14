@@ -85,9 +85,9 @@ class GameRepositoryImpl(
             when (settingsScreen) {
                 SettingsScreen.PLAYER -> SettingsData.Player(gameInfo.players.names)
                 SettingsScreen.CARDS -> when (gameInfo.maxCardCountSelection) {
-                    MaxCardCountSelection.ONE_DECK -> SettingsData.Cards.OneDeck
-                    MaxCardCountSelection.TWO_DECKS -> SettingsData.Cards.TwoDecks
-                    else -> SettingsData.Cards.Individual(gameInfo.highCardCount)
+                    MaxCardCountSelection.ONE_DECK -> SettingsData.Cards.OneDeck(gameInfo.stopElevatorAtHighCard)
+                    MaxCardCountSelection.TWO_DECKS -> SettingsData.Cards.TwoDecks(gameInfo.stopElevatorAtHighCard)
+                    else -> SettingsData.Cards.Individual(gameInfo.highCardCount, gameInfo.stopElevatorAtHighCard)
                 }
                 SettingsScreen.POINTS -> SettingsData.Points(gameInfo.pointsRuleData)
             }

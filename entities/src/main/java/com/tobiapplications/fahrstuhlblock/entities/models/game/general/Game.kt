@@ -13,7 +13,7 @@ data class Game(
 ) : Serializable {
 
     val maxRound: Int
-        get() = gameInfo.highCardCount * 2
+        get() = gameInfo.totalRounds
 
     val previousTotals: List<Input>
         get() = when (gameRounds.size) {
@@ -74,10 +74,10 @@ data class Game(
                     else -> gameRounds.size + 1
                 }
             }
-            gameRounds.size == gameInfo.highCardCount -> gameInfo.highCardCount
+            gameRounds.size == gameInfo.highCardCount && !gameRounds.last().roundCompleted -> gameInfo.highCardCount
             else -> {
                 val fullPlayedRounds = gameRounds.count { it.roundCompleted }
-                gameInfo.highCardCount - (fullPlayedRounds - gameInfo.highCardCount)
+                maxRound - fullPlayedRounds
             }
         }
 

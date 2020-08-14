@@ -51,9 +51,9 @@ sealed class DialogEntity : Serializable {
             override val requestCode: Int = DialogRequestCode.INPUT_INFO
         }
 
-        class GameRulesInfo(resourceHelper: ResourceHelper) : Text(
+        class GameRulesInfo(stopAtHighCard: Boolean, resourceHelper: ResourceHelper) : Text(
             title = resourceHelper.getString(R.string.dialog_title_info),
-            message = resourceHelper.getString(R.string.game_rules_card_count_description),
+            message = resourceHelper.getString(if (stopAtHighCard) R.string.game_rules_card_count_description_stop_at_highcard else R.string.game_rules_card_count_description_dont_stop_at_highcard),
             neutralButtonText = resourceHelper.getString(R.string.general_ok)
         ) {
             override val requestCode: Int = DialogRequestCode.INPUT_INFO

@@ -110,7 +110,7 @@ class NavigationHandlerImpl(
             }
             is Screen.GameRules.Info -> SimpleAlertDialogFragment.show(
                 activity.supportFragmentManager,
-                DialogEntity.Text.GameRulesInfo(resourceHelper)
+                DialogEntity.Text.GameRulesInfo(screen.stopAtMaxCard, resourceHelper)
             )
         }.checkAllMatched
     }
