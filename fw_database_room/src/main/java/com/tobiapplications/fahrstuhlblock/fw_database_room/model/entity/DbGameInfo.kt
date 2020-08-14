@@ -17,6 +17,8 @@ data class DbGameInfo(
     @Embedded
     val players: DbPlayerSettingsData,
     val highCardCount: Int,
+    val totalRounds: Int,
+    val stopElevatorAtHighCard: Boolean,
     val maxCardCountSelection: DbMaxCardCountSelection,
     @Embedded
     val pointsRuleData: DbPointsRuleData,

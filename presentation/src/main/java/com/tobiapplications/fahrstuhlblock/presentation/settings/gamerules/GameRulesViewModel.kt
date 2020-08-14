@@ -32,7 +32,7 @@ class GameRulesViewModel(
     val individualCardCountValue = MutableLiveData<String>()
     private val _showTrumpDialogEnabled = MutableLiveData<Boolean>()
     val showTrumpDialogEnabled: LiveData<Boolean> = _showTrumpDialogEnabled
-    private val _stopAtMaxCardCount = MutableLiveData<Boolean>(true)
+    private val _stopAtMaxCardCount = MutableLiveData<Boolean>()
     val stopAtMaxCardCount: LiveData<Boolean> = _stopAtMaxCardCount
     private val _totalRounds = MediatorLiveData<Int>().also { mediator ->
         mediator.addSource(individualCardCountValue) {
@@ -42,8 +42,12 @@ class GameRulesViewModel(
         }
         mediator.addSource(stopAtMaxCardCount) {
             val selection = maxCardCountSelection.value ?: return@addSource
-            val cardCount = getHighCardCount(selection) ?: return@addSource
-            val stopAtMaxCardDecrease = if (it == true) 0 else 1
+            val cardCount = getHighCardCount(selection)
+            val stopAtMaxCardDecrease = when {
+                cardCount == 0 -> 0
+                it == true -> 0
+                else -> 1
+            }
             mediator.postValue((cardCount * 2) - stopAtMaxCardDecrease)
         }
     }
@@ -82,17 +86,29 @@ class GameRulesViewModel(
         viewModelScope.launch {
             when (val result = getLastSettingsUseCase.invoke(SettingsScreen.CARDS)) {
                 is AppResult.Success -> setLastSettings(result.value)
-                is AppResult.Error -> Unit
+                is AppResult.Error -> setDefaultSettings()
             }
         }
+    }
+
+    private fun setDefaultSettings() {
+        _stopAtMaxCardCount.postValue(true)
+        setSelectedCardOption(MaxCardCountSelection.ONE_DECK)
     }
 
     private fun setLastSettings(settingsData: SettingsData) {
         if (settingsData is SettingsData.Cards) {
             val maxCardCountSelection = when (settingsData) {
-                is SettingsData.Cards.OneDeck -> MaxCardCountSelection.ONE_DECK
-                is SettingsData.Cards.TwoDecks -> MaxCardCountSelection.TWO_DECKS
+                is SettingsData.Cards.OneDeck -> {
+                    _stopAtMaxCardCount.postValue(settingsData.stopAtHighCard)
+                    MaxCardCountSelection.ONE_DECK
+                }
+                is SettingsData.Cards.TwoDecks -> {
+                    _stopAtMaxCardCount.postValue(settingsData.stopAtHighCard)
+                    MaxCardCountSelection.TWO_DECKS
+                }
                 is SettingsData.Cards.Individual -> {
+                    _stopAtMaxCardCount.postValue(settingsData.stopAtHighCard)
                     individualCardCountValue.postValue(settingsData.count.toString())
                     MaxCardCountSelection.INDIVIDUAL
                 }
@@ -111,6 +127,8 @@ class GameRulesViewModel(
         val selection =
             maxCardCountSelection.value ?: error("could not determine maxCardCountSelection")
         val highCardCount = getHighCardCount(selection)
+        val totalRounds = totalRounds.value ?: highCardCount * 2
+        val stopElevatorAtHighCard = stopAtMaxCardCount.value ?: (totalRounds % 2 == 0)
 
         trackEvents()
         navigateTo(
@@ -118,6 +136,8 @@ class GameRulesViewModel(
                 GameRuleSettingsData(
                     playerSettingsData,
                     highCardCount,
+                    totalRounds,
+                    stopElevatorAtHighCard,
                     selection
                 )
             )

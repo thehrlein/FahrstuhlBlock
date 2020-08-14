@@ -5,5 +5,7 @@ import java.io.Serializable
 data class GameRuleSettingsData(
     val playerSettingsData: PlayerSettingsData,
     val highCardCount: Int,
+    val totalRounds: Int,
+    val stopElevatorAtHighCard: Boolean,
     val maxCardCountSelection: MaxCardCountSelection
 ) : Serializable
