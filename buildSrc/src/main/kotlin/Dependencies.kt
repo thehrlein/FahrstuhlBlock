@@ -194,8 +194,8 @@ object AndroidSdkTools {
     const val minSdk = 21
     const val targetSdk = 29
     const val compileSdk = 29
-    const val version_code = 1
-    const val version_name = "0.9.0"
+    const val version_code = 2
+    const val version_name = "0.9.1"
     const val application_id = "com.tobiapplications.fahrstuhlblock"
 }
 
