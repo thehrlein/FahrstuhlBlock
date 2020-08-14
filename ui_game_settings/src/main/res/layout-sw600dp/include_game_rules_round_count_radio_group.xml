@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,7 +9,6 @@
 
         <import type="com.tobiapplications.fahrstuhlblock.entities.models.settings.MaxCardCountSelection" />
 
-        <import type="com.tobiapplications.fahrstuhlblock.ui_common.utils.MaxRoundHelper" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -56,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_2"
                 android:checked="@{viewModel.maxCardCountSelection == MaxCardCountSelection.ONE_DECK}"
-                android:text="@{String.format(@string/game_rules_cards_options_one_deck, MaxRoundHelper.getHighCardCount(@integer/one_card_deck, viewModel.playerCount), viewModel.playerCount)}"
+                android:text="@string/game_rules_cards_options_one_deck"
                 android:textAppearance="?textAppearanceBody1" />
 
             <RadioButton
@@ -65,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_2"
                 android:checked="@{viewModel.maxCardCountSelection == MaxCardCountSelection.TWO_DECKS}"
-                android:text="@{String.format(@string/game_rules_cards_options_two_decks, MaxRoundHelper.getHighCardCount(@integer/two_card_decks, viewModel.playerCount), viewModel.playerCount)}"
+                android:text="@string/game_rules_cards_options_two_decks"
                 android:textAppearance="?textAppearanceBody1" />
 
             <RadioButton
@@ -104,6 +103,19 @@
                 android:textAppearance="?textAppearanceBody1" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/total_rounds"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?textAppearanceBody1"
+            android:alpha="?alphaEmphasisHigh"
+            app:layout_constraintTop_toBottomOf="@id/options_individual_input_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:totalRounds="@{viewModel.totalRounds}"
+            android:layout_marginTop="@dimen/space_4"
+            tools:text="Rundenanzahl: 10"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

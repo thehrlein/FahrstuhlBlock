@@ -32,8 +32,22 @@ class GameRulesViewModel(
     val individualCardCountValue = MutableLiveData<String>()
     private val _showTrumpDialogEnabled = MutableLiveData<Boolean>()
     val showTrumpDialogEnabled: LiveData<Boolean> = _showTrumpDialogEnabled
-    private val _stopAtMaxCardCount = MutableLiveData<Boolean>()
+    private val _stopAtMaxCardCount = MutableLiveData<Boolean>(true)
     val stopAtMaxCardCount: LiveData<Boolean> = _stopAtMaxCardCount
+    private val _totalRounds = MediatorLiveData<Int>().also { mediator ->
+        mediator.addSource(individualCardCountValue) {
+            val cardCount = it.toIntOrNull() ?: return@addSource
+            val stopAtMaxCardDecrease = if (stopAtMaxCardCount.value == true) 0 else 1
+            mediator.postValue((cardCount * 2) - stopAtMaxCardDecrease)
+        }
+        mediator.addSource(stopAtMaxCardCount) {
+            val selection = maxCardCountSelection.value ?: return@addSource
+            val cardCount = getHighCardCount(selection) ?: return@addSource
+            val stopAtMaxCardDecrease = if (it == true) 0 else 1
+            mediator.postValue((cardCount * 2) - stopAtMaxCardDecrease)
+        }
+    }
+    val totalRounds: LiveData<Int> = _totalRounds
 
     val inputValid = MediatorLiveData<Boolean>().also { mediator ->
         mediator.addSource(maxCardCountSelection) {
@@ -89,12 +103,16 @@ class GameRulesViewModel(
 
     fun setSelectedCardOption(maxCardCountSelection: MaxCardCountSelection) {
         _maxCardCountSelection.postValue(maxCardCountSelection)
+        val stayAtTop = stopAtMaxCardCount.value ?: false
+        _totalRounds.postValue(getHighCardCount(maxCardCountSelection) * 2 - if (stayAtTop) 0 else 1)
     }
 
     fun onProceedClicked() {
         val selection =
             maxCardCountSelection.value ?: error("could not determine maxCardCountSelection")
         val highCardCount = getHighCardCount(selection)
+
+        trackEvents()
         navigateTo(
             Screen.GameRules.PointRules(
                 GameRuleSettingsData(
@@ -106,13 +124,31 @@ class GameRulesViewModel(
         )
     }
 
+    private fun trackEvents() {
+        viewModelScope.launch {
+            showTrumpDialogEnabled.value?.let {
+                trackAnalyticsEventUseCase.invoke(
+                    AnalyticsEvent(
+                        eventName = TrackingConstants.getTrumpSelectionAutoShowDialogEvent(it)
+                    )
+                )
+            }
+            stopAtMaxCardCount.value?.let {
+                trackAnalyticsEventUseCase.invoke(
+                    AnalyticsEvent(
+                        eventName = TrackingConstants.getGameRulesStopElevatorAtHighCardEvent(it)
+                    )
+                )
+            }
+        }
+    }
+
     private fun getHighCardCount(selection: MaxCardCountSelection): Int {
-        val individualCount = individualCardCountValue.value?.toIntOrNull()
+        val individualCount = individualCardCountValue.value?.toIntOrNull() ?: 0
         return when (selection) {
             MaxCardCountSelection.ONE_DECK -> selection.cards / playerSettingsData.names.size
             MaxCardCountSelection.TWO_DECKS -> selection.cards / playerSettingsData.names.size
             MaxCardCountSelection.INDIVIDUAL -> individualCount
-                ?: error("could not determine max card count - individual count is null but selected")
             else -> error("could not determine max card count")
         }
     }
@@ -120,11 +156,6 @@ class GameRulesViewModel(
     fun onAutoShowTrumpDialogChanged(checked: Boolean) {
         if (checked == showTrumpDialogEnabled.value) return
         viewModelScope.launch {
-            trackAnalyticsEventUseCase.invoke(
-                AnalyticsEvent(
-                    eventName = TrackingConstants.getTrumpSelectionAutoShowDialogEvent(checked)
-                )
-            )
             when (val result = setShowTrumpDialogEnabledUseCase.invoke(checked)) {
                 is AppResult.Success -> Unit
                 is AppResult.Error -> Unit
@@ -133,10 +164,10 @@ class GameRulesViewModel(
     }
 
     fun onStopAtMaxCardCountClicked(checked: Boolean) {
-
+        _stopAtMaxCardCount.postValue(checked)
     }
 
     fun onInfoIconClicked() {
-        navigateTo(Screen.GameRules.Info)
+        navigateTo(Screen.GameRules.Info(stopAtMaxCardCount.value ?: true))
     }
 }

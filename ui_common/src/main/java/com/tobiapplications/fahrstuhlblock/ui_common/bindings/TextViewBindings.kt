@@ -49,3 +49,9 @@ fun TextView.setPosition(pos: Int?) {
 fun TextView.setBold(bold: Boolean?) {
     setTypeface(null, if (bold == true) Typeface.BOLD else Typeface.NORMAL)
 }
+
+@BindingAdapter("totalRounds")
+fun TextView.setTotalRounds(totalRounds: Int?) {
+    if (totalRounds == null) return
+    text = context.getString(R.string.game_rules_total_rounds, totalRounds)
+}

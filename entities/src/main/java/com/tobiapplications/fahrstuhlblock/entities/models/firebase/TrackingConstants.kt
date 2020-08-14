@@ -10,9 +10,13 @@ object TrackingConstants {
 
     // Game Rules
     private const val EVENT_GAME_RULES_HIGH_CARD = "high_card_%d"
+    private const val EVENT_STOP_ELEVATOR_AT_HIGH_CARD_TRUE = "stop_elevator_at_high_card_true"
+    private const val EVENT_STOP_ELEVATOR_AT_HIGH_CARD_FALSE =
+        "stop_elevator_at_high_card_false"
 
     fun getGameRulesHighCardEvent(highCard: Int) =
         String.format(EVENT_GAME_RULES_HIGH_CARD, highCard)
+    fun getGameRulesStopElevatorAtHighCardEvent(value: Boolean) = if (value) EVENT_STOP_ELEVATOR_AT_HIGH_CARD_TRUE else EVENT_STOP_ELEVATOR_AT_HIGH_CARD_FALSE
 
     // Point Rules
     private const val EVENT_POINT_RULES_CORRECT_PREDICTION = "points_correct_prediction_%d"

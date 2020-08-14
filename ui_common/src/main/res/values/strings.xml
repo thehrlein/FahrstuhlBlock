@@ -1,12 +1,13 @@
 <resources>
+    <!-- General -->
     <string name="app_name" translatable="false">Fahrstuhl Block</string>
-
     <string name="general_true">True</string>
     <string name="general_false">False</string>
     <string name="general_cancel">Cancel</string>
     <string name="general_ok" translatable="false">Ok</string>
     <string name="general_empty_string" translatable="false" />
 
+    <!-- Dialogs -->
     <string name="dialog_title_info">Info</string>
     <string name="dialog_title_attention">Attention</string>
     <string name="dialog_exit_message">Do you want to quit this application or return to the menu?</string>
@@ -20,7 +21,6 @@
     <string name="menu_start_new_game">Start new game</string>
     <string name="menu_continue_old_games">Continue game</string>
     <string name="menu_upcoming_features">// Under development. New features will be added soon</string>
-
 
     <!-- Player settings -->
     <string name="player_settings_toolbar_title">Player settings</string>
@@ -42,18 +42,18 @@
     <string name="player_order_position" translatable="false">%1$d.</string>
     <string name="player_order_description">The first player will start to shuffle and deal the cards</string>
 
-
     <!-- Game rules -->
     <string name="game_rules_toolbar_title">Game rules</string>
     <string name="game_rules_card_count_title">How many rounds do you want to play?</string>
-    <string name="game_rules_card_count_description">Remember that the game starts with one card and increases by one up to the highest card count and afterwards decreases again by one down to one card again. So if you select e.g. 10 cards, you\'ll play 20 rounds.</string>
-    <string name="game_rules_cards_options_one_deck">One deck (up to %1$d cards based on %2$d players)</string>
-    <string name="game_rules_cards_options_two_decks">Two decks (up to %1$d cards based on %2$d players)</string>
+    <string name="game_rules_card_count_description_stop_at_highcard">he game starts with one card and increases by one up to the highest card count and afterwards decreases again by one down to one card. So if you select e.g. 10 cards, you\'ll play 20 rounds.</string>
+    <string name="game_rules_card_count_description_dont_stop_at_highcard">The game starts with one card and increases by one up to the highest card count and afterwards decreases again by one down to one card. So if you select e.g. 10 cards, you\'ll play 19 rounds.</string>
+    <string name="game_rules_cards_options_one_deck">One deck (32 cards)</string>
+    <string name="game_rules_cards_options_two_decks">Two decks (64 cards)</string>
     <string name="game_rules_cards_options_individual">Individual count</string>
     <string name="game_rules_cards_options_individual_input_hint">Highest card count</string>
-    <string name="game_rules_disable_auto_show_dialog">Show a dialog to choose your trump automatically for each round</string>
+    <string name="game_rules_disable_auto_show_dialog">Show a dialog to choose your trump automatically for each round (optional)</string>
     <string name="game_rules_stop_at_max_card_count">The elevator will stop at the top, so that a even number of rounds will be played</string>
-
+    <string name="game_rules_total_rounds">Total rounds: %1$d</string>
 
     <!-- Point rules -->
     <string name="point_rules_toolbar_title">Point rules</string>
@@ -102,7 +102,7 @@
     <string name="block_trump_type_spades">Spades</string>
     <string name="block_trump_type_hearts">Hearts</string>
     <string name="block_trump_type_diamonds">Diamonds</string>
-    <string name="block_trump_disable_auto_show_dialog">Show this dialog automatically for each round</string>
+    <string name="block_trump_disable_auto_show_dialog">Show this dialog automatically for each round (optional)</string>
 
 
     <!-- About -->
