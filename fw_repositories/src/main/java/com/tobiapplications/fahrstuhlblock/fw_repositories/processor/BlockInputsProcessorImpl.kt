@@ -24,10 +24,9 @@ class BlockInputsProcessorImpl : SafeCaller, BlockInputsProcessor {
                 val game = inputValidityData.game
                 when (game.inputType) {
                     InputType.TIPP -> {
-                        if (game.currentRoundNumber == FIRST_ROUND) {
-                            true
-                        } else {
-                            inputValidityData.inputSum != game.currentCardCount
+                        when {
+                            game.currentRoundNumber == FIRST_ROUND && game.gameInfo.firstRoundTipsCanBeOne -> true
+                            else -> inputValidityData.inputSum != game.currentCardCount
                         }
                     }
                     InputType.RESULT -> inputValidityData.inputSum == game.currentCardCount

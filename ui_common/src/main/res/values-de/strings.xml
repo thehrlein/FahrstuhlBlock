@@ -37,6 +37,7 @@
     <!-- Game rules -->
     <string name="game_rules_toolbar_title">Spielregeln</string>
     <string name="game_rules_card_count_title">Wie viele Runden möchtet Ihr spielen?</string>
+    <string name="game_rules_other_settings_title">Allgemeine Regeln</string>
     <string name="game_rules_card_count_description_stop_at_highcard">Das Spiel beginnt mit einer Karte und wird jede Runde um eine Karte bis zur Maximalanzahl erhöht. Anschließend wird wieder bis auf eine Karte runter gespielt. Wenn Ihr bspw. 10 Karten wählt, spielt Ihr 20 Runden</string>
     <string name="game_rules_card_count_description_dont_stop_at_highcard">Das Spiel beginnt mit einer Karte und wird jede Runde um eine Karte bis zur Maximalanzahl erhöht. Anschließend wird wieder bis auf eine Karte runter gespielt. Wenn Ihr bspw. 10 Karten wählt, spielt Ihr 19 Runden</string>
     <string name="game_rules_cards_options_one_deck">Ein Kartendeck (32 Karten)</string>
@@ -57,6 +58,7 @@
     <string name="point_rules_points_for_false_prediction_switch_hint_positive">Du bekommst für jeden gemachten Stich Punkte und zusätzlich ein Bonus wenn deine Schätzung richtig ist</string>
     <string name="point_rules_points_for_false_prediction_switch_hint_negative">Du bekommst nur Punkte, wenn auch deine Schätzung richtig ist. Falls nicht, bekommst du Punkte abgezogen</string>
     <string name="point_rules_each_stitch_hint_negative">Minuspunkte je Stich</string>
+    <string name="point_rules_first_round_tips_can_be_one">Tipps dürfen in der ersten Runde zusammen eins ergeben</string>
 
     <!-- Block results -->
     <string name="block_results_toolbar_title">Block</string>

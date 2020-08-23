@@ -45,6 +45,7 @@
     <!-- Game rules -->
     <string name="game_rules_toolbar_title">Game rules</string>
     <string name="game_rules_card_count_title">How many rounds do you want to play?</string>
+    <string name="game_rules_other_settings_title">General rules</string>
     <string name="game_rules_card_count_description_stop_at_highcard">he game starts with one card and increases by one up to the highest card count and afterwards decreases again by one down to one card. So if you select e.g. 10 cards, you\'ll play 20 rounds.</string>
     <string name="game_rules_card_count_description_dont_stop_at_highcard">The game starts with one card and increases by one up to the highest card count and afterwards decreases again by one down to one card. So if you select e.g. 10 cards, you\'ll play 19 rounds.</string>
     <string name="game_rules_cards_options_one_deck">One deck (32 cards)</string>
@@ -65,6 +66,7 @@
     <string name="point_rules_points_for_false_prediction_switch_text">Points even if prediction is not correct?</string>
     <string name="point_rules_points_for_false_prediction_switch_hint_positive">You get points for every stitch you made, but extra points if your prediction is correct</string>
     <string name="point_rules_points_for_false_prediction_switch_hint_negative">You only get points if your prediction is correct. If not, you get minus points</string>
+    <string name="point_rules_first_round_tips_can_be_one">Tipps can be equal one in first round</string>
 
     <!-- Block results -->
     <string name="block_results_toolbar_title" translatable="false">Block</string>

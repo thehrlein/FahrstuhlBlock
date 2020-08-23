@@ -50,12 +50,51 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/game_rules_card_count_radio_group_include"/>
 
+            <TextView
+                android:id="@+id/game_rules_other_settings_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/game_rules_other_settings_title"
+                android:layout_marginTop="@dimen/space_4"
+                android:textAppearance="?textAppearanceHeadline5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider" />
+
+            <CheckBox
+                android:id="@+id/stop_at_max_card_count"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/game_rules_other_settings_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textAppearance="?textAppearanceCaption"
+                android:checked="@{viewModel.stopAtMaxCardCount}"
+                android:layout_marginTop="@dimen/space_2"
+                android:layout_marginStart="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_8"
+                android:text="@string/game_rules_stop_at_max_card_count"/>
+
+            <CheckBox
+                android:id="@+id/first_round_tips_can_be_one"
+                android:layout_width="0dp"
+                android:layout_marginTop="@dimen/space_4"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/stop_at_max_card_count"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textAppearance="?textAppearanceCaption"
+                android:checked="@{viewModel.tipsCanBeOneInFirstRound}"
+                android:layout_marginStart="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_8"
+                android:text="@string/point_rules_first_round_tips_can_be_one"/>
+
             <CheckBox
                 android:id="@+id/auto_show_trump_dialog"
                 android:layout_width="0dp"
                 android:layout_marginTop="@dimen/space_4"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/divider"
+                app:layout_constraintTop_toBottomOf="@id/first_round_tips_can_be_one"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="@dimen/space_8"

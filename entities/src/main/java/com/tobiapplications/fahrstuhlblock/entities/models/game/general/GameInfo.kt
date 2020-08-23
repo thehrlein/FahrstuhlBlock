@@ -11,6 +11,7 @@ data class GameInfo(
     val highCardCount: Int,
     val totalRounds: Int,
     val stopElevatorAtHighCard: Boolean,
+    val firstRoundTipsCanBeOne: Boolean,
     val maxCardCountSelection: MaxCardCountSelection,
     val pointsRuleData: PointsRuleData,
     val gameFinished: Boolean = false

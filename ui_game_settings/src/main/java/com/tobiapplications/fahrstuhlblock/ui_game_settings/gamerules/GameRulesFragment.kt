@@ -46,6 +46,13 @@ class GameRulesFragment :
         initMaxCardSelection()
         initAutoShowTrumpDialog()
         initStopAtMaxCardCountCheckbox()
+        initFirstRoundSettings()
+    }
+
+    private fun initFirstRoundSettings() {
+        binding.firstRoundTipsCanBeOne.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.onFirstRoundTipsCanBeOneChanged(isChecked)
+        }
     }
 
     private fun initAutoShowTrumpDialog() {
@@ -55,7 +62,7 @@ class GameRulesFragment :
     }
 
     private fun initStopAtMaxCardCountCheckbox() {
-        binding.gameRulesCardCountRadioGroupInclude.stopAtMaxCardCount.setOnCheckedChangeListener { _, isChecked ->
+        binding.stopAtMaxCardCount.setOnCheckedChangeListener { _, isChecked ->
             viewModel.onStopAtMaxCardCountClicked(isChecked)
         }
     }

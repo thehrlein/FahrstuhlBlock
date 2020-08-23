@@ -15,38 +15,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <CheckBox
-            android:id="@+id/stop_at_max_card_count"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textAppearance="?textAppearanceCaption"
-            android:checked="@{viewModel.stopAtMaxCardCount}"
-            android:paddingStart="@dimen/space_2"
-            android:paddingEnd="@dimen/space_none"
-            android:text="@string/game_rules_stop_at_max_card_count"/>
-
-        <View
-            android:id="@+id/divider"
-            android:layout_width="0dp"
-            android:layout_height="1px"
-            android:layout_marginTop="@dimen/space_4"
-            android:background="?dividerHorizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/stop_at_max_card_count"/>
-
         <RadioGroup
             android:id="@+id/radio_group"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:checkedButton="@id/options_one_deck"
-            android:layout_marginTop="@dimen/space_4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider">
+            app:layout_constraintTop_toTopOf="parent">
 
             <RadioButton
                 android:id="@+id/options_one_deck"

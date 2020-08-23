@@ -14,7 +14,7 @@ import com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity.DbPlaye
 
 @Database(
     entities = [DbGameInfo::class, DbRound::class, DbPlayer::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(
@@ -47,7 +47,8 @@ abstract class GameDatabase : RoomDatabase() {
                     context.applicationContext,
                     GameDatabase::class.java,
                     "persistent_database"
-                ).build()
+                )   .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 return instance
             }
