@@ -5,9 +5,9 @@ object Dependencies {
         private const val appCompatVersion = "1.3.0-alpha01"
         private const val coreVersion = "1.5.0-alpha01"
         private const val constraintLayoutVersion = "2.0.0-beta7"
-        private const val pagingVersion = "3.0.0-alpha02"
-        private const val securityVersion = "1.1.0-alpha01"
-        private const val swipeRefreshVersion = "1.1.0"
+        private const val pagingVersion = "3.0.0-alpha04"
+        private const val securityVersion = "1.1.0-alpha02"
+        private const val swipeRefreshVersion = "1.2.0-alpha01"
 
         const val appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
         const val coreKtx = "androidx.core:core-ktx:$coreVersion"
@@ -20,8 +20,8 @@ object Dependencies {
 
         object LifeCycle {
             private const val lifecycleVersion = "2.2.0"
-            private const val lifecycleLiveDataVersion = "2.3.0-alpha05"
-            private const val lifecycleViewModelVersion = "2.3.0-alpha05"
+            private const val lifecycleLiveDataVersion = "2.3.0-alpha06"
+            private const val lifecycleViewModelVersion = "2.3.0-alpha06"
 
             const val extensions = "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
             const val livedataExtensions =
@@ -38,7 +38,7 @@ object Dependencies {
         }
 
         object Room {
-            private const val roomVersion = "2.3.0-alpha01"
+            private const val roomVersion = "2.3.0-alpha02"
 
             const val runtime = "androidx.room:room-runtime:$roomVersion"
             const val compiler = "androidx.room:room-compiler:$roomVersion"
@@ -72,16 +72,16 @@ object Dependencies {
 
     object Google {
         private const val gsonVersion = "2.8.6"
-        private const val materialVersion = "1.3.0-alpha01"
+        private const val materialVersion = "1.3.0-alpha02"
 
         const val gson = "com.google.code.gson:gson:$gsonVersion"
         const val material = "com.google.android.material:material:$materialVersion"
 
         object Firebase {
-            private const val analyticsVersion = "17.4.3"
-            private const val crashlyticsVersion = "17.1.0"
-            private const val messagingVersion = "20.2.1"
-            private const val performanceVersion = "19.0.7"
+            private const val analyticsVersion = "17.5.0"
+            private const val crashlyticsVersion = "17.2.1"
+            private const val messagingVersion = "20.2.4"
+            private const val performanceVersion = "19.0.8"
 
             const val analytics = "com.google.firebase:firebase-analytics-ktx:$analyticsVersion"
             const val crashlytics = "com.google.firebase:firebase-crashlytics:$crashlyticsVersion"
@@ -91,12 +91,12 @@ object Dependencies {
     }
 
     object Kotlin {
-        const val kotlinVersion = "1.3.72"
+        const val kotlinVersion = "1.4.0"
 
         const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
         object Coroutine {
-            private const val coroutineVersion = "1.3.3"
+            private const val coroutineVersion = "1.3.9"
 
             const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
             const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion"
@@ -113,7 +113,7 @@ object Dependencies {
     }
 
     object Network {
-        private const val okHttp3Version = "4.7.2"
+        private const val okHttp3Version = "4.8.1"
         private const val retrofitVersion = "2.9.0"
         private const val mockWebServerVersion = "4.2.2"
 
@@ -151,11 +151,11 @@ object Dependencies {
 object Classpaths {
 
     private const val buildToolsVersion = "3.6.1"
-    private const val detektVersion = "1.10.0-RC1"
+    private const val detektVersion = "1.11.0-RC2"
     private const val firebaseCrashlyticsVersion = "2.2.0"
     private const val firebasePerformanceVersion = "1.3.1"
     private const val googleServicesVersion = "4.3.3"
-    private const val gradleUpdateVersion = "0.28.0"
+    private const val gradleUpdateVersion = "0.29.0"
     private const val safeArgsVersion = "2.3.0"
 
     const val androidGradlePlugin = "com.android.tools.build:gradle:$buildToolsVersion"

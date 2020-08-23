@@ -23,7 +23,13 @@ class App : Application() {
         startKoin {
             logger(KoinLogger())
             androidContext(this@App)
-            modules(Koin.getModules())
+//            modules(Koin.getModules())
+
+            // TODO Await fix for Koin and replace the explicit invocations
+            //  of loadModules() and createRootScope() with a single call to modules()
+            //  (https://github.com/InsertKoinIO/koin/issues/847)
+            koin.loadModules(Koin.getModules())
+            koin.createRootScope()
         }
     }
 
