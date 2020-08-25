@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <RadioGroup
             android:id="@+id/radio_group"
@@ -28,8 +28,9 @@
                 android:id="@+id/options_one_deck"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_2"
                 android:checked="@{viewModel.maxCardCountSelection == MaxCardCountSelection.ONE_DECK}"
+                android:paddingStart="@dimen/space_1"
+                android:paddingEnd="@dimen/space_none"
                 android:text="@string/game_rules_cards_options_one_deck"
                 android:textAppearance="?textAppearanceBody1" />
 
@@ -39,6 +40,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_2"
                 android:checked="@{viewModel.maxCardCountSelection == MaxCardCountSelection.TWO_DECKS}"
+                android:paddingStart="@dimen/space_1"
+                android:paddingEnd="@dimen/space_none"
                 android:text="@string/game_rules_cards_options_two_decks"
                 android:textAppearance="?textAppearanceBody1" />
 
@@ -47,8 +50,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_2"
-                android:text="@string/game_rules_cards_options_individual"
                 android:checked="@{viewModel.maxCardCountSelection == MaxCardCountSelection.INDIVIDUAL}"
+                android:paddingStart="@dimen/space_1"
+                android:paddingEnd="@dimen/space_none"
+                android:text="@string/game_rules_cards_options_individual"
                 android:textAppearance="?textAppearanceBody1" />
 
         </RadioGroup>
@@ -83,14 +88,14 @@
             android:id="@+id/total_rounds"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAppearance="?textAppearanceBody1"
-            android:alpha="?alphaEmphasisHigh"
-            app:layout_constraintTop_toBottomOf="@id/options_individual_input_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:totalRounds="@{viewModel.totalRounds}"
             android:layout_marginTop="@dimen/space_4"
-            tools:text="Rundenanzahl: 10"/>
+            android:alpha="?alphaEmphasisHigh"
+            android:textAppearance="?textAppearanceBody1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/options_individual_input_layout"
+            app:totalRounds="@{viewModel.totalRounds}"
+            tools:text="Rundenanzahl: 10" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

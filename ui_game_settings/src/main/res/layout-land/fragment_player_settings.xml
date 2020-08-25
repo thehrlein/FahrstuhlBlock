@@ -92,7 +92,6 @@
 
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
-
             <com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerNameInputGroup
                 android:id="@+id/player_input_group"
                 android:layout_width="0dp"
@@ -108,7 +107,7 @@
                 android:id="@+id/button_proceed"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_6"
+                android:layout_marginTop="@dimen/space_8"
                 android:enabled="@{viewModel.inputValid}"
                 android:onClick="@{() -> viewModel.onProceedClicked(playerInputGroup.getValues())}"
                 android:text="@string/player_settings_button_proceed"

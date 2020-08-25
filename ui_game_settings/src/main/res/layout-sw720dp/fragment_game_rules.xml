@@ -34,7 +34,7 @@
                 layout="@layout/include_game_rules_round_count_radio_group"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/space_4"
+                android:layout_marginTop="@dimen/space_4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/game_rules_card_count_title"
@@ -68,10 +68,10 @@
                 app:layout_constraintTop_toBottomOf="@id/game_rules_other_settings_title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="@dimen/space_2"
-                android:textAppearance="?textAppearanceCaption"
+                android:layout_marginTop="@dimen/space_4"
+                android:textAppearance="?textAppearanceBody1"
                 android:checked="@{viewModel.stopAtMaxCardCount}"
-                android:paddingStart="@dimen/space_2"
+                android:paddingStart="@dimen/space_1"
                 android:paddingEnd="@dimen/space_none"
                 android:text="@string/game_rules_stop_at_max_card_count"/>
 
@@ -83,9 +83,9 @@
                 app:layout_constraintTop_toBottomOf="@id/stop_at_max_card_count"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textAppearance="?textAppearanceCaption"
+                android:textAppearance="?textAppearanceBody1"
                 android:checked="@{viewModel.tipsCanBeOneInFirstRound}"
-                android:paddingStart="@dimen/space_2"
+                android:paddingStart="@dimen/space_1"
                 android:paddingEnd="@dimen/space_none"
                 android:text="@string/point_rules_first_round_tips_can_be_one"/>
 
@@ -97,9 +97,9 @@
                 app:layout_constraintTop_toBottomOf="@id/first_round_tips_can_be_one"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textAppearance="?textAppearanceCaption"
+                android:textAppearance="?textAppearanceBody1"
                 android:checked="@{viewModel.showTrumpDialogEnabled}"
-                android:paddingStart="@dimen/space_2"
+                android:paddingStart="@dimen/space_1"
                 android:paddingEnd="@dimen/space_none"
                 android:text="@string/game_rules_disable_auto_show_dialog"/>
 

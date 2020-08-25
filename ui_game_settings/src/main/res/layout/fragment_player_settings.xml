@@ -96,13 +96,13 @@
                 android:id="@+id/player_input_group"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_6"
-                app:playerCount="@{viewModel.playerCount}"
-                app:playerNameOptions="@{viewModel.playerNameOptions}"
-                app:playerNames="@{viewModel.playerNames}"
+                android:layout_marginTop="@dimen/space_2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/player_count_choose_button_group" />
+                app:layout_constraintTop_toBottomOf="@id/player_count_choose_button_group"
+                app:playerCount="@{viewModel.playerCount}"
+                app:playerNameOptions="@{viewModel.playerNameOptions}"
+                app:playerNames="@{viewModel.playerNames}" />
 
             <Button
                 android:id="@+id/button_proceed"

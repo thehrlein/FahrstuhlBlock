@@ -45,7 +45,7 @@
                 android:layout_marginStart="@dimen/space_none"
                 android:layout_marginEnd="@dimen/space_2"
                 android:hint="@string/point_rules_correct_prediction_hint"
-                app:errorTextAppearance="?textAppearanceCaption"
+                app:errorTextAppearance="?textAppearanceBody1"
                 app:hintTextAppearance="?textAppearanceSubtitle2"
                 app:layout_constraintEnd_toStartOf="@id/guideline_center"
                 app:layout_constraintStart_toStartOf="parent"

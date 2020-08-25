@@ -19,14 +19,43 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/space_4">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
             <TextView
                 android:id="@+id/game_rules_card_count_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_2"
                 android:text="@string/game_rules_card_count_title"
                 android:textAppearance="?textAppearanceHeadline5"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/guideline_center"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="?dividerHorizontal"
+                app:layout_constraintBottom_toBottomOf="@id/barrier_settings"
+                app:layout_constraintEnd_toEndOf="@id/guideline_center"
+                app:layout_constraintStart_toStartOf="@id/guideline_center"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/game_rules_other_settings_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_2"
+                android:text="@string/game_rules_other_settings_title"
+                android:textAppearance="?textAppearanceHeadline5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline_center"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <include
@@ -35,86 +64,70 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_4"
-                android:layout_marginStart="@dimen/space_8"
-                android:layout_marginEnd="@dimen/space_8"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/game_rules_card_count_title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/game_rules_card_count_title"
                 app:viewModel="@{viewModel}" />
-
-            <View
-                android:id="@+id/divider"
-                android:layout_width="0dp"
-                android:layout_height="1px"
-                android:layout_marginTop="@dimen/space_4"
-                android:background="?dividerHorizontal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/game_rules_card_count_radio_group_include"/>
-
-            <TextView
-                android:id="@+id/game_rules_other_settings_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/game_rules_other_settings_title"
-                android:layout_marginTop="@dimen/space_4"
-                android:textAppearance="?textAppearanceHeadline5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider" />
 
             <CheckBox
                 android:id="@+id/stop_at_max_card_count"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/game_rules_other_settings_title"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:textAppearance="?textAppearanceCaption"
                 android:checked="@{viewModel.stopAtMaxCardCount}"
-                android:paddingStart="@dimen/space_2"
+                android:paddingStart="@dimen/space_1"
                 android:paddingEnd="@dimen/space_none"
-                android:text="@string/game_rules_stop_at_max_card_count"/>
+                android:text="@string/game_rules_stop_at_max_card_count"
+                android:textAppearance="?textAppearanceBody1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/game_rules_other_settings_title"
+                app:layout_constraintTop_toTopOf="@id/game_rules_card_count_radio_group_include" />
 
             <CheckBox
                 android:id="@+id/first_round_tips_can_be_one"
                 android:layout_width="0dp"
-                android:layout_marginTop="@dimen/space_2"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/stop_at_max_card_count"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:textAppearance="?textAppearanceCaption"
+                android:layout_marginTop="@dimen/space_2"
                 android:checked="@{viewModel.tipsCanBeOneInFirstRound}"
-                android:paddingStart="@dimen/space_2"
+                android:paddingStart="@dimen/space_1"
                 android:paddingEnd="@dimen/space_none"
-                android:text="@string/point_rules_first_round_tips_can_be_one"/>
+                android:text="@string/point_rules_first_round_tips_can_be_one"
+                android:textAppearance="?textAppearanceBody1"
+                app:layout_constraintEnd_toEndOf="@id/stop_at_max_card_count"
+                app:layout_constraintStart_toStartOf="@id/stop_at_max_card_count"
+                app:layout_constraintTop_toBottomOf="@id/stop_at_max_card_count" />
 
             <CheckBox
                 android:id="@+id/auto_show_trump_dialog"
                 android:layout_width="0dp"
-                android:layout_marginTop="@dimen/space_2"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/first_round_tips_can_be_one"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:textAppearance="?textAppearanceCaption"
+                android:layout_marginTop="@dimen/space_2"
                 android:checked="@{viewModel.showTrumpDialogEnabled}"
-                android:paddingStart="@dimen/space_2"
+                android:paddingStart="@dimen/space_1"
                 android:paddingEnd="@dimen/space_none"
-                android:text="@string/game_rules_disable_auto_show_dialog"/>
+                android:text="@string/game_rules_disable_auto_show_dialog"
+                android:textAppearance="?textAppearanceBody1"
+                app:layout_constraintEnd_toEndOf="@id/first_round_tips_can_be_one"
+                app:layout_constraintStart_toStartOf="@id/first_round_tips_can_be_one"
+                app:layout_constraintTop_toBottomOf="@id/first_round_tips_can_be_one" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="game_rules_card_count_radio_group_include, auto_show_trump_dialog" />
 
             <Button
                 android:id="@+id/button_proceed"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_4"
+                android:layout_marginTop="@dimen/space_8"
                 android:enabled="@{viewModel.inputValid}"
                 android:onClick="@{() -> viewModel.onProceedClicked()}"
                 android:text="@string/player_settings_button_proceed"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/auto_show_trump_dialog" />
+                app:layout_constraintTop_toBottomOf="@id/barrier_settings" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
