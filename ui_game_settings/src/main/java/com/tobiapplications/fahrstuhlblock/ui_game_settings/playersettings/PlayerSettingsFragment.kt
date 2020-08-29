@@ -20,6 +20,7 @@ class PlayerSettingsFragment : BaseToolbarFragment<PlayerSettingsViewModel, Game
     override val activityToolbarViewModel: GameSettingsViewModel by sharedViewModel()
     override val layoutId: Int = R.layout.fragment_player_settings
     override val viewModelResId: Int = BR.viewModel
+    private val playerSettingsHandler = PlayerSettingsHandler()
 
     override fun onBindingCreated(savedInstanceState: Bundle?) {
         super.onBindingCreated(savedInstanceState)
@@ -37,6 +38,33 @@ class PlayerSettingsFragment : BaseToolbarFragment<PlayerSettingsViewModel, Game
                     else -> 3
                 })
             }
+        }
+
+        playerSettingsHandler.setInputViews(
+            listOf(
+                binding.playerOneLayout,
+                binding.playerTwoLayout,
+                binding.playerThreeLayout,
+                binding.playerFourLayout,
+                binding.playerFiveLayout,
+                binding.playerSixLayout,
+                binding.playerSevenLayout,
+                binding.playerEightLayout
+            )
+        )
+
+        viewModel.playerCount.observe(viewLifecycleOwner, {
+            playerSettingsHandler.setPlayerCount(it)
+        })
+        viewModel.playerNames.observe(viewLifecycleOwner, {
+            playerSettingsHandler.setPlayerNames(it)
+        })
+        viewModel.playerNameOptions.observe(viewLifecycleOwner, {
+            playerSettingsHandler.setPlayerNameOptions(it)
+        })
+
+        binding.buttonProceed.setOnClickListener {
+            viewModel.onProceedClicked(playerSettingsHandler.getValues())
         }
     }
 

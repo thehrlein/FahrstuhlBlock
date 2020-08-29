@@ -1,66 +1,25 @@
 package com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings
 
-import android.content.Context
-import android.util.AttributeSet
-import android.widget.FrameLayout
-import androidx.databinding.DataBindingUtil
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerError
-import com.tobiapplications.fahrstuhlblock.ui_common.extension.layoutInflater
-import com.tobiapplications.fahrstuhlblock.ui_game_settings.R
-import com.tobiapplications.fahrstuhlblock.ui_game_settings.databinding.WidgetPlayerNameInputGroupBinding
 
-class PlayerNameInputGroup @JvmOverloads constructor(
-    context: Context,
-    attributeSet: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : FrameLayout(context, attributeSet, defStyleAttr) {
+class PlayerSettingsHandler {
 
     private val inputViews = mutableListOf<PlayerNameInputView>()
     private val inputStates = mutableMapOf<Int, Pair<Boolean, String?>>()
 
-    private val binding: WidgetPlayerNameInputGroupBinding = DataBindingUtil.inflate(
-        context.layoutInflater,
-        R.layout.widget_player_name_input_group,
-        this,
-        true
-    )
-
-    init {
-        inputViews.add(binding.playerOneLayout)
-        inputViews.add(binding.playerTwoLayout)
-        inputViews.add(binding.playerThreeLayout)
-        inputViews.add(binding.playerFourLayout)
-        inputViews.add(binding.playerFiveLayout)
-        inputViews.add(binding.playerSixLayout)
-        inputViews.add(binding.playerSevenLayout)
-        inputViews.add(binding.playerEightLayout)
-
-        inputViews.forEach {
+    fun setInputViews(views: List<PlayerNameInputView>) {
+        inputViews.clear()
+        inputStates.clear()
+        views.forEach {
             it.setPlayerError(null)
+            inputViews.add(it)
         }
 
-        inputStates[1] = Pair(false, null)
-        inputStates[2] = Pair(false, null)
-        inputStates[3] = Pair(false, null)
-        inputStates[4] = Pair(false, null)
-        inputStates[5] = Pair(false, null)
-        inputStates[6] = Pair(false, null)
-        inputStates[7] = Pair(false, null)
-        inputStates[8] = Pair(false, null)
-
-        setTextChangeListener()
-    }
-
-    private fun setTextChangeListener() {
-        setTextChangeListenerFor(binding.playerOneLayout, 1)
-        setTextChangeListenerFor(binding.playerTwoLayout, 2)
-        setTextChangeListenerFor(binding.playerThreeLayout, 3)
-        setTextChangeListenerFor(binding.playerFourLayout, 4)
-        setTextChangeListenerFor(binding.playerFiveLayout, 5)
-        setTextChangeListenerFor(binding.playerSixLayout, 6)
-        setTextChangeListenerFor(binding.playerSevenLayout, 7)
-        setTextChangeListenerFor(binding.playerEightLayout, 8)
-
+        views.forEachIndexed { index, view ->
+            val position = index + 1
+            inputStates[position] = Pair(false, null)
+            setTextChangeListenerFor(view, position)
+        }
     }
 
     private fun setTextChangeListenerFor(inputView: PlayerNameInputView, position: Int) {

@@ -32,7 +32,7 @@
     <!-- Player order -->
     <string name="player_order_toolbar_title">Spielerreihenfolge</string>
     <string name="player_order_hint">Wähle die Reihenfolge</string>
-    <string name="player_order_description">Der erste Spieler wird anfangen zu mischen und die Karten verteilen</string>
+    <string name="player_order_description">Der erste Spieler wird anfangen zu mischen und die Karten verteilen.\n\nKlicke auf die zwei Linien oder lange auf eine Zeile um die Reihenfolge zu ändern </string>
 
     <!-- Game rules -->
     <string name="game_rules_toolbar_title">Spielregeln</string>

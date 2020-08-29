@@ -92,17 +92,111 @@
 
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
-
-            <com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerNameInputGroup
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/player_input_group"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/player_count_choose_button_group"
-                app:playerCount="@{viewModel.playerCount}"
-                app:playerNameOptions="@{viewModel.playerNameOptions}"
-                app:playerNames="@{viewModel.playerNames}" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerNameInputView
+                    android:id="@+id/player_one_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_none"
+                    android:layout_marginTop="@dimen/space_2"
+                    android:layout_marginEnd="@dimen/space_4"
+                    app:hint="@{String.format(@string/player_settings_player_hint, 1)}"
+                    app:layout_constraintEnd_toStartOf="@id/guideline_center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerNameInputView
+                    android:id="@+id/player_two_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_4"
+                    android:layout_marginEnd="@dimen/space_none"
+                    app:hint="@{String.format(@string/player_settings_player_hint, 2)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline_center"
+                    app:layout_constraintTop_toTopOf="@id/player_one_layout" />
+
+                <com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerNameInputView
+                    android:id="@+id/player_three_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_none"
+                    android:layout_marginEnd="@dimen/space_4"
+                    app:hint="@{String.format(@string/player_settings_player_hint, 3)}"
+                    app:layout_constraintEnd_toStartOf="@id/guideline_center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/player_one_layout" />
+
+                <com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerNameInputView
+                    android:id="@+id/player_four_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_4"
+                    android:layout_marginEnd="@dimen/space_none"
+                    app:hint="@{String.format(@string/player_settings_player_hint, 4)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline_center"
+                    app:layout_constraintTop_toTopOf="@id/player_three_layout" />
+
+                <com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerNameInputView
+                    android:id="@+id/player_five_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_none"
+                    android:layout_marginEnd="@dimen/space_4"
+                    app:hint="@{String.format(@string/player_settings_player_hint, 5)}"
+                    app:layout_constraintEnd_toStartOf="@id/guideline_center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/player_three_layout" />
+
+                <com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerNameInputView
+                    android:id="@+id/player_six_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_4"
+                    android:layout_marginEnd="@dimen/space_none"
+                    app:hint="@{String.format(@string/player_settings_player_hint, 6)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline_center"
+                    app:layout_constraintTop_toTopOf="@id/player_five_layout" />
+
+                <com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerNameInputView
+                    android:id="@+id/player_seven_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_none"
+                    android:layout_marginEnd="@dimen/space_4"
+                    app:hint="@{String.format(@string/player_settings_player_hint, 7)}"
+                    app:layout_constraintEnd_toStartOf="@id/guideline_center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/player_five_layout" />
+
+                <com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerNameInputView
+                    android:id="@+id/player_eight_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_4"
+                    android:layout_marginEnd="@dimen/space_none"
+                    app:hint="@{String.format(@string/player_settings_player_hint, 8)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline_center"
+                    app:layout_constraintTop_toTopOf="@id/player_seven_layout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
                 android:id="@+id/button_proceed"
@@ -110,7 +204,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_6"
                 android:enabled="@{viewModel.inputValid}"
-                android:onClick="@{() -> viewModel.onProceedClicked(playerInputGroup.getValues())}"
                 android:text="@string/player_settings_button_proceed"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

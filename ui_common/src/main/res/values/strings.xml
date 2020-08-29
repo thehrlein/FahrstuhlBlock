@@ -40,7 +40,7 @@
     <string name="player_order_toolbar_title">Player order</string>
     <string name="player_order_hint">Choose player order</string>
     <string name="player_order_position" translatable="false">%1$d.</string>
-    <string name="player_order_description">The first player will start to shuffle and deal the cards</string>
+    <string name="player_order_description">The first player will start to shuffle and deal the cards.\n\nPress the two lines or long-press the whole cell to move and reorder</string>
 
     <!-- Game rules -->
     <string name="game_rules_toolbar_title">Game rules</string>

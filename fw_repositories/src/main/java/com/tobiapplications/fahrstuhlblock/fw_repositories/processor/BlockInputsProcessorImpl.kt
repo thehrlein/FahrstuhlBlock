@@ -34,7 +34,6 @@ class BlockInputsProcessorImpl : SafeCaller, BlockInputsProcessor {
             }
         }
 
-    @ExperimentalStdlibApi
     override suspend fun getBlockInputModels(game: Game): AppResult<InputData> =
         withContext(Dispatchers.IO) {
             safeCall {
@@ -48,7 +47,6 @@ class BlockInputsProcessorImpl : SafeCaller, BlockInputsProcessor {
             }
         }
 
-    @ExperimentalStdlibApi
     private fun getCorrectOrderInputList(
         game: Game,
         inputType: InputType,
