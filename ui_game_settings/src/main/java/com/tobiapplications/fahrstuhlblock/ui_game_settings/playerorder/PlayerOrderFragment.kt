@@ -43,7 +43,6 @@ class PlayerOrderFragment :
 
         activityToolbarViewModel.setTitle(getString(R.string.player_order_toolbar_title))
 
-
         PlayerOrderAdapter(viewModel)
             .also { playerOrderAdapter ->
             binding.playerList.apply {
@@ -85,5 +84,4 @@ class PlayerOrderFragment :
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 }

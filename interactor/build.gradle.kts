@@ -13,5 +13,4 @@ dependencies {
 
     // Logging
     implementation(Dependencies.Other.timber)
-
 }

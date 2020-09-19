@@ -38,7 +38,6 @@ class PointRulesFragment :
         super.onBindingCreated(savedInstanceState)
 
         activityToolbarViewModel.setTitle(getString(R.string.point_rules_toolbar_title))
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

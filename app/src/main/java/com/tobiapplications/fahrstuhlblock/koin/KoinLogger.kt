@@ -16,5 +16,4 @@ class KoinLogger : Logger() {
             else -> Timber.d("$KOIN_TAG $msg")
         }
     }
-
 }

@@ -8,13 +8,13 @@ import java.lang.reflect.Type
 class DbPlayerListConverter {
 
     @TypeConverter
-    fun fromString(value: String) : List<String> {
+    fun fromString(value: String): List<String> {
         val listType: Type = object : TypeToken<List<String>>() {}.type
         return Gson().fromJson(value, listType)
     }
 
     @TypeConverter
-    fun fromList(list: List<String>) : String {
+    fun fromList(list: List<String>): String {
         return Gson().toJson(list)
     }
 }

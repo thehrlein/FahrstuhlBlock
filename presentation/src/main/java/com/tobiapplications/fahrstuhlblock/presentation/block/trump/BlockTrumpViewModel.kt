@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.models.firebase.AnalyticsEvent
-import com.tobiapplications.fahrstuhlblock.entities.models.firebase.BooleanParam
 import com.tobiapplications.fahrstuhlblock.entities.models.firebase.TrackingConstants
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.firebase.TrackAnalyticsEventUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.invoke

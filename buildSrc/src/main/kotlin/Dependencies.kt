@@ -60,7 +60,6 @@ object Dependencies {
 
             const val uiAutomator = "androidx.test.uiautomator:uiautomator:$uiAutomatorVersion"
 
-
             object Espresso {
                 private const val espressoVersion = "3.2.0"
 
@@ -91,7 +90,7 @@ object Dependencies {
     }
 
     object Kotlin {
-        const val kotlinVersion = "1.4.0"
+        const val kotlinVersion = "1.4.10"
 
         const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
@@ -121,7 +120,6 @@ object Dependencies {
         const val gsonConverter = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
         const val okHttp3 = "com.squareup.okhttp3:logging-interceptor:$okHttp3Version"
         const val mockWebServer = "com.squareup.okhttp3:mockwebserver:$mockWebServerVersion"
-
     }
 
     object Mockito {
@@ -135,7 +133,7 @@ object Dependencies {
     object Other {
         private const val coilVersion = "0.11.0"
         private const val debugDbVersion = "1.0.6"
-        private const val konfettiVersion= "1.2.2"
+        private const val konfettiVersion = "1.2.2"
         private const val timberVersion = "4.7.1"
         private const val jUnitVersion = "4.13"
 
@@ -144,14 +142,12 @@ object Dependencies {
         const val konfetti = "nl.dionsegijn:konfetti:$konfettiVersion"
         const val timber = "com.jakewharton.timber:timber:$timberVersion"
         const val junit = "junit:junit:$jUnitVersion"
-
     }
 }
 
 object Classpaths {
 
     private const val buildToolsVersion = "3.6.1"
-    private const val detektVersion = "1.11.0-RC2"
     private const val firebaseCrashlyticsVersion = "2.2.0"
     private const val firebasePerformanceVersion = "1.3.1"
     private const val googleServicesVersion = "4.3.3"
@@ -159,7 +155,6 @@ object Classpaths {
     private const val safeArgsVersion = "2.3.0"
 
     const val androidGradlePlugin = "com.android.tools.build:gradle:$buildToolsVersion"
-    const val detektGradlePlugin = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion"
     const val gradleUpdate = "com.github.ben-manes:gradle-versions-plugin:$gradleUpdateVersion"
     const val googleServices = "com.google.gms:google-services:$googleServicesVersion"
     const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics-gradle:$firebaseCrashlyticsVersion"
@@ -170,6 +165,7 @@ object Classpaths {
 }
 
 object BuildPlugins {
+    const val detektVersion = "1.11.0"
 
     const val androidApplication = "com.android.application"
     const val androidLibrary = "com.android.library"
@@ -185,6 +181,7 @@ object BuildPlugins {
     const val projectDependencyGraph =
         "https://raw.githubusercontent.com/JakeWharton/SdkSearch/master/gradle/projectDependencyGraph.gradle"
     const val detekt = "io.gitlab.arturbosch.detekt"
+    const val detektFormatting = "io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion"
     const val taskTree = "com.dorongold.task-tree"
     const val safeArgs = "androidx.navigation.safeargs.kotlin"
 }

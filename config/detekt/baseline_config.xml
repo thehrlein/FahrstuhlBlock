@@ -1,0 +1,360 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>ComplexMethod:BlockResultsAdapter.kt$BlockResultsDiff$override fun areContentsTheSame(oldItem: BlockItem, newItem: BlockItem)</ID>
+    <ID>EmptyDefaultConstructor:BlockScoresViewModel.kt$BlockScoresViewModel$()</ID>
+    <ID>LongMethod:BlockResultsProcessorImpl.kt$BlockResultsProcessorImpl$override suspend fun generateBlockResultModels(game: Game): AppResult&lt;BlockItemData&gt;</ID>
+    <ID>LongParameterList:BlockResultsViewModel.kt$BlockResultsViewModel$( private val getGameUseCase: GetGameUseCase, private val getBlockResultsUseCase: GetBlockResultsUseCase, private val getGameScoresUseCase: GetGameScoresUseCase, private val storeRoundUseCase: StoreRoundUseCase, private val isShowTrumpDialogEnabledUseCase: IsShowTrumpDialogEnabledUseCase, private val storeGameFinishedUseCase: StoreGameFinishedUseCase, private val removeRoundUseCase: RemoveRoundUseCase )</ID>
+    <ID>MagicNumber:BlockResultsFragment.kt$BlockResultsFragment$12</ID>
+    <ID>MagicNumber:BlockResultsFragment.kt$BlockResultsFragment$2000L</ID>
+    <ID>MagicNumber:BlockResultsFragment.kt$BlockResultsFragment$300</ID>
+    <ID>MagicNumber:BlockResultsFragment.kt$BlockResultsFragment$359.0</ID>
+    <ID>MagicNumber:BlockResultsFragment.kt$BlockResultsFragment$5000L</ID>
+    <ID>MagicNumber:BlockResultsFragment.kt$BlockResultsFragment$50f</ID>
+    <ID>MagicNumber:BlockResultsFragment.kt$BlockResultsFragment$5f</ID>
+    <ID>MagicNumber:EllipsizeAttribute.kt$EllipsizeAttribute.END$3</ID>
+    <ID>MagicNumber:EllipsizeAttribute.kt$EllipsizeAttribute.MARQUEE$4</ID>
+    <ID>MagicNumber:MaterialButtonToggleGroupBindings.kt$3</ID>
+    <ID>MagicNumber:MaterialButtonToggleGroupBindings.kt$4</ID>
+    <ID>MagicNumber:MaterialButtonToggleGroupBindings.kt$5</ID>
+    <ID>MagicNumber:MaterialButtonToggleGroupBindings.kt$6</ID>
+    <ID>MagicNumber:MaterialButtonToggleGroupBindings.kt$7</ID>
+    <ID>MagicNumber:MaterialButtonToggleGroupBindings.kt$8</ID>
+    <ID>MagicNumber:MaxCardCountSelection.kt$MaxCardCountSelection.ONE_DECK$32</ID>
+    <ID>MagicNumber:MaxCardCountSelection.kt$MaxCardCountSelection.TWO_DECKS$64</ID>
+    <ID>MagicNumber:PlayerSettingsFragment.kt$PlayerSettingsFragment$3</ID>
+    <ID>MagicNumber:PlayerSettingsFragment.kt$PlayerSettingsFragment$4</ID>
+    <ID>MagicNumber:PlayerSettingsFragment.kt$PlayerSettingsFragment$5</ID>
+    <ID>MagicNumber:PlayerSettingsFragment.kt$PlayerSettingsFragment$6</ID>
+    <ID>MagicNumber:PlayerSettingsFragment.kt$PlayerSettingsFragment$7</ID>
+    <ID>MagicNumber:PlayerSettingsFragment.kt$PlayerSettingsFragment$8</ID>
+    <ID>MagicNumber:build.gradle.kts$1.8</ID>
+    <ID>MaxLineLength:AboutFragment.kt$AboutFragment$startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.about_playstore_prefix, packageName))))</ID>
+    <ID>MaxLineLength:BaseToolbarFragment.kt$BaseToolbarFragment$abstract</ID>
+    <ID>MaxLineLength:BlockResultsAdapter.kt$BlockResultsDiff$oldItem is BlockResult &amp;&amp; newItem is BlockResult &amp;&amp; oldItem.round == newItem.round &amp;&amp; oldItem.player == newItem.player -&gt; true</ID>
+    <ID>MaxLineLength:BlockResultsFragment.kt$BlockResultsFragment$(data?.getSerializableExtra(DialogEntity.KEY_DIALOG_ENTITY) as? DialogEntity.Custom.Trump)</ID>
+    <ID>MaxLineLength:BlockResultsProcessorImpl.kt$BlockResultsProcessorImpl$if (round.playerTippData.isEmpty()) return@forEach</ID>
+    <ID>MaxLineLength:BlockResultsProcessorImpl.kt$BlockResultsProcessorImpl$isCurrentLeader = currentTotals?.firstOrNull()?.total != null &amp;&amp; currentTotals?.firstOrNull { it.playerName == name }?.total == currentTotals?.firstOrNull()?.total</ID>
+    <ID>MaxLineLength:BlockResultsViewModel.kt$BlockResultsViewModel$mediator.postValue(it != true &amp;&amp;_blockItems.value?.filterIsInstance&lt;BlockResult&gt;()?.any { it.total != null } == true)</ID>
+    <ID>MaxLineLength:BlockResultsViewModel.kt$BlockResultsViewModel$mediator.postValue(it.filterIsInstance&lt;BlockResult&gt;().any { it.total != null } &amp;&amp; _gameFinished.value != true)</ID>
+    <ID>MaxLineLength:DialogEntity.kt$DialogEntity.Text.GameFinished$message = resourceHelper.getPlural(R.plurals.game_winner_message, winners.size, winners.joinToString { it.player }, winners.first().points)</ID>
+    <ID>MaxLineLength:DialogEntity.kt$DialogEntity.Text.GameRulesInfo$message = resourceHelper.getString(if (stopAtHighCard) R.string.game_rules_card_count_description_stop_at_highcard else R.string.game_rules_card_count_description_dont_stop_at_highcard)</ID>
+    <ID>MaxLineLength:GameRepositoryImpl.kt$GameRepositoryImpl$MaxCardCountSelection.ONE_DECK -&gt; SettingsData.Cards.OneDeck(gameInfo.stopElevatorAtHighCard, gameInfo.firstRoundTipsCanBeOne)</ID>
+    <ID>MaxLineLength:GameRepositoryImpl.kt$GameRepositoryImpl$MaxCardCountSelection.TWO_DECKS -&gt; SettingsData.Cards.TwoDecks(gameInfo.stopElevatorAtHighCard, gameInfo.firstRoundTipsCanBeOne)</ID>
+    <ID>MaxLineLength:GameRepositoryImpl.kt$GameRepositoryImpl$else -&gt; SettingsData.Cards.Individual(gameInfo.highCardCount, gameInfo.stopElevatorAtHighCard, gameInfo.firstRoundTipsCanBeOne)</ID>
+    <ID>MaxLineLength:GameSettingsActivity.kt$GameSettingsActivity : BaseToolbarActivityDialogInteractor</ID>
+    <ID>MaxLineLength:NavigationHandlerImpl.kt$NavigationHandlerImpl$is Screen.Block.About -&gt; navHostController?.navigate(BlockResultsFragmentDirections.actionBlockResultsFragmentToAboutFragment())</ID>
+    <ID>MaxLineLength:NavigationHandlerImpl.kt$NavigationHandlerImpl$is Screen.Input.Block -&gt; navHostController?.navigate(BlockInputFragmentDirections.actionBlockInputFragmentToBlockResultsFragment())</ID>
+    <ID>MaxLineLength:PlayerSettingsFragment.kt$PlayerSettingsFragment : BaseToolbarFragment</ID>
+    <ID>MaxLineLength:TextViewBindings.kt$setTextColor(ContextCompat.getColor(context, if (it &gt; 0) R.color.block_result_positive_difference else R.color.block_result_negative_difference))</ID>
+    <ID>MaxLineLength:TrackingConstants.kt$TrackingConstants$fun getGameRulesStopElevatorAtHighCardEvent(value: Boolean)</ID>
+    <ID>MaxLineLength:TrackingConstants.kt$TrackingConstants$fun getPointRulesPointsForWrongPredictionEvent(value: Boolean)</ID>
+    <ID>MaxLineLength:TrackingConstants.kt$TrackingConstants$fun getTrumpSelectionAutoShowDialogEvent(value: Boolean)</ID>
+    <ID>MemberNameEqualsClassName:Dependencies.kt$Dependencies.Kotlin$const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"</ID>
+    <ID>NewLineAtEndOfFile:AboutFragment.kt$com.tobiapplications.fahrstuhlblock.ui_block.info.AboutFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:AboutViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.block.info.AboutViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:AnalyticsDatasource.kt$com.tobiapplications.fahrstuhlblock.interactor.datasource.firebase.AnalyticsDatasource.kt</ID>
+    <ID>NewLineAtEndOfFile:AnalyticsDatasourceImpl.kt$com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.firebase.AnalyticsDatasourceImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:AnalyticsEvent.kt$com.tobiapplications.fahrstuhlblock.entities.models.firebase.AnalyticsEvent.kt</ID>
+    <ID>NewLineAtEndOfFile:AnalyticsParam.kt$com.tobiapplications.fahrstuhlblock.entities.models.firebase.AnalyticsParam.kt</ID>
+    <ID>NewLineAtEndOfFile:App.kt$com.tobiapplications.fahrstuhlblock.App.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseActivity.kt$com.tobiapplications.fahrstuhlblock.ui_common.base.activity.BaseActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseDialogFragment.kt$com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.BaseDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseFragment.kt$com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseToolbar.kt$com.tobiapplications.fahrstuhlblock.ui_common.views.BaseToolbar.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseToolbarActivity.kt$com.tobiapplications.fahrstuhlblock.ui_common.base.activity.BaseToolbarActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseToolbarFragment.kt$com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.BaseUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockActivity.kt$com.tobiapplications.fahrstuhlblock.ui_block.BlockActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockHelper.kt$com.tobiapplications.fahrstuhlblock.ui_common.utils.BlockHelper.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockInputAdapter.kt$com.tobiapplications.fahrstuhlblock.ui_block.input.BlockInputAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockInputFragment.kt$com.tobiapplications.fahrstuhlblock.ui_block.input.BlockInputFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockInputInteractions.kt$com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputInteractions.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockInputViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockInputsProcessor.kt$com.tobiapplications.fahrstuhlblock.interactor.processor.BlockInputsProcessor.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockInputsProcessorImpl.kt$com.tobiapplications.fahrstuhlblock.fw_repositories.processor.BlockInputsProcessorImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockItem.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItem.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockItemData.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItemData.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockName.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockName.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockPlaceholder.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockPlaceholder.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockResult.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockResult.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockResultsAdapter.kt$com.tobiapplications.fahrstuhlblock.ui_block.results.BlockResultsAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockResultsFragment.kt$com.tobiapplications.fahrstuhlblock.ui_block.results.BlockResultsFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockResultsInteractions.kt$com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsInteractions.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockResultsProcessor.kt$com.tobiapplications.fahrstuhlblock.interactor.processor.BlockResultsProcessor.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockResultsProcessorImpl.kt$com.tobiapplications.fahrstuhlblock.fw_repositories.processor.BlockResultsProcessorImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockResultsViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockRound.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockRound.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockScoresAdapter.kt$com.tobiapplications.fahrstuhlblock.ui_block.scores.BlockScoresAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockScoresFragment.kt$com.tobiapplications.fahrstuhlblock.ui_block.scores.BlockScoresFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockScoresViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.block.scores.BlockScoresViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockTrumpDialog.kt$com.tobiapplications.fahrstuhlblock.ui_block.trump.BlockTrumpDialog.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockTrumpViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.block.trump.BlockTrumpViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:BlockViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:BooleanParam.kt$com.tobiapplications.fahrstuhlblock.entities.models.firebase.BooleanParam.kt</ID>
+    <ID>NewLineAtEndOfFile:ButtonBindings.kt$com.tobiapplications.fahrstuhlblock.ui_common.bindings.ButtonBindings.kt</ID>
+    <ID>NewLineAtEndOfFile:CalculateResultData.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData.kt</ID>
+    <ID>NewLineAtEndOfFile:CalculateResultsUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.block.CalculateResultsUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:CheckInputValidityData.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData.kt</ID>
+    <ID>NewLineAtEndOfFile:ContextExtensions.kt$com.tobiapplications.fahrstuhlblock.ui_common.extension.ContextExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:DateUtils.kt$com.tobiapplications.fahrstuhlblock.ui_common.utils.DateUtils.kt</ID>
+    <ID>NewLineAtEndOfFile:DbGame.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.DbGame.kt</ID>
+    <ID>NewLineAtEndOfFile:DbGameInfo.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity.DbGameInfo.kt</ID>
+    <ID>NewLineAtEndOfFile:DbGameMapper.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.mapper.DbGameMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:DbMaxCardCountSelection.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.DbMaxCardCountSelection.kt</ID>
+    <ID>NewLineAtEndOfFile:DbMaxCardCountSelectionConverter.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter.DbMaxCardCountSelectionConverter.kt</ID>
+    <ID>NewLineAtEndOfFile:DbPlayer.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity.DbPlayer.kt</ID>
+    <ID>NewLineAtEndOfFile:DbPlayerListConverter.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter.DbPlayerListConverter.kt</ID>
+    <ID>NewLineAtEndOfFile:DbPlayerResultData.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.DbPlayerResultData.kt</ID>
+    <ID>NewLineAtEndOfFile:DbPlayerResultDataListConverter.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter.DbPlayerResultDataListConverter.kt</ID>
+    <ID>NewLineAtEndOfFile:DbPlayerSettingsData.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.DbPlayerSettingsData.kt</ID>
+    <ID>NewLineAtEndOfFile:DbPlayerTippData.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.DbPlayerTippData.kt</ID>
+    <ID>NewLineAtEndOfFile:DbPlayerTippDataListConverter.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter.DbPlayerTippDataListConverter.kt</ID>
+    <ID>NewLineAtEndOfFile:DbPointsRuleData.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.DbPointsRuleData.kt</ID>
+    <ID>NewLineAtEndOfFile:DbRound.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.DbRound.kt</ID>
+    <ID>NewLineAtEndOfFile:DbTrumpType.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.DbTrumpType.kt</ID>
+    <ID>NewLineAtEndOfFile:DbTrumpTypeConverter.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter.DbTrumpTypeConverter.kt</ID>
+    <ID>NewLineAtEndOfFile:DeleteRoundData.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.general.DeleteRoundData.kt</ID>
+    <ID>NewLineAtEndOfFile:Dependencies.kt$.Dependencies.kt</ID>
+    <ID>NewLineAtEndOfFile:DialogEntity.kt$com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogEntity.kt</ID>
+    <ID>NewLineAtEndOfFile:DialogInteractionFragment.kt$com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.DialogInteractionFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:DialogInteractor.kt$com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogInteractor.kt</ID>
+    <ID>NewLineAtEndOfFile:DialogRequestCode.kt$com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogRequestCode.kt</ID>
+    <ID>NewLineAtEndOfFile:DialogResultCode.kt$com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogResultCode.kt</ID>
+    <ID>NewLineAtEndOfFile:DoubleParam.kt$com.tobiapplications.fahrstuhlblock.entities.models.firebase.DoubleParam.kt</ID>
+    <ID>NewLineAtEndOfFile:EllipsizeAttribute.kt$com.tobiapplications.fahrstuhlblock.ui_common.utils.EllipsizeAttribute.kt</ID>
+    <ID>NewLineAtEndOfFile:FahrstuhlBlockSharedPreferences.kt$com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.sharedpref.FahrstuhlBlockSharedPreferences.kt</ID>
+    <ID>NewLineAtEndOfFile:FirebaseRepository.kt$com.tobiapplications.fahrstuhlblock.interactor.repository.FirebaseRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:FirebaseRepositoryImpl.kt$com.tobiapplications.fahrstuhlblock.fw_repositories.repository.FirebaseRepositoryImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:FloatingActionButtonExtensions.kt$com.tobiapplications.fahrstuhlblock.ui_common.bindings.FloatingActionButtonExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:FragmentManagerExtension.kt$com.tobiapplications.fahrstuhlblock.ui_common.extension.FragmentManagerExtension.kt</ID>
+    <ID>NewLineAtEndOfFile:FullscreenProgressDialogFragment.kt$com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.FullscreenProgressDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:Game.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game.kt</ID>
+    <ID>NewLineAtEndOfFile:GameCache.kt$com.tobiapplications.fahrstuhlblock.interactor.datasource.cache.GameCache.kt</ID>
+    <ID>NewLineAtEndOfFile:GameCacheImpl.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.cache.GameCacheImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:GameDao.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.dao.GameDao.kt</ID>
+    <ID>NewLineAtEndOfFile:GameDatabase.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.database.GameDatabase.kt</ID>
+    <ID>NewLineAtEndOfFile:GameInfo.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameInfo.kt</ID>
+    <ID>NewLineAtEndOfFile:GameRepository.kt$com.tobiapplications.fahrstuhlblock.interactor.repository.GameRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:GameRepositoryImpl.kt$com.tobiapplications.fahrstuhlblock.fw_repositories.repository.GameRepositoryImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:GameRound.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameRound.kt</ID>
+    <ID>NewLineAtEndOfFile:GameRoundTest.kt$com.tobiapplications.fahrstuhlblock.ui_block.GameRoundTest.kt</ID>
+    <ID>NewLineAtEndOfFile:GameRuleSettingsData.kt$com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSettingsData.kt</ID>
+    <ID>NewLineAtEndOfFile:GameRulesFragment.kt$com.tobiapplications.fahrstuhlblock.ui_game_settings.gamerules.GameRulesFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:GameRulesViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.settings.gamerules.GameRulesViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:GameScore.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScore.kt</ID>
+    <ID>NewLineAtEndOfFile:GameScoreData.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData.kt</ID>
+    <ID>NewLineAtEndOfFile:GameSettingsViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.settings.GameSettingsViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:GameTest.kt$com.tobiapplications.fahrstuhlblock.ui_block.GameTest.kt</ID>
+    <ID>NewLineAtEndOfFile:GetAllSavedGamesUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.savedgames.GetAllSavedGamesUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:GetBlockInputModelsUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetBlockInputModelsUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:GetBlockResultsUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetBlockResultsUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:GetGameScoresUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameScoresUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:GetGameUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.block.GetGameUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:GetLastSettingsUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.settings.GetLastSettingsUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:GetPlayerNamesUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.player.GetPlayerNamesUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:ImageViewBindings.kt$com.tobiapplications.fahrstuhlblock.ui_common.bindings.ImageViewBindings.kt</ID>
+    <ID>NewLineAtEndOfFile:Input.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.input.Input.kt</ID>
+    <ID>NewLineAtEndOfFile:InputData.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData.kt</ID>
+    <ID>NewLineAtEndOfFile:InputDataItem.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputDataItem.kt</ID>
+    <ID>NewLineAtEndOfFile:InputType.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType.kt</ID>
+    <ID>NewLineAtEndOfFile:InputsValidUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.block.InputsValidUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:InsertRoundData.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.general.InsertRoundData.kt</ID>
+    <ID>NewLineAtEndOfFile:IntParam.kt$com.tobiapplications.fahrstuhlblock.entities.models.firebase.IntParam.kt</ID>
+    <ID>NewLineAtEndOfFile:IsShowTrumpDialogEnabledUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.user.IsShowTrumpDialogEnabledUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:ItemDecoration.kt$com.tobiapplications.fahrstuhlblock.ui_common.utils.ItemDecoration.kt</ID>
+    <ID>NewLineAtEndOfFile:ItemTouchHelperAdapter.kt$com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder.ItemTouchHelperAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:Koin.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.Koin.kt</ID>
+    <ID>NewLineAtEndOfFile:Koin.kt$com.tobiapplications.fahrstuhlblock.koin.Koin.kt</ID>
+    <ID>NewLineAtEndOfFile:KoinLogger.kt$com.tobiapplications.fahrstuhlblock.koin.KoinLogger.kt</ID>
+    <ID>NewLineAtEndOfFile:LongParam.kt$com.tobiapplications.fahrstuhlblock.entities.models.firebase.LongParam.kt</ID>
+    <ID>NewLineAtEndOfFile:MainViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.main.MainViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:MaterialButtonToggleGroupBindings.kt$com.tobiapplications.fahrstuhlblock.ui_common.bindings.MaterialButtonToggleGroupBindings.kt</ID>
+    <ID>NewLineAtEndOfFile:MaxCardCountSelection.kt$com.tobiapplications.fahrstuhlblock.entities.models.settings.MaxCardCountSelection.kt</ID>
+    <ID>NewLineAtEndOfFile:MenuActivity.kt$com.tobiapplications.fahrstuhlblock.ui_menu.MenuActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:MenuViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.menu.MenuViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:NavigationHandler.kt$com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler.kt</ID>
+    <ID>NewLineAtEndOfFile:NavigationHandlerImpl.kt$com.tobiapplications.fahrstuhlblock.utils.NavigationHandlerImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:NumberExtensions.kt$com.tobiapplications.fahrstuhlblock.ui_common.extension.NumberExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:OnToolbarButtonClickListener.kt$com.tobiapplications.fahrstuhlblock.entities.general.toolbar.OnToolbarButtonClickListener.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerCache.kt$com.tobiapplications.fahrstuhlblock.interactor.datasource.cache.PlayerCache.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerCacheImpl.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.cache.PlayerCacheImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerDao.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.dao.PlayerDao.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerError.kt$com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerError.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerNameInputView.kt$com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerNameInputView.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerNameInputViewBindings.kt$com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerNameInputViewBindings.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerOrderAdapter.kt$com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder.PlayerOrderAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerOrderFragment.kt$com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder.PlayerOrderFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerOrderInteractions.kt$com.tobiapplications.fahrstuhlblock.presentation.settings.playerorder.PlayerOrderInteractions.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerOrderViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.settings.playerorder.PlayerOrderViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerResultData.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerResultData.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerSettingsData.kt$com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerSettingsFragment.kt$com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerSettingsFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerSettingsHandler.kt$com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerSettingsHandler.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerSettingsViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.settings.playersettings.PlayerSettingsViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:PlayerTippData.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerTippData.kt</ID>
+    <ID>NewLineAtEndOfFile:PointRulesFragment.kt$com.tobiapplications.fahrstuhlblock.ui_game_settings.pointrules.PointRulesFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:PointRulesViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.settings.pointrules.PointRulesViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:PointsRuleData.kt$com.tobiapplications.fahrstuhlblock.entities.models.settings.PointsRuleData.kt</ID>
+    <ID>NewLineAtEndOfFile:RemoveRoundUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.block.RemoveRoundUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:ResultData.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.input.ResultData.kt</ID>
+    <ID>NewLineAtEndOfFile:SafeCaller.kt$com.tobiapplications.fahrstuhlblock.interactor.SafeCaller.kt</ID>
+    <ID>NewLineAtEndOfFile:SavedGameBindings.kt$com.tobiapplications.fahrstuhlblock.ui_common.bindings.SavedGameBindings.kt</ID>
+    <ID>NewLineAtEndOfFile:SavedGameEntity.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.savedgames.SavedGameEntity.kt</ID>
+    <ID>NewLineAtEndOfFile:SavedGamesActivity.kt$com.tobiapplications.fahrstuhlblock.ui_saved_games.SavedGamesActivity.kt</ID>
+    <ID>NewLineAtEndOfFile:SavedGamesAdapter.kt$com.tobiapplications.fahrstuhlblock.ui_saved_games.SavedGamesAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:SavedGamesFragment.kt$com.tobiapplications.fahrstuhlblock.ui_saved_games.SavedGamesFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:SavedGamesInteractions.kt$com.tobiapplications.fahrstuhlblock.presentation.savedgames.SavedGamesInteractions.kt</ID>
+    <ID>NewLineAtEndOfFile:SavedGamesViewModel.kt$com.tobiapplications.fahrstuhlblock.presentation.savedgames.SavedGamesViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:Screen.kt$com.tobiapplications.fahrstuhlblock.entities.general.Screen.kt</ID>
+    <ID>NewLineAtEndOfFile:SetShowTrumpDialogEnabledUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.user.SetShowTrumpDialogEnabledUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:SettingsData.kt$com.tobiapplications.fahrstuhlblock.entities.models.settings.SettingsData.kt</ID>
+    <ID>NewLineAtEndOfFile:SettingsScreen.kt$com.tobiapplications.fahrstuhlblock.entities.models.settings.SettingsScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:SharedPreferenceDelegates.kt$com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.sharedpref.SharedPreferenceDelegates.kt</ID>
+    <ID>NewLineAtEndOfFile:SimpleAlertDialogFragment.kt$com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.SimpleAlertDialogFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:SimpleItemTouchHelper.kt$com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder.SimpleItemTouchHelper.kt</ID>
+    <ID>NewLineAtEndOfFile:SingleLiveEvent.kt$com.tobiapplications.fahrstuhlblock.presentation.SingleLiveEvent.kt</ID>
+    <ID>NewLineAtEndOfFile:StoreGameFinishedUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreGameFinishedUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:StoreGameInfoUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreGameInfoUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:StorePlayerNamesUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.player.StorePlayerNamesUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:StoreRoundUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.block.StoreRoundUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:StringParam.kt$com.tobiapplications.fahrstuhlblock.entities.models.firebase.StringParam.kt</ID>
+    <ID>NewLineAtEndOfFile:TextViewBindings.kt$com.tobiapplications.fahrstuhlblock.ui_common.bindings.TextViewBindings.kt</ID>
+    <ID>NewLineAtEndOfFile:ToolbarButtonType.kt$com.tobiapplications.fahrstuhlblock.entities.general.toolbar.ToolbarButtonType.kt</ID>
+    <ID>NewLineAtEndOfFile:TrackAnalyticsEventUseCase.kt$com.tobiapplications.fahrstuhlblock.interactor.usecase.firebase.TrackAnalyticsEventUseCase.kt</ID>
+    <ID>NewLineAtEndOfFile:TrackingConstants.kt$com.tobiapplications.fahrstuhlblock.entities.models.firebase.TrackingConstants.kt</ID>
+    <ID>NewLineAtEndOfFile:Trump.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.result.Trump.kt</ID>
+    <ID>NewLineAtEndOfFile:TrumpSelectionGroup.kt$com.tobiapplications.fahrstuhlblock.ui_block.trump.TrumpSelectionGroup.kt</ID>
+    <ID>NewLineAtEndOfFile:TrumpSelectionItem.kt$com.tobiapplications.fahrstuhlblock.ui_block.trump.TrumpSelectionItem.kt</ID>
+    <ID>NewLineAtEndOfFile:TrumpType.kt$com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType.kt</ID>
+    <ID>NewLineAtEndOfFile:UserRepository.kt$com.tobiapplications.fahrstuhlblock.interactor.repository.UserRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:UserRepositoryImpl.kt$com.tobiapplications.fahrstuhlblock.fw_repositories.repository.UserRepositoryImpl.kt</ID>
+    <ID>NewLineAtEndOfFile:UserSettingsPersistence.kt$com.tobiapplications.fahrstuhlblock.interactor.datasource.sharedpref.UserSettingsPersistence.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewBindings.kt$com.tobiapplications.fahrstuhlblock.ui_common.bindings.ViewBindings.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewDataBindingExtensions.kt$com.tobiapplications.fahrstuhlblock.ui_common.extension.ViewDataBindingExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:build.gradle.kts$.build.gradle.kts</ID>
+    <ID>PackageNaming:AboutFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_block.info</ID>
+    <ID>PackageNaming:AnalyticsDatasourceImpl.kt$package com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.firebase</ID>
+    <ID>PackageNaming:BaseActivity.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.activity</ID>
+    <ID>PackageNaming:BaseDialogFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog</ID>
+    <ID>PackageNaming:BaseFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.fragment</ID>
+    <ID>PackageNaming:BaseToolbar.kt$package com.tobiapplications.fahrstuhlblock.ui_common.views</ID>
+    <ID>PackageNaming:BaseToolbarActivity.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.activity</ID>
+    <ID>PackageNaming:BaseToolbarFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.fragment</ID>
+    <ID>PackageNaming:BlockActivity.kt$package com.tobiapplications.fahrstuhlblock.ui_block</ID>
+    <ID>PackageNaming:BlockHelper.kt$package com.tobiapplications.fahrstuhlblock.ui_common.utils</ID>
+    <ID>PackageNaming:BlockInputAdapter.kt$package com.tobiapplications.fahrstuhlblock.ui_block.input</ID>
+    <ID>PackageNaming:BlockInputFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_block.input</ID>
+    <ID>PackageNaming:BlockInputsProcessorImpl.kt$package com.tobiapplications.fahrstuhlblock.fw_repositories.processor</ID>
+    <ID>PackageNaming:BlockResultsAdapter.kt$package com.tobiapplications.fahrstuhlblock.ui_block.results</ID>
+    <ID>PackageNaming:BlockResultsFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_block.results</ID>
+    <ID>PackageNaming:BlockResultsProcessorImpl.kt$package com.tobiapplications.fahrstuhlblock.fw_repositories.processor</ID>
+    <ID>PackageNaming:BlockScoresAdapter.kt$package com.tobiapplications.fahrstuhlblock.ui_block.scores</ID>
+    <ID>PackageNaming:BlockScoresFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_block.scores</ID>
+    <ID>PackageNaming:BlockTrumpDialog.kt$package com.tobiapplications.fahrstuhlblock.ui_block.trump</ID>
+    <ID>PackageNaming:ButtonBindings.kt$package com.tobiapplications.fahrstuhlblock.ui_common.bindings</ID>
+    <ID>PackageNaming:ContextExtensions.kt$package com.tobiapplications.fahrstuhlblock.ui_common.extension</ID>
+    <ID>PackageNaming:DateUtils.kt$package com.tobiapplications.fahrstuhlblock.ui_common.utils</ID>
+    <ID>PackageNaming:DbGame.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes</ID>
+    <ID>PackageNaming:DbGameInfo.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity</ID>
+    <ID>PackageNaming:DbGameMapper.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.mapper</ID>
+    <ID>PackageNaming:DbMaxCardCountSelection.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes</ID>
+    <ID>PackageNaming:DbMaxCardCountSelectionConverter.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter</ID>
+    <ID>PackageNaming:DbPlayer.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.entity</ID>
+    <ID>PackageNaming:DbPlayerListConverter.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter</ID>
+    <ID>PackageNaming:DbPlayerResultData.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes</ID>
+    <ID>PackageNaming:DbPlayerResultDataListConverter.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter</ID>
+    <ID>PackageNaming:DbPlayerSettingsData.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes</ID>
+    <ID>PackageNaming:DbPlayerTippData.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes</ID>
+    <ID>PackageNaming:DbPlayerTippDataListConverter.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter</ID>
+    <ID>PackageNaming:DbPointsRuleData.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes</ID>
+    <ID>PackageNaming:DbRound.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes</ID>
+    <ID>PackageNaming:DbTrumpType.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes</ID>
+    <ID>PackageNaming:DbTrumpTypeConverter.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter</ID>
+    <ID>PackageNaming:DialogEntity.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity</ID>
+    <ID>PackageNaming:DialogInteractionFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog</ID>
+    <ID>PackageNaming:DialogInteractor.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils</ID>
+    <ID>PackageNaming:DialogRequestCode.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils</ID>
+    <ID>PackageNaming:DialogResultCode.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils</ID>
+    <ID>PackageNaming:EllipsizeAttribute.kt$package com.tobiapplications.fahrstuhlblock.ui_common.utils</ID>
+    <ID>PackageNaming:FahrstuhlBlockSharedPreferences.kt$package com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.sharedpref</ID>
+    <ID>PackageNaming:FirebaseRepositoryImpl.kt$package com.tobiapplications.fahrstuhlblock.fw_repositories.repository</ID>
+    <ID>PackageNaming:FloatingActionButtonExtensions.kt$package com.tobiapplications.fahrstuhlblock.ui_common.bindings</ID>
+    <ID>PackageNaming:FragmentManagerExtension.kt$package com.tobiapplications.fahrstuhlblock.ui_common.extension</ID>
+    <ID>PackageNaming:FullscreenProgressDialogFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog</ID>
+    <ID>PackageNaming:GameCacheImpl.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.cache</ID>
+    <ID>PackageNaming:GameDao.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.dao</ID>
+    <ID>PackageNaming:GameDatabase.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.database</ID>
+    <ID>PackageNaming:GameRepositoryImpl.kt$package com.tobiapplications.fahrstuhlblock.fw_repositories.repository</ID>
+    <ID>PackageNaming:GameRulesFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.gamerules</ID>
+    <ID>PackageNaming:GameSettingsActivity.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings</ID>
+    <ID>PackageNaming:ImageViewBindings.kt$package com.tobiapplications.fahrstuhlblock.ui_common.bindings</ID>
+    <ID>PackageNaming:ItemDecoration.kt$package com.tobiapplications.fahrstuhlblock.ui_common.utils</ID>
+    <ID>PackageNaming:ItemTouchHelperAdapter.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder</ID>
+    <ID>PackageNaming:ItemTouchHelperViewHolder.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder</ID>
+    <ID>PackageNaming:Koin.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room</ID>
+    <ID>PackageNaming:MaterialButtonToggleGroupBindings.kt$package com.tobiapplications.fahrstuhlblock.ui_common.bindings</ID>
+    <ID>PackageNaming:MenuActivity.kt$package com.tobiapplications.fahrstuhlblock.ui_menu</ID>
+    <ID>PackageNaming:MenuFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_menu</ID>
+    <ID>PackageNaming:NumberExtensions.kt$package com.tobiapplications.fahrstuhlblock.ui_common.extension</ID>
+    <ID>PackageNaming:PlayerCacheImpl.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.cache</ID>
+    <ID>PackageNaming:PlayerDao.kt$package com.tobiapplications.fahrstuhlblock.fw_database_room.dao</ID>
+    <ID>PackageNaming:PlayerNameInputView.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings</ID>
+    <ID>PackageNaming:PlayerNameInputViewBindings.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings</ID>
+    <ID>PackageNaming:PlayerOrderAdapter.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder</ID>
+    <ID>PackageNaming:PlayerOrderFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder</ID>
+    <ID>PackageNaming:PlayerSettingsFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings</ID>
+    <ID>PackageNaming:PlayerSettingsHandler.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings</ID>
+    <ID>PackageNaming:PointRulesFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.pointrules</ID>
+    <ID>PackageNaming:ResourceHelper.kt$package com.tobiapplications.fahrstuhlblock.ui_common.utils</ID>
+    <ID>PackageNaming:SavedGameBindings.kt$package com.tobiapplications.fahrstuhlblock.ui_common.bindings</ID>
+    <ID>PackageNaming:SavedGamesActivity.kt$package com.tobiapplications.fahrstuhlblock.ui_saved_games</ID>
+    <ID>PackageNaming:SavedGamesAdapter.kt$package com.tobiapplications.fahrstuhlblock.ui_saved_games</ID>
+    <ID>PackageNaming:SavedGamesFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_saved_games</ID>
+    <ID>PackageNaming:SharedPreferenceDelegates.kt$package com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.sharedpref</ID>
+    <ID>PackageNaming:SimpleAlertDialogFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog</ID>
+    <ID>PackageNaming:SimpleItemTouchHelper.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder</ID>
+    <ID>PackageNaming:TextViewBindings.kt$package com.tobiapplications.fahrstuhlblock.ui_common.bindings</ID>
+    <ID>PackageNaming:TrumpSelectionGroup.kt$package com.tobiapplications.fahrstuhlblock.ui_block.trump</ID>
+    <ID>PackageNaming:TrumpSelectionItem.kt$package com.tobiapplications.fahrstuhlblock.ui_block.trump</ID>
+    <ID>PackageNaming:UserRepositoryImpl.kt$package com.tobiapplications.fahrstuhlblock.fw_repositories.repository</ID>
+    <ID>PackageNaming:ViewBindings.kt$package com.tobiapplications.fahrstuhlblock.ui_common.bindings</ID>
+    <ID>PackageNaming:ViewDataBindingExtensions.kt$package com.tobiapplications.fahrstuhlblock.ui_common.extension</ID>
+    <ID>TooGenericExceptionCaught:BaseUseCase.kt$BaseUseCase$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:SafeCaller.kt$SafeCaller$ex: Exception</ID>
+    <ID>TooManyFunctions:BlockResultsViewModel.kt$BlockResultsViewModel$BlockResultsViewModel</ID>
+    <ID>TooManyFunctions:DbGameMapper.kt$com.tobiapplications.fahrstuhlblock.fw_database_room.model.mapper.DbGameMapper.kt</ID>
+    <ID>TooManyFunctions:GameRepository.kt$GameRepository$GameRepository</ID>
+    <ID>TooManyFunctions:GameRepositoryImpl.kt$GameRepositoryImpl$GameRepositoryImpl</ID>
+    <ID>TooManyFunctions:GameRulesViewModel.kt$GameRulesViewModel$GameRulesViewModel</ID>
+    <ID>TooManyFunctions:NavigationHandlerImpl.kt$NavigationHandlerImpl$NavigationHandlerImpl</ID>
+    <ID>TooManyFunctions:ResourceHelper.kt$ResourceHelper$ResourceHelper</ID>
+    <ID>TooManyFunctions:ResourceHelper.kt$ResourceHelperImpl$ResourceHelperImpl</ID>
+    <ID>WildcardImport:AnalyticsDatasourceImpl.kt$import com.tobiapplications.fahrstuhlblock.entities.models.firebase.*</ID>
+    <ID>WildcardImport:BlockInputFragment.kt$import android.view.*</ID>
+    <ID>WildcardImport:BlockInputViewModel.kt$import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*</ID>
+    <ID>WildcardImport:BlockInputViewModel.kt$import com.tobiapplications.fahrstuhlblock.entities.models.game.input.*</ID>
+    <ID>WildcardImport:BlockInputViewModel.kt$import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.*</ID>
+    <ID>WildcardImport:BlockResultsAdapter.kt$import com.tobiapplications.fahrstuhlblock.entities.models.game.result.*</ID>
+    <ID>WildcardImport:BlockResultsFragment.kt$import android.view.*</ID>
+    <ID>WildcardImport:BlockResultsProcessorImpl.kt$import com.tobiapplications.fahrstuhlblock.entities.models.game.result.*</ID>
+    <ID>WildcardImport:BlockResultsViewModel.kt$import com.tobiapplications.fahrstuhlblock.entities.models.game.result.*</ID>
+    <ID>WildcardImport:BlockResultsViewModel.kt$import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.*</ID>
+    <ID>WildcardImport:DbGameMapper.kt$import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*</ID>
+    <ID>WildcardImport:DbGameMapper.kt$import com.tobiapplications.fahrstuhlblock.fw_database_room.model.classes.*</ID>
+    <ID>WildcardImport:GameCache.kt$import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*</ID>
+    <ID>WildcardImport:GameCacheImpl.kt$import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*</ID>
+    <ID>WildcardImport:GameDao.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:GameDatabase.kt$import com.tobiapplications.fahrstuhlblock.fw_database_room.model.converter.*</ID>
+    <ID>WildcardImport:GameRepository.kt$import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*</ID>
+    <ID>WildcardImport:GameRepositoryImpl.kt$import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*</ID>
+    <ID>WildcardImport:GameRulesFragment.kt$import android.view.*</ID>
+    <ID>WildcardImport:GameRulesViewModel.kt$import com.tobiapplications.fahrstuhlblock.entities.models.settings.*</ID>
+    <ID>WildcardImport:Koin.kt$import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.*</ID>
+    <ID>WildcardImport:Koin.kt$import com.tobiapplications.fahrstuhlblock.presentation.settings.*</ID>
+    <ID>WildcardImport:PlayerOrderFragment.kt$import android.view.*</ID>
+    <ID>WildcardImport:PointRulesFragment.kt$import android.view.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

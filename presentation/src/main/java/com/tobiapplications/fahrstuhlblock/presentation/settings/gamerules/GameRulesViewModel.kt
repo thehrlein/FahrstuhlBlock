@@ -68,7 +68,6 @@ class GameRulesViewModel(
         }
     }
 
-
     private val _tipsCanBeOneInFirstRound = MutableLiveData<Boolean>()
     val tipsCanBeOneInFirstRound: LiveData<Boolean> = _tipsCanBeOneInFirstRound
 

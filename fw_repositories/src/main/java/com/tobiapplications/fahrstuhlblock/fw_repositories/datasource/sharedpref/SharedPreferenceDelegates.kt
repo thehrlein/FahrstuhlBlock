@@ -2,12 +2,8 @@ package com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.sharedpre
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKeys
-import com.google.gson.Gson
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
-
 
 abstract class SharedPreferenceDelegates(
     context: Context
@@ -18,7 +14,7 @@ abstract class SharedPreferenceDelegates(
         context.getSharedPreferences(preferencesFileName, Context.MODE_PRIVATE)
     }
 
-    protected abstract class PrefDelegate<T>(val prefKey: String) : ReadWriteProperty<Any, T>{
+    protected abstract class PrefDelegate<T>(val prefKey: String) : ReadWriteProperty<Any, T> {
         abstract override operator fun getValue(thisRef: Any, property: KProperty<*>): T
         abstract override operator fun setValue(thisRef: Any, property: KProperty<*>, value: T)
     }

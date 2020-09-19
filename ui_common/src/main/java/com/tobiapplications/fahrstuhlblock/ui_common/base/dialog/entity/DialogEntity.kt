@@ -108,7 +108,6 @@ sealed class DialogEntity : Serializable {
             override val isCancelable: Boolean
                 get() = true
         }
-
     }
 
     class Progress(
@@ -117,5 +116,4 @@ sealed class DialogEntity : Serializable {
         override val requestCode: Int = DialogRequestCode.DIALOG_PROGRESS
         override val isCancelable: Boolean = false
     }
-
 }

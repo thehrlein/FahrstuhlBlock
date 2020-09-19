@@ -7,7 +7,7 @@ import com.tobiapplications.fahrstuhlblock.interactor.usecase.BaseUseCase
 
 class GetGameUseCase(
     private val gameRepository: GameRepository
-): BaseUseCase<Long, Game>() {
+) : BaseUseCase<Long, Game>() {
 
     override suspend fun execute(parameters: Long): AppResult<Game> {
         return gameRepository.getGame(parameters)

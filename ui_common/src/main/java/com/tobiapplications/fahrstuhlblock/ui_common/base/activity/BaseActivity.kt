@@ -10,18 +10,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.dispatchOnActivityResult
-import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelperImpl
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-
-abstract class BaseActivity<Model: BaseViewModel> : AppCompatActivity() {
+abstract class BaseActivity<Model : BaseViewModel> : AppCompatActivity() {
 
     protected abstract val viewModel: Model
     @get:LayoutRes

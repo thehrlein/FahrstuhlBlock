@@ -20,7 +20,6 @@ import com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.Playe
 import com.tobiapplications.fahrstuhlblock.ui_menu.MenuActivity
 import com.tobiapplications.fahrstuhlblock.ui_saved_games.SavedGamesActivity
 
-
 class NavigationHandlerImpl(
     private val activity: AppCompatActivity,
     private val navHostController: NavHostController?,

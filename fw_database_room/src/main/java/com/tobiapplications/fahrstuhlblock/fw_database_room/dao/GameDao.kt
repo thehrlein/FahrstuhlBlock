@@ -16,13 +16,13 @@ interface GameDao {
 
     @Transaction
     @Query("SELECT * FROM GAME_DATABASE WHERE gameId = :gameId")
-    fun getGame(gameId: Long) : DbGame
+    fun getGame(gameId: Long): DbGame
 
     @Query("SELECT * FROM GAME_ROUNDS WHERE gameId = :gameId")
-    fun getRounds(gameId: Long) : List<DbRound>
+    fun getRounds(gameId: Long): List<DbRound>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertRound(dbRound: DbRound) : Long
+    fun insertRound(dbRound: DbRound): Long
 
     @Query("DELETE FROM GAME_ROUNDS WHERE gameId = :gameId AND round = :round")
     fun removeRound(gameId: Long, round: Int)

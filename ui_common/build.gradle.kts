@@ -23,7 +23,6 @@ dependencies {
 
     implementation(Dependencies.Google.material)
 
-
     // Koin
     implementation(Dependencies.Koin.viewModel)
 

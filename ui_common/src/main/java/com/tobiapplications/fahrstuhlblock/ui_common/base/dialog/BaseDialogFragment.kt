@@ -16,8 +16,7 @@ import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelperImpl
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-
-abstract class BaseDialogFragment<Model: BaseViewModel, Binding: ViewDataBinding> : DialogInteractionFragment() {
+abstract class BaseDialogFragment<Model : BaseViewModel, Binding : ViewDataBinding> : DialogInteractionFragment() {
 
     protected abstract val viewModel: Model
     protected abstract val layoutId: Int

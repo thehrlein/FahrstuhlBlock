@@ -1,9 +1,6 @@
 package com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import androidx.lifecycle.Observer
 import com.tobiapplications.fahrstuhlblock.presentation.settings.GameSettingsViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.settings.playersettings.PlayerSettingsViewModel
 import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFragment
@@ -12,7 +9,6 @@ import com.tobiapplications.fahrstuhlblock.ui_game_settings.R
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.databinding.FragmentPlayerSettingsBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class PlayerSettingsFragment : BaseToolbarFragment<PlayerSettingsViewModel, GameSettingsViewModel, FragmentPlayerSettingsBinding>() {
 
@@ -67,5 +63,4 @@ class PlayerSettingsFragment : BaseToolbarFragment<PlayerSettingsViewModel, Game
             viewModel.onProceedClicked(playerSettingsHandler.getValues())
         }
     }
-
 }

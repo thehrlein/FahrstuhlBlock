@@ -1,8 +1,6 @@
 package com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings
 
 import androidx.databinding.BindingAdapter
-import androidx.databinding.InverseBindingAdapter
-import androidx.databinding.InverseBindingListener
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerError
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.R
 

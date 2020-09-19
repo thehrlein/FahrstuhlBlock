@@ -1,9 +1,7 @@
 package com.tobiapplications.fahrstuhlblock.ui_block
 
 import android.content.Intent
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import com.tobiapplications.fahrstuhlblock.entities.general.toolbar.ToolbarButtonType
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.ActivityBlockBinding

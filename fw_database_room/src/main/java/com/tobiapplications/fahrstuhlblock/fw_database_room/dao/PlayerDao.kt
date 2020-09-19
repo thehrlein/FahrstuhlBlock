@@ -13,5 +13,5 @@ interface PlayerDao {
     fun insertPlayerNames(dbPlayer: List<DbPlayer>)
 
     @Query("SELECT * FROM player_names")
-    fun queryAllPlayerNames() : List<DbPlayer>
+    fun queryAllPlayerNames(): List<DbPlayer>
 }

@@ -5,7 +5,6 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
-import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputDataItem
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItemData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.MaxCardCountSelection

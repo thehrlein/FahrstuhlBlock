@@ -46,7 +46,6 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
         return playerResultData
     }
 
-
     private fun calculateWithoutPointsIfPredictionIsFalse(data: CalculateResultData): List<PlayerResultData> {
         val pointRules = data.pointsRuleData
         val playerResultData = mutableListOf<PlayerResultData>()
@@ -142,7 +141,6 @@ class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {
                 inputType = game.inputType,
                 columnCount = columnCount
             )
-
         }
 
     override suspend fun getGameScores(game: Game): AppResult<GameScoreData> =

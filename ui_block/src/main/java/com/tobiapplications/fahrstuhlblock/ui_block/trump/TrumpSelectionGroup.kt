@@ -92,5 +92,4 @@ class TrumpSelectionGroup @JvmOverloads constructor(
     fun setOnCheckedChangeListener(onCheckedChange: (TrumpType) -> Unit) {
         this.onCheckedChange = onCheckedChange
     }
-
 }

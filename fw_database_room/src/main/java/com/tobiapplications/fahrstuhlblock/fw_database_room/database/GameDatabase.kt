@@ -47,7 +47,7 @@ abstract class GameDatabase : RoomDatabase() {
                     context.applicationContext,
                     GameDatabase::class.java,
                     "persistent_database"
-                )   .fallbackToDestructiveMigration()
+                ).fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 return instance

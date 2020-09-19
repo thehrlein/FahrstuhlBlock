@@ -39,7 +39,6 @@ class AboutFragment : BaseToolbarFragment<AboutViewModel, BlockViewModel, Fragme
         viewModel.openMovieBase.observe(viewLifecycleOwner, Observer {
             openMoviebase()
         })
-
     }
 
     private fun openFahrstuhl() {
@@ -56,9 +55,9 @@ class AboutFragment : BaseToolbarFragment<AboutViewModel, BlockViewModel, Fragme
 
     private fun openInPlayStore(packageName: String) {
         try {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.about_playstore_prefix,  packageName))))
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.about_playstore_prefix, packageName))))
         } catch (e: ActivityNotFoundException) {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.about_playstore_url,  packageName))))
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.about_playstore_url, packageName))))
         }
     }
 

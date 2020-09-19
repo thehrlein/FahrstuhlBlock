@@ -14,7 +14,7 @@ abstract class BaseToolbarViewModel : BaseViewModel() {
     private val _toolbarEvent = SingleLiveEvent<Unit>()
     val toolbarEvent: LiveData<Unit> = _toolbarEvent
 
-    fun toolBarButtonClicked(){
+    fun toolBarButtonClicked() {
         _toolbarEvent.call()
     }
 
@@ -25,5 +25,4 @@ abstract class BaseToolbarViewModel : BaseViewModel() {
     fun setToolbarButton(toolbarButtonType: ToolbarButtonType) {
         _toolbarButton.postValue(toolbarButtonType)
     }
-
 }

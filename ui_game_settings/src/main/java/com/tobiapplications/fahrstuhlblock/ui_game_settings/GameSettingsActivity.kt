@@ -10,7 +10,6 @@ import com.tobiapplications.fahrstuhlblock.ui_common.extension.dispatchOnDialogR
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.databinding.ActivityGameSettingsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class GameSettingsActivity : BaseToolbarActivity<GameSettingsViewModel, ActivityGameSettingsBinding>(), DialogInteractor {
 
     override var toolbarButtonType: ToolbarButtonType = ToolbarButtonType.Back

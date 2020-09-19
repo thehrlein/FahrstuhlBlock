@@ -14,7 +14,6 @@ import com.tobiapplications.fahrstuhlblock.ui_common.R
 import com.tobiapplications.fahrstuhlblock.ui_common.databinding.ActivityBaseToolbarBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.views.BaseToolbar
 
-
 abstract class BaseToolbarActivity<Model : BaseToolbarViewModel, Binding : ViewDataBinding> :
     BaseActivity<Model>() {
 
