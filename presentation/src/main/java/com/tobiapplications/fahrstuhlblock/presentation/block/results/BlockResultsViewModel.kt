@@ -76,7 +76,10 @@ class BlockResultsViewModel(
             mediator.postValue(it.filterIsInstance<BlockResult>().any { it.total != null } && _gameFinished.value != true)
         }
         mediator.addSource(gameFinished) {
-            mediator.postValue(it != true && _blockItems.value?.filterIsInstance<BlockResult>()?.any { it.total != null } == true)
+            mediator.postValue(
+                it != true &&
+                    _blockItems.value?.filterIsInstance<BlockResult>()?.any { it.total != null } == true
+            )
         }
     }
     val finishEarlyEnabled: LiveData<Boolean> = _finishEarlyEnabled
