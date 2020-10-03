@@ -9,6 +9,9 @@ trigger:
 pool:
   vmImage: 'macos-latest'
 
+variables:
+  - group: fahrstuhlBlockVariables
+
 steps:
   - task: PowerShell@2
     env:
@@ -31,6 +34,10 @@ steps:
           foreach($change in $changes.value) {
             "* $($change.message)" | Add-Content -Path $changelogPath
           }
+  - task: DownloadSecureFile@1
+    name: keystore
+    inputs:
+      secureFile: 'release_key.jks'
   - task: Gradle@2
     inputs:
       workingDirectory: ''
@@ -38,7 +45,8 @@ steps:
       gradleOptions: '-Xmx3072m'
       publishJUnitResults: false
       testResultsFiles: '**/TEST-*.xml'
-      tasks: 'assembleRelease'
+      options: '--build-cache -PkeyStorePassword="$(releaseKeyStorePassword)" -PkeyAlias="$(key-alias)" -PkeyPassword="$(releaseKeyPassword)" -PkeyStoreLocation="$(keystore.secureFilePath)" -PversionCode=$(Build.BuildNumber)'
+      tasks: 'check assembleDebug'
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
@@ -49,3 +57,13 @@ steps:
   - task: PublishBuildArtifacts@1
     inputs:
       ArtifactName: buildRelease
+=======
+- task: Gradle@2
+  inputs:
+    workingDirectory: ''
+    gradleWrapperFile: 'gradlew'
+    gradleOptions: '-Xmx3072m'
+    publishJUnitResults: false
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'assembleDebug'
+>>>>>>> Set up CI with Azure Pipelines
