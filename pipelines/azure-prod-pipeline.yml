@@ -13,6 +13,10 @@ variables:
   - group: fahrstuhlBlockVariables  
 
 steps:
+  - bash: echo $(keystore.secureFilePath)
+  - bash: echo $(releaseKeyStorePassword)
+  - bash: echo $(releaseKeyPassword)
+  - bash: echo $(releaseAlias)
   - task: PowerShell@2
     env:
       SYSTEM_ACCESSTOKEN: $(System.AccessToken)
@@ -37,7 +41,7 @@ steps:
   - task: DownloadSecureFile@1
     name: keystore
     inputs:
-      secureFile: 'release_key.jks'          
+      secureFile: 'release_key.jks'
   - task: Gradle@2
     inputs:
       workingDirectory: ''
@@ -45,15 +49,15 @@ steps:
       gradleOptions: '-Xmx3072m'
       publishJUnitResults: false
       testResultsFiles: '**/TEST-*.xml'
-      options: '--build-cache -PkeyStorePassword="$(releaseKeyPassword)" -PkeyAlias="$(releaseAlias)" -PkeyPassword="$(releaseKeyStorePassword)" -PkeyStoreLocation="$(keystore.secureFilePath)" -PversionCode=$(Build.BuildNumber)'
+   #   options: '--build-cache -PkeyStorePassword="$(releaseKeyStorePassword)" -PkeyAlias="$(releaseAlias)" -PkeyPassword="$(releaseKeyPassword)" -PkeyStoreLocation="$(keystore.secureFilePath)" -PversionCode=$(Build.BuildNumber)'
       tasks: 'assembleRelease'
- # - task: AndroidSigning@3
-  #  inputs:
-   #   apkFiles: '**/*.apk'
-    #  apksignerKeystoreFile: '$(keystore.secureFilePath)'
-     # apksignerKeystorePassword: '$(releaseKeyStorePassword'
-      #apksignerKeystoreAlias: '$(releaseAlias)'
-      #apksignerKeyPassword: '$(releaseKeyPassword'
+  - task: AndroidSigning@3
+    inputs:
+      apkFiles: '**/*.apk'
+      apksignerKeystoreFile: '$(keystore.secureFilePath)'
+      apksignerKeystorePassword: '$(releaseKeyStorePassword'
+      apksignerKeystoreAlias: '$(releaseAlias)'
+      apksignerKeyPassword: '$(releaseKeyPassword'
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
