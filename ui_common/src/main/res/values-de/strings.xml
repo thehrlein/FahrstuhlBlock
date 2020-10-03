@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- General -->
-    <string name="app_name">Fahrstuhl Block</string>
     <string name="general_true">Ja</string>
     <string name="general_false">Nein</string>
     <string name="general_cancel">Abbrechen</string>

@@ -1,6 +1,5 @@
 <resources>
     <!-- General -->
-    <string name="app_name" translatable="false">Fahrstuhl Block</string>
     <string name="general_true">True</string>
     <string name="general_false">False</string>
     <string name="general_cancel">Cancel</string>

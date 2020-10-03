@@ -61,5 +61,8 @@ dependencies {
     // Images
     implementation(Dependencies.Other.coil)
 
+    // AppCenter
+    implementation(Dependencies.AppCenter.crashes)
+
     debugImplementation(Dependencies.Other.debugDb)
 }

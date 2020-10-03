@@ -1,10 +1,14 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+
+val releaseKeyPassword: String? = gradleLocalProperties(rootDir).getProperty("releaseKeyPassword") ?: System.getenv("releaseKeyPassword")
+val releaseKeyStorePassword: String? = gradleLocalProperties(rootDir).getProperty("releaseKeyStorePassword") ?: System.getenv("releaseKeyStorePassword")
 
 buildscript {
     repositories {
@@ -83,16 +87,28 @@ fun applyAppPlugin(plugin: AppPlugin) {
 
             // possibility to colorize vector drawable in xml based on color resources (< API 24)
             vectorDrawables.useSupportLibrary = true
+
+        }
+
+        signingConfigs {
+            create("release") {
+                keyAlias = "tobiapplicationsreleasekey"
+                keyPassword = releaseKeyPassword
+                storeFile = file("signing/app/release_key.jks")
+                storePassword = releaseKeyStorePassword
+            }
         }
 
         buildTypes {
             named("debug") {
                 isMinifyEnabled = false
+                applicationIdSuffix = ".debug"
                 proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             }
             named("release") {
                 isMinifyEnabled = false
                 proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+                signingConfig = signingConfigs.getByName("release")
             }
         }
 

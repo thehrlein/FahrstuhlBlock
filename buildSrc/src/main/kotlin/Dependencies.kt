@@ -130,6 +130,12 @@ object Dependencies {
         const val kotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:$kotlinVersion"
     }
 
+    object AppCenter {
+        private const val appCenterVersion = "3.3.1"
+
+        const val crashes = "com.microsoft.appcenter:appcenter-crashes:$appCenterVersion"
+    }
+
     object Other {
         private const val coilVersion = "0.11.0"
         private const val debugDbVersion = "1.0.6"
