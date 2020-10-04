@@ -13,11 +13,6 @@ variables:
   - group: fahrstuhlBlockVariables  
 
 steps:
-  - bash: echo secure stuff
-  - bash: echo $(keystore.secureFilePath)
-  - bash: echo $(releaseKeyStorePassword)
-  - bash: echo $(releaseKeyPassword)
-  - bash: echo $(releaseAlias)
   - task: PowerShell@2
     env:
       SYSTEM_ACCESSTOKEN: $(System.AccessToken)
@@ -40,9 +35,15 @@ steps:
             "* $($change.message)" | Add-Content -Path $changelogPath
           }
   - task: DownloadSecureFile@1
-    name: keystore
+    name: release_key
     inputs:
       secureFile: 'release_key.jks'
+
+  - bash: echo secure stuff
+  - bash: echo $(release_key.secureFilePath)
+  - bash: echo $(releaseKeyStorePassword)
+  - bash: echo $(releaseKeyPassword)
+  - bash: echo $(releaseAlias)      
   - task: Gradle@2
     inputs:
       workingDirectory: ''
