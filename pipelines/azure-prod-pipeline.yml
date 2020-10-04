@@ -39,10 +39,10 @@ steps:
           foreach($change in $changes.value) {
             "* $($change.message)" | Add-Content -Path $changelogPath
           }
-#  - task: DownloadSecureFile@1
-#    name: keystore
-#    inputs:
-#      secureFile: 'release_key.jks'
+  - task: DownloadSecureFile@1
+    name: keystore
+    inputs:
+      secureFile: 'release_key.jks'
   - task: Gradle@2
     inputs:
       workingDirectory: ''
