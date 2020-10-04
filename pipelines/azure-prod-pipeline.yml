@@ -58,9 +58,9 @@ steps:
       apkFiles: '**/*.apk'
       apksign: true
       apksignerKeystoreFile: 'release_key.jks'
-      apksignerKeystorePassword: '$(releaseKeyStorePassword'
+      apksignerKeystorePassword: '$(releaseKeyStorePassword)'
       apksignerKeystoreAlias: '$(releaseAlias)'
-      apksignerKeyPassword: '$(releaseKeyPassword'
+      apksignerKeyPassword: '$(releaseKeyPassword)'
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
