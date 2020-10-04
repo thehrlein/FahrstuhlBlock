@@ -7,8 +7,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 
-val releaseKeyPassword: String? = gradleLocalProperties(rootDir).getProperty("releaseKeyPassword") ?: System.getenv("releaseKeyPassword")
-val releaseKeyStorePassword: String? = gradleLocalProperties(rootDir).getProperty("releaseKeyStorePassword") ?: System.getenv("releaseKeyStorePassword")
+val releaseAlias: String? = gradleLocalProperties(rootDir).getProperty("releaseAlias") ?: System.getenv("RELEASEALIAS")
+val releaseKeyPassword: String? = gradleLocalProperties(rootDir).getProperty("releaseKeyPassword") ?: System.getenv("RELEASEKEYPASSWORD")
+val releaseKeyStorePassword: String? = gradleLocalProperties(rootDir).getProperty("releaseKeyStorePassword") ?: System.getenv("RELEASEKEYSTOREPASSWORD")
 
 buildscript {
     repositories {
