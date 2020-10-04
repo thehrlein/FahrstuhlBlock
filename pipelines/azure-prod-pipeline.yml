@@ -56,7 +56,7 @@ steps:
     inputs:
       apkFiles: '**/*.apk'
       apksign: true
-      apksignerKeystoreFile: 'release_key'
+      apksignerKeystoreFile: 'release_key.jks'
       apksignerKeystorePassword: '$(releaseKeyStorePassword'
       apksignerKeystoreAlias: '$(releaseAlias)'
       apksignerKeyPassword: '$(releaseKeyPassword'
