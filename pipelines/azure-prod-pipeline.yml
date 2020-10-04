@@ -13,6 +13,7 @@ variables:
   - group: fahrstuhlBlockVariables  
 
 steps:
+  - bash: echo secure stuff
   - bash: echo $(keystore.secureFilePath)
   - bash: echo $(releaseKeyStorePassword)
   - bash: echo $(releaseKeyPassword)
@@ -38,10 +39,10 @@ steps:
           foreach($change in $changes.value) {
             "* $($change.message)" | Add-Content -Path $changelogPath
           }
-  - task: DownloadSecureFile@1
-    name: keystore
-    inputs:
-      secureFile: 'release_key.jks'
+#  - task: DownloadSecureFile@1
+#    name: keystore
+#    inputs:
+#      secureFile: 'release_key.jks'
   - task: Gradle@2
     inputs:
       workingDirectory: ''
@@ -54,7 +55,8 @@ steps:
   - task: AndroidSigning@3
     inputs:
       apkFiles: '**/*.apk'
-      apksignerKeystoreFile: 'release_key.jks'
+      apksign: true
+      apksignerKeystoreFile: 'release_key'
       apksignerKeystorePassword: '$(releaseKeyStorePassword'
       apksignerKeystoreAlias: '$(releaseAlias)'
       apksignerKeyPassword: '$(releaseKeyPassword'
