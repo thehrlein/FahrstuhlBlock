@@ -92,7 +92,7 @@ fun applyAppPlugin(plugin: AppPlugin) {
 
         signingConfigs {
             create("release") {
-                keyAlias = "tobiapplicationsreleasekey"
+                keyAlias = releaseAlias
                 keyPassword = releaseKeyPassword
                 storeFile = file("signing/app/release_key.jks")
                 storePassword = releaseKeyStorePassword
