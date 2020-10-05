@@ -109,7 +109,7 @@
     <!-- About -->
     <string name="about_toolbar_title">Info</string>
     <string name="about_feedback">For further information, questions or feedback, please use the button at the bottom to send me an email.</string>
-    <string name="about_like_fahrstuhl_block">Do you like Fahrstuhl Block? I would feel happy about a positive rating in PlayStore:</string>
+    <string name="about_like_fahrstuhl_block">Do you like Oh Hell Block? I would feel happy about a positive rating in PlayStore:</string>
     <string name="about_other_apps">Want more? Check out my other applications:</string>
     <string name="about_wizardblock" translatable="false">Wizard Block</string>
     <string name="about_moviebase" translatable="false">MovieBase</string>

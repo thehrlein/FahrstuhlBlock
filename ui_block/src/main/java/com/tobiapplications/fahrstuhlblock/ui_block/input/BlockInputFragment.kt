@@ -9,8 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
-import com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
+import com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputViewModel
 import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentBlockInputBinding

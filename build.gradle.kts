@@ -88,7 +88,6 @@ fun applyAppPlugin(plugin: AppPlugin) {
 
             // possibility to colorize vector drawable in xml based on color resources (< API 24)
             vectorDrawables.useSupportLibrary = true
-
         }
 
         signingConfigs {

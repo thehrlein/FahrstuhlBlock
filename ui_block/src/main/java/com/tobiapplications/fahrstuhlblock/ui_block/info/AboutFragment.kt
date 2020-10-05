@@ -27,16 +27,16 @@ class AboutFragment : BaseToolbarFragment<AboutViewModel, BlockViewModel, Fragme
 
         activityToolbarViewModel.setTitle(getString(R.string.about_toolbar_title))
 
-        viewModel.sendEmail.observe(viewLifecycleOwner, Observer {
+        viewModel.sendEmail.observe(viewLifecycleOwner, {
             sendEmail()
         })
-        viewModel.openFahrstuhl.observe(viewLifecycleOwner, Observer {
+        viewModel.openFahrstuhl.observe(viewLifecycleOwner, {
             openFahrstuhl()
         })
-        viewModel.openWizard.observe(viewLifecycleOwner, Observer {
+        viewModel.openWizard.observe(viewLifecycleOwner, {
             openWizard()
         })
-        viewModel.openMovieBase.observe(viewLifecycleOwner, Observer {
+        viewModel.openMovieBase.observe(viewLifecycleOwner, {
             openMoviebase()
         })
     }
