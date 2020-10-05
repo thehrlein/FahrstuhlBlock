@@ -35,8 +35,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_2"
-                android:layout_marginStart="@dimen/space_8"
-                android:layout_marginEnd="@dimen/space_8"
                 android:overScrollMode="never"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="4"

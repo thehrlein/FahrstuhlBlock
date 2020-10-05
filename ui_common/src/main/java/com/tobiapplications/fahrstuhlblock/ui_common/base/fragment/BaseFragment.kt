@@ -18,8 +18,7 @@ import com.tobiapplications.fahrstuhlblock.ui_common.extension.dispatchOnActivit
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-
-abstract class BaseFragment<Model: BaseViewModel, Binding: ViewDataBinding> : Fragment() {
+abstract class BaseFragment<Model : BaseViewModel, Binding : ViewDataBinding> : Fragment() {
 
     protected abstract val viewModel: Model
     protected abstract val layoutId: Int
@@ -45,14 +44,12 @@ abstract class BaseFragment<Model: BaseViewModel, Binding: ViewDataBinding> : Fr
         }.root
     }
 
-
     @CallSuper
     open fun onBindingCreated(savedInstanceState: Bundle?) {
         viewModel.navigationEvent.observe(viewLifecycleOwner, Observer {
             navigationHandler.navigateTo(it)
         })
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

@@ -119,7 +119,6 @@ class BlockResultsFragment :
                 binding.gameList.scrollToPosition(blockItems.size - 1)
             })
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

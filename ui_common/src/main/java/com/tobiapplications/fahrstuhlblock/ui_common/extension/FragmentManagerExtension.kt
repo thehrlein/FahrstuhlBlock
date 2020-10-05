@@ -5,7 +5,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.NavHostFragment
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogInteractor
 
-
 fun FragmentManager.dispatchOnDialogResult(requestCode: Int, resultCode: Int, data: Intent?) {
     fragments.forEach loop@{
         when {

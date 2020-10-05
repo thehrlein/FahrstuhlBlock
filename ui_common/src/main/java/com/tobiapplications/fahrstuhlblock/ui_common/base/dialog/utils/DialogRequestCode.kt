@@ -8,5 +8,4 @@ object DialogRequestCode {
     const val CHOOSE_TRUMP: Int = 400
     const val INPUT_INFO: Int = 500
     const val FINISH_EARLY: Int = 600
-
 }

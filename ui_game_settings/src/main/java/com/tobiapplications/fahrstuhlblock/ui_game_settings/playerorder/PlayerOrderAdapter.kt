@@ -12,7 +12,6 @@ import com.tobiapplications.fahrstuhlblock.ui_game_settings.R
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.databinding.ItemPlayerRowBinding
 import kotlin.collections.ArrayList
 
-
 class PlayerOrderAdapter(
     private val interactions: PlayerOrderInteractions
 ) : RecyclerView.Adapter<PlayerOrderAdapter.PlayerOrderViewHolder>(),

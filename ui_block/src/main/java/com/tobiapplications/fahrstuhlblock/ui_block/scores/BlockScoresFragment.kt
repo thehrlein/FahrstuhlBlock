@@ -30,7 +30,6 @@ class BlockScoresFragment : BaseToolbarFragment<BlockScoresViewModel, BlockViewM
         initAdapter()
     }
 
-
     private fun initAdapter() {
         BlockScoresAdapter().also { scoresAdapter ->
             binding.blockScoreList.apply {
@@ -40,6 +39,5 @@ class BlockScoresFragment : BaseToolbarFragment<BlockScoresViewModel, BlockViewM
 
             scoresAdapter.submitList(gameScores.gameScoreData.results)
         }
-
     }
 }

@@ -1,21 +1,26 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+
+val releaseAlias: String? = gradleLocalProperties(rootDir).getProperty("releaseAlias") ?: System.getenv("RELEASEALIAS")
+val releaseKeyPassword: String? = gradleLocalProperties(rootDir).getProperty("releaseKeyPassword") ?: System.getenv("RELEASEKEYPASSWORD")
+val releaseKeyStorePassword: String? = gradleLocalProperties(rootDir).getProperty("releaseKeyStorePassword") ?: System.getenv("RELEASEKEYSTOREPASSWORD")
 
 buildscript {
     repositories {
         google()
         jcenter()
-        
     }
     dependencies {
         classpath(Classpaths.androidGradlePlugin)
         classpath(Classpaths.kotlinGradlePlugin)
         classpath(Classpaths.gradleUpdate)
         classpath(Classpaths.safeArgs)
-        classpath(Classpaths.detektGradlePlugin)
         classpath(Classpaths.googleServices)
         classpath(Classpaths.firebaseCrashlytics)
         classpath(Classpaths.firebasePerformance)
@@ -28,11 +33,26 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
     }
 }
 
+plugins {
+    id(BuildPlugins.detekt).version(BuildPlugins.detektVersion)
+}
+
+dependencies {
+    detektPlugins(BuildPlugins.detektFormatting)
+}
+
 subprojects {
+
+    apply { plugin(BuildPlugins.detekt) }
+    detekt {
+        ignoreFailures = true
+        config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
+        baseline = file("${rootProject.projectDir}/config/detekt/baseline_config.xml")
+    }
+
     project.plugins.whenPluginAdded {
         when (this) {
             is AppPlugin -> applyAppPlugin(this)
@@ -70,14 +90,25 @@ fun applyAppPlugin(plugin: AppPlugin) {
             vectorDrawables.useSupportLibrary = true
         }
 
+        signingConfigs {
+            create("release") {
+                keyAlias = releaseAlias
+                keyPassword = releaseKeyPassword
+                storeFile = file("signing/app/release_key.jks")
+                storePassword = releaseKeyStorePassword
+            }
+        }
+
         buildTypes {
             named("debug") {
                 isMinifyEnabled = false
+                applicationIdSuffix = ".debug"
                 proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             }
             named("release") {
                 isMinifyEnabled = false
                 proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+                signingConfig = signingConfigs.getByName("release")
             }
         }
 
@@ -140,4 +171,37 @@ fun applyLibraryPlugin(plugin: LibraryPlugin, name: String) {
 
 tasks.register("clean").configure {
     delete("rootProject.buildDir")
+}
+
+val detektAllAutocorrect by tasks.registering(Detekt::class) {
+    description = "Runs a failfast detekt build."
+    setSource(file(projectDir))
+    debug = true
+    parallel = true
+    buildUponDefaultConfig = true
+    autoCorrect = true
+    ignoreFailures = true
+    config.setFrom(files("$projectDir/config/detekt/detekt.yml"))
+    baseline.set(file("$projectDir/config/detekt/baseline_config.xml"))
+    reports {
+        html.enabled = true
+    }
+    include("**/*.kt")
+    include("**/*.kts")
+    exclude("**/resources/**")
+    exclude("**/build/**")
+}
+
+val detektProjectBaseline by tasks.registering(DetektCreateBaselineTask::class) {
+    description = "Overrides current baseline."
+    ignoreFailures.set(true)
+    parallel.set(true)
+    buildUponDefaultConfig.set(true)
+    setSource(files(rootDir))
+    config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
+    baseline.set(file("$rootDir/config/detekt/baseline_config.xml"))
+    include("**/*.kt")
+    include("**/*.kts")
+    exclude("**/resources/**")
+    exclude("**/build/**")
 }

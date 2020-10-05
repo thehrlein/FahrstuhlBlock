@@ -16,5 +16,4 @@ include(":presentation")
 include(":interactor")
 include(":entities")
 
-
 rootProject.name = "FahrstuhlBlock"

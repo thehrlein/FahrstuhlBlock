@@ -10,7 +10,7 @@ class AnalyticsDatasourceImpl(
     private val firebaseAnalytics: FirebaseAnalytics
 ) : AnalyticsDatasource {
 
-    override suspend fun trackEvent(analyticsEvent: AnalyticsEvent) : AppResult<Unit> {
+    override suspend fun trackEvent(analyticsEvent: AnalyticsEvent): AppResult<Unit> {
         firebaseAnalytics.logEvent(analyticsEvent.eventName) {
             analyticsEvent.params.forEach {
                 when (it) {

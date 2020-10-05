@@ -15,17 +15,22 @@
         android:orientation="vertical"
         android:padding="24dp">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5"/>
+
         <Button
             android:id="@+id/open_new_game"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:onClick="@{() -> viewModel.openNewGameClicked()}"
             android:text="@string/menu_start_new_game"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintTop_toBottomOf="@id/guideline_center"/>
 
         <Button
             android:id="@+id/continue_game"
@@ -36,8 +41,7 @@
             android:layout_marginTop="@dimen/space_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/open_new_game"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintTop_toBottomOf="@id/open_new_game"/>
 
         <TextView
             android:id="@+id/menu_opcoming_features"

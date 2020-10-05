@@ -14,14 +14,13 @@ class AboutViewModel(
 ) : BaseViewModel() {
 
     private val _sendEmailEvent = SingleLiveEvent<Unit>()
-    val sendEmail : LiveData<Unit> = _sendEmailEvent
+    val sendEmail: LiveData<Unit> = _sendEmailEvent
     private val _openFahrstuhlEvent = SingleLiveEvent<Unit>()
-    val openFahrstuhl : LiveData<Unit> = _openFahrstuhlEvent
+    val openFahrstuhl: LiveData<Unit> = _openFahrstuhlEvent
     private val _openWizardEvent = SingleLiveEvent<Unit>()
-    val openWizard : LiveData<Unit> = _openWizardEvent
+    val openWizard: LiveData<Unit> = _openWizardEvent
     private val _openMovieBaseEvent = SingleLiveEvent<Unit>()
-    val openMovieBase : LiveData<Unit> = _openMovieBaseEvent
-
+    val openMovieBase: LiveData<Unit> = _openMovieBaseEvent
 
     fun onFabClicked() {
         _sendEmailEvent.postValue(Unit)

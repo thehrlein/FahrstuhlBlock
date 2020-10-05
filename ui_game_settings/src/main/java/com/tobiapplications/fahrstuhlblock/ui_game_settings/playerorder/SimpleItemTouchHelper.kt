@@ -3,9 +3,6 @@ package com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_DRAG
 import androidx.recyclerview.widget.RecyclerView
-import com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder.ItemTouchHelperAdapter
-import com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder.ItemTouchHelperViewHolder
-
 
 class SimpleItemTouchHelper(
     private val adapter: ItemTouchHelperAdapter
@@ -59,6 +56,4 @@ class SimpleItemTouchHelper(
         val itemViewHolder = viewHolder as ItemTouchHelperViewHolder
         itemViewHolder.onItemClear()
     }
-
-
 }

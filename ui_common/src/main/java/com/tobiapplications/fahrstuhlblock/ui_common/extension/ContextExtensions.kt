@@ -6,19 +6,18 @@ import android.view.LayoutInflater
 import androidx.annotation.DimenRes
 import kotlin.math.roundToInt
 
+val Context.layoutInflater: LayoutInflater
+    get() = LayoutInflater.from(this)
 
-val Context.layoutInflater : LayoutInflater
-    get() =  LayoutInflater.from(this)
-
-fun Context.getDimen(@DimenRes dimenRes: Int) : Int {
+fun Context.getDimen(@DimenRes dimenRes: Int): Int {
     return resources.getDimension(dimenRes).roundToInt()
 }
 
-fun Context.getExactDimen(@DimenRes dimenRes: Int) : Int {
+fun Context.getExactDimen(@DimenRes dimenRes: Int): Int {
     return (resources.getDimension(dimenRes) / resources.displayMetrics.density).roundToInt()
 }
 
-fun Context.getColorReference(resId: Int) : Int {
+fun Context.getColorReference(resId: Int): Int {
     val typedValue = TypedValue()
     theme.resolveAttribute(resId, typedValue, true)
     return typedValue.data

@@ -7,9 +7,7 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
 
-
 sealed class Screen {
-
 
     // General //
     sealed class Progress : Screen() {
@@ -24,7 +22,7 @@ sealed class Screen {
 
     sealed class Menu : Screen() {
         object NewGame : Menu()
-        object SavedGames: Menu()
+        object SavedGames : Menu()
     }
 
     sealed class PlayerSettings : Screen() {
@@ -54,7 +52,7 @@ sealed class Screen {
         class GameFinished(val winners: List<GameScore>) : Block()
         class Trump(val selectedTrumpType: TrumpType) : Block()
         object About : Block()
-        object FinishEarly: Block()
+        object FinishEarly : Block()
     }
 
     sealed class Input : Screen() {

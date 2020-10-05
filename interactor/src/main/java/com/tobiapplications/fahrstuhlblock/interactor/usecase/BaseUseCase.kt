@@ -3,7 +3,6 @@ package com.tobiapplications.fahrstuhlblock.interactor.usecase
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import timber.log.Timber
 
-
 abstract class BaseUseCase<in P, out R> {
 
     /**
@@ -25,7 +24,6 @@ abstract class BaseUseCase<in P, out R> {
             }
         }
     }
-
 }
 
 suspend operator fun <R> BaseUseCase<Unit, R>.invoke(): AppResult<R> {

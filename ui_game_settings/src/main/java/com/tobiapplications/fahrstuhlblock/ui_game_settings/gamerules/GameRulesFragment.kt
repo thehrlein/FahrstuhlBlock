@@ -15,7 +15,6 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-
 class GameRulesFragment :
     BaseToolbarFragment<GameRulesViewModel, GameSettingsViewModel, FragmentGameRulesBinding>() {
 
@@ -46,6 +45,13 @@ class GameRulesFragment :
         initMaxCardSelection()
         initAutoShowTrumpDialog()
         initStopAtMaxCardCountCheckbox()
+        initFirstRoundSettings()
+    }
+
+    private fun initFirstRoundSettings() {
+        binding.firstRoundTipsCanBeOne.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.onFirstRoundTipsCanBeOneChanged(isChecked)
+        }
     }
 
     private fun initAutoShowTrumpDialog() {
@@ -55,7 +61,7 @@ class GameRulesFragment :
     }
 
     private fun initStopAtMaxCardCountCheckbox() {
-        binding.gameRulesCardCountRadioGroupInclude.stopAtMaxCardCount.setOnCheckedChangeListener { _, isChecked ->
+        binding.stopAtMaxCardCount.setOnCheckedChangeListener { _, isChecked ->
             viewModel.onStopAtMaxCardCountClicked(isChecked)
         }
     }
@@ -72,7 +78,6 @@ class GameRulesFragment :
             )
         }
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_game_rules, menu)

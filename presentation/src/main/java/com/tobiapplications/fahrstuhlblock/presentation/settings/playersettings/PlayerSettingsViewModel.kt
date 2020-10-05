@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
-import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerError
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.SettingsData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.SettingsScreen

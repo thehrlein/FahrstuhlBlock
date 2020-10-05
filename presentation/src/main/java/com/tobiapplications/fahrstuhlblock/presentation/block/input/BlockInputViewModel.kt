@@ -11,7 +11,6 @@ import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.*
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
 
-
 class BlockInputViewModel(
     private val gameId: Long,
     private val getGameUseCase: GetGameUseCase,

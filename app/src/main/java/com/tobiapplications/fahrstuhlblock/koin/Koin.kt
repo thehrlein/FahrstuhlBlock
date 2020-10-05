@@ -51,7 +51,6 @@ import org.koin.core.module.Module
 import org.koin.dsl.binds
 import org.koin.dsl.module
 
-
 object Koin {
 
     private val single = module {
@@ -138,7 +137,7 @@ object Koin {
         viewModel { (gameId: Long) -> BlockViewModel(gameId) }
         viewModel {
             BlockResultsViewModel(
-                getGameUseCase =  get(),
+                getGameUseCase = get(),
                 getBlockResultsUseCase = get(),
                 getGameScoresUseCase = get(),
                 storeRoundUseCase = get(),
@@ -162,7 +161,6 @@ object Koin {
         viewModel { BlockTrumpViewModel(get(), get(), get()) }
         viewModel { SavedGamesViewModel(get()) }
         viewModel { AboutViewModel(get()) }
-
     }
 
     fun getModules(): List<Module> {

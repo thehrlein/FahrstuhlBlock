@@ -1,14 +1,11 @@
 package com.tobiapplications.fahrstuhlblock.presentation.settings.pointrules
 
-import android.os.SystemClock
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.entities.models.firebase.AnalyticsEvent
-import com.tobiapplications.fahrstuhlblock.entities.models.firebase.BooleanParam
-import com.tobiapplications.fahrstuhlblock.entities.models.firebase.IntParam
 import com.tobiapplications.fahrstuhlblock.entities.models.firebase.TrackingConstants
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameInfo
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSettingsData
@@ -126,6 +123,7 @@ class PointRulesViewModel(
             gameRuleSettingsData.highCardCount,
             gameRuleSettingsData.totalRounds,
             gameRuleSettingsData.stopElevatorAtHighCard,
+            gameRuleSettingsData.firstRoundTipsCanBeOne,
             gameRuleSettingsData.maxCardCountSelection,
             PointsRuleData(
                 correctPredictionPoints,

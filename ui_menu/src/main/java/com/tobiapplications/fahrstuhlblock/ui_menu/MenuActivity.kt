@@ -8,7 +8,6 @@ import com.tobiapplications.fahrstuhlblock.ui_common.base.activity.BaseToolbarAc
 import com.tobiapplications.fahrstuhlblock.ui_menu.databinding.ActivityMenuBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class MenuActivity :
     BaseToolbarActivity<MenuViewModel, ActivityMenuBinding>() {
 

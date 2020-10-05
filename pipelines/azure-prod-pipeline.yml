@@ -3,11 +3,12 @@
 # Add steps that test, sign, and distribute the APK, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/android
 
-trigger:
-- develop
 
 pool:
   vmImage: 'macos-latest'
+
+variables:
+  - group: fahrstuhlBlockVariables  
 
 steps:
   - task: PowerShell@2
@@ -31,6 +32,10 @@ steps:
           foreach($change in $changes.value) {
             "* $($change.message)" | Add-Content -Path $changelogPath
           }
+  - task: DownloadSecureFile@1
+    name: release_key
+    inputs:
+      secureFile: 'release_key.jks'
   - task: Gradle@2
     inputs:
       workingDirectory: ''
@@ -39,6 +44,14 @@ steps:
       publishJUnitResults: false
       testResultsFiles: '**/TEST-*.xml'
       tasks: 'assembleRelease'
+  - task: AndroidSigning@3
+    inputs:
+      apkFiles: '**/*.apk'
+      apksign: true
+      apksignerKeystoreFile: 'release_key.jks'
+      apksignerKeystorePassword: '$(releaseKeyStorePassword)'
+      apksignerKeystoreAlias: '$(releaseAlias)'
+      apksignerKeyPassword: '$(releaseKeyPassword)'
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:

@@ -3,7 +3,6 @@ package com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.sharedpre
 import android.content.Context
 import com.tobiapplications.fahrstuhlblock.interactor.datasource.sharedpref.UserSettingsPersistence
 
-
 class FahrstuhlBlockSharedPreferences(
     context: Context
 ) : SharedPreferenceDelegates(context), UserSettingsPersistence {

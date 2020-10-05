@@ -17,6 +17,9 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/space_8"
+            android:overScrollMode="never"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,11 +58,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/space_4"
+                    android:background="@drawable/background_border_about_apps"
+                    android:elevation="@dimen/elevation_few"
+                    android:onClick="@{() -> viewModel.onFahrstuhlBlockClicked()}"
                     android:orientation="horizontal"
                     android:padding="@dimen/space_2"
-                    android:background="@drawable/background_border_about_apps"
-                    android:onClick="@{() -> viewModel.onFahrstuhlBlockClicked()}"
-                    android:elevation="@dimen/elevation_few"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/like_fahrstuhl_block">
@@ -98,11 +101,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/space_4"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/space_2"
-                    android:onClick="@{() -> viewModel.onMovieBaseClicked()}"
                     android:background="@drawable/background_border_about_apps"
                     android:elevation="@dimen/elevation_medium"
+                    android:onClick="@{() -> viewModel.onMovieBaseClicked()}"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/space_2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/about_other_apps">
@@ -129,11 +132,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/space_4"
+                    android:background="@drawable/background_border_about_apps"
+                    android:elevation="@dimen/elevation_high"
+                    android:onClick="@{() -> viewModel.onWizardBlockClicked()}"
                     android:orientation="horizontal"
                     android:padding="@dimen/space_2"
-                    android:background="@drawable/background_border_about_apps"
-                    android:onClick="@{() -> viewModel.onWizardBlockClicked()}"
-                    android:elevation="@dimen/elevation_high"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/layout_moviebase">
@@ -149,9 +152,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:textAppearance="?textAppearanceBody2"
                         android:layout_marginStart="@dimen/space_8"
-                        android:text="@string/about_wizardblock" />
+                        android:text="@string/about_wizardblock"
+                        android:textAppearance="?textAppearanceBody2" />
 
                 </LinearLayout>
 
@@ -165,9 +168,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/space_4"
             android:onClick="@{() -> viewModel.onFabClicked()}"
+            android:src="@drawable/ic_email"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/ic_email"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,7 +5,6 @@ import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CalculateResultData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.CheckInputValidityData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputData
-import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputDataItem
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockItemData
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData
 import com.tobiapplications.fahrstuhlblock.entities.models.settings.MaxCardCountSelection
@@ -85,9 +84,9 @@ class GameRepositoryImpl(
             when (settingsScreen) {
                 SettingsScreen.PLAYER -> SettingsData.Player(gameInfo.players.names)
                 SettingsScreen.CARDS -> when (gameInfo.maxCardCountSelection) {
-                    MaxCardCountSelection.ONE_DECK -> SettingsData.Cards.OneDeck(gameInfo.stopElevatorAtHighCard)
-                    MaxCardCountSelection.TWO_DECKS -> SettingsData.Cards.TwoDecks(gameInfo.stopElevatorAtHighCard)
-                    else -> SettingsData.Cards.Individual(gameInfo.highCardCount, gameInfo.stopElevatorAtHighCard)
+                    MaxCardCountSelection.ONE_DECK -> SettingsData.Cards.OneDeck(gameInfo.stopElevatorAtHighCard, gameInfo.firstRoundTipsCanBeOne)
+                    MaxCardCountSelection.TWO_DECKS -> SettingsData.Cards.TwoDecks(gameInfo.stopElevatorAtHighCard, gameInfo.firstRoundTipsCanBeOne)
+                    else -> SettingsData.Cards.Individual(gameInfo.highCardCount, gameInfo.stopElevatorAtHighCard, gameInfo.firstRoundTipsCanBeOne)
                 }
                 SettingsScreen.POINTS -> SettingsData.Points(gameInfo.pointsRuleData)
             }

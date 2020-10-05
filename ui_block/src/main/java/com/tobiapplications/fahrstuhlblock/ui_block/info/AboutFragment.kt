@@ -27,19 +27,18 @@ class AboutFragment : BaseToolbarFragment<AboutViewModel, BlockViewModel, Fragme
 
         activityToolbarViewModel.setTitle(getString(R.string.about_toolbar_title))
 
-        viewModel.sendEmail.observe(viewLifecycleOwner, Observer {
+        viewModel.sendEmail.observe(viewLifecycleOwner, {
             sendEmail()
         })
-        viewModel.openFahrstuhl.observe(viewLifecycleOwner, Observer {
+        viewModel.openFahrstuhl.observe(viewLifecycleOwner, {
             openFahrstuhl()
         })
-        viewModel.openWizard.observe(viewLifecycleOwner, Observer {
+        viewModel.openWizard.observe(viewLifecycleOwner, {
             openWizard()
         })
-        viewModel.openMovieBase.observe(viewLifecycleOwner, Observer {
+        viewModel.openMovieBase.observe(viewLifecycleOwner, {
             openMoviebase()
         })
-
     }
 
     private fun openFahrstuhl() {
@@ -56,9 +55,9 @@ class AboutFragment : BaseToolbarFragment<AboutViewModel, BlockViewModel, Fragme
 
     private fun openInPlayStore(packageName: String) {
         try {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.about_playstore_prefix,  packageName))))
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.about_playstore_prefix, packageName))))
         } catch (e: ActivityNotFoundException) {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.about_playstore_url,  packageName))))
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.about_playstore_url, packageName))))
         }
     }
 

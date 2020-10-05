@@ -11,7 +11,7 @@ enum class EllipsizeAttribute(val value: Int, val truncateAt: TextUtils.Truncate
     MARQUEE(4, TextUtils.TruncateAt.MARQUEE);
 
     companion object {
-        fun getEllipsize(value: Int) : EllipsizeAttribute {
+        fun getEllipsize(value: Int): EllipsizeAttribute {
             return values().firstOrNull { it.value == value } ?: NOT_SET
         }
     }

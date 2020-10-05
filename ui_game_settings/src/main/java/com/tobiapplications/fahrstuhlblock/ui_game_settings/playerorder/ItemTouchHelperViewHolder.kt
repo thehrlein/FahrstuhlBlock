@@ -1,6 +1,5 @@
 package com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder
 
-
 interface ItemTouchHelperViewHolder {
 
     /**

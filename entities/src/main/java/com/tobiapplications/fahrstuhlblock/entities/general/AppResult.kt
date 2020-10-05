@@ -1,6 +1,5 @@
 package com.tobiapplications.fahrstuhlblock.entities.general
 
-
 sealed class AppResult<out T> {
 
     data class Success<out T>(val value: T) : AppResult<T>()
@@ -29,7 +28,6 @@ sealed class AppResult<out T> {
             is Error -> this
         }
     }
-
 }
 
 fun <T> T.toSuccessResult(): AppResult<T> {

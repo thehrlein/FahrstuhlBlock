@@ -8,7 +8,7 @@ import com.tobiapplications.fahrstuhlblock.interactor.usecase.BaseUseCase
 
 class GetLastSettingsUseCase(
     private val gameRepository: GameRepository
-): BaseUseCase<SettingsScreen, SettingsData>() {
+) : BaseUseCase<SettingsScreen, SettingsData>() {
 
     override suspend fun execute(parameters: SettingsScreen): AppResult<SettingsData> {
         return gameRepository.getLastSettingsData(parameters)

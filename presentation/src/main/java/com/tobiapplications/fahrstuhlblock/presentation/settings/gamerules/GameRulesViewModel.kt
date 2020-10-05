@@ -68,6 +68,9 @@ class GameRulesViewModel(
         }
     }
 
+    private val _tipsCanBeOneInFirstRound = MutableLiveData<Boolean>()
+    val tipsCanBeOneInFirstRound: LiveData<Boolean> = _tipsCanBeOneInFirstRound
+
     init {
         checkShowTrumpDialogEnabled()
         getLastSettings()
@@ -93,6 +96,7 @@ class GameRulesViewModel(
 
     private fun setDefaultSettings() {
         _stopAtMaxCardCount.postValue(true)
+        _tipsCanBeOneInFirstRound.postValue(true)
         setSelectedCardOption(MaxCardCountSelection.ONE_DECK)
     }
 
@@ -101,14 +105,17 @@ class GameRulesViewModel(
             val maxCardCountSelection = when (settingsData) {
                 is SettingsData.Cards.OneDeck -> {
                     _stopAtMaxCardCount.postValue(settingsData.stopAtHighCard)
+                    _tipsCanBeOneInFirstRound.postValue(settingsData.firstRoundTipsCanBeOne)
                     MaxCardCountSelection.ONE_DECK
                 }
                 is SettingsData.Cards.TwoDecks -> {
                     _stopAtMaxCardCount.postValue(settingsData.stopAtHighCard)
+                    _tipsCanBeOneInFirstRound.postValue(settingsData.firstRoundTipsCanBeOne)
                     MaxCardCountSelection.TWO_DECKS
                 }
                 is SettingsData.Cards.Individual -> {
                     _stopAtMaxCardCount.postValue(settingsData.stopAtHighCard)
+                    _tipsCanBeOneInFirstRound.postValue(settingsData.firstRoundTipsCanBeOne)
                     individualCardCountValue.postValue(settingsData.count.toString())
                     MaxCardCountSelection.INDIVIDUAL
                 }
@@ -129,7 +136,7 @@ class GameRulesViewModel(
         val highCardCount = getHighCardCount(selection)
         val totalRounds = totalRounds.value ?: highCardCount * 2
         val stopElevatorAtHighCard = stopAtMaxCardCount.value ?: (totalRounds % 2 == 0)
-
+        val firstRoundTipsCanBeOne = _tipsCanBeOneInFirstRound.value ?: true
         trackEvents()
         navigateTo(
             Screen.GameRules.PointRules(
@@ -138,7 +145,8 @@ class GameRulesViewModel(
                     highCardCount,
                     totalRounds,
                     stopElevatorAtHighCard,
-                    selection
+                    selection,
+                    firstRoundTipsCanBeOne
                 )
             )
         )
@@ -177,7 +185,7 @@ class GameRulesViewModel(
         if (checked == showTrumpDialogEnabled.value) return
         viewModelScope.launch {
             when (val result = setShowTrumpDialogEnabledUseCase.invoke(checked)) {
-                is AppResult.Success -> Unit
+                is AppResult.Success -> _showTrumpDialogEnabled.postValue(checked)
                 is AppResult.Error -> Unit
             }
         }
@@ -189,5 +197,9 @@ class GameRulesViewModel(
 
     fun onInfoIconClicked() {
         navigateTo(Screen.GameRules.Info(stopAtMaxCardCount.value ?: true))
+    }
+
+    fun onFirstRoundTipsCanBeOneChanged(checked: Boolean) {
+        _tipsCanBeOneInFirstRound.postValue(checked)
     }
 }

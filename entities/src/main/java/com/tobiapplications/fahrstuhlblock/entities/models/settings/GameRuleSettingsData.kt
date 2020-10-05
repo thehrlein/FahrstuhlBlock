@@ -7,5 +7,6 @@ data class GameRuleSettingsData(
     val highCardCount: Int,
     val totalRounds: Int,
     val stopElevatorAtHighCard: Boolean,
-    val maxCardCountSelection: MaxCardCountSelection
+    val maxCardCountSelection: MaxCardCountSelection,
+    val firstRoundTipsCanBeOne: Boolean
 ) : Serializable

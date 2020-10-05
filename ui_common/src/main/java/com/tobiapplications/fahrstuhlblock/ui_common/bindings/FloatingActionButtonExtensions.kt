@@ -19,7 +19,7 @@ fun ExtendedFloatingActionButton.setFabIconAndText(inputType: InputType?, gameFi
     setIconResource(
         when {
             gameFinished -> R.drawable.ic_exit
-            else ->R.drawable.ic_add
+            else -> R.drawable.ic_add
         }
     )
 

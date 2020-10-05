@@ -32,7 +32,7 @@ class GameTest {
         )
 
         assertThat(game.maxRound, `is`(10))
-        assertThat(game.previousTotals, `is`(listOf(0,0,0)))
+        assertThat(game.previousTotals, `is`(listOf(0, 0, 0)))
         assertThat(game.lastPlayedGameRound, `is`(nullValue()))
         assertThat(game.lastRoundNumber, `is`(nullValue()))
         assertThat(game.inputType, `is`(InputType.TIPP))

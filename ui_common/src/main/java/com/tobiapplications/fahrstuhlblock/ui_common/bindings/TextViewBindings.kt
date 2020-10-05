@@ -18,7 +18,7 @@ fun TextView.setResultText(value: Int?) {
 @BindingAdapter("differenceText")
 fun TextView.setDifferenceText(value: Int?) {
     text = value?.let {
-        setTextColor(ContextCompat.getColor(context, if (it > 0)  R.color.block_result_positive_difference else R.color.block_result_negative_difference))
+        setTextColor(ContextCompat.getColor(context, if (it > 0) R.color.block_result_positive_difference else R.color.block_result_negative_difference))
         it.toString()
     }
 }
