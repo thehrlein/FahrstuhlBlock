@@ -80,7 +80,6 @@ class BlockInputAdapter(
             binding.executeAfter {
                 this.item = inputDataItem
             }
-
             interactions.onInputChanged()
         }
     }
