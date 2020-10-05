@@ -8,7 +8,7 @@ trigger:
 
 pool:
   vmImage: 'macos-latest'
-  
+
 variables:
   - group: fahrstuhlBlockVariables  
 
@@ -38,12 +38,6 @@ steps:
     name: release_key
     inputs:
       secureFile: 'release_key.jks'
-
-  - bash: echo secure stuff
-  - bash: echo $(release_key.secureFilePath)
-  - bash: echo $(releaseKeyStorePassword)
-  - bash: echo $(releaseKeyPassword)
-  - bash: echo $(releaseAlias)      
   - task: Gradle@2
     inputs:
       workingDirectory: ''
