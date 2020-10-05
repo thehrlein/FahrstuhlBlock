@@ -8,9 +8,9 @@ trigger:
 
 pool:
   vmImage: 'macos-latest'
-
+  
 variables:
-  - group: fahrstuhlBlockVariables
+  - group: fahrstuhlBlockVariables  
 
 steps:
   - task: PowerShell@2
@@ -35,9 +35,15 @@ steps:
             "* $($change.message)" | Add-Content -Path $changelogPath
           }
   - task: DownloadSecureFile@1
-    name: keystore
+    name: release_key
     inputs:
       secureFile: 'release_key.jks'
+
+  - bash: echo secure stuff
+  - bash: echo $(release_key.secureFilePath)
+  - bash: echo $(releaseKeyStorePassword)
+  - bash: echo $(releaseKeyPassword)
+  - bash: echo $(releaseAlias)      
   - task: Gradle@2
     inputs:
       workingDirectory: ''
@@ -45,8 +51,15 @@ steps:
       gradleOptions: '-Xmx3072m'
       publishJUnitResults: false
       testResultsFiles: '**/TEST-*.xml'
-      options: '--build-cache -PkeyStorePassword="$(releaseKeyStorePassword)" -PkeyAlias="$(key-alias)" -PkeyPassword="$(releaseKeyPassword)" -PkeyStoreLocation="$(keystore.secureFilePath)" -PversionCode=$(Build.BuildNumber)'
-      tasks: 'check assembleDebug'
+      tasks: 'assembleRelease'
+  - task: AndroidSigning@3
+    inputs:
+      apkFiles: '**/*.apk'
+      apksign: true
+      apksignerKeystoreFile: 'release_key.jks'
+      apksignerKeystorePassword: '$(releaseKeyStorePassword)'
+      apksignerKeystoreAlias: '$(releaseAlias)'
+      apksignerKeyPassword: '$(releaseKeyPassword)'
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
@@ -57,13 +70,3 @@ steps:
   - task: PublishBuildArtifacts@1
     inputs:
       ArtifactName: buildRelease
-=======
-- task: Gradle@2
-  inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    publishJUnitResults: false
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'assembleDebug'
->>>>>>> Set up CI with Azure Pipelines
