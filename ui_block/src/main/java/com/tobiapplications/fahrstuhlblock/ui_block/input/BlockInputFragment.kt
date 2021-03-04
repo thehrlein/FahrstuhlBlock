@@ -1,5 +1,7 @@
 package com.tobiapplications.fahrstuhlblock.ui_block.input
 
+import android.content.res.ColorStateList
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import android.view.*
@@ -9,12 +11,15 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputViewModel
 import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentBlockInputBinding
+import com.tobiapplications.fahrstuhlblock.ui_common.R.*
 import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFragment
+import com.tobiapplications.fahrstuhlblock.ui_common.extension.getColorReference
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -57,6 +62,10 @@ class BlockInputFragment :
             )
         })
 
+        viewModel.trumpType.observe(viewLifecycleOwner, {
+            requireActivity().invalidateOptionsMenu()
+        })
+
         initAdapter()
     }
 
@@ -85,6 +94,13 @@ class BlockInputFragment :
                 R.color.color_on_primary
             )
         )
+        val toolbarIcon = setToolbarTrumpIcon(viewModel.trumpType.value)
+        menu.findItem(R.id.action_trump).apply {
+            icon = toolbarIcon?.first
+            isVisible = toolbarIcon != null
+            title = toolbarIcon?.second
+        }
+
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -95,6 +111,34 @@ class BlockInputFragment :
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun setToolbarTrumpIcon(trumpType: TrumpType?) : Pair<Drawable?, String>? {
+        return context?.let {
+            when (trumpType) {
+                TrumpType.CLUB -> {
+                    Pair(it.getDrawable(drawable.ic_card_club)?.apply {
+                        setTintList(ColorStateList.valueOf(it.getColorReference(attr.colorOnPrimary)))
+                    }, it.getString(R.string.block_trump_type_clubs))
+                }
+                TrumpType.SPADE -> {
+                    Pair(it.getDrawable(drawable.ic_card_spade)?.apply {
+                        setTintList(ColorStateList.valueOf(it.getColorReference(attr.colorOnPrimary)))
+                    }, it.getString(R.string.block_trump_type_spades))
+                }
+                TrumpType.HEART -> {
+                    Pair(it.getDrawable(drawable.ic_card_heart)?.apply {
+                        setTintList(ColorStateList.valueOf(ContextCompat.getColor(it, color.color_card_red)))
+                    }, it.getString(R.string.block_trump_type_hearts))
+                }
+                TrumpType.DIAMOND -> {
+                    Pair(it.getDrawable(drawable.ic_card_diamond)?.apply {
+                        setTintList(ColorStateList.valueOf(ContextCompat.getColor(it, color.color_card_red)))
+                    }, it.getString(R.string.block_trump_type_diamonds))
+                }
+                else -> null
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.entities.models.game.general.*
 import com.tobiapplications.fahrstuhlblock.entities.models.game.input.*
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.block.*
 import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
 import kotlinx.coroutines.launch
@@ -31,6 +32,8 @@ class BlockInputViewModel(
     val inputsValid: LiveData<Boolean> = _inputsValid
     private val _summedInputs = MutableLiveData<Int>()
     val summedInputs: LiveData<Int> = _summedInputs
+    private val _trumpType = MutableLiveData<TrumpType>()
+    val trumpType: LiveData<TrumpType> = _trumpType
 
     init {
         getCurrentGame()
@@ -46,7 +49,8 @@ class BlockInputViewModel(
     }
 
     private fun setInputModels(game: Game) {
-        _game.postValue(game)
+        _game.value = game
+        _trumpType.value = game.currentGameRound?.trumpType
         viewModelScope.launch {
             when (val result = getBlockInputModelsUseCase.invoke(game)) {
                 is AppResult.Success -> {
@@ -138,19 +142,23 @@ class BlockInputViewModel(
         _summedInputs.postValue(data.inputSum)
 
         viewModelScope.launch {
-            _inputsValid.postValue(when (val result = inputsValidUseCase.invoke(data)) {
-                is AppResult.Success -> result.value
-                is AppResult.Error -> false
-            })
+            _inputsValid.postValue(
+                when (val result = inputsValidUseCase.invoke(data)) {
+                    is AppResult.Success -> result.value
+                    is AppResult.Error -> false
+                }
+            )
         }
     }
 
     fun onInfoIconClicked() {
         val game = _game.value ?: error("could not determine game")
-        navigateTo(Screen.Input.Info(
-            inputType = game.inputType,
-            cardCount = game.currentCardCount,
-            round = game.currentRoundNumber
-        ))
+        navigateTo(
+            Screen.Input.Info(
+                inputType = game.inputType,
+                cardCount = game.currentCardCount,
+                round = game.currentRoundNumber
+            )
+        )
     }
 }

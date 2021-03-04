@@ -81,6 +81,8 @@
     <string name="block_input_result_message">Die Anzahl eurer Ergebnisse müssen %1$d ergeben</string>
     <string name="block_input_enter_tipps">Tripps eintragen%1$s</string>
     <string name="block_input_enter_results">Ergebnisse eintragen%1$s</string>
+    <string name="block_input_action_info_title">Info</string>
+    <string name="block_input_action_trump_title">Trumpf</string>
 
     <!-- Block scores -->
     <string name="block_scores_toolbar_title">Aktueller Stand</string>
