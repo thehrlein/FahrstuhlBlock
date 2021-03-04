@@ -39,4 +39,7 @@ interface GameRepository {
     suspend fun getBlockInputData(game: Game): AppResult<InputData>
 
     suspend fun removeRound(deleteRoundData: DeleteRoundData): AppResult<Unit>
+
+    suspend fun deleteGame(gameId: Long): AppResult<Unit>
+
 }

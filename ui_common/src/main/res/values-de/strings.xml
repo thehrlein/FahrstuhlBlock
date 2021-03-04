@@ -110,5 +110,6 @@
     <string name="saved_game_start_date">Startzeit</string>
     <string name="saved_game_player_names">Spieler</string>
     <string name="saved_game_rounds">Runde</string>
+    <string name="saved_game_finished">Beended</string>
 
 </resources>

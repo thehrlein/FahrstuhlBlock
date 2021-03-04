@@ -131,5 +131,6 @@
     <string name="saved_game_start_date">Startdate</string>
     <string name="saved_game_player_names">Player names</string>
     <string name="saved_game_rounds">Round</string>
+    <string name="saved_game_finished">Finished</string>
 
 </resources>

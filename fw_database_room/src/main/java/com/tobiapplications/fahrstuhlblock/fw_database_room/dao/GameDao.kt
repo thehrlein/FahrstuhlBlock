@@ -32,4 +32,17 @@ interface GameDao {
 
     @Query("SELECT * FROM GAME_DATABASE ORDER BY gameId DESC LIMIT 1")
     fun getLastGameInfo(): DbGameInfo
+
+    @Transaction
+    fun deleteGame(gameId: Long) {
+        deleteGameInfo(gameId)
+        deleteGameRounds(gameId)
+    }
+
+    @Query("DELETE FROM GAME_DATABASE WHERE gameId = :gameId")
+    fun deleteGameInfo(gameId: Long)
+
+    @Query("DELETE FROM GAME_ROUNDS WHERE gameId = :gameId")
+    fun deleteGameRounds(gameId: Long)
+
 }
