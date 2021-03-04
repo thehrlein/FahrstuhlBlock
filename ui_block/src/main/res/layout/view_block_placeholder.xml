@@ -15,6 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/block_cell_height"
+        android:background="@drawable/fb_border_bottom_right"
         android:padding="@dimen/space_1">
 
         <ImageView
