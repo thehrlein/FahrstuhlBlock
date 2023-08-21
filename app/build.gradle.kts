@@ -34,7 +34,7 @@ android {
         create("release") {
             keyAlias = releaseAlias
             keyPassword = releaseKeyPassword
-            storeFile = file("signing/app/release_key.jks")
+            storeFile = file("../signing/app/release_key.jks")
             storePassword = releaseKeyStorePassword
         }
     }
