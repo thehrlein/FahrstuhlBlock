@@ -45,7 +45,7 @@
     <string name="game_rules_toolbar_title">Game rules</string>
     <string name="game_rules_card_count_title">How many rounds do you want to play?</string>
     <string name="game_rules_other_settings_title">General rules</string>
-    <string name="game_rules_card_count_description_stop_at_highcard">he game starts with one card and increases by one up to the highest card count and afterwards decreases again by one down to one card. So if you select e.g. 10 cards, you\'ll play 20 rounds.</string>
+    <string name="game_rules_card_count_description_stop_at_highcard">The game starts with one card and increases by one up to the highest card count and afterwards decreases again by one down to one card. So if you select e.g. 10 cards, you\'ll play 20 rounds.</string>
     <string name="game_rules_card_count_description_dont_stop_at_highcard">The game starts with one card and increases by one up to the highest card count and afterwards decreases again by one down to one card. So if you select e.g. 10 cards, you\'ll play 19 rounds.</string>
     <string name="game_rules_cards_options_one_deck">One deck (32 cards)</string>
     <string name="game_rules_cards_options_two_decks">Two decks (64 cards)</string>

@@ -69,7 +69,7 @@ class GameCacheImpl(
             }
         }
 
-    override suspend fun deleteGame(gameId: Long) : AppResult<Unit> =
+    override suspend fun deleteGame(gameId: Long): AppResult<Unit> =
         withContext(Dispatchers.IO) {
             safeCall {
                 gameDao.deleteGame(gameId)

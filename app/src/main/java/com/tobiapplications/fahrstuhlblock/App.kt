@@ -3,8 +3,6 @@ package com.tobiapplications.fahrstuhlblock
 import android.app.Application
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
-import com.microsoft.appcenter.AppCenter
-import com.microsoft.appcenter.crashes.Crashes
 import com.tobiapplications.fahrstuhlblock.koin.Koin
 import com.tobiapplications.fahrstuhlblock.koin.KoinLogger
 import org.koin.android.ext.koin.androidContext
@@ -19,20 +17,13 @@ class App : Application() {
         initKoin()
         initLogger()
         initFirebase()
-        initAppCenter()
     }
 
     private fun initKoin() {
         startKoin {
             logger(KoinLogger())
             androidContext(this@App)
-//            modules(Koin.getModules())
-
-            // TODO Await fix for Koin and replace the explicit invocations
-            //  of loadModules() and createRootScope() with a single call to modules()
-            //  (https://github.com/InsertKoinIO/koin/issues/847)
-            koin.loadModules(Koin.getModules())
-            koin.createRootScope()
+            modules(Koin.getModules())
         }
     }
 
@@ -44,9 +35,5 @@ class App : Application() {
 
     private fun initFirebase() {
         Firebase.initialize(this)
-    }
-
-    private fun initAppCenter() {
-        AppCenter.start(this, getString(R.string.app_center_key), Crashes::class.java)
     }
 }

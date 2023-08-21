@@ -21,7 +21,7 @@ class PlayerSettingsFragment : BaseToolbarFragment<PlayerSettingsViewModel, Game
     override fun onBindingCreated(savedInstanceState: Bundle?) {
         super.onBindingCreated(savedInstanceState)
 
-        activityToolbarViewModel.setTitle(getString(R.string.player_settings_toolbar_title))
+        activityToolbarViewModel.setTitle(getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.player_settings_toolbar_title))
 
         binding.playerCountChooseButtonGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {

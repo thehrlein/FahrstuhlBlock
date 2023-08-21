@@ -34,21 +34,21 @@ class TrumpSelectionGroup @JvmOverloads constructor(
         binding.groupTwo.removeAllViews()
 
         binding.groupOne.addView(TrumpSelectionItem(context).apply {
-            setItem(Trump(context.getString(R.string.block_trump_type_clubs), TrumpType.CLUB)) {
+            setItem(Trump(context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_trump_type_clubs), TrumpType.CLUB)) {
                 setTrumpSelected(it)
             }
         }.also {
             items[TrumpType.CLUB] = it
         })
         binding.groupOne.addView(TrumpSelectionItem(context).apply {
-            setItem(Trump(context.getString(R.string.block_trump_type_spades), TrumpType.SPADE)) {
+            setItem(Trump(context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_trump_type_spades), TrumpType.SPADE)) {
                 setTrumpSelected(it)
             }
         }.also {
             items[TrumpType.SPADE] = it
         })
         binding.groupTwo.addView(TrumpSelectionItem(context).apply {
-            setItem(Trump(context.getString(R.string.block_trump_type_hearts), TrumpType.HEART)) {
+            setItem(Trump(context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_trump_type_hearts), TrumpType.HEART)) {
                 setTrumpSelected(it)
             }
         }.also {
@@ -57,7 +57,7 @@ class TrumpSelectionGroup @JvmOverloads constructor(
         binding.groupTwo.addView(TrumpSelectionItem(context).apply {
             setItem(
                 Trump(
-                    context.getString(R.string.block_trump_type_diamonds),
+                    context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_trump_type_diamonds),
                     TrumpType.DIAMOND
                 )
             ) {

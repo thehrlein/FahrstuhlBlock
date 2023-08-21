@@ -41,7 +41,7 @@ class PlayerOrderFragment :
     override fun onBindingCreated(savedInstanceState: Bundle?) {
         super.onBindingCreated(savedInstanceState)
 
-        activityToolbarViewModel.setTitle(getString(R.string.player_order_toolbar_title))
+        activityToolbarViewModel.setTitle(getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.player_order_toolbar_title))
 
         PlayerOrderAdapter(viewModel)
             .also { playerOrderAdapter ->
@@ -66,10 +66,10 @@ class PlayerOrderFragment :
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_player_order, menu)
-        menu.findItem(R.id.action_info).icon.setTint(
+        menu.findItem(R.id.action_info).icon?.setTint(
             ContextCompat.getColor(
                 requireContext(),
-                R.color.color_on_primary
+                com.tobiapplications.fahrstuhlblock.ui_common.R.color.color_on_primary
             )
         )
         super.onCreateOptionsMenu(menu, inflater)

@@ -2,43 +2,40 @@
 object Dependencies {
 
     object AndroidX {
-        private const val appCompatVersion = "1.3.0-alpha01"
-        private const val coreVersion = "1.5.0-alpha01"
-        private const val constraintLayoutVersion = "2.0.0-beta7"
-        private const val pagingVersion = "3.0.0-alpha04"
+        private const val appCompatVersion = "1.6.1"
+        private const val coreVersion = "1.10.1"
+        private const val constraintLayoutVersion = "2.1.4"
         private const val securityVersion = "1.1.0-alpha02"
-        private const val swipeRefreshVersion = "1.2.0-alpha01"
+        private const val swipeRefreshVersion = "1.1.0"
 
         const val appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
         const val coreKtx = "androidx.core:core-ktx:$coreVersion"
         const val constraintLayout =
             "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
-        const val paging = "androidx.paging:paging-runtime-ktx:$pagingVersion"
         const val security = "androidx.security:security-crypto:$securityVersion"
         const val swipeToRefresh =
             "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshVersion"
 
         object LifeCycle {
-            private const val lifecycleVersion = "2.2.0"
-            private const val lifecycleLiveDataVersion = "2.3.0-alpha06"
-            private const val lifecycleViewModelVersion = "2.3.0-alpha06"
+            private const val lifecycleVersion = "2.6.1"
 
-            const val extensions = "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+            const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
             const val livedataExtensions =
-                "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleLiveDataVersion"
+                "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
             const val viewModelExtensions =
-                "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleViewModelVersion"
+                "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
         }
 
         object Navigation {
-            private const val navigationVersion = "2.3.0"
+            // Do not update to 2.7.0+ if not targeting api 34
+            private const val navigationVersion = "2.6.0"
 
             const val fragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
             const val ui = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
         }
 
         object Room {
-            private const val roomVersion = "2.3.0-alpha02"
+            private const val roomVersion = "2.5.2"
 
             const val runtime = "androidx.room:room-runtime:$roomVersion"
             const val compiler = "androidx.room:room-compiler:$roomVersion"
@@ -70,32 +67,30 @@ object Dependencies {
     }
 
     object Google {
-        private const val gsonVersion = "2.8.6"
-        private const val materialVersion = "1.3.0-alpha02"
+        private const val gsonVersion = "2.10.1"
+        private const val materialVersion = "1.9.0"
 
         const val gson = "com.google.code.gson:gson:$gsonVersion"
         const val material = "com.google.android.material:material:$materialVersion"
 
         object Firebase {
-            private const val analyticsVersion = "17.5.0"
-            private const val crashlyticsVersion = "17.2.1"
-            private const val messagingVersion = "20.2.4"
-            private const val performanceVersion = "19.0.8"
+            private const val firebaseVersion = "32.2.2"
 
-            const val analytics = "com.google.firebase:firebase-analytics-ktx:$analyticsVersion"
-            const val crashlytics = "com.google.firebase:firebase-crashlytics:$crashlyticsVersion"
-            const val messaging = "com.google.firebase:firebase-messaging:$messagingVersion"
-            const val performance = "com.google.firebase:firebase-perf:$performanceVersion"
+            const val bom = "com.google.firebase:firebase-bom:$firebaseVersion"
+            const val analytics = "com.google.firebase:firebase-analytics-ktx"
+            const val crashlytics = "com.google.firebase:firebase-crashlytics"
+            const val messaging = "com.google.firebase:firebase-messaging"
+            const val performance = "com.google.firebase:firebase-perf"
         }
     }
 
     object Kotlin {
-        const val kotlinVersion = "1.4.10"
+        const val kotlinVersion = "1.8.10"
 
         const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
         object Coroutine {
-            private const val coroutineVersion = "1.3.9"
+            private const val coroutineVersion = "1.7.3"
 
             const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
             const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion"
@@ -103,16 +98,13 @@ object Dependencies {
     }
 
     object Koin {
-        private const val koinVersion = "2.1.6"
+        private const val koinVersion = "3.4.3"
 
-        const val core = "org.koin:koin-core:$koinVersion"
-        const val android = "org.koin:koin-android:$koinVersion"
-        const val scope = "org.koin:koin-androidx-scope:$koinVersion"
-        const val viewModel = "org.koin:koin-androidx-viewmodel:$koinVersion"
+        const val android = "io.insert-koin:koin-android:$koinVersion"
     }
 
     object Network {
-        private const val okHttp3Version = "4.8.1"
+        private const val okHttp3Version = "4.9.3"
         private const val retrofitVersion = "2.9.0"
         private const val mockWebServerVersion = "4.2.2"
 
@@ -130,21 +122,13 @@ object Dependencies {
         const val kotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:$kotlinVersion"
     }
 
-    object AppCenter {
-        private const val appCenterVersion = "3.3.1"
-
-        const val crashes = "com.microsoft.appcenter:appcenter-crashes:$appCenterVersion"
-    }
-
     object Other {
-        private const val coilVersion = "0.11.0"
-        private const val debugDbVersion = "1.0.6"
-        private const val konfettiVersion = "1.2.2"
-        private const val timberVersion = "4.7.1"
-        private const val jUnitVersion = "4.13"
+        private const val coilVersion = "2.4.0"
+        private const val konfettiVersion = "1.3.2"
+        private const val timberVersion = "5.0.1"
+        private const val jUnitVersion = "4.13.2"
 
         const val coil = "io.coil-kt:coil:$coilVersion"
-        const val debugDb = "com.amitshekhar.android:debug-db:$debugDbVersion"
         const val konfetti = "nl.dionsegijn:konfetti:$konfettiVersion"
         const val timber = "com.jakewharton.timber:timber:$timberVersion"
         const val junit = "junit:junit:$jUnitVersion"
@@ -153,7 +137,7 @@ object Dependencies {
 
 object Classpaths {
 
-    private const val buildToolsVersion = "3.6.1"
+    private const val buildToolsVersion = "8.0.0"
     private const val firebaseCrashlyticsVersion = "2.2.0"
     private const val firebasePerformanceVersion = "1.3.1"
     private const val googleServicesVersion = "4.3.3"
@@ -180,6 +164,7 @@ object BuildPlugins {
     const val kotlinAndroid = "kotlin-android"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
     const val kotlinKapt = "kotlin-kapt"
+    const val ksp = "com.google.devtools.ksp"
     const val gradleUpdater = "com.github.ben-manes.versions"
     const val googleServices = "com.google.gms.google-services"
     const val firebaseCrashlytics = "com.google.firebase.crashlytics"
@@ -194,9 +179,9 @@ object BuildPlugins {
 
 object AndroidSdkTools {
 
-    const val minSdk = 21
-    const val targetSdk = 30
-    const val compileSdk = 30
+    const val minSdk = 24
+    const val targetSdk = 33
+    const val compileSdk = 33
     const val version_code = 5
     const val version_name = "1.0.1"
     const val application_id = "com.tobiapplications.fahrstuhlblock"
@@ -205,7 +190,7 @@ object AndroidSdkTools {
 object Others {
 
     const val ANDROID_JUNIT_TEST_IMPLEMENTATION_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
-    const val JVM_TARGET = "1.8"
+    const val JVM_TARGET = "17"
 }
 
 object Module {

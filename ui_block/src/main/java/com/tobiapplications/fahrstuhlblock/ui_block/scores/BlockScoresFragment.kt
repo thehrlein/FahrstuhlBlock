@@ -25,7 +25,7 @@ class BlockScoresFragment : BaseToolbarFragment<BlockScoresViewModel, BlockViewM
     override fun onBindingCreated(savedInstanceState: Bundle?) {
         super.onBindingCreated(savedInstanceState)
 
-        activityToolbarViewModel.setTitle(getString(R.string.block_scores_toolbar_title))
+        activityToolbarViewModel.setTitle(getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_scores_toolbar_title))
 
         initAdapter()
     }

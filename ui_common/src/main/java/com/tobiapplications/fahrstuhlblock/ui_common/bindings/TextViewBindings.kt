@@ -26,7 +26,7 @@ fun TextView.setDifferenceText(value: Int?) {
 @BindingAdapter("inputTitle")
 fun TextView.setInputTitle(game: Game?) {
     if (game?.currentRoundNumber == null) return
-    text = context.getString(R.string.block_input_general_title, game.currentRoundNumber, game.currentCardCount)
+    text = context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_input_general_title, game.currentRoundNumber, game.currentCardCount)
 }
 
 @BindingAdapter("inputMessage", "game", requireAll = true)
@@ -34,15 +34,15 @@ fun TextView.setInputMessage(inputType: InputType?, game: Game?) {
     if (inputType == null || game?.currentCardCount == null) return
     setVisible(game.currentRoundNumber > 1 || inputType == InputType.RESULT)
     text = when (inputType) {
-        InputType.TIPP -> context.getString(R.string.block_input_tipps_message, game.currentCardCount)
-        InputType.RESULT -> context.getString(R.string.block_input_result_message, game.currentCardCount)
+        InputType.TIPP -> context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_input_tipps_message, game.currentCardCount)
+        InputType.RESULT -> context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_input_result_message, game.currentCardCount)
     }
 }
 
 @BindingAdapter("position")
 fun TextView.setPosition(pos: Int?) {
     if (pos == null) return
-    text = context.getString(R.string.block_scores_position, pos)
+    text = context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_scores_position, pos)
 }
 
 @BindingAdapter("bold")
@@ -53,5 +53,5 @@ fun TextView.setBold(bold: Boolean?) {
 @BindingAdapter("totalRounds")
 fun TextView.setTotalRounds(totalRounds: Int?) {
     if (totalRounds == null) return
-    text = context.getString(R.string.game_rules_total_rounds, totalRounds)
+    text = context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.game_rules_total_rounds, totalRounds)
 }

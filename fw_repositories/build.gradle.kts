@@ -1,13 +1,30 @@
 plugins {
     id(BuildPlugins.androidLibrary)
     id(BuildPlugins.kotlinAndroid)
-    id(BuildPlugins.kotlinAndroidExtensions)
     id(BuildPlugins.kotlinKapt)
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
-    kotlinOptions {
-        jvmTarget = Others.JVM_TARGET
+android {
+    namespace = "com.tobiapplications.fahrstuhlblock.fw_repositories"
+    compileSdk = AndroidSdkTools.compileSdk
+
+    defaultConfig {
+        minSdk = AndroidSdkTools.minSdk
+        testInstrumentationRunner = Others.ANDROID_JUNIT_TEST_IMPLEMENTATION_RUNNER
+
+        // possibility to colorize vector drawable in xml based on color resources (< API 24)
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
+        kotlinOptions {
+            jvmTarget = Others.JVM_TARGET
+        }
     }
 }
 
@@ -26,6 +43,7 @@ dependencies {
     implementation(Dependencies.AndroidX.LifeCycle.livedataExtensions)
 
     // Google
+    implementation(platform(Dependencies.Google.Firebase.bom))
     implementation(Dependencies.Google.Firebase.analytics)
 
     // Kotlin
@@ -35,7 +53,7 @@ dependencies {
     implementation(Dependencies.Network.gsonConverter)
 
     // Koin
-    implementation(Dependencies.Koin.core)
+    implementation(Dependencies.Koin.android)
 
     // Logging
     implementation(Dependencies.Other.timber)

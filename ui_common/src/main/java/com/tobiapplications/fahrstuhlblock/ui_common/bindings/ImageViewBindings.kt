@@ -14,11 +14,11 @@ fun ImageView.setTrump(trumpType: TrumpType?) {
         when (trumpType) {
             TrumpType.CLUB -> {
                 setImageResource(R.drawable.ic_card_club)
-                imageTintList = ColorStateList.valueOf(context.getColorReference(R.attr.colorOnBackground))
+                imageTintList = ColorStateList.valueOf(context.getColorReference(com.google.android.material.R.attr.colorOnBackground))
             }
             TrumpType.SPADE -> {
                 setImageResource(R.drawable.ic_card_spade)
-                imageTintList = ColorStateList.valueOf(context.getColorReference(R.attr.colorOnBackground))
+                imageTintList = ColorStateList.valueOf(context.getColorReference(com.google.android.material.R.attr.colorOnBackground))
             }
             TrumpType.HEART -> {
                 setImageResource(R.drawable.ic_card_heart)

@@ -4,6 +4,7 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.*
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
@@ -17,7 +18,6 @@ import com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputVi
 import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentBlockInputBinding
-import com.tobiapplications.fahrstuhlblock.ui_common.R.*
 import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFragment
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.getColorReference
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -54,17 +54,17 @@ class BlockInputFragment :
             activityToolbarViewModel.setTitle(
                 getString(
                     when (it) {
-                        InputType.TIPP -> R.string.block_input_toolbar_title_tipps
-                        InputType.RESULT -> R.string.block_input_toolbar_title_results
+                        InputType.TIPP -> com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_input_toolbar_title_tipps
+                        InputType.RESULT -> com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_input_toolbar_title_results
                         else -> error("could not determine input type")
                     }
                 )
             )
         })
 
-        viewModel.trumpType.observe(viewLifecycleOwner, {
+        viewModel.trumpType.observe(viewLifecycleOwner) {
             requireActivity().invalidateOptionsMenu()
-        })
+        }
 
         initAdapter()
     }
@@ -76,22 +76,22 @@ class BlockInputFragment :
                 addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
             }
 
-            viewModel.inputModelsItem.observe(viewLifecycleOwner, Observer {
+            viewModel.inputModelsItem.observe(viewLifecycleOwner) {
                 blockInputAdapter.submitList(it)
 
-                Handler().postDelayed({
+                Handler(Looper.getMainLooper()).postDelayed({
                     binding.blockInputSwitcher.displayedChild = BLOCK_INPUT_INDEX
                 }, BLOCK_INPUT_DELAY)
-            })
+            }
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_input, menu)
-        menu.findItem(R.id.action_info).icon.setTint(
+        menu.findItem(R.id.action_info).icon?.setTint(
             ContextCompat.getColor(
                 requireContext(),
-                R.color.color_on_primary
+                com.tobiapplications.fahrstuhlblock.ui_common.R.color.color_on_primary
             )
         )
         val toolbarIcon = setToolbarTrumpIcon(viewModel.trumpType.value)
@@ -114,28 +114,28 @@ class BlockInputFragment :
         }
     }
 
-    private fun setToolbarTrumpIcon(trumpType: TrumpType?) : Pair<Drawable?, String>? {
+    private fun setToolbarTrumpIcon(trumpType: TrumpType?): Pair<Drawable?, String>? {
         return context?.let {
             when (trumpType) {
                 TrumpType.CLUB -> {
-                    Pair(it.getDrawable(drawable.ic_card_club)?.apply {
-                        setTintList(ColorStateList.valueOf(it.getColorReference(attr.colorOnPrimary)))
-                    }, it.getString(R.string.block_trump_type_clubs))
+                    Pair(it.getDrawable(com.tobiapplications.fahrstuhlblock.ui_common.R.drawable.ic_card_club)?.apply {
+                        setTintList(ColorStateList.valueOf(it.getColorReference(com.google.android.material.R.attr.colorOnPrimary)))
+                    }, it.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_trump_type_clubs))
                 }
                 TrumpType.SPADE -> {
-                    Pair(it.getDrawable(drawable.ic_card_spade)?.apply {
-                        setTintList(ColorStateList.valueOf(it.getColorReference(attr.colorOnPrimary)))
-                    }, it.getString(R.string.block_trump_type_spades))
+                    Pair(it.getDrawable(com.tobiapplications.fahrstuhlblock.ui_common.R.drawable.ic_card_spade)?.apply {
+                        setTintList(ColorStateList.valueOf(it.getColorReference(com.google.android.material.R.attr.colorOnPrimary)))
+                    }, it.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_trump_type_spades))
                 }
                 TrumpType.HEART -> {
-                    Pair(it.getDrawable(drawable.ic_card_heart)?.apply {
-                        setTintList(ColorStateList.valueOf(ContextCompat.getColor(it, color.color_card_red)))
-                    }, it.getString(R.string.block_trump_type_hearts))
+                    Pair(it.getDrawable(com.tobiapplications.fahrstuhlblock.ui_common.R.drawable.ic_card_heart)?.apply {
+                        setTintList(ColorStateList.valueOf(ContextCompat.getColor(it, com.tobiapplications.fahrstuhlblock.ui_common.R.color.color_card_red)))
+                    }, it.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_trump_type_hearts))
                 }
                 TrumpType.DIAMOND -> {
-                    Pair(it.getDrawable(drawable.ic_card_diamond)?.apply {
-                        setTintList(ColorStateList.valueOf(ContextCompat.getColor(it, color.color_card_red)))
-                    }, it.getString(R.string.block_trump_type_diamonds))
+                    Pair(it.getDrawable(com.tobiapplications.fahrstuhlblock.ui_common.R.drawable.ic_card_diamond)?.apply {
+                        setTintList(ColorStateList.valueOf(ContextCompat.getColor(it, com.tobiapplications.fahrstuhlblock.ui_common.R.color.color_card_red)))
+                    }, it.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_trump_type_diamonds))
                 }
                 else -> null
             }

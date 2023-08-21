@@ -1,11 +1,78 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+
 plugins {
     id(BuildPlugins.androidApplication)
     id(BuildPlugins.kotlinAndroid)
-    id(BuildPlugins.kotlinAndroidExtensions)
     id(BuildPlugins.kotlinKapt)
     id(BuildPlugins.googleServices)
     id(BuildPlugins.firebaseCrashlytics)
     id(BuildPlugins.firebasePerformance)
+}
+
+android {
+    val releaseAlias: String by project.rootProject.ext
+    val releaseKeyPassword: String by project.rootProject.ext
+    val releaseKeyStorePassword: String by project.rootProject.ext
+
+    namespace = AndroidSdkTools.application_id
+
+    compileSdk = AndroidSdkTools.compileSdk
+    defaultConfig {
+        applicationId = AndroidSdkTools.application_id
+        minSdk = AndroidSdkTools.minSdk
+        targetSdk = AndroidSdkTools.targetSdk
+        versionCode = AndroidSdkTools.version_code
+        versionName = AndroidSdkTools.version_name
+        testInstrumentationRunner = Others.ANDROID_JUNIT_TEST_IMPLEMENTATION_RUNNER
+
+        // possibility to colorize vector drawable in xml based on color resources (< API 24)
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    signingConfigs {
+        create("release") {
+            keyAlias = releaseAlias
+            keyPassword = releaseKeyPassword
+            storeFile = file("signing/app/release_key.jks")
+            storePassword = releaseKeyStorePassword
+        }
+    }
+
+    buildTypes {
+        named("debug") {
+            isMinifyEnabled = false
+            applicationIdSuffix = ".debug"
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        named("release") {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            signingConfig = signingConfigs.getByName("release")
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    tasks.withType<KotlinCompile>().all {
+        kotlinOptions {
+            jvmTarget = Others.JVM_TARGET
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
+        buildConfig = true
+    }
 }
 
 dependencies {
@@ -25,6 +92,7 @@ dependencies {
 
     // Google
     implementation(Dependencies.Google.material)
+    implementation(platform(Dependencies.Google.Firebase.bom))
     implementation(Dependencies.Google.Firebase.analytics)
     implementation(Dependencies.Google.Firebase.crashlytics)
     implementation(Dependencies.Google.Firebase.performance)
@@ -34,7 +102,7 @@ dependencies {
     implementation(Dependencies.AndroidX.appCompat)
     implementation(Dependencies.AndroidX.coreKtx)
     implementation(Dependencies.AndroidX.constraintLayout)
-    implementation(Dependencies.AndroidX.LifeCycle.extensions)
+    implementation(Dependencies.AndroidX.LifeCycle.runtime)
     implementation(Dependencies.AndroidX.LifeCycle.viewModelExtensions)
     implementation(Dependencies.AndroidX.LifeCycle.livedataExtensions)
     implementation(Dependencies.AndroidX.Navigation.fragment)
@@ -45,10 +113,7 @@ dependencies {
     implementation(Dependencies.Kotlin.Coroutine.core)
 
     // Koin (Dependency Injection)
-    implementation(Dependencies.Koin.core)
     implementation(Dependencies.Koin.android)
-    implementation(Dependencies.Koin.scope)
-    implementation(Dependencies.Koin.viewModel)
 
     // Network
     implementation(Dependencies.Network.retrofit)
@@ -60,9 +125,13 @@ dependencies {
 
     // Images
     implementation(Dependencies.Other.coil)
+}
 
-    // AppCenter
-    implementation(Dependencies.AppCenter.crashes)
+tasks.withType<DependencyUpdatesTask> {
 
-    debugImplementation(Dependencies.Other.debugDb)
+    // optional parameters
+    checkForGradleUpdate = true
+    outputFormatter = "json"
+    outputDir = "build/dependencyUpdates"
+    reportfileName = "report"
 }

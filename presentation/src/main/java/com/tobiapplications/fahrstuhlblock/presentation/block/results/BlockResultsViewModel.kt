@@ -92,6 +92,13 @@ class BlockResultsViewModel(
         }
     }
 
+    private suspend fun getCurrentGame(gameId: Long): Game? {
+        return when (val result = getGameUseCase.invoke(gameId)) {
+            is AppResult.Success -> result.value
+            is AppResult.Error -> null
+        }
+    }
+
     private suspend fun getBlockItems(currentGame: Game) {
         when (val result = getBlockResultsUseCase.invoke(currentGame)) {
             is AppResult.Success -> {
@@ -112,13 +119,6 @@ class BlockResultsViewModel(
     private fun isFinishEarlyEnabled(currentGame: Game, blockItemData: BlockItemData): Boolean {
         return currentGame.gameFinished.not() &&
                 blockItemData.items.filterIsInstance<BlockResult>().any { it.total != null }
-    }
-
-    private suspend fun getCurrentGame(gameId: Long): Game? {
-        return when (val result = getGameUseCase.invoke(gameId)) {
-            is AppResult.Success -> result.value
-            is AppResult.Error -> null
-        }
     }
 
     private fun showTrumpSelectionDialog(data: BlockItemData) {
@@ -148,6 +148,10 @@ class BlockResultsViewModel(
         }
     }
 
+    override fun onTrumpClicked(trumpType: TrumpType) {
+        navigateTo(Screen.Block.Trump(trumpType))
+    }
+
     fun onTrophyClicked() {
         val scores = gameScores.value ?: return
         navigateTo(Screen.Block.Scores(scores))
@@ -165,10 +169,6 @@ class BlockResultsViewModel(
                 is AppResult.Error -> Unit
             }
         }
-    }
-
-    override fun onTrumpClicked(trumpType: TrumpType) {
-        navigateTo(Screen.Block.Trump(trumpType))
     }
 
     fun updateTrumpType(trumpType: TrumpType) {

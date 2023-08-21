@@ -37,15 +37,15 @@ class PointRulesFragment :
     override fun onBindingCreated(savedInstanceState: Bundle?) {
         super.onBindingCreated(savedInstanceState)
 
-        activityToolbarViewModel.setTitle(getString(R.string.point_rules_toolbar_title))
+        activityToolbarViewModel.setTitle(getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.point_rules_toolbar_title))
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_point_rules, menu)
-        menu.findItem(R.id.action_info).icon.setTint(
+        menu.findItem(R.id.action_info).icon?.setTint(
             ContextCompat.getColor(
                 requireContext(),
-                R.color.color_on_primary
+                com.tobiapplications.fahrstuhlblock.ui_common.R.color.color_on_primary
             )
         )
         super.onCreateOptionsMenu(menu, inflater)
