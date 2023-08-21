@@ -26,6 +26,7 @@ class BlockInputsProcessorImpl : SafeCaller, BlockInputsProcessor {
                     InputType.TIPP -> {
                         when {
                             game.currentRoundNumber == FIRST_ROUND && game.gameInfo.firstRoundTipsCanBeOne -> true
+                            game.currentRoundNumber == game.maxRound && game.gameInfo.firstRoundTipsCanBeOne -> true
                             else -> inputValidityData.inputSum != game.currentCardCount
                         }
                     }

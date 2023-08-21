@@ -9,14 +9,31 @@
             name="item"
             type="com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockName" />
 
+        <variable
+            name="isLastInRow"
+            type="Boolean" />
+
         <import type="android.graphics.Typeface" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/name_layout"
-        android:background="@{item.currentLeader ? @color/block_result_leader_gold : @color/color_surface}"
         android:layout_width="match_parent"
+        android:background="@drawable/fb_border_bottom_right"
         android:layout_height="@dimen/block_cell_height">
+
+        <View
+            android:id="@+id/background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/list_item_divider_height"
+            android:layout_marginEnd="@dimen/list_item_divider_height"
+            android:backgroundTint="@{item.currentLeader ? @color/block_result_leader_gold : @color/color_surface}"
+            android:background="@{isLastInRow ? @drawable/fb_border_bottom : @drawable/fb_border_bottom_right}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/name"

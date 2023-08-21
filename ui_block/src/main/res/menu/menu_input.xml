@@ -3,9 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_trump"
+        android:icon="@drawable/ic_card_club"
+        android:title="@string/block_input_action_trump_title"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/action_info"
         android:icon="@drawable/ic_info"
-        android:title=""
-        app:showAsAction="always" />
+        android:title="@string/block_input_action_info_title"
+        app:showAsAction="ifRoom" />
 
 </menu>

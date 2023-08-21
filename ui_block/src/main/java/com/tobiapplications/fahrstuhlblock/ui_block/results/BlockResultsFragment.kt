@@ -5,14 +5,19 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockName
+import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockPlaceholder
 import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
 import com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsViewModel
 import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentBlockResultsBinding
+import com.tobiapplications.fahrstuhlblock.ui_block.widgets.BlockNameView
+import com.tobiapplications.fahrstuhlblock.ui_block.widgets.BlockPlaceHolderView
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogEntity
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogInteractor
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogRequestCode
@@ -47,19 +52,19 @@ class BlockResultsFragment :
 
         activityToolbarViewModel.setTitle(getString(R.string.block_results_toolbar_title))
 
-        activityToolbarViewModel.gameId.observe(viewLifecycleOwner, Observer {
+        activityToolbarViewModel.gameId.observe(viewLifecycleOwner, {
             viewModel.setGameId(it)
         })
 
-        viewModel.editInputEnabled.observe(viewLifecycleOwner, Observer {
+        viewModel.editInputEnabled.observe(viewLifecycleOwner, {
             requireActivity().invalidateOptionsMenu()
         })
 
-        viewModel.finishEarlyEnabled.observe(viewLifecycleOwner, Observer {
+        viewModel.finishEarlyEnabled.observe(viewLifecycleOwner, {
             requireActivity().invalidateOptionsMenu()
         })
 
-        viewModel.showGameFinishedEvent.observe(viewLifecycleOwner, Observer {
+        viewModel.showGameFinishedEvent.observe(viewLifecycleOwner, {
             binding.konfettiView.build()
                 .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
                 .setDirection(0.0, 359.0)
@@ -82,7 +87,7 @@ class BlockResultsFragment :
     }
 
     private fun initAdapter() {
-        BlockResultsAdapter(viewModel).also { blockResultAdapter ->
+        BlockResultsAdapter().also { blockResultAdapter ->
             binding.gameList.apply {
                 adapter = blockResultAdapter
                 addItemDecoration(
@@ -98,16 +103,36 @@ class BlockResultsFragment :
                     )
                 )
             }
-            viewModel.blockItems.observe(viewLifecycleOwner, Observer { blockItems ->
+            viewModel.blockItems.observe(viewLifecycleOwner, { blockItems ->
                 val columnCount = viewModel.columnCount.value ?: 0
+                val headerItems = blockItems.filter { it is BlockPlaceholder || it is BlockName }
+                val gameItems = blockItems.toMutableList().apply {
+                    removeAll(headerItems)
+                }
+
+                binding.gamePlayerListLayout.apply {
+                    removeAllViews()
+                    headerItems.forEach {
+                        if (it is BlockPlaceholder) {
+                            addView(BlockPlaceHolderView(context).apply {
+                                layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+                                setPlaceHolder(it, viewModel)
+                            })
+                        } else if (it is BlockName) {
+                            addView(BlockNameView(context).apply {
+                                layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 2f)
+                                setName(it)
+                            })
+                        }
+                    }
+                }
+
                 binding.gameList.layoutManager =
                     GridLayoutManager(requireContext(), columnCount).apply {
                         spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                             override fun getSpanSize(position: Int): Int {
                                 return when (blockResultAdapter.getItemViewType(position)) {
-                                    R.layout.item_block_placeholder -> 1
                                     R.layout.item_block_round -> 1
-                                    R.layout.item_block_name -> 2
                                     R.layout.item_block_result -> 2
                                     else -> 0
                                 }
@@ -115,7 +140,7 @@ class BlockResultsFragment :
                         }
                     }
 
-                blockResultAdapter.submitList(blockItems)
+                blockResultAdapter.submitList(gameItems)
                 binding.gameList.scrollToPosition(blockItems.size - 1)
             })
         }

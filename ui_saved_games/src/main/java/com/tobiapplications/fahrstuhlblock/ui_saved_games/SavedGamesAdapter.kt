@@ -32,7 +32,7 @@ class SavedGamesAdapter(
         holder.bind(getItem(position), savedGamesInteractions)
     }
 
-    inner class SavedGameViewHolder(private val binding: ItemSavedGameBinding) :
+    inner class SavedGameViewHolder(val binding: ItemSavedGameBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(
@@ -48,6 +48,7 @@ class SavedGamesAdapter(
             }
         }
     }
+
 }
 
 object SavedGameDiff : DiffUtil.ItemCallback<SavedGameEntity>() {

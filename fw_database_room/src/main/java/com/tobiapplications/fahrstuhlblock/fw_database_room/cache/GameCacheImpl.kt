@@ -68,4 +68,11 @@ class GameCacheImpl(
                 gameDao.getLastGameInfo().mapToData()
             }
         }
+
+    override suspend fun deleteGame(gameId: Long) : AppResult<Unit> =
+        withContext(Dispatchers.IO) {
+            safeCall {
+                gameDao.deleteGame(gameId)
+            }
+        }
 }

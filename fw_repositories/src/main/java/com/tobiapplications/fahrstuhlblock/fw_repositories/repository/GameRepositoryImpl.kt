@@ -100,4 +100,8 @@ class GameRepositoryImpl(
     override suspend fun removeRound(deleteRoundData: DeleteRoundData): AppResult<Unit> {
         return gameCache.removeRound(deleteRoundData)
     }
+
+    override suspend fun deleteGame(gameId: Long): AppResult<Unit> {
+        return gameCache.deleteGame(gameId)
+    }
 }

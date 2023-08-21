@@ -13,8 +13,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/space_4"
-        android:paddingBottom="@dimen/space_4">
+        android:padding="@dimen/space_4">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_date"
@@ -25,7 +24,7 @@
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_round"
-            app:layout_constraintGuide_percent="0.85"
+            app:layout_constraintGuide_percent="0.75"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

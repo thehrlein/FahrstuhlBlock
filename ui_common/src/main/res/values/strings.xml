@@ -92,6 +92,8 @@
     <string name="block_input_enter_tipps">Enter tipps%1$s</string>
     <string name="block_input_enter_results">Enter results%1$s</string>
     <string name="block_input_summed_inputs" translatable="false">&#160;- %1$d / %2$d</string>
+    <string name="block_input_action_info_title">Info</string>
+    <string name="block_input_action_trump_title">Trump</string>
 
     <!-- Block scores -->
     <string name="block_scores_toolbar_title">Current Scores</string>
@@ -129,5 +131,6 @@
     <string name="saved_game_start_date">Startdate</string>
     <string name="saved_game_player_names">Player names</string>
     <string name="saved_game_rounds">Round</string>
+    <string name="saved_game_finished">Finished</string>
 
 </resources>

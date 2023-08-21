@@ -13,7 +13,7 @@ fun TextView.setPlayerNames(playerNames: List<String>) {
 
 @BindingAdapter("round")
 fun TextView.setRound(item: SavedGameEntity) {
-    text = context.getString(R.string.saved_game_current_max_round, item.currentRound, item.maxRound)
+    text = if (item.gameFinished) context.getString(R.string.saved_game_finished) else context.getString(R.string.saved_game_current_max_round, item.currentRound, item.maxRound)
 }
 
 @BindingAdapter("gameStartDate")

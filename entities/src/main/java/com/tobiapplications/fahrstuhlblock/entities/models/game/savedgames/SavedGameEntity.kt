@@ -5,5 +5,6 @@ data class SavedGameEntity(
     val gameStartDate: Long,
     val players: List<String>,
     val currentRound: Int,
-    val maxRound: Int
+    val maxRound: Int,
+    val gameFinished: Boolean
 )

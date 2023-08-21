@@ -195,10 +195,10 @@ object BuildPlugins {
 object AndroidSdkTools {
 
     const val minSdk = 21
-    const val targetSdk = 29
-    const val compileSdk = 29
-    const val version_code = 4
-    const val version_name = "1.0.0"
+    const val targetSdk = 30
+    const val compileSdk = 30
+    const val version_code = 5
+    const val version_name = "1.0.1"
     const val application_id = "com.tobiapplications.fahrstuhlblock"
 }
 

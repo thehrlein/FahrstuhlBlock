@@ -26,6 +26,7 @@ import com.tobiapplications.fahrstuhlblock.interactor.usecase.firebase.TrackAnal
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.GetPlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.player.StorePlayerNamesUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.savedgames.GetAllSavedGamesUseCase
+import com.tobiapplications.fahrstuhlblock.interactor.usecase.savedgames.DeleteSavedGameUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.settings.GetLastSettingsUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.user.IsShowTrumpDialogEnabledUseCase
 import com.tobiapplications.fahrstuhlblock.interactor.usecase.user.SetShowTrumpDialogEnabledUseCase
@@ -99,6 +100,7 @@ object Koin {
         factory { GetAllSavedGamesUseCase(get()) }
         factory { StoreGameFinishedUseCase(get()) }
         factory { RemoveRoundUseCase(get()) }
+        factory { DeleteSavedGameUseCase(get()) }
     }
 
     private val viewModel = module {
@@ -159,7 +161,7 @@ object Koin {
 
         viewModel { BlockScoresViewModel() }
         viewModel { BlockTrumpViewModel(get(), get(), get()) }
-        viewModel { SavedGamesViewModel(get()) }
+        viewModel { SavedGamesViewModel(get(), get()) }
         viewModel { AboutViewModel(get()) }
     }
 

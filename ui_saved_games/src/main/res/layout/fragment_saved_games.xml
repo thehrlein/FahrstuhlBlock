@@ -12,8 +12,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/space_4">
+        android:layout_height="match_parent">
 
         <include
             android:id="@+id/saved_game_header"
@@ -42,6 +41,7 @@
             android:textAppearance="?textAppearanceBody1"
             android:text="@string/saved_game_no_games"
             app:layout_constraintTop_toTopOf="parent"
+            android:padding="@dimen/space_4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
