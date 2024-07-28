@@ -34,6 +34,24 @@ steps:
           foreach($change in $changes.value) {
             "* $($change.message)" | Add-Content -Path $changelogPath
           }
+  - task: JavaToolInstaller@0
+    displayName: 'Install Java 17'
+    inputs:
+      versionSpec: '17'
+      jdkArchitectureOption: 'x64'
+      jdkSourceOption: 'PreInstalled'
+  - task: DownloadSecureFile@1
+    displayName: 'Download local.properties'
+    name: localProperties
+    inputs:
+      secureFile: 'local.properties'
+  - task: CopyFiles@2
+    displayName: 'Copy local.properties'
+    inputs:
+      SourceFolder: '$(Agent.TempDirectory)'
+      Contents: '$(localProperties.secureFilePath)'
+      TargetFolder: '$(System.DefaultWorkingDirectory)'
+      OverWrite: true
   - task: Gradle@2
     inputs:
       workingDirectory: ''

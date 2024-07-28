@@ -41,9 +41,27 @@ steps:
       jdkArchitectureOption: 'x64'
       jdkSourceOption: 'PreInstalled'
   - task: DownloadSecureFile@1
-    name: release_key
+    name: keystore
     inputs:
       secureFile: 'release_key.jks'
+  - task: CopyFiles@2
+    displayName: 'Copy release_key.jks'
+    inputs:
+      SourceFolder: '$(Agent.TempDirectory)'
+      Contents: '$(keystore.secureFilePath)'
+      TargetFolder: '$(System.DefaultWorkingDirectory)/signing/app'
+  - task: DownloadSecureFile@1
+    displayName: 'Download local.properties'
+    name: localProperties
+    inputs:
+      secureFile: 'local.properties'
+  - task: CopyFiles@2
+    displayName: 'Copy local.properties'
+    inputs:
+      SourceFolder: '$(Agent.TempDirectory)'
+      Contents: '$(localProperties.secureFilePath)'
+      TargetFolder: '$(System.DefaultWorkingDirectory)'
+      OverWrite: true
   - task: Gradle@2
     displayName: 'AssembleDebug (APK)'
     inputs:
@@ -53,14 +71,6 @@ steps:
       publishJUnitResults: false
       testResultsFiles: '**/TEST-*.xml'
       tasks: 'assembleRelease'
-  - task: AndroidSigning@3
-    inputs:
-      apkFiles: '**/*.apk'
-      apksign: true
-      apksignerKeystoreFile: 'release_key.jks'
-      apksignerKeystorePassword: '$(releaseKeyStorePassword)'
-      apksignerKeystoreAlias: '$(releaseAlias)'
-      apksignerKeyPassword: '$(releaseKeyPassword)'
   - task: Gradle@2
     displayName: 'BundleRelease (AAB)'
     inputs:

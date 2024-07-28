@@ -1,5 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 plugins {
     id(BuildPlugins.androidApplication)
@@ -9,6 +12,13 @@ plugins {
     id(BuildPlugins.firebaseCrashlytics)
     id(BuildPlugins.firebasePerformance)
 }
+
+val buildNumber = Integer.parseInt(
+    SimpleDateFormat("yyyyMMddHH", Locale.getDefault()).format(
+        Date()
+    )
+)
+
 
 android {
     val releaseAlias: String by project.rootProject.ext
@@ -22,7 +32,7 @@ android {
         applicationId = AndroidSdkTools.application_id
         minSdk = AndroidSdkTools.minSdk
         targetSdk = AndroidSdkTools.targetSdk
-        versionCode = AndroidSdkTools.version_code
+        versionCode = buildNumber
         versionName = AndroidSdkTools.version_name
         testInstrumentationRunner = Others.ANDROID_JUNIT_TEST_IMPLEMENTATION_RUNNER
 
