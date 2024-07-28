@@ -2,7 +2,6 @@ package com.tobiapplications.fahrstuhlblock.ui_block.widgets
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockPlaceholder
@@ -18,12 +17,11 @@ class BlockPlaceHolderView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attributeSet, defStyleAttr) {
 
-    private val binding : ViewBlockPlaceholderBinding =
+    private val binding: ViewBlockPlaceholderBinding =
         DataBindingUtil.inflate(context.layoutInflater,
         R.layout.view_block_placeholder,
         this,
         true)
-
 
     fun setPlaceHolder(item: BlockPlaceholder, blockResultsInteractions: BlockResultsInteractions) {
         binding.executeAfter {

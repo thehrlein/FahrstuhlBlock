@@ -13,7 +13,7 @@ class MenuActivity :
 
     override var toolbarButtonType: ToolbarButtonType = ToolbarButtonType.None
     override val toolbarTitle: String?
-        get() = getString(R.string.app_name)
+        get() = getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.app_name)
     override val viewModel: MenuViewModel by viewModel()
     override val contentViewModelResId: Int = BR.viewModel
     override val contentLayoutRes: Int = R.layout.activity_menu

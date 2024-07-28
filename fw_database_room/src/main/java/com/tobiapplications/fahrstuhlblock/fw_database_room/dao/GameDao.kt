@@ -44,5 +44,4 @@ interface GameDao {
 
     @Query("DELETE FROM GAME_ROUNDS WHERE gameId = :gameId")
     fun deleteGameRounds(gameId: Long)
-
 }

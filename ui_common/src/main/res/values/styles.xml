@@ -3,7 +3,6 @@
 
     <!-- Toolbar -->
     <style name="Widget.FahrstuhlBlock.Toolbar.PrimarySurface" parent="@style/Widget.MaterialComponents.Toolbar.PrimarySurface">
-        <item name="titleTextAppearance">?textAppearanceToolbarTitle</item>
         <item name="android:gravity">start</item>
         <item name="android:buttonTint">?colorOnPrimary</item>
         <item name="android:background">?colorPrimary</item>

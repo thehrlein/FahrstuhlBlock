@@ -30,7 +30,7 @@
     <ID>MagicNumber:PlayerSettingsFragment.kt$PlayerSettingsFragment$7</ID>
     <ID>MagicNumber:PlayerSettingsFragment.kt$PlayerSettingsFragment$8</ID>
     <ID>MagicNumber:build.gradle.kts$1.8</ID>
-    <ID>MaxLineLength:AboutFragment.kt$AboutFragment$startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.about_playstore_prefix, packageName))))</ID>
+    <ID>MaxLineLength:AboutFragment.kt$AboutFragment$startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.about_playstore_prefix, packageName))))</ID>
     <ID>MaxLineLength:BaseToolbarFragment.kt$BaseToolbarFragment$abstract</ID>
     <ID>MaxLineLength:BlockResultsAdapter.kt$BlockResultsDiff$oldItem is BlockResult &amp;&amp; newItem is BlockResult &amp;&amp; oldItem.round == newItem.round &amp;&amp; oldItem.player == newItem.player -&gt; true</ID>
     <ID>MaxLineLength:BlockResultsFragment.kt$BlockResultsFragment$(data?.getSerializableExtra(DialogEntity.KEY_DIALOG_ENTITY) as? DialogEntity.Custom.Trump)</ID>

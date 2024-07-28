@@ -34,11 +34,18 @@ steps:
           foreach($change in $changes.value) {
             "* $($change.message)" | Add-Content -Path $changelogPath
           }
+  - task: JavaToolInstaller@0
+    displayName: 'Install Java 17'
+    inputs:
+      versionSpec: '17'
+      jdkArchitectureOption: 'x64'
+      jdkSourceOption: 'PreInstalled'
   - task: DownloadSecureFile@1
     name: release_key
     inputs:
       secureFile: 'release_key.jks'
   - task: Gradle@2
+    displayName: 'AssembleDebug (APK)'
     inputs:
       workingDirectory: ''
       gradleWrapperFile: 'gradlew'
@@ -54,11 +61,27 @@ steps:
       apksignerKeystorePassword: '$(releaseKeyStorePassword)'
       apksignerKeystoreAlias: '$(releaseAlias)'
       apksignerKeyPassword: '$(releaseKeyPassword)'
+  - task: Gradle@2
+    displayName: 'BundleRelease (AAB)'
+    inputs:
+      workingDirectory: ''
+      gradleWrapperFile: 'gradlew'
+      gradleOptions: '-Xmx3072m'
+      publishJUnitResults: false
+      testResultsFiles: '**/TEST-*.xml'
+      tasks: 'bundleRelease'
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
       SourceFolder: app/build/outputs/apk/
       Contents: '**/*.apk'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      flattenFolders: true
+  - task: CopyFiles@2
+    displayName: 'Copy aab to: $(Build.ArtifactStagingDirectory)'
+    inputs:
+      SourceFolder: app/build/outputs/bundle/
+      Contents: '**/*.aab'
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
       flattenFolders: true
   - task: PublishBuildArtifacts@1

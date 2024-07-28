@@ -10,9 +10,9 @@ fun ExtendedFloatingActionButton.setFabIconAndText(inputType: InputType?, gameFi
     if (inputType == null || gameFinished == null) return
 
     text = when {
-        gameFinished -> context.getString(R.string.block_results_fab_exit)
-        inputType == InputType.TIPP -> context.getString(R.string.block_results_fab_add_prediction)
-        inputType == InputType.RESULT -> context.getString(R.string.block_results_fab_add_results)
+        gameFinished -> context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_results_fab_exit)
+        inputType == InputType.TIPP -> context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_results_fab_add_prediction)
+        inputType == InputType.RESULT -> context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_results_fab_add_results)
         else -> null
     }
 

@@ -62,7 +62,7 @@ class PlayerOrderAdapter(
         fun bind(item: String, onItemTouchListener: ((RecyclerView.ViewHolder) -> Unit)?) {
             binding.playerName.text = item
             binding.playerPosition.text =
-                binding.root.context.getString(R.string.player_order_position, adapterPosition + 1)
+                binding.root.context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.player_order_position, adapterPosition + 1)
             binding.iconDrag.setOnTouchListener { _, event ->
                 if (event.actionMasked == MotionEvent.ACTION_DOWN) {
                     onItemTouchListener?.invoke(this)

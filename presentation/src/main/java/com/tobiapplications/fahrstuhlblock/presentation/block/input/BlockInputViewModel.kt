@@ -137,7 +137,7 @@ class BlockInputViewModel(
     }
 
     override fun onInputChanged() {
-        val data = CheckInputValidityData(getGameData(), getInputs().sumBy { it.userInput })
+        val data = CheckInputValidityData(getGameData(), getInputs().sumOf { it.userInput })
 
         _summedInputs.postValue(data.inputSum)
 

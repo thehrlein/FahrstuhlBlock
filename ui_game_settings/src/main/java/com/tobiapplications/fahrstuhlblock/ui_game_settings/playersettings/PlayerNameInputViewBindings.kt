@@ -7,8 +7,8 @@ import com.tobiapplications.fahrstuhlblock.ui_game_settings.R
 @BindingAdapter("playerError")
 fun PlayerNameInputView.setPlayerError(errorType: PlayerError?) {
     setError(when (errorType) {
-        PlayerError.EMPTY -> context.getString(R.string.player_settings_player_name_empty)
-        PlayerError.DUPLICATE -> context.getString(R.string.player_settings_player_name_duplicate)
+        PlayerError.EMPTY -> context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.player_settings_player_name_empty)
+        PlayerError.DUPLICATE -> context.getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.player_settings_player_name_duplicate)
         else -> null
     })
 }

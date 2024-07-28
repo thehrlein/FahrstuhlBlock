@@ -43,12 +43,12 @@ class GameCacheImpl(
             }
         }
 
-    override suspend fun removeRound(deleteRoundData: DeleteRoundData): AppResult<Unit> =
+    override suspend fun removeRound(round: DeleteRoundData): AppResult<Unit> =
         withContext(Dispatchers.IO) {
             safeCall {
                 gameDao.removeRound(
-                    gameId = deleteRoundData.gameId,
-                    round = deleteRoundData.gameRound.round
+                    gameId = round.gameId,
+                    round = round.gameRound.round
                 )
             }
         }
@@ -69,7 +69,7 @@ class GameCacheImpl(
             }
         }
 
-    override suspend fun deleteGame(gameId: Long) : AppResult<Unit> =
+    override suspend fun deleteGame(gameId: Long): AppResult<Unit> =
         withContext(Dispatchers.IO) {
             safeCall {
                 gameDao.deleteGame(gameId)

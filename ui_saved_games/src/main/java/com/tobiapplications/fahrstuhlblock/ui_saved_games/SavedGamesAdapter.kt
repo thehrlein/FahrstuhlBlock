@@ -48,7 +48,6 @@ class SavedGamesAdapter(
             }
         }
     }
-
 }
 
 object SavedGameDiff : DiffUtil.ItemCallback<SavedGameEntity>() {

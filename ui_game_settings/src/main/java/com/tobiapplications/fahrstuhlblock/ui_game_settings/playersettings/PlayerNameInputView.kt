@@ -52,7 +52,7 @@ class PlayerNameInputView @JvmOverloads constructor(
         binding.autoCompleteText.setAdapter(
             ArrayAdapter(
                 context,
-                R.layout.item_auto_complete_text_row,
+                com.tobiapplications.fahrstuhlblock.ui_common.R.layout.item_auto_complete_text_row,
                 items.toList()
             )
         )

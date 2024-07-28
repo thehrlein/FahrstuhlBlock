@@ -5,9 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.activity.addCallback
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockName
 import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockPlaceholder
@@ -50,7 +48,7 @@ class BlockResultsFragment :
     override fun onBindingCreated(savedInstanceState: Bundle?) {
         super.onBindingCreated(savedInstanceState)
 
-        activityToolbarViewModel.setTitle(getString(R.string.block_results_toolbar_title))
+        activityToolbarViewModel.setTitle(getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.block_results_toolbar_title))
 
         activityToolbarViewModel.gameId.observe(viewLifecycleOwner, {
             viewModel.setGameId(it)
@@ -93,17 +91,17 @@ class BlockResultsFragment :
                 addItemDecoration(
                     ItemDecoration(
                         LinearLayout.VERTICAL,
-                        context.getDrawable(R.drawable.shape_divider)
+                        context.getDrawable(com.tobiapplications.fahrstuhlblock.ui_common.R.drawable.shape_divider)
                     )
                 )
                 addItemDecoration(
                     ItemDecoration(
                         LinearLayout.HORIZONTAL,
-                        context.getDrawable(R.drawable.shape_divider)
+                        context.getDrawable(com.tobiapplications.fahrstuhlblock.ui_common.R.drawable.shape_divider)
                     )
                 )
             }
-            viewModel.blockItems.observe(viewLifecycleOwner, { blockItems ->
+            viewModel.blockItems.observe(viewLifecycleOwner) { blockItems ->
                 val columnCount = viewModel.columnCount.value ?: 0
                 val headerItems = blockItems.filter { it is BlockPlaceholder || it is BlockName }
                 val gameItems = blockItems.toMutableList().apply {
@@ -115,12 +113,20 @@ class BlockResultsFragment :
                     headerItems.forEach {
                         if (it is BlockPlaceholder) {
                             addView(BlockPlaceHolderView(context).apply {
-                                layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+                                layoutParams = LinearLayout.LayoutParams(
+                                    0,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                                    1f
+                                )
                                 setPlaceHolder(it, viewModel)
                             })
                         } else if (it is BlockName) {
                             addView(BlockNameView(context).apply {
-                                layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 2f)
+                                layoutParams = LinearLayout.LayoutParams(
+                                    0,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                                    2f
+                                )
                                 setName(it)
                             })
                         }
@@ -142,7 +148,7 @@ class BlockResultsFragment :
 
                 blockResultAdapter.submitList(gameItems)
                 binding.gameList.scrollToPosition(blockItems.size - 1)
-            })
+            }
         }
     }
 
