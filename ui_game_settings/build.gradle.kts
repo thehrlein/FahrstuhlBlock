@@ -5,11 +5,7 @@ plugins {
     id(BuildPlugins.safeArgs)
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
-    kotlinOptions {
-        jvmTarget = Others.JVM_TARGET
-    }
-}
+
 
 android {
     namespace = "com.tobiapplications.fahrstuhlblock.ui_game_settings"
@@ -24,15 +20,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
-        kotlinOptions {
-            jvmTarget = Others.JVM_TARGET
-        }
-    }
+
 
     buildFeatures {
         dataBinding = true

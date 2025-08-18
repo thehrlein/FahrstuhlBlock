@@ -85,7 +85,7 @@ object Dependencies {
     }
 
     object Kotlin {
-        const val kotlinVersion = "1.8.10"
+        const val kotlinVersion = "2.1.20"
 
         const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
