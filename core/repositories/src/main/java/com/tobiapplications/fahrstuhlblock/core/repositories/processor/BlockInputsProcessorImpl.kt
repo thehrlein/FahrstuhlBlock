@@ -72,7 +72,7 @@ class BlockInputsProcessorImpl : SafeCaller, BlockInputsProcessor {
 
         val newList = ArrayList(inputModels)
         while (newList.last().isDealer.not()) {
-            val lastOne = newList.removeLast()
+            val lastOne = newList.removeAt(newList.lastIndex)
             newList.add(0, lastOne)
         }
 

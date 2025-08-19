@@ -63,7 +63,7 @@ steps:
       TargetFolder: '$(System.DefaultWorkingDirectory)'
       OverWrite: true
   - task: Gradle@2
-    displayName: 'AssembleDebug (APK)'
+    displayName: 'AssembleRelease (APK)'
     inputs:
       workingDirectory: ''
       gradleWrapperFile: 'gradlew'
