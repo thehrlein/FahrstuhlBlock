@@ -70,11 +70,11 @@ android {
 dependencies {
 
     // Modules
-    implementation(projects.uiCommon)
-    implementation(projects.uiMenu)
-    implementation(projects.uiGameSettings)
-    implementation(projects.uiBlock)
-    implementation(projects.uiSavedGames)
+    implementation(projects.feature.common)
+    implementation(projects.feature.menu)
+    implementation(projects.feature.gamesettings)
+    implementation(projects.feature.block)
+    implementation(projects.feature.savedgames)
 
     implementation(projects.core.repositories)
     implementation(projects.core.databaseroom)

@@ -1,0 +1,29 @@
+package com.tobiapplications.fahrstuhlblock.feature.menu
+
+import android.app.Activity
+import android.content.Intent
+import com.tobiapplications.fahrstuhlblock.core.entities.general.toolbar.ToolbarButtonType
+import com.tobiapplications.fahrstuhlblock.core.presentation.menu.MenuViewModel
+import com.tobiapplications.fahrstuhlblock.feature.common.base.activity.BaseToolbarActivity
+import com.tobiapplications.fahrstuhlblock.feature.menu.databinding.ActivityMenuBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
+class MenuActivity :
+    BaseToolbarActivity<MenuViewModel, ActivityMenuBinding>() {
+
+    override var toolbarButtonType: ToolbarButtonType = ToolbarButtonType.None
+    override val toolbarTitle: String?
+        get() = getString(com.tobiapplications.fahrstuhlblock.feature.common.R.string.app_name)
+    override val viewModel: MenuViewModel by viewModel()
+    override val contentViewModelResId: Int = BR.viewModel
+    override val contentLayoutRes: Int = R.layout.activity_menu
+    override val navHostFragment: Int? = R.id.activity_navigation_main_nav_host_fragment
+
+    companion object {
+        fun start(activity: Activity) {
+            val intent = Intent(activity, MenuActivity::class.java)
+            activity.startActivity(intent)
+            activity.finishAffinity()
+        }
+    }
+}

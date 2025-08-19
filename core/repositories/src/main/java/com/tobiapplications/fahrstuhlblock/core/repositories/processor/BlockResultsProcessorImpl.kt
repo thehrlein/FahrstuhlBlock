@@ -7,8 +7,8 @@ import com.tobiapplications.fahrstuhlblock.core.entities.models.game.input.Calcu
 import com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.*
 import com.tobiapplications.fahrstuhlblock.core.interactor.SafeCaller
 import com.tobiapplications.fahrstuhlblock.core.interactor.processor.BlockResultsProcessor
-import com.tobiapplications.fahrstuhlblock.ui_common.extension.isOdd
-import com.tobiapplications.fahrstuhlblock.ui_common.utils.BlockHelper
+import com.tobiapplications.fahrstuhlblock.feature.common.extension.isOdd
+import com.tobiapplications.fahrstuhlblock.feature.common.utils.BlockHelper
 import kotlin.math.abs
 
 class BlockResultsProcessorImpl : SafeCaller, BlockResultsProcessor {

@@ -8,7 +8,7 @@ android {
 
 dependencies {
     // Modules
-    implementation(projects.uiCommon)
+    implementation(projects.feature.common)
     implementation(projects.core.interactor)
     implementation(projects.core.entities)
 

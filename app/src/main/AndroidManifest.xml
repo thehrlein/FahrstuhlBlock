@@ -22,10 +22,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui_menu.MenuActivity" />
-        <activity android:name=".ui_game_settings.GameSettingsActivity" />
-        <activity android:name=".ui_block.BlockActivity" />
-        <activity android:name=".ui_saved_games.SavedGamesActivity" />
+        <activity android:name=".feature.menu.MenuActivity" />
+        <activity android:name=".feature.gamesettings.GameSettingsActivity" />
+        <activity android:name=".feature.block.BlockActivity" />
+        <activity android:name=".feature.savedgames.SavedGamesActivity" />
 
         <!-- Enable firebase performance logging -->
         <meta-data

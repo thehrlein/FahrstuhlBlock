@@ -30,7 +30,7 @@
     <ID>MagicNumber:PlayerSettingsFragment.kt$PlayerSettingsFragment$7</ID>
     <ID>MagicNumber:PlayerSettingsFragment.kt$PlayerSettingsFragment$8</ID>
     <ID>MagicNumber:build.gradle.kts$1.8</ID>
-    <ID>MaxLineLength:AboutFragment.kt$AboutFragment$startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(com.tobiapplications.fahrstuhlblock.ui_common.R.string.about_playstore_prefix, packageName))))</ID>
+    <ID>MaxLineLength:AboutFragment.kt$AboutFragment$startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(com.tobiapplications.fahrstuhlblock.feature.common.R.string.about_playstore_prefix, packageName))))</ID>
     <ID>MaxLineLength:BaseToolbarFragment.kt$BaseToolbarFragment$abstract</ID>
     <ID>MaxLineLength:BlockResultsAdapter.kt$BlockResultsDiff$oldItem is BlockResult &amp;&amp; newItem is BlockResult &amp;&amp; oldItem.round == newItem.round &amp;&amp; oldItem.player == newItem.player -&gt; true</ID>
     <ID>MaxLineLength:BlockResultsFragment.kt$BlockResultsFragment$(data?.getSerializableExtra(DialogEntity.KEY_DIALOG_ENTITY) as? DialogEntity.Custom.Trump)</ID>
@@ -63,15 +63,15 @@
     <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.core.repositories.repository./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/fw_repositories/src/main/java/com/tobiapplications/fahrstuhlblock/fw_repositories/repository/GameRepositoryImpl.kt:88</ID>
     <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.core.repositories.repository./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/fw_repositories/src/main/java/com/tobiapplications/fahrstuhlblock/fw_repositories/repository/GameRepositoryImpl.kt:89</ID>
     <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.core.presentation.block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/presentation/src/main/java/com/tobiapplications/fahrstuhlblock/presentation/block/results/BlockResultsViewModel.kt:76</ID>
-    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.ui_block.info./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/info/AboutFragment.kt:58</ID>
-    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.ui_block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/results/BlockResultsAdapter.kt:146</ID>
-    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.ui_block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/results/BlockResultsFragment.kt:162</ID>
-    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/entity/DialogEntity.kt:40</ID>
-    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/entity/DialogEntity.kt:56</ID>
-    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.ui_common.base.fragment./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/fragment/BaseToolbarFragment.kt:7</ID>
-    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.ui_common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/TextViewBindings.kt:21</ID>
-    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.ui_game_settings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/GameSettingsActivity.kt:13</ID>
-    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playersettings/PlayerSettingsFragment.kt:13</ID>
+    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.feature.block.info./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/info/AboutFragment.kt:58</ID>
+    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.feature.block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/results/BlockResultsAdapter.kt:146</ID>
+    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.feature.block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/results/BlockResultsFragment.kt:162</ID>
+    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.feature.common.base.dialog.entity./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/entity/DialogEntity.kt:40</ID>
+    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.feature.common.base.dialog.entity./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/entity/DialogEntity.kt:56</ID>
+    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.feature.common.base.fragment./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/fragment/BaseToolbarFragment.kt:7</ID>
+    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.feature.common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/TextViewBindings.kt:21</ID>
+    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.feature.gamesettings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/GameSettingsActivity.kt:13</ID>
+    <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.feature.gamesettings.playersettings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playersettings/PlayerSettingsFragment.kt:13</ID>
     <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/app/src/main/java/com/tobiapplications/fahrstuhlblock/utils/NavigationHandlerImpl.kt:158</ID>
     <ID>MaximumLineLength:com.tobiapplications.fahrstuhlblock.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/app/src/main/java/com/tobiapplications/fahrstuhlblock/utils/NavigationHandlerImpl.kt:169</ID>
     <ID>MemberNameEqualsClassName:Dependencies.kt$Dependencies.Kotlin$const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"</ID>
@@ -93,13 +93,13 @@
     <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.core.presentation.block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/presentation/src/main/java/com/tobiapplications/fahrstuhlblock/presentation/block/results/BlockResultsViewModel.kt:13</ID>
     <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.core.presentation.block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/presentation/src/main/java/com/tobiapplications/fahrstuhlblock/presentation/block/results/BlockResultsViewModel.kt:14</ID>
     <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.core.presentation.settings.gamerules./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/presentation/src/main/java/com/tobiapplications/fahrstuhlblock/presentation/settings/gamerules/GameRulesViewModel.kt:11</ID>
-    <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.ui_block.input./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/input/BlockInputFragment.kt:5</ID>
-    <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.ui_block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/results/BlockResultsAdapter.kt:8</ID>
-    <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.ui_block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/results/BlockResultsFragment.kt:6</ID>
-    <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.ui_common.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/utils/DateUtils.kt:4</ID>
-    <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.ui_game_settings.gamerules./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/gamerules/GameRulesFragment.kt:4</ID>
-    <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playerorder/PlayerOrderFragment.kt:4</ID>
-    <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.ui_game_settings.pointrules./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/pointrules/PointRulesFragment.kt:4</ID>
+    <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.feature.block.input./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/input/BlockInputFragment.kt:5</ID>
+    <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.feature.block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/results/BlockResultsAdapter.kt:8</ID>
+    <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.feature.block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/results/BlockResultsFragment.kt:6</ID>
+    <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.feature.common.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/utils/DateUtils.kt:4</ID>
+    <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.feature.gamesettings.gamerules./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/gamerules/GameRulesFragment.kt:4</ID>
+    <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.feature.gamesettings.playerorder./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playerorder/PlayerOrderFragment.kt:4</ID>
+    <ID>NoWildcardImports:com.tobiapplications.fahrstuhlblock.feature.gamesettings.pointrules./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/pointrules/PointRulesFragment.kt:4</ID>
     <ID>PackageName:com.tobiapplications.fahrstuhlblock.core.databaseroom./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/fw_database_room/src/main/java/com/tobiapplications/fahrstuhlblock/fw_database_room/Koin.kt:1</ID>
     <ID>PackageName:com.tobiapplications.fahrstuhlblock.core.databaseroom.cache./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/fw_database_room/src/main/java/com/tobiapplications/fahrstuhlblock/fw_database_room/cache/GameCacheImpl.kt:1</ID>
     <ID>PackageName:com.tobiapplications.fahrstuhlblock.core.databaseroom.cache./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/fw_database_room/src/main/java/com/tobiapplications/fahrstuhlblock/fw_database_room/cache/PlayerCacheImpl.kt:1</ID>
@@ -130,87 +130,87 @@
     <ID>PackageName:com.tobiapplications.fahrstuhlblock.core.repositories.repository./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/fw_repositories/src/main/java/com/tobiapplications/fahrstuhlblock/fw_repositories/repository/FirebaseRepositoryImpl.kt:1</ID>
     <ID>PackageName:com.tobiapplications.fahrstuhlblock.core.repositories.repository./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/fw_repositories/src/main/java/com/tobiapplications/fahrstuhlblock/fw_repositories/repository/GameRepositoryImpl.kt:1</ID>
     <ID>PackageName:com.tobiapplications.fahrstuhlblock.core.repositories.repository./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/fw_repositories/src/main/java/com/tobiapplications/fahrstuhlblock/fw_repositories/repository/UserRepositoryImpl.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_block./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/BlockActivity.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_block./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/test/java/com/tobiapplications/fahrstuhlblock/ui_block/GameRoundTest.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_block./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/test/java/com/tobiapplications/fahrstuhlblock/ui_block/GameTest.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_block.info./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/info/AboutFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_block.input./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/input/BlockInputAdapter.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_block.input./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/input/BlockInputFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/results/BlockResultsAdapter.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/results/BlockResultsFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_block.scores./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/scores/BlockScoresAdapter.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_block.scores./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/scores/BlockScoresFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_block.trump./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/trump/BlockTrumpDialog.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_block.trump./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/trump/TrumpSelectionGroup.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_block.trump./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/trump/TrumpSelectionItem.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.base.activity./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/activity/BaseActivity.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.base.activity./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/activity/BaseToolbarActivity.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.base.dialog./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/BaseDialogFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.base.dialog./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/DialogInteractionFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.base.dialog./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/FullscreenProgressDialogFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.base.dialog./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/SimpleAlertDialogFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/entity/DialogEntity.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/utils/DialogInteractor.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/utils/DialogRequestCode.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/utils/DialogResultCode.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.base.fragment./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/fragment/BaseFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.base.fragment./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/fragment/BaseToolbarFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/ButtonBindings.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/FloatingActionButtonExtensions.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/ImageViewBindings.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/MaterialButtonToggleGroupBindings.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/SavedGameBindings.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/TextViewBindings.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/ViewBindings.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.extension./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/extension/ContextExtensions.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.extension./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/extension/FragmentManagerExtension.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.extension./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/extension/NumberExtensions.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.extension./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/extension/ViewDataBindingExtensions.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/utils/BlockHelper.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/utils/DateUtils.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/utils/EllipsizeAttribute.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/utils/ItemDecoration.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/utils/ResourceHelper.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_common.views./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/views/BaseToolbar.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_game_settings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/GameSettingsActivity.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_game_settings.gamerules./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/gamerules/GameRulesFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playerorder/ItemTouchHelperAdapter.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playerorder/ItemTouchHelperViewHolder.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playerorder/PlayerOrderAdapter.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playerorder/PlayerOrderFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playerorder/SimpleItemTouchHelper.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playersettings/PlayerNameInputView.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playersettings/PlayerNameInputViewBindings.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playersettings/PlayerSettingsFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playersettings/PlayerSettingsHandler.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_game_settings.pointrules./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/pointrules/PointRulesFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_menu./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_menu/src/main/java/com/tobiapplications/fahrstuhlblock/ui_menu/MenuActivity.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_menu./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_menu/src/main/java/com/tobiapplications/fahrstuhlblock/ui_menu/MenuFragment.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_saved_games./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_saved_games/src/main/java/com/tobiapplications/fahrstuhlblock/ui_saved_games/SavedGamesActivity.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_saved_games./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_saved_games/src/main/java/com/tobiapplications/fahrstuhlblock/ui_saved_games/SavedGamesAdapter.kt:1</ID>
-    <ID>PackageName:com.tobiapplications.fahrstuhlblock.ui_saved_games./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_saved_games/src/main/java/com/tobiapplications/fahrstuhlblock/ui_saved_games/SavedGamesFragment.kt:1</ID>
-    <ID>PackageNaming:AboutFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_block.info</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.block./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/BlockActivity.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.block./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/test/java/com/tobiapplications/fahrstuhlblock/ui_block/GameRoundTest.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.block./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/test/java/com/tobiapplications/fahrstuhlblock/ui_block/GameTest.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.block.info./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/info/AboutFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.block.input./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/input/BlockInputAdapter.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.block.input./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/input/BlockInputFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/results/BlockResultsAdapter.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.block.results./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/results/BlockResultsFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.block.scores./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/scores/BlockScoresAdapter.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.block.scores./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/scores/BlockScoresFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.block.trump./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/trump/BlockTrumpDialog.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.block.trump./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/trump/TrumpSelectionGroup.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.block.trump./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_block/src/main/java/com/tobiapplications/fahrstuhlblock/ui_block/trump/TrumpSelectionItem.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.base.activity./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/activity/BaseActivity.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.base.activity./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/activity/BaseToolbarActivity.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.base.dialog./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/BaseDialogFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.base.dialog./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/DialogInteractionFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.base.dialog./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/FullscreenProgressDialogFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.base.dialog./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/SimpleAlertDialogFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.base.dialog.entity./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/entity/DialogEntity.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.base.dialog.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/utils/DialogInteractor.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.base.dialog.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/utils/DialogRequestCode.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.base.dialog.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/dialog/utils/DialogResultCode.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.base.fragment./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/fragment/BaseFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.base.fragment./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/base/fragment/BaseToolbarFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/ButtonBindings.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/FloatingActionButtonExtensions.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/ImageViewBindings.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/MaterialButtonToggleGroupBindings.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/SavedGameBindings.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/TextViewBindings.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.bindings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/bindings/ViewBindings.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.extension./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/extension/ContextExtensions.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.extension./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/extension/FragmentManagerExtension.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.extension./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/extension/NumberExtensions.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.extension./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/extension/ViewDataBindingExtensions.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/utils/BlockHelper.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/utils/DateUtils.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/utils/EllipsizeAttribute.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/utils/ItemDecoration.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.utils./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/utils/ResourceHelper.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.common.views./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_common/src/main/java/com/tobiapplications/fahrstuhlblock/ui_common/views/BaseToolbar.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.gamesettings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/GameSettingsActivity.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.gamesettings.gamerules./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/gamerules/GameRulesFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.gamesettings.playerorder./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playerorder/ItemTouchHelperAdapter.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.gamesettings.playerorder./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playerorder/ItemTouchHelperViewHolder.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.gamesettings.playerorder./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playerorder/PlayerOrderAdapter.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.gamesettings.playerorder./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playerorder/PlayerOrderFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.gamesettings.playerorder./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playerorder/SimpleItemTouchHelper.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.gamesettings.playersettings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playersettings/PlayerNameInputView.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.gamesettings.playersettings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playersettings/PlayerNameInputViewBindings.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.gamesettings.playersettings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playersettings/PlayerSettingsFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.gamesettings.playersettings./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/playersettings/PlayerSettingsHandler.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.gamesettings.pointrules./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_game_settings/src/main/java/com/tobiapplications/fahrstuhlblock/ui_game_settings/pointrules/PointRulesFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.menu./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_menu/src/main/java/com/tobiapplications/fahrstuhlblock/ui_menu/MenuActivity.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.menu./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_menu/src/main/java/com/tobiapplications/fahrstuhlblock/ui_menu/MenuFragment.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.savedgames./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_saved_games/src/main/java/com/tobiapplications/fahrstuhlblock/ui_saved_games/SavedGamesActivity.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.savedgames./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_saved_games/src/main/java/com/tobiapplications/fahrstuhlblock/ui_saved_games/SavedGamesAdapter.kt:1</ID>
+    <ID>PackageName:com.tobiapplications.fahrstuhlblock.feature.savedgames./Users/tobiashehrlein/AndroidStudioProjects/Other/private/FahrstuhlBlock/ui_saved_games/src/main/java/com/tobiapplications/fahrstuhlblock/ui_saved_games/SavedGamesFragment.kt:1</ID>
+    <ID>PackageNaming:AboutFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.block.info</ID>
     <ID>PackageNaming:AnalyticsDatasourceImpl.kt$package com.tobiapplications.fahrstuhlblock.core.repositories.datasource.firebase</ID>
-    <ID>PackageNaming:BaseActivity.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.activity</ID>
-    <ID>PackageNaming:BaseDialogFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog</ID>
-    <ID>PackageNaming:BaseFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.fragment</ID>
-    <ID>PackageNaming:BaseToolbar.kt$package com.tobiapplications.fahrstuhlblock.ui_common.views</ID>
-    <ID>PackageNaming:BaseToolbarActivity.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.activity</ID>
-    <ID>PackageNaming:BaseToolbarFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.fragment</ID>
-    <ID>PackageNaming:BlockActivity.kt$package com.tobiapplications.fahrstuhlblock.ui_block</ID>
-    <ID>PackageNaming:BlockHelper.kt$package com.tobiapplications.fahrstuhlblock.ui_common.utils</ID>
-    <ID>PackageNaming:BlockInputAdapter.kt$package com.tobiapplications.fahrstuhlblock.ui_block.input</ID>
-    <ID>PackageNaming:BlockInputFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_block.input</ID>
+    <ID>PackageNaming:BaseActivity.kt$package com.tobiapplications.fahrstuhlblock.feature.common.base.activity</ID>
+    <ID>PackageNaming:BaseDialogFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.common.base.dialog</ID>
+    <ID>PackageNaming:BaseFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.common.base.fragment</ID>
+    <ID>PackageNaming:BaseToolbar.kt$package com.tobiapplications.fahrstuhlblock.feature.common.views</ID>
+    <ID>PackageNaming:BaseToolbarActivity.kt$package com.tobiapplications.fahrstuhlblock.feature.common.base.activity</ID>
+    <ID>PackageNaming:BaseToolbarFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.common.base.fragment</ID>
+    <ID>PackageNaming:BlockActivity.kt$package com.tobiapplications.fahrstuhlblock.feature.block</ID>
+    <ID>PackageNaming:BlockHelper.kt$package com.tobiapplications.fahrstuhlblock.feature.common.utils</ID>
+    <ID>PackageNaming:BlockInputAdapter.kt$package com.tobiapplications.fahrstuhlblock.feature.block.input</ID>
+    <ID>PackageNaming:BlockInputFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.block.input</ID>
     <ID>PackageNaming:BlockInputsProcessorImpl.kt$package com.tobiapplications.fahrstuhlblock.core.repositories.processor</ID>
-    <ID>PackageNaming:BlockResultsAdapter.kt$package com.tobiapplications.fahrstuhlblock.ui_block.results</ID>
-    <ID>PackageNaming:BlockResultsFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_block.results</ID>
+    <ID>PackageNaming:BlockResultsAdapter.kt$package com.tobiapplications.fahrstuhlblock.feature.block.results</ID>
+    <ID>PackageNaming:BlockResultsFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.block.results</ID>
     <ID>PackageNaming:BlockResultsProcessorImpl.kt$package com.tobiapplications.fahrstuhlblock.core.repositories.processor</ID>
-    <ID>PackageNaming:BlockScoresAdapter.kt$package com.tobiapplications.fahrstuhlblock.ui_block.scores</ID>
-    <ID>PackageNaming:BlockScoresFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_block.scores</ID>
-    <ID>PackageNaming:BlockTrumpDialog.kt$package com.tobiapplications.fahrstuhlblock.ui_block.trump</ID>
-    <ID>PackageNaming:ButtonBindings.kt$package com.tobiapplications.fahrstuhlblock.ui_common.bindings</ID>
-    <ID>PackageNaming:ContextExtensions.kt$package com.tobiapplications.fahrstuhlblock.ui_common.extension</ID>
-    <ID>PackageNaming:DateUtils.kt$package com.tobiapplications.fahrstuhlblock.ui_common.utils</ID>
+    <ID>PackageNaming:BlockScoresAdapter.kt$package com.tobiapplications.fahrstuhlblock.feature.block.scores</ID>
+    <ID>PackageNaming:BlockScoresFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.block.scores</ID>
+    <ID>PackageNaming:BlockTrumpDialog.kt$package com.tobiapplications.fahrstuhlblock.feature.block.trump</ID>
+    <ID>PackageNaming:ButtonBindings.kt$package com.tobiapplications.fahrstuhlblock.feature.common.bindings</ID>
+    <ID>PackageNaming:ContextExtensions.kt$package com.tobiapplications.fahrstuhlblock.feature.common.extension</ID>
+    <ID>PackageNaming:DateUtils.kt$package com.tobiapplications.fahrstuhlblock.feature.common.utils</ID>
     <ID>PackageNaming:DbGame.kt$package com.tobiapplications.fahrstuhlblock.core.databaseroom.model.classes</ID>
     <ID>PackageNaming:DbGameInfo.kt$package com.tobiapplications.fahrstuhlblock.core.databaseroom.model.entity</ID>
     <ID>PackageNaming:DbGameMapper.kt$package com.tobiapplications.fahrstuhlblock.core.databaseroom.model.mapper</ID>
@@ -227,55 +227,55 @@
     <ID>PackageNaming:DbRound.kt$package com.tobiapplications.fahrstuhlblock.core.databaseroom.model.classes</ID>
     <ID>PackageNaming:DbTrumpType.kt$package com.tobiapplications.fahrstuhlblock.core.databaseroom.model.classes</ID>
     <ID>PackageNaming:DbTrumpTypeConverter.kt$package com.tobiapplications.fahrstuhlblock.core.databaseroom.model.converter</ID>
-    <ID>PackageNaming:DialogEntity.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity</ID>
-    <ID>PackageNaming:DialogInteractionFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog</ID>
-    <ID>PackageNaming:DialogInteractor.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils</ID>
-    <ID>PackageNaming:DialogRequestCode.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils</ID>
-    <ID>PackageNaming:DialogResultCode.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils</ID>
-    <ID>PackageNaming:EllipsizeAttribute.kt$package com.tobiapplications.fahrstuhlblock.ui_common.utils</ID>
+    <ID>PackageNaming:DialogEntity.kt$package com.tobiapplications.fahrstuhlblock.feature.common.base.dialog.entity</ID>
+    <ID>PackageNaming:DialogInteractionFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.common.base.dialog</ID>
+    <ID>PackageNaming:DialogInteractor.kt$package com.tobiapplications.fahrstuhlblock.feature.common.base.dialog.utils</ID>
+    <ID>PackageNaming:DialogRequestCode.kt$package com.tobiapplications.fahrstuhlblock.feature.common.base.dialog.utils</ID>
+    <ID>PackageNaming:DialogResultCode.kt$package com.tobiapplications.fahrstuhlblock.feature.common.base.dialog.utils</ID>
+    <ID>PackageNaming:EllipsizeAttribute.kt$package com.tobiapplications.fahrstuhlblock.feature.common.utils</ID>
     <ID>PackageNaming:FahrstuhlBlockSharedPreferences.kt$package com.tobiapplications.fahrstuhlblock.core.repositories.datasource.sharedpref</ID>
     <ID>PackageNaming:FirebaseRepositoryImpl.kt$package com.tobiapplications.fahrstuhlblock.core.repositories.repository</ID>
-    <ID>PackageNaming:FloatingActionButtonExtensions.kt$package com.tobiapplications.fahrstuhlblock.ui_common.bindings</ID>
-    <ID>PackageNaming:FragmentManagerExtension.kt$package com.tobiapplications.fahrstuhlblock.ui_common.extension</ID>
-    <ID>PackageNaming:FullscreenProgressDialogFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog</ID>
+    <ID>PackageNaming:FloatingActionButtonExtensions.kt$package com.tobiapplications.fahrstuhlblock.feature.common.bindings</ID>
+    <ID>PackageNaming:FragmentManagerExtension.kt$package com.tobiapplications.fahrstuhlblock.feature.common.extension</ID>
+    <ID>PackageNaming:FullscreenProgressDialogFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.common.base.dialog</ID>
     <ID>PackageNaming:GameCacheImpl.kt$package com.tobiapplications.fahrstuhlblock.core.databaseroom.cache</ID>
     <ID>PackageNaming:GameDao.kt$package com.tobiapplications.fahrstuhlblock.core.databaseroom.dao</ID>
     <ID>PackageNaming:GameDatabase.kt$package com.tobiapplications.fahrstuhlblock.core.databaseroom.database</ID>
     <ID>PackageNaming:GameRepositoryImpl.kt$package com.tobiapplications.fahrstuhlblock.core.repositories.repository</ID>
-    <ID>PackageNaming:GameRulesFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.gamerules</ID>
-    <ID>PackageNaming:GameSettingsActivity.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings</ID>
-    <ID>PackageNaming:ImageViewBindings.kt$package com.tobiapplications.fahrstuhlblock.ui_common.bindings</ID>
-    <ID>PackageNaming:ItemDecoration.kt$package com.tobiapplications.fahrstuhlblock.ui_common.utils</ID>
-    <ID>PackageNaming:ItemTouchHelperAdapter.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder</ID>
-    <ID>PackageNaming:ItemTouchHelperViewHolder.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder</ID>
+    <ID>PackageNaming:GameRulesFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.gamesettings.gamerules</ID>
+    <ID>PackageNaming:GameSettingsActivity.kt$package com.tobiapplications.fahrstuhlblock.feature.gamesettings</ID>
+    <ID>PackageNaming:ImageViewBindings.kt$package com.tobiapplications.fahrstuhlblock.feature.common.bindings</ID>
+    <ID>PackageNaming:ItemDecoration.kt$package com.tobiapplications.fahrstuhlblock.feature.common.utils</ID>
+    <ID>PackageNaming:ItemTouchHelperAdapter.kt$package com.tobiapplications.fahrstuhlblock.feature.gamesettings.playerorder</ID>
+    <ID>PackageNaming:ItemTouchHelperViewHolder.kt$package com.tobiapplications.fahrstuhlblock.feature.gamesettings.playerorder</ID>
     <ID>PackageNaming:Koin.kt$package com.tobiapplications.fahrstuhlblock.core.databaseroom</ID>
-    <ID>PackageNaming:MaterialButtonToggleGroupBindings.kt$package com.tobiapplications.fahrstuhlblock.ui_common.bindings</ID>
-    <ID>PackageNaming:MenuActivity.kt$package com.tobiapplications.fahrstuhlblock.ui_menu</ID>
-    <ID>PackageNaming:MenuFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_menu</ID>
-    <ID>PackageNaming:NumberExtensions.kt$package com.tobiapplications.fahrstuhlblock.ui_common.extension</ID>
+    <ID>PackageNaming:MaterialButtonToggleGroupBindings.kt$package com.tobiapplications.fahrstuhlblock.feature.common.bindings</ID>
+    <ID>PackageNaming:MenuActivity.kt$package com.tobiapplications.fahrstuhlblock.feature.menu</ID>
+    <ID>PackageNaming:MenuFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.menu</ID>
+    <ID>PackageNaming:NumberExtensions.kt$package com.tobiapplications.fahrstuhlblock.feature.common.extension</ID>
     <ID>PackageNaming:PlayerCacheImpl.kt$package com.tobiapplications.fahrstuhlblock.core.databaseroom.cache</ID>
     <ID>PackageNaming:PlayerDao.kt$package com.tobiapplications.fahrstuhlblock.core.databaseroom.dao</ID>
-    <ID>PackageNaming:PlayerNameInputView.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings</ID>
-    <ID>PackageNaming:PlayerNameInputViewBindings.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings</ID>
-    <ID>PackageNaming:PlayerOrderAdapter.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder</ID>
-    <ID>PackageNaming:PlayerOrderFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder</ID>
-    <ID>PackageNaming:PlayerSettingsFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings</ID>
-    <ID>PackageNaming:PlayerSettingsHandler.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings</ID>
-    <ID>PackageNaming:PointRulesFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.pointrules</ID>
-    <ID>PackageNaming:ResourceHelper.kt$package com.tobiapplications.fahrstuhlblock.ui_common.utils</ID>
-    <ID>PackageNaming:SavedGameBindings.kt$package com.tobiapplications.fahrstuhlblock.ui_common.bindings</ID>
-    <ID>PackageNaming:SavedGamesActivity.kt$package com.tobiapplications.fahrstuhlblock.ui_saved_games</ID>
-    <ID>PackageNaming:SavedGamesAdapter.kt$package com.tobiapplications.fahrstuhlblock.ui_saved_games</ID>
-    <ID>PackageNaming:SavedGamesFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_saved_games</ID>
+    <ID>PackageNaming:PlayerNameInputView.kt$package com.tobiapplications.fahrstuhlblock.feature.gamesettings.playersettings</ID>
+    <ID>PackageNaming:PlayerNameInputViewBindings.kt$package com.tobiapplications.fahrstuhlblock.feature.gamesettings.playersettings</ID>
+    <ID>PackageNaming:PlayerOrderAdapter.kt$package com.tobiapplications.fahrstuhlblock.feature.gamesettings.playerorder</ID>
+    <ID>PackageNaming:PlayerOrderFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.gamesettings.playerorder</ID>
+    <ID>PackageNaming:PlayerSettingsFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.gamesettings.playersettings</ID>
+    <ID>PackageNaming:PlayerSettingsHandler.kt$package com.tobiapplications.fahrstuhlblock.feature.gamesettings.playersettings</ID>
+    <ID>PackageNaming:PointRulesFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.gamesettings.pointrules</ID>
+    <ID>PackageNaming:ResourceHelper.kt$package com.tobiapplications.fahrstuhlblock.feature.common.utils</ID>
+    <ID>PackageNaming:SavedGameBindings.kt$package com.tobiapplications.fahrstuhlblock.feature.common.bindings</ID>
+    <ID>PackageNaming:SavedGamesActivity.kt$package com.tobiapplications.fahrstuhlblock.feature.savedgames</ID>
+    <ID>PackageNaming:SavedGamesAdapter.kt$package com.tobiapplications.fahrstuhlblock.feature.savedgames</ID>
+    <ID>PackageNaming:SavedGamesFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.savedgames</ID>
     <ID>PackageNaming:SharedPreferenceDelegates.kt$package com.tobiapplications.fahrstuhlblock.core.repositories.datasource.sharedpref</ID>
-    <ID>PackageNaming:SimpleAlertDialogFragment.kt$package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog</ID>
-    <ID>PackageNaming:SimpleItemTouchHelper.kt$package com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder</ID>
-    <ID>PackageNaming:TextViewBindings.kt$package com.tobiapplications.fahrstuhlblock.ui_common.bindings</ID>
-    <ID>PackageNaming:TrumpSelectionGroup.kt$package com.tobiapplications.fahrstuhlblock.ui_block.trump</ID>
-    <ID>PackageNaming:TrumpSelectionItem.kt$package com.tobiapplications.fahrstuhlblock.ui_block.trump</ID>
+    <ID>PackageNaming:SimpleAlertDialogFragment.kt$package com.tobiapplications.fahrstuhlblock.feature.common.base.dialog</ID>
+    <ID>PackageNaming:SimpleItemTouchHelper.kt$package com.tobiapplications.fahrstuhlblock.feature.gamesettings.playerorder</ID>
+    <ID>PackageNaming:TextViewBindings.kt$package com.tobiapplications.fahrstuhlblock.feature.common.bindings</ID>
+    <ID>PackageNaming:TrumpSelectionGroup.kt$package com.tobiapplications.fahrstuhlblock.feature.block.trump</ID>
+    <ID>PackageNaming:TrumpSelectionItem.kt$package com.tobiapplications.fahrstuhlblock.feature.block.trump</ID>
     <ID>PackageNaming:UserRepositoryImpl.kt$package com.tobiapplications.fahrstuhlblock.core.repositories.repository</ID>
-    <ID>PackageNaming:ViewBindings.kt$package com.tobiapplications.fahrstuhlblock.ui_common.bindings</ID>
-    <ID>PackageNaming:ViewDataBindingExtensions.kt$package com.tobiapplications.fahrstuhlblock.ui_common.extension</ID>
+    <ID>PackageNaming:ViewBindings.kt$package com.tobiapplications.fahrstuhlblock.feature.common.bindings</ID>
+    <ID>PackageNaming:ViewDataBindingExtensions.kt$package com.tobiapplications.fahrstuhlblock.feature.common.extension</ID>
     <ID>TooGenericExceptionCaught:BaseUseCase.kt$BaseUseCase$e: Exception</ID>
     <ID>TooGenericExceptionCaught:SafeCaller.kt$SafeCaller$ex: Exception</ID>
     <ID>TooManyFunctions:BlockResultsViewModel.kt$BlockResultsViewModel$BlockResultsViewModel</ID>

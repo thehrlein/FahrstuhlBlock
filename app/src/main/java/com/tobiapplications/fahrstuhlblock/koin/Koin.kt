@@ -44,8 +44,8 @@ import com.tobiapplications.fahrstuhlblock.core.presentation.settings.gamerules.
 import com.tobiapplications.fahrstuhlblock.core.presentation.settings.playerorder.PlayerOrderViewModel
 import com.tobiapplications.fahrstuhlblock.core.presentation.settings.playersettings.PlayerSettingsViewModel
 import com.tobiapplications.fahrstuhlblock.core.presentation.settings.pointrules.PointRulesViewModel
-import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelper
-import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelperImpl
+import com.tobiapplications.fahrstuhlblock.feature.common.utils.ResourceHelper
+import com.tobiapplications.fahrstuhlblock.feature.common.utils.ResourceHelperImpl
 import com.tobiapplications.fahrstuhlblock.utils.NavigationHandlerImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module

@@ -9,7 +9,7 @@ import com.tobiapplications.fahrstuhlblock.core.entities.models.game.input.Input
 import com.tobiapplications.fahrstuhlblock.core.entities.models.game.input.InputType
 import com.tobiapplications.fahrstuhlblock.core.interactor.SafeCaller
 import com.tobiapplications.fahrstuhlblock.core.interactor.processor.BlockInputsProcessor
-import com.tobiapplications.fahrstuhlblock.ui_common.utils.BlockHelper
+import com.tobiapplications.fahrstuhlblock.feature.common.utils.BlockHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

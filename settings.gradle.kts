@@ -38,11 +38,11 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
 
 // ui
-include(":ui_common")
-include(":ui_menu")
-include(":ui_game_settings")
-include(":ui_block")
-include(":ui_saved_games")
+include(":feature:common")
+include(":feature:menu")
+include(":feature:gamesettings")
+include(":feature:block")
+include(":feature:savedgames")
 
 // framework modules
 include(":core:repositories")

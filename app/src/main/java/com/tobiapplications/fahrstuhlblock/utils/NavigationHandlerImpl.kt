@@ -5,20 +5,20 @@ import androidx.navigation.NavHostController
 import com.tobiapplications.fahrstuhlblock.core.entities.general.Screen
 import com.tobiapplications.fahrstuhlblock.core.entities.utils.extensions.checkAllMatched
 import com.tobiapplications.fahrstuhlblock.core.entities.utils.handler.NavigationHandler
-import com.tobiapplications.fahrstuhlblock.ui_block.BlockActivity
-import com.tobiapplications.fahrstuhlblock.ui_block.input.BlockInputFragmentDirections
-import com.tobiapplications.fahrstuhlblock.ui_block.results.BlockResultsFragmentDirections
-import com.tobiapplications.fahrstuhlblock.ui_block.trump.BlockTrumpDialog
-import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.FullscreenProgressDialogFragment
-import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.SimpleAlertDialogFragment
-import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity.DialogEntity
-import com.tobiapplications.fahrstuhlblock.ui_common.utils.ResourceHelper
-import com.tobiapplications.fahrstuhlblock.ui_game_settings.GameSettingsActivity
-import com.tobiapplications.fahrstuhlblock.ui_game_settings.gamerules.GameRulesFragmentDirections
-import com.tobiapplications.fahrstuhlblock.ui_game_settings.playerorder.PlayerOrderFragmentDirections
-import com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings.PlayerSettingsFragmentDirections
-import com.tobiapplications.fahrstuhlblock.ui_menu.MenuActivity
-import com.tobiapplications.fahrstuhlblock.ui_saved_games.SavedGamesActivity
+import com.tobiapplications.fahrstuhlblock.feature.block.BlockActivity
+import com.tobiapplications.fahrstuhlblock.feature.block.input.BlockInputFragmentDirections
+import com.tobiapplications.fahrstuhlblock.feature.block.results.BlockResultsFragmentDirections
+import com.tobiapplications.fahrstuhlblock.feature.block.trump.BlockTrumpDialog
+import com.tobiapplications.fahrstuhlblock.feature.common.base.dialog.FullscreenProgressDialogFragment
+import com.tobiapplications.fahrstuhlblock.feature.common.base.dialog.SimpleAlertDialogFragment
+import com.tobiapplications.fahrstuhlblock.feature.common.base.dialog.entity.DialogEntity
+import com.tobiapplications.fahrstuhlblock.feature.common.utils.ResourceHelper
+import com.tobiapplications.fahrstuhlblock.feature.gamesettings.GameSettingsActivity
+import com.tobiapplications.fahrstuhlblock.feature.gamesettings.gamerules.GameRulesFragmentDirections
+import com.tobiapplications.fahrstuhlblock.feature.gamesettings.playerorder.PlayerOrderFragmentDirections
+import com.tobiapplications.fahrstuhlblock.feature.gamesettings.playersettings.PlayerSettingsFragmentDirections
+import com.tobiapplications.fahrstuhlblock.feature.menu.MenuActivity
+import com.tobiapplications.fahrstuhlblock.feature.savedgames.SavedGamesActivity
 
 class NavigationHandlerImpl(
     private val activity: AppCompatActivity,
