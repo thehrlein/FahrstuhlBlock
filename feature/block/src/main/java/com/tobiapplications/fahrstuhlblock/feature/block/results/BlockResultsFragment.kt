@@ -25,7 +25,6 @@ import com.tobiapplications.fahrstuhlblock.feature.common.utils.ItemDecoration
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BlockResultsFragment :

@@ -23,8 +23,6 @@ android {
 
     namespace = AppBuildConfig.applicationId
 
-    namespace = AppBuildConfig.applicationId
-
     defaultConfig {
         applicationId = AppBuildConfig.applicationId
         versionCode = buildNumber

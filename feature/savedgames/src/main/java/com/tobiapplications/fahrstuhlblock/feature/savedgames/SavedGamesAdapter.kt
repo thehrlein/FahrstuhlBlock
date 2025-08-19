@@ -56,7 +56,5 @@ object SavedGameDiff : DiffUtil.ItemCallback<SavedGameEntity>() {
         oldItem.gameId == newItem.gameId
 
     override fun areContentsTheSame(oldItem: SavedGameEntity, newItem: SavedGameEntity): Boolean =
-        oldItem.players == newItem.players &&
-                oldItem.currentRound == newItem.currentRound &&
-                oldItem.maxRound == newItem.maxRound
+        oldItem == newItem
 }

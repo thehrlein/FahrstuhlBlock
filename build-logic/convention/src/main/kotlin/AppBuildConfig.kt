@@ -14,7 +14,7 @@
  */
 
 object AppBuildConfig {
-    const val targetAndCompileSdk = 34
+    const val targetAndCompileSdk = 36
     const val minSdk = 24
     const val jvmToolchain = 21
     const val versionName = "1.2.0"

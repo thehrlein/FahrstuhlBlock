@@ -8,7 +8,6 @@ import com.tobiapplications.fahrstuhlblock.core.presentation.block.BlockViewMode
 import com.tobiapplications.fahrstuhlblock.core.presentation.block.scores.BlockScoresViewModel
 import com.tobiapplications.fahrstuhlblock.feature.block.databinding.FragmentBlockScoresBinding
 import com.tobiapplications.fahrstuhlblock.feature.common.base.fragment.BaseToolbarFragment
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.tobiapplications.fahrstuhlblock.feature.block.R
 import com.tobiapplications.fahrstuhlblock.feature.block.BR

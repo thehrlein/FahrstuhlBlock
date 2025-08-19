@@ -8,7 +8,6 @@ import com.tobiapplications.fahrstuhlblock.feature.gamesettings.BR
 import com.tobiapplications.fahrstuhlblock.feature.gamesettings.R
 import com.tobiapplications.fahrstuhlblock.feature.gamesettings.databinding.FragmentPlayerSettingsBinding
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlayerSettingsFragment : BaseToolbarFragment<PlayerSettingsViewModel, GameSettingsViewModel, FragmentPlayerSettingsBinding>() {

@@ -12,7 +12,6 @@ import com.tobiapplications.fahrstuhlblock.feature.gamesettings.BR
 import com.tobiapplications.fahrstuhlblock.feature.gamesettings.R
 import com.tobiapplications.fahrstuhlblock.feature.gamesettings.databinding.FragmentGameRulesBinding
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 

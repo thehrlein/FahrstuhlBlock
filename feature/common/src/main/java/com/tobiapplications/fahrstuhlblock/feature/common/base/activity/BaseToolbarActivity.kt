@@ -2,8 +2,12 @@ package com.tobiapplications.fahrstuhlblock.feature.common.base.activity
 
 import android.os.Bundle
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.annotation.CallSuper
 import androidx.annotation.LayoutRes
+import androidx.core.view.marginBottom
+import androidx.core.view.marginEnd
+import androidx.core.view.marginStart
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
@@ -12,6 +16,8 @@ import com.tobiapplications.fahrstuhlblock.core.presentation.general.BaseToolbar
 import com.tobiapplications.fahrstuhlblock.feature.common.BR
 import com.tobiapplications.fahrstuhlblock.feature.common.R
 import com.tobiapplications.fahrstuhlblock.feature.common.databinding.ActivityBaseToolbarBinding
+import com.tobiapplications.fahrstuhlblock.feature.common.extension.getDimen
+import com.tobiapplications.fahrstuhlblock.feature.common.utils.insets.WindowInsetsHelper
 import com.tobiapplications.fahrstuhlblock.feature.common.views.BaseToolbar
 
 abstract class BaseToolbarActivity<Model : BaseToolbarViewModel, Binding : ViewDataBinding> :
@@ -43,6 +49,7 @@ abstract class BaseToolbarActivity<Model : BaseToolbarViewModel, Binding : ViewD
         setUpToolbar(activityBaseToolbarBinding.baseToolbar)
         setupToolbarViewModel()
         createContentBinding(activityBaseToolbarBinding.baseContentContainer, savedInstanceState)
+        adjustStatusBarHeight(activityBaseToolbarBinding)
     }
 
     private fun createContentBinding(
@@ -81,6 +88,25 @@ abstract class BaseToolbarActivity<Model : BaseToolbarViewModel, Binding : ViewD
             toolbarButton.observe(this@BaseToolbarActivity, Observer<ToolbarButtonType> {
                 toolbarButtonType = it
             })
+        }
+    }
+
+    private fun adjustStatusBarHeight(activityBaseToolbarBinding: ActivityBaseToolbarBinding) {
+        WindowInsetsHelper.getInsets(binding.root) { ohInsets ->
+            val layoutParams = activityBaseToolbarBinding.baseToolbar.layoutParams as LinearLayout.LayoutParams
+            activityBaseToolbarBinding.baseToolbar.setPadding(
+                activityBaseToolbarBinding.baseToolbar.marginStart,
+                ohInsets.statusBarHeight,
+                activityBaseToolbarBinding.baseToolbar.marginEnd,
+                activityBaseToolbarBinding.baseToolbar.marginBottom
+            )
+            layoutParams.height = getDimen(R.dimen.toolbar_height) + ohInsets.statusBarHeight
+            activityBaseToolbarBinding.baseLayout.setPadding(
+                binding.root.paddingLeft,
+                binding.root.paddingTop,
+                binding.root.paddingRight,
+                ohInsets.navigationBarHeight
+            )
         }
     }
 }
