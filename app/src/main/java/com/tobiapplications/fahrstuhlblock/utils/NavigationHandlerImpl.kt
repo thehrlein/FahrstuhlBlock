@@ -2,9 +2,9 @@ package com.tobiapplications.fahrstuhlblock.utils
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavHostController
-import com.tobiapplications.fahrstuhlblock.entities.general.Screen
-import com.tobiapplications.fahrstuhlblock.entities.utils.extensions.checkAllMatched
-import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
+import com.tobiapplications.fahrstuhlblock.core.entities.general.Screen
+import com.tobiapplications.fahrstuhlblock.core.entities.utils.extensions.checkAllMatched
+import com.tobiapplications.fahrstuhlblock.core.entities.utils.handler.NavigationHandler
 import com.tobiapplications.fahrstuhlblock.ui_block.BlockActivity
 import com.tobiapplications.fahrstuhlblock.ui_block.input.BlockInputFragmentDirections
 import com.tobiapplications.fahrstuhlblock.ui_block.results.BlockResultsFragmentDirections

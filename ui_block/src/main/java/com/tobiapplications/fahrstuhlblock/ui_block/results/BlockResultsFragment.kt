@@ -7,10 +7,10 @@ import android.view.*
 import android.widget.LinearLayout
 import androidx.activity.addCallback
 import androidx.recyclerview.widget.GridLayoutManager
-import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockName
-import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockPlaceholder
-import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
-import com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsViewModel
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.BlockName
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.BlockPlaceholder
+import com.tobiapplications.fahrstuhlblock.core.presentation.block.BlockViewModel
+import com.tobiapplications.fahrstuhlblock.core.presentation.block.results.BlockResultsViewModel
 import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentBlockResultsBinding

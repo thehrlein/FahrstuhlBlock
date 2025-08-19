@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.tobiapplications.fahrstuhlblock.presentation.settings.pointrules.PointRulesViewModel" />
+            type="com.tobiapplications.fahrstuhlblock.core.presentation.settings.pointrules.PointRulesViewModel" />
     </data>
 
     <ScrollView

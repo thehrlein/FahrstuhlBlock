@@ -7,7 +7,7 @@ import android.view.Window
 import android.view.WindowManager
 import com.tobiapplications.fahrstuhlblock.BR
 import com.tobiapplications.fahrstuhlblock.R
-import com.tobiapplications.fahrstuhlblock.presentation.main.MainViewModel
+import com.tobiapplications.fahrstuhlblock.core.presentation.main.MainViewModel
 import com.tobiapplications.fahrstuhlblock.ui_common.base.activity.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

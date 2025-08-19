@@ -5,8 +5,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
-import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
-import com.tobiapplications.fahrstuhlblock.presentation.block.info.AboutViewModel
+import com.tobiapplications.fahrstuhlblock.core.presentation.block.BlockViewModel
+import com.tobiapplications.fahrstuhlblock.core.presentation.block.info.AboutViewModel
 import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentAboutBinding

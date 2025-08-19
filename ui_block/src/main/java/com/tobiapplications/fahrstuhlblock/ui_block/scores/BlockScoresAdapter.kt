@@ -5,7 +5,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScore
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.GameScore
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.ItemBlockScoreBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.executeAfter

@@ -4,7 +4,7 @@ import android.content.res.ColorStateList
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.TrumpType
 import com.tobiapplications.fahrstuhlblock.ui_common.R
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.getColorReference
 

@@ -7,9 +7,9 @@
 
         <variable
             name="viewModel"
-            type="com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsViewModel" />
+            type="com.tobiapplications.fahrstuhlblock.core.presentation.block.results.BlockResultsViewModel" />
 
-        <import type="com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType" />
+        <import type="com.tobiapplications.fahrstuhlblock.core.entities.models.game.input.InputType" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

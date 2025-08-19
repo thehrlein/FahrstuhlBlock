@@ -1,0 +1,13 @@
+package com.tobiapplications.fahrstuhlblock.core.interactor.processor
+
+import com.tobiapplications.fahrstuhlblock.core.entities.general.AppResult
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.general.Game
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.input.CheckInputValidityData
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.input.InputData
+
+interface BlockInputsProcessor {
+
+    suspend fun checkInputsValidity(inputValidityData: CheckInputValidityData): AppResult<Boolean>
+
+    suspend fun getBlockInputModels(game: Game): AppResult<InputData>
+}

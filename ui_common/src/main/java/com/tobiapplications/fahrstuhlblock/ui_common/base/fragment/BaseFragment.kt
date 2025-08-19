@@ -12,8 +12,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.tobiapplications.fahrstuhlblock.entities.utils.handler.NavigationHandler
-import com.tobiapplications.fahrstuhlblock.presentation.general.BaseViewModel
+import com.tobiapplications.fahrstuhlblock.core.entities.utils.handler.NavigationHandler
+import com.tobiapplications.fahrstuhlblock.core.presentation.general.BaseViewModel
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.dispatchOnActivityResult
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf

@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
-import com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockPlaceholder
-import com.tobiapplications.fahrstuhlblock.presentation.block.results.BlockResultsInteractions
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.BlockPlaceholder
+import com.tobiapplications.fahrstuhlblock.core.presentation.block.results.BlockResultsInteractions
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.ViewBlockPlaceholderBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.executeAfter

@@ -45,12 +45,12 @@ include(":ui_block")
 include(":ui_saved_games")
 
 // framework modules
-include(":fw_repositories")
-include(":fw_database_room")
+include(":core:repositories")
+include(":core:databaseroom")
 
 // basic architecture modules
-include(":presentation")
-include(":interactor")
-include(":entities")
+include(":core:presentation")
+include(":core:interactor")
+include(":core:entities")
 
 rootProject.name = "FahrstuhlBlock"

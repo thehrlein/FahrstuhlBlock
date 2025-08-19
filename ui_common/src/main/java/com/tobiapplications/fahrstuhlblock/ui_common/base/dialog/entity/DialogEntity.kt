@@ -1,8 +1,8 @@
 package com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.entity
 
-import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
-import com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScore
-import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.input.InputType
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.GameScore
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.TrumpType
 import com.tobiapplications.fahrstuhlblock.ui_common.R
 import java.io.Serializable
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogRequestCode

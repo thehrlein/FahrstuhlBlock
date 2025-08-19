@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
-import com.tobiapplications.fahrstuhlblock.presentation.block.scores.BlockScoresViewModel
+import com.tobiapplications.fahrstuhlblock.core.presentation.block.BlockViewModel
+import com.tobiapplications.fahrstuhlblock.core.presentation.block.scores.BlockScoresViewModel
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentBlockScoresBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFragment
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel

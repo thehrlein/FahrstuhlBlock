@@ -6,7 +6,7 @@ import android.view.MotionEvent
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.tobiapplications.fahrstuhlblock.presentation.settings.playerorder.PlayerOrderInteractions
+import com.tobiapplications.fahrstuhlblock.core.presentation.settings.playerorder.PlayerOrderInteractions
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.layoutInflater
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.R
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.databinding.ItemPlayerRowBinding

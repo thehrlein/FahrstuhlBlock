@@ -5,9 +5,9 @@
 
         <variable
             name="viewModel"
-            type="com.tobiapplications.fahrstuhlblock.presentation.settings.gamerules.GameRulesViewModel" />
+            type="com.tobiapplications.fahrstuhlblock.core.presentation.settings.gamerules.GameRulesViewModel" />
 
-        <import type="com.tobiapplications.fahrstuhlblock.entities.models.settings.MaxCardCountSelection" />
+        <import type="com.tobiapplications.fahrstuhlblock.core.entities.models.settings.MaxCardCountSelection" />
 
     </data>
 

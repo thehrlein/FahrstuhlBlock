@@ -10,9 +10,9 @@ android {
 dependencies {
 
     // Modules
-    implementation(projects.presentation)
-    implementation(projects.interactor)
-    implementation(projects.entities)
+    implementation(projects.core.presentation)
+    implementation(projects.core.interactor)
+    implementation(projects.core.entities)
 
     // AndroidX
     implementation(libs.androidx.constraintlayout)

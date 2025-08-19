@@ -2,8 +2,8 @@ package com.tobiapplications.fahrstuhlblock.ui_menu
 
 import android.app.Activity
 import android.content.Intent
-import com.tobiapplications.fahrstuhlblock.entities.general.toolbar.ToolbarButtonType
-import com.tobiapplications.fahrstuhlblock.presentation.menu.MenuViewModel
+import com.tobiapplications.fahrstuhlblock.core.entities.general.toolbar.ToolbarButtonType
+import com.tobiapplications.fahrstuhlblock.core.presentation.menu.MenuViewModel
 import com.tobiapplications.fahrstuhlblock.ui_common.base.activity.BaseToolbarActivity
 import com.tobiapplications.fahrstuhlblock.ui_menu.databinding.ActivityMenuBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel

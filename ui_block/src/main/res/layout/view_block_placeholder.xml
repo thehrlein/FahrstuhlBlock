@@ -7,9 +7,9 @@
 
         <variable
             name="item"
-            type="com.tobiapplications.fahrstuhlblock.entities.models.game.result.BlockPlaceholder" />
+            type="com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.BlockPlaceholder" />
 
-        <import type="com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType" />
+        <import type="com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.TrumpType" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

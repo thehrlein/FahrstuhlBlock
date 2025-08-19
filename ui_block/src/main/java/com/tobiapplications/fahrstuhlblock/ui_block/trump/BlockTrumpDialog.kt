@@ -7,7 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.tobiapplications.fahrstuhlblock.presentation.block.trump.BlockTrumpViewModel
+import com.tobiapplications.fahrstuhlblock.core.presentation.block.trump.BlockTrumpViewModel
 import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.DialogBlockTrumpBinding

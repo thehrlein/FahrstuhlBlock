@@ -26,7 +26,7 @@
 
         <argument
             android:name="playerSettingsData"
-            app:argType="com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData" />
+            app:argType="com.tobiapplications.fahrstuhlblock.core.entities.models.settings.PlayerSettingsData" />
 
         <action
             android:id="@+id/action_playerOrderFragment_to_gameRulesFragment"
@@ -41,7 +41,7 @@
 
         <argument
             android:name="playerSettingsData"
-            app:argType="com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerSettingsData" />
+            app:argType="com.tobiapplications.fahrstuhlblock.core.entities.models.settings.PlayerSettingsData" />
 
         <action
             android:id="@+id/action_gameRulesFragment_to_pointRulesFragment"
@@ -56,7 +56,7 @@
 
         <argument
             android:name="gameRuleSettingsData"
-            app:argType="com.tobiapplications.fahrstuhlblock.entities.models.settings.GameRuleSettingsData" />
+            app:argType="com.tobiapplications.fahrstuhlblock.core.entities.models.settings.GameRuleSettingsData" />
     </fragment>
 
 </navigation>

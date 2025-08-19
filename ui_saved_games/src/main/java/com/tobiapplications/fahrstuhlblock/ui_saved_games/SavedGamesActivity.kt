@@ -2,8 +2,8 @@ package com.tobiapplications.fahrstuhlblock.ui_saved_games
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import com.tobiapplications.fahrstuhlblock.entities.general.toolbar.ToolbarButtonType
-import com.tobiapplications.fahrstuhlblock.presentation.savedgames.SavedGamesViewModel
+import com.tobiapplications.fahrstuhlblock.core.entities.general.toolbar.ToolbarButtonType
+import com.tobiapplications.fahrstuhlblock.core.presentation.savedgames.SavedGamesViewModel
 import com.tobiapplications.fahrstuhlblock.ui_common.base.activity.BaseToolbarActivity
 import com.tobiapplications.fahrstuhlblock.ui_saved_games.databinding.ActivitySavedGamesBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.tobiapplications.fahrstuhlblock.presentation.savedgames.SavedGamesViewModel" />
+            type="com.tobiapplications.fahrstuhlblock.core.presentation.savedgames.SavedGamesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

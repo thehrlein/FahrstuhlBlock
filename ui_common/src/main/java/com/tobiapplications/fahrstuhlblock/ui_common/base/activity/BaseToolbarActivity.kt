@@ -7,8 +7,8 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
-import com.tobiapplications.fahrstuhlblock.entities.general.toolbar.ToolbarButtonType
-import com.tobiapplications.fahrstuhlblock.presentation.general.BaseToolbarViewModel
+import com.tobiapplications.fahrstuhlblock.core.entities.general.toolbar.ToolbarButtonType
+import com.tobiapplications.fahrstuhlblock.core.presentation.general.BaseToolbarViewModel
 import com.tobiapplications.fahrstuhlblock.ui_common.BR
 import com.tobiapplications.fahrstuhlblock.ui_common.R
 import com.tobiapplications.fahrstuhlblock.ui_common.databinding.ActivityBaseToolbarBinding

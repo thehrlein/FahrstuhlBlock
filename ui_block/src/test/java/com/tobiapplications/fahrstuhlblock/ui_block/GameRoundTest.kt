@@ -1,10 +1,10 @@
 package com.tobiapplications.fahrstuhlblock.ui_block
 
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerResultData
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.PlayerTippData
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.GameRound
-import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
-import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.general.PlayerResultData
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.general.PlayerTippData
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.general.GameRound
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.input.InputType
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.TrumpType
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.nullValue
 import org.hamcrest.MatcherAssert.assertThat

@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
-import com.tobiapplications.fahrstuhlblock.entities.models.settings.MaxCardCountSelection
-import com.tobiapplications.fahrstuhlblock.presentation.settings.gamerules.GameRulesViewModel
-import com.tobiapplications.fahrstuhlblock.presentation.settings.GameSettingsViewModel
+import com.tobiapplications.fahrstuhlblock.core.entities.models.settings.MaxCardCountSelection
+import com.tobiapplications.fahrstuhlblock.core.presentation.settings.gamerules.GameRulesViewModel
+import com.tobiapplications.fahrstuhlblock.core.presentation.settings.GameSettingsViewModel
 import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFragment
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.BR
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.R

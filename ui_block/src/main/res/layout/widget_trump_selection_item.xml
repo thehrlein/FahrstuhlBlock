@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.tobiapplications.fahrstuhlblock.entities.models.game.result.Trump" />
+            type="com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.Trump" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

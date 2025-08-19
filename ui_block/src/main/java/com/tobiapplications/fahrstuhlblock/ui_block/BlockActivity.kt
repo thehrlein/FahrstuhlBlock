@@ -2,8 +2,8 @@ package com.tobiapplications.fahrstuhlblock.ui_block
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import com.tobiapplications.fahrstuhlblock.entities.general.toolbar.ToolbarButtonType
-import com.tobiapplications.fahrstuhlblock.presentation.block.BlockViewModel
+import com.tobiapplications.fahrstuhlblock.core.entities.general.toolbar.ToolbarButtonType
+import com.tobiapplications.fahrstuhlblock.core.presentation.block.BlockViewModel
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.ActivityBlockBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.base.activity.BaseToolbarActivity
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogInteractor

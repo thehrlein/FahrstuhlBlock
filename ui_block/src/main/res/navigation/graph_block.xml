@@ -46,7 +46,7 @@
         android:label="BlockScoresFragment" >
         <argument
             android:name="gameScoreData"
-            app:argType="com.tobiapplications.fahrstuhlblock.entities.models.game.result.GameScoreData" />
+            app:argType="com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.GameScoreData" />
     </fragment>
 
     <fragment

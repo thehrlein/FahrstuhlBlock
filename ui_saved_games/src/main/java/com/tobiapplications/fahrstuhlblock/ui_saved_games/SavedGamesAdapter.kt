@@ -5,8 +5,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.tobiapplications.fahrstuhlblock.entities.models.game.savedgames.SavedGameEntity
-import com.tobiapplications.fahrstuhlblock.presentation.savedgames.SavedGamesInteractions
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.savedgames.SavedGameEntity
+import com.tobiapplications.fahrstuhlblock.core.presentation.savedgames.SavedGamesInteractions
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.executeAfter
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.layoutInflater
 import com.tobiapplications.fahrstuhlblock.ui_saved_games.databinding.ItemSavedGameBinding

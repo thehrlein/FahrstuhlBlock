@@ -6,8 +6,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputDataItem
-import com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputInteractions
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.input.InputDataItem
+import com.tobiapplications.fahrstuhlblock.core.presentation.block.input.BlockInputInteractions
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.ItemBlockInputBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.executeAfter

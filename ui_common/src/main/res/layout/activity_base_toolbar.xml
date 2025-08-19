@@ -6,7 +6,7 @@
 
         <variable
             name="toolbarViewModel"
-            type="com.tobiapplications.fahrstuhlblock.presentation.general.BaseToolbarViewModel" />
+            type="com.tobiapplications.fahrstuhlblock.core.presentation.general.BaseToolbarViewModel" />
     </data>
 
     <LinearLayout

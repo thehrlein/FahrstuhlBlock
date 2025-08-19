@@ -2,8 +2,8 @@ package com.tobiapplications.fahrstuhlblock.ui_game_settings
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import com.tobiapplications.fahrstuhlblock.entities.general.toolbar.ToolbarButtonType
-import com.tobiapplications.fahrstuhlblock.presentation.settings.GameSettingsViewModel
+import com.tobiapplications.fahrstuhlblock.core.entities.general.toolbar.ToolbarButtonType
+import com.tobiapplications.fahrstuhlblock.core.presentation.settings.GameSettingsViewModel
 import com.tobiapplications.fahrstuhlblock.ui_common.base.activity.BaseToolbarActivity
 import com.tobiapplications.fahrstuhlblock.ui_common.base.dialog.utils.DialogInteractor
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.dispatchOnDialogResult

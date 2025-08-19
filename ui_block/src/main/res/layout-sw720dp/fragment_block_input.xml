@@ -7,9 +7,9 @@
 
         <variable
             name="viewModel"
-            type="com.tobiapplications.fahrstuhlblock.presentation.block.input.BlockInputViewModel" />
+            type="com.tobiapplications.fahrstuhlblock.core.presentation.block.input.BlockInputViewModel" />
 
-        <import type="com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType" />
+        <import type="com.tobiapplications.fahrstuhlblock.core.entities.models.game.input.InputType" />
     </data>
 
     <androidx.core.widget.NestedScrollView

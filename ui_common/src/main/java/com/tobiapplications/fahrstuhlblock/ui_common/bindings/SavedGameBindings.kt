@@ -2,7 +2,7 @@ package com.tobiapplications.fahrstuhlblock.ui_common.bindings
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.tobiapplications.fahrstuhlblock.entities.models.game.savedgames.SavedGameEntity
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.savedgames.SavedGameEntity
 import com.tobiapplications.fahrstuhlblock.ui_common.R
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.DateUtils
 

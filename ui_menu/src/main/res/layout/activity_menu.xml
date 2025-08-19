@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.tobiapplications.fahrstuhlblock.presentation.menu.MenuViewModel" />
+            type="com.tobiapplications.fahrstuhlblock.core.presentation.menu.MenuViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

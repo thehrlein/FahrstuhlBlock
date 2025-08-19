@@ -5,8 +5,8 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
-import com.tobiapplications.fahrstuhlblock.entities.models.game.result.Trump
-import com.tobiapplications.fahrstuhlblock.entities.models.game.result.TrumpType
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.Trump
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.result.TrumpType
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.WidgetTrumpSelectionGroupBinding
 

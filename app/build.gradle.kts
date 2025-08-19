@@ -75,11 +75,12 @@ dependencies {
     implementation(projects.uiGameSettings)
     implementation(projects.uiBlock)
     implementation(projects.uiSavedGames)
-    implementation(projects.fwRepositories)
-    implementation(projects.fwDatabaseRoom)
-    implementation(projects.presentation)
-    implementation(projects.interactor)
-    implementation(projects.entities)
+
+    implementation(projects.core.repositories)
+    implementation(projects.core.databaseroom)
+    implementation(projects.core.presentation)
+    implementation(projects.core.interactor)
+    implementation(projects.core.entities)
 
     // Google
     implementation(libs.google.material)

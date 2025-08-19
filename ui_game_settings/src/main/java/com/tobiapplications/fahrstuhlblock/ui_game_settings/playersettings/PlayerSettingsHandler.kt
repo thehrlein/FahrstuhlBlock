@@ -1,6 +1,6 @@
 package com.tobiapplications.fahrstuhlblock.ui_game_settings.playersettings
 
-import com.tobiapplications.fahrstuhlblock.entities.models.settings.PlayerError
+import com.tobiapplications.fahrstuhlblock.core.entities.models.settings.PlayerError
 
 class PlayerSettingsHandler {
 

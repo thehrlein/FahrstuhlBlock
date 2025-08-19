@@ -4,8 +4,8 @@ import android.graphics.Typeface
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import com.tobiapplications.fahrstuhlblock.entities.models.game.general.Game
-import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.general.Game
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.input.InputType
 import com.tobiapplications.fahrstuhlblock.ui_common.R
 
 @BindingAdapter("resultText")

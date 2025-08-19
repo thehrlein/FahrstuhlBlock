@@ -1,0 +1,47 @@
+package com.tobiapplications.fahrstuhlblock.core.databaseroom.dao
+
+import androidx.room.*
+import com.tobiapplications.fahrstuhlblock.core.databaseroom.model.classes.DbGame
+import com.tobiapplications.fahrstuhlblock.core.databaseroom.model.classes.DbRound
+import com.tobiapplications.fahrstuhlblock.core.databaseroom.model.entity.DbGameInfo
+
+@Dao
+interface GameDao {
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertGameInfo(dbGameInfo: DbGameInfo): Long
+
+    @Query("SELECT * FROM GAME_DATABASE WHERE gameId = :gameId")
+    fun getGameInfo(gameId: Long): DbGameInfo
+
+    @Transaction
+    @Query("SELECT * FROM GAME_DATABASE WHERE gameId = :gameId")
+    fun getGame(gameId: Long): DbGame
+
+    @Query("SELECT * FROM GAME_ROUNDS WHERE gameId = :gameId")
+    fun getRounds(gameId: Long): List<DbRound>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertRound(dbRound: DbRound): Long
+
+    @Query("DELETE FROM GAME_ROUNDS WHERE gameId = :gameId AND round = :round")
+    fun removeRound(gameId: Long, round: Int)
+
+    @Query("SELECT * FROM GAME_DATABASE")
+    fun getAllSavedGames(): List<DbGame>
+
+    @Query("SELECT * FROM GAME_DATABASE ORDER BY gameId DESC LIMIT 1")
+    fun getLastGameInfo(): DbGameInfo
+
+    @Transaction
+    fun deleteGame(gameId: Long) {
+        deleteGameInfo(gameId)
+        deleteGameRounds(gameId)
+    }
+
+    @Query("DELETE FROM GAME_DATABASE WHERE gameId = :gameId")
+    fun deleteGameInfo(gameId: Long)
+
+    @Query("DELETE FROM GAME_ROUNDS WHERE gameId = :gameId")
+    fun deleteGameRounds(gameId: Long)
+}

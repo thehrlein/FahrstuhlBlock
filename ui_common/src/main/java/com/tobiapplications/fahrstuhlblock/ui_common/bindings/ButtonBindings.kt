@@ -2,7 +2,7 @@ package com.tobiapplications.fahrstuhlblock.ui_common.bindings
 
 import android.widget.Button
 import androidx.databinding.BindingAdapter
-import com.tobiapplications.fahrstuhlblock.entities.models.game.input.InputType
+import com.tobiapplications.fahrstuhlblock.core.entities.models.game.input.InputType
 import com.tobiapplications.fahrstuhlblock.ui_common.R
 
 @BindingAdapter("inputType", "summedInputs", "cardCount")

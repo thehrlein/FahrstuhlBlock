@@ -8,9 +8,9 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.ImageViewCompat
 import androidx.databinding.DataBindingUtil
-import com.tobiapplications.fahrstuhlblock.entities.utils.extensions.checkAllMatched
-import com.tobiapplications.fahrstuhlblock.entities.general.toolbar.OnToolbarButtonClickListener
-import com.tobiapplications.fahrstuhlblock.entities.general.toolbar.ToolbarButtonType
+import com.tobiapplications.fahrstuhlblock.core.entities.utils.extensions.checkAllMatched
+import com.tobiapplications.fahrstuhlblock.core.entities.general.toolbar.OnToolbarButtonClickListener
+import com.tobiapplications.fahrstuhlblock.core.entities.general.toolbar.ToolbarButtonType
 import com.tobiapplications.fahrstuhlblock.ui_common.R
 import com.tobiapplications.fahrstuhlblock.ui_common.databinding.ViewToolbarBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.EllipsizeAttribute

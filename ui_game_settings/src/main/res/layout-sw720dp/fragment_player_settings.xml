@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.tobiapplications.fahrstuhlblock.presentation.settings.playersettings.PlayerSettingsViewModel" />
+            type="com.tobiapplications.fahrstuhlblock.core.presentation.settings.playersettings.PlayerSettingsViewModel" />
     </data>
 
     <ScrollView

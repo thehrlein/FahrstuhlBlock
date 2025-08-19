@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.tobiapplications.fahrstuhlblock.presentation.savedgames.SavedGamesViewModel
+import com.tobiapplications.fahrstuhlblock.core.presentation.savedgames.SavedGamesViewModel
 import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseFragment
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.SwipeToDeleteCallback
 import com.tobiapplications.fahrstuhlblock.ui_saved_games.databinding.FragmentSavedGamesBinding
