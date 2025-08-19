@@ -1,16 +1,11 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
 plugins {
-    id(BuildPlugins.androidApplication)
-    id(BuildPlugins.kotlinAndroid)
-    id(BuildPlugins.kotlinKapt)
-    id(BuildPlugins.googleServices)
-    id(BuildPlugins.firebaseCrashlytics)
-    id(BuildPlugins.firebasePerformance)
+    alias(libs.plugins.ohhell.android.application)
+    alias(libs.plugins.google.firebase.crashlytics)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 val buildNumber = Integer.parseInt(
@@ -19,25 +14,22 @@ val buildNumber = Integer.parseInt(
     )
 )
 
+project.rootProject.ext.set("buildNumber", buildNumber)
 
 android {
     val releaseAlias: String by project.rootProject.ext
     val releaseKeyPassword: String by project.rootProject.ext
     val releaseKeyStorePassword: String by project.rootProject.ext
 
-    namespace = AndroidSdkTools.application_id
+    namespace = AppBuildConfig.applicationId
 
-    compileSdk = AndroidSdkTools.compileSdk
+    namespace = AppBuildConfig.applicationId
+
     defaultConfig {
-        applicationId = AndroidSdkTools.application_id
-        minSdk = AndroidSdkTools.minSdk
-        targetSdk = AndroidSdkTools.targetSdk
+        applicationId = AppBuildConfig.applicationId
         versionCode = buildNumber
-        versionName = AndroidSdkTools.version_name
-        testInstrumentationRunner = Others.ANDROID_JUNIT_TEST_IMPLEMENTATION_RUNNER
-
-        // possibility to colorize vector drawable in xml based on color resources (< API 24)
-        vectorDrawables.useSupportLibrary = true
+        versionName = AppBuildConfig.versionName
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
@@ -68,74 +60,57 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
-
-    buildFeatures {
+    buildFeatures.apply {
+        viewBinding = true
         dataBinding = true
         buildConfig = true
     }
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     // Modules
-    implementation(project(Module.Ui.common))
-    implementation(project(Module.Ui.menu))
-    implementation(project(Module.Ui.gameSettings))
-    implementation(project(Module.Ui.block))
-    implementation(project(Module.Ui.savedGames))
-    implementation(project(Module.Framework.repositories))
-    implementation(project(Module.Framework.Database.room))
-    implementation(project(Module.General.presentation))
-    implementation(project(Module.General.interactor))
-    implementation(project(Module.General.entities))
+    implementation(projects.uiCommon)
+    implementation(projects.uiMenu)
+    implementation(projects.uiGameSettings)
+    implementation(projects.uiBlock)
+    implementation(projects.uiSavedGames)
+    implementation(projects.fwRepositories)
+    implementation(projects.fwDatabaseRoom)
+    implementation(projects.presentation)
+    implementation(projects.interactor)
+    implementation(projects.entities)
 
     // Google
-    implementation(Dependencies.Google.material)
-    implementation(platform(Dependencies.Google.Firebase.bom))
-    implementation(Dependencies.Google.Firebase.analytics)
-    implementation(Dependencies.Google.Firebase.crashlytics)
-    implementation(Dependencies.Google.Firebase.performance)
-    implementation(Dependencies.Google.Firebase.messaging)
-
+    implementation(libs.google.material)
+    implementation(platform(libs.google.firebase.bom))
+    implementation(libs.google.firebase.analytics)
+    implementation(libs.google.firebase.crashlytics)
+    implementation(libs.google.firebase.messaging)
+    
     // AndroidX
-    implementation(Dependencies.AndroidX.appCompat)
-    implementation(Dependencies.AndroidX.coreKtx)
-    implementation(Dependencies.AndroidX.constraintLayout)
-    implementation(Dependencies.AndroidX.LifeCycle.runtime)
-    implementation(Dependencies.AndroidX.LifeCycle.viewModelExtensions)
-    implementation(Dependencies.AndroidX.LifeCycle.livedataExtensions)
-    implementation(Dependencies.AndroidX.Navigation.fragment)
-    implementation(Dependencies.AndroidX.Navigation.ui)
-
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    
     // Kotlin
-    implementation(Dependencies.Kotlin.kotlin)
-    implementation(Dependencies.Kotlin.Coroutine.core)
+    implementation(libs.kotlin.coroutines)
 
     // Koin (Dependency Injection)
-    implementation(Dependencies.Koin.android)
+    implementation(libs.koin)
 
     // Network
-    implementation(Dependencies.Network.retrofit)
-    implementation(Dependencies.Network.gsonConverter)
-    implementation(Dependencies.Network.okHttp3)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp.logginginterceptor)
 
     // Logging
-    implementation(Dependencies.Other.timber)
+    implementation(libs.timber)
 
     // Images
-    implementation(Dependencies.Other.coil)
-}
-
-tasks.withType<DependencyUpdatesTask> {
-
-    // optional parameters
-    checkForGradleUpdate = true
-    outputFormatter = "json"
-    outputDir = "build/dependencyUpdates"
-    reportfileName = "report"
+    implementation(libs.coil)
 }

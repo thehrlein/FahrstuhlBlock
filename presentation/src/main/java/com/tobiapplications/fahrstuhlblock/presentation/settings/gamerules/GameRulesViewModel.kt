@@ -177,7 +177,6 @@ class GameRulesViewModel(
             MaxCardCountSelection.ONE_DECK -> selection.cards / playerSettingsData.names.size
             MaxCardCountSelection.TWO_DECKS -> selection.cards / playerSettingsData.names.size
             MaxCardCountSelection.INDIVIDUAL -> individualCount
-            else -> error("could not determine max card count")
         }
     }
 

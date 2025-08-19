@@ -24,6 +24,7 @@ import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFr
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.ItemDecoration
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -31,7 +32,7 @@ class BlockResultsFragment :
     BaseToolbarFragment<BlockResultsViewModel, BlockViewModel, FragmentBlockResultsBinding>(),
     DialogInteractor {
 
-    override val activityToolbarViewModel: BlockViewModel by sharedViewModel()
+    override val activityToolbarViewModel: BlockViewModel by activityViewModel()
     override val viewModel: BlockResultsViewModel by viewModel()
     override val layoutId: Int = R.layout.fragment_block_results
     override val viewModelResId: Int = BR.viewModel

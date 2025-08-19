@@ -1,60 +1,39 @@
 plugins {
-    id(BuildPlugins.androidLibrary)
-    id(BuildPlugins.kotlinAndroid)
-    id(BuildPlugins.kotlinKapt)
-    id(BuildPlugins.safeArgs)
+    alias(libs.plugins.ohhell.android.library)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.androidx.safeargs)
 }
 
 
 android {
     namespace = "com.tobiapplications.fahrstuhlblock.ui_block"
-    compileSdk = AndroidSdkTools.compileSdk
-
-    defaultConfig {
-        minSdk = AndroidSdkTools.minSdk
-        testInstrumentationRunner = Others.ANDROID_JUNIT_TEST_IMPLEMENTATION_RUNNER
-
-        // possibility to colorize vector drawable in xml based on color resources (< API 24)
-        vectorDrawables.useSupportLibrary = true
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
-
-
-
-    buildFeatures {
-        dataBinding = true
-    }
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     // Modules
-    implementation(project(Module.Ui.common))
-    implementation(project(Module.General.presentation))
-    implementation(project(Module.General.interactor))
-    implementation(project(Module.General.entities))
+    implementation(projects.uiCommon)
+    implementation(projects.presentation)
+    implementation(projects.interactor)
+    implementation(projects.entities)
 
     // AndroidX
-    implementation(Dependencies.AndroidX.constraintLayout)
-    implementation(Dependencies.AndroidX.swipeToRefresh)
-    implementation(Dependencies.AndroidX.LifeCycle.livedataExtensions)
-    implementation(Dependencies.AndroidX.LifeCycle.viewModelExtensions)
-    implementation(Dependencies.AndroidX.Navigation.fragment)
-    implementation(Dependencies.AndroidX.Navigation.ui)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     // Koin
-    implementation(Dependencies.Koin.android)
+    implementation(libs.koin)
 
     // Logging
-    implementation(Dependencies.Other.timber)
+    implementation(libs.timber)
 
     // Other
-    implementation(Dependencies.Other.konfetti)
+    implementation(libs.konfetti)
 
-    testImplementation(Dependencies.Other.junit)
+    testImplementation(libs.junit)
 }

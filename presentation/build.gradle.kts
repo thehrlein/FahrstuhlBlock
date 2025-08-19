@@ -1,47 +1,28 @@
 plugins {
-    id(BuildPlugins.androidLibrary)
-    id(BuildPlugins.kotlinAndroid)
-    id(BuildPlugins.kotlinKapt)
+    alias(libs.plugins.ohhell.android.library)
 }
 
 android {
     namespace = "com.tobiapplications.fahrstuhlblock.presentation"
-    compileSdk = AndroidSdkTools.compileSdk
-
-    defaultConfig {
-        minSdk = AndroidSdkTools.minSdk
-        testInstrumentationRunner = Others.ANDROID_JUNIT_TEST_IMPLEMENTATION_RUNNER
-
-        // possibility to colorize vector drawable in xml based on color resources (< API 24)
-        vectorDrawables.useSupportLibrary = true
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
-
-
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     // Modules
-    implementation(project(Module.General.interactor))
-    implementation(project(Module.General.entities))
+    implementation(projects.interactor)
+    implementation(projects.entities)
 
     // AndroidX
-    implementation(Dependencies.AndroidX.LifeCycle.livedataExtensions)
-    implementation(Dependencies.AndroidX.LifeCycle.viewModelExtensions)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     // Google
-    implementation(platform(Dependencies.Google.Firebase.bom))
-    implementation(Dependencies.Google.Firebase.analytics)
+    implementation(platform(libs.google.firebase.bom))
+    implementation(libs.google.firebase.analytics)
 
     // Koin
-    implementation(Dependencies.Koin.android)
+    implementation(libs.koin)
 
     // Logging
-    implementation(Dependencies.Other.timber)
+    implementation(libs.timber)
 }

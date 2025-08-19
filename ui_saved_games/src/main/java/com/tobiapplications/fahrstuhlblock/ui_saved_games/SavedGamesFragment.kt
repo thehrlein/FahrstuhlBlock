@@ -10,11 +10,11 @@ import com.tobiapplications.fahrstuhlblock.presentation.savedgames.SavedGamesVie
 import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseFragment
 import com.tobiapplications.fahrstuhlblock.ui_common.utils.SwipeToDeleteCallback
 import com.tobiapplications.fahrstuhlblock.ui_saved_games.databinding.FragmentSavedGamesBinding
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class SavedGamesFragment : BaseFragment<SavedGamesViewModel, FragmentSavedGamesBinding>() {
 
-    override val viewModel: SavedGamesViewModel by sharedViewModel()
+    override val viewModel: SavedGamesViewModel by activityViewModel()
     override val layoutId: Int = R.layout.fragment_saved_games
     override val viewModelResId: Int = BR.viewModel
 

@@ -1,56 +1,27 @@
 plugins {
-    id(BuildPlugins.androidLibrary)
-    id(BuildPlugins.kotlinAndroid)
-    id(BuildPlugins.kotlinKapt)
+    alias(libs.plugins.ohhell.android.library)
 }
 
 android {
     namespace = "com.tobiapplications.fahrstuhlblock.fw_repositories"
-    compileSdk = AndroidSdkTools.compileSdk
-
-    defaultConfig {
-        minSdk = AndroidSdkTools.minSdk
-        testInstrumentationRunner = Others.ANDROID_JUNIT_TEST_IMPLEMENTATION_RUNNER
-
-        // possibility to colorize vector drawable in xml based on color resources (< API 24)
-        vectorDrawables.useSupportLibrary = true
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
-
-
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-
     // Modules
-    implementation(project(Module.Ui.common))
-    implementation(project(Module.General.interactor))
-    implementation(project(Module.General.entities))
-
-    // AndroidX
-    implementation(Dependencies.AndroidX.appCompat)
-    implementation(Dependencies.AndroidX.coreKtx)
-    implementation(Dependencies.AndroidX.security)
-    implementation(Dependencies.AndroidX.LifeCycle.livedataExtensions)
+    implementation(projects.uiCommon)
+    implementation(projects.interactor)
+    implementation(projects.entities)
 
     // Google
-    implementation(platform(Dependencies.Google.Firebase.bom))
-    implementation(Dependencies.Google.Firebase.analytics)
+    implementation(platform(libs.google.firebase.bom))
+    implementation(libs.google.firebase.analytics)
 
     // Kotlin
-    implementation(Dependencies.Kotlin.Coroutine.core)
-
-    // Gson
-    implementation(Dependencies.Network.gsonConverter)
+    implementation(libs.kotlin.coroutines)
 
     // Koin
-    implementation(Dependencies.Koin.android)
+    implementation(libs.koin)
 
     // Logging
-    implementation(Dependencies.Other.timber)
+    implementation(libs.timber)
 }

@@ -1,7 +1,7 @@
 package com.tobiapplications.fahrstuhlblock.fw_repositories.datasource.firebase
 
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.analytics.ktx.logEvent
+import com.google.firebase.analytics.logEvent
 import com.tobiapplications.fahrstuhlblock.entities.general.AppResult
 import com.tobiapplications.fahrstuhlblock.entities.models.firebase.*
 import com.tobiapplications.fahrstuhlblock.interactor.datasource.firebase.AnalyticsDatasource

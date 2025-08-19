@@ -12,10 +12,11 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.BR
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class BlockScoresFragment : BaseToolbarFragment<BlockScoresViewModel, BlockViewModel, FragmentBlockScoresBinding>() {
 
-    override val activityToolbarViewModel: BlockViewModel by sharedViewModel()
+    override val activityToolbarViewModel: BlockViewModel by activityViewModel()
     override val viewModel: BlockScoresViewModel by viewModel()
     override val layoutId: Int = R.layout.fragment_block_scores
     override val viewModelResId: Int = BR.viewModel

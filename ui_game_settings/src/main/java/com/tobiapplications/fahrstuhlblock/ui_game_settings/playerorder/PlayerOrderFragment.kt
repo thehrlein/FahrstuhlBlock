@@ -14,7 +14,7 @@ import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFr
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.BR
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.R
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.databinding.FragmentPlayerOrderBinding
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -24,7 +24,7 @@ class PlayerOrderFragment :
     override val viewModel: PlayerOrderViewModel by viewModel {
         parametersOf(args.playerSettingsData)
     }
-    override val activityToolbarViewModel: GameSettingsViewModel by sharedViewModel()
+    override val activityToolbarViewModel: GameSettingsViewModel by activityViewModel()
     override val layoutId: Int = R.layout.fragment_player_order
     override val viewModelResId: Int = BR.viewModel
     private val args: PlayerOrderFragmentArgs by navArgs()

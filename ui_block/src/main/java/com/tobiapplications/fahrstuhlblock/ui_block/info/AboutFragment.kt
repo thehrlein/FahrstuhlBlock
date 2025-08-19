@@ -11,12 +11,12 @@ import com.tobiapplications.fahrstuhlblock.ui_block.BR
 import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentAboutBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFragment
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AboutFragment : BaseToolbarFragment<AboutViewModel, BlockViewModel, FragmentAboutBinding>() {
 
-    override val activityToolbarViewModel: BlockViewModel by sharedViewModel()
+    override val activityToolbarViewModel: BlockViewModel by activityViewModel()
     override val viewModel: AboutViewModel by viewModel()
     override val layoutId: Int = R.layout.fragment_about
     override val viewModelResId: Int = BR.viewModel

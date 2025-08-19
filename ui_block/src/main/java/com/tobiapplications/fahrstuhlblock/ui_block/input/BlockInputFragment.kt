@@ -20,7 +20,7 @@ import com.tobiapplications.fahrstuhlblock.ui_block.R
 import com.tobiapplications.fahrstuhlblock.ui_block.databinding.FragmentBlockInputBinding
 import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFragment
 import com.tobiapplications.fahrstuhlblock.ui_common.extension.getColorReference
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -33,7 +33,7 @@ class BlockInputFragment :
     override val viewModel: BlockInputViewModel by viewModel {
         parametersOf(navArgs.gameId)
     }
-    override val activityToolbarViewModel: BlockViewModel by sharedViewModel()
+    override val activityToolbarViewModel: BlockViewModel by activityViewModel()
     override val viewModelResId: Int = BR.viewModel
     override val layoutId: Int = R.layout.fragment_block_input
     private val navArgs: BlockInputFragmentArgs by navArgs()

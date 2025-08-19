@@ -11,6 +11,7 @@ import com.tobiapplications.fahrstuhlblock.ui_common.base.fragment.BaseToolbarFr
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.BR
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.R
 import com.tobiapplications.fahrstuhlblock.ui_game_settings.databinding.FragmentGameRulesBinding
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -21,7 +22,7 @@ class GameRulesFragment :
     override val viewModel: GameRulesViewModel by viewModel {
         parametersOf(args.playerSettingsData)
     }
-    override val activityToolbarViewModel: GameSettingsViewModel by sharedViewModel()
+    override val activityToolbarViewModel: GameSettingsViewModel by activityViewModel()
     override val layoutId: Int =
         R.layout.fragment_game_rules
     override val viewModelResId: Int =

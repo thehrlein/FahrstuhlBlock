@@ -1,8 +1,8 @@
 package com.tobiapplications.fahrstuhlblock
 
 import android.app.Application
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.ktx.initialize
+import com.google.firebase.Firebase
+import com.google.firebase.initialize
 import com.tobiapplications.fahrstuhlblock.koin.Koin
 import com.tobiapplications.fahrstuhlblock.koin.KoinLogger
 import org.koin.android.ext.koin.androidContext

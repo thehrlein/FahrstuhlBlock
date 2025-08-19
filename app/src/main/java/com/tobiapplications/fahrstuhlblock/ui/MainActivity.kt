@@ -2,6 +2,7 @@ package com.tobiapplications.fahrstuhlblock.ui
 
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.Window
 import android.view.WindowManager
 import com.tobiapplications.fahrstuhlblock.BR
@@ -23,7 +24,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
         showFullscreen()
         super.onCreate(savedInstanceState)
 
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
 
             // start main activity
             viewModel.openNavigation()
